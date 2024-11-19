@@ -4,6 +4,9 @@
     "description": "",
     "type": "object",
     "properties": {
+        "overwrite_unit_tags": {
+            "type": "boolean"
+        },
         "unit_tags": {
             "type": "array",
             "items": {

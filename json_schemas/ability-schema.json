@@ -290,6 +290,10 @@
                 "tooltip_picture": {
                     "$ref": "#/$defs/brush_ptr"
                 },
+                "tooltip_show_current_gravity_well_resurrectable_unit_data": {
+                    "description": "default=false",
+                    "type": "boolean"
+                },
                 "unity_window_picture": {
                     "$ref": "#/$defs/brush_ptr"
                 }
@@ -2248,6 +2252,10 @@
                         "properties": {
                             "amount_missing_threshold": {
                                 "type": "number"
+                            },
+                            "include_crippled_hull_points": {
+                                "description": "default=false",
+                                "type": "boolean"
                             },
                             "percentage_missing_threshold": {
                                 "type": "number"
@@ -4522,9 +4530,996 @@
                                             "unevaluatedProperties": false
                                         },
                                         "operator_type": {
-                                            "type": "string"
+                                            "type": "string",
+                                            "enum": [
+                                                "apply_buff",
+                                                "apply_damage",
+                                                "bomb_planet",
+                                                "change_buff_memory_float_value",
+                                                "change_buff_memory_unit_value",
+                                                "change_owner_player",
+                                                "colonize_planet",
+                                                "create_clones",
+                                                "create_phase_lane",
+                                                "give_assets",
+                                                "give_destroy_planet_rewards",
+                                                "give_experience",
+                                                "give_exotics",
+                                                "make_dead",
+                                                "play_point_effect",
+                                                "play_weapon_effects",
+                                                "remove_antimatter",
+                                                "restore_antimatter",
+                                                "repair_damage",
+                                                "restore_planet_health",
+                                                "stop_move",
+                                                "teleport",
+                                                "teleport_to_gravity_well",
+                                                "explore",
+                                                "spawn_units",
+                                                "destroy_planet",
+                                                "build_instant_strikecraft",
+                                                "spawn_detached_strikecraft",
+                                                "increase_planet_track_level",
+                                                "remove_unit_item",
+                                                "add_unit_item"
+                                            ]
                                         }
                                     },
+                                    "anyOf": [
+                                        {
+                                            "if": {
+                                                "properties": {
+                                                    "operator_type": {
+                                                        "const": "apply_buff"
+                                                    }
+                                                }
+                                            },
+                                            "then": {
+                                                "properties": {
+                                                    "buff": {
+                                                        "$ref": "#/$defs/buff_definition_ptr"
+                                                    },
+                                                    "copy_parent_buff_memory_values": {
+                                                        "description": "default=false",
+                                                        "type": "boolean"
+                                                    },
+                                                    "destination_target_filter_id": {
+                                                        "$ref": "#/$defs/target_filter_id"
+                                                    },
+                                                    "destination_unit": {
+                                                        "description": "default=operand_destination",
+                                                        "$ref": "#/$defs/action_unit"
+                                                    },
+                                                    "initial_float_values": {
+                                                        "$ref": "#/$defs/action_memory_float_value_vector"
+                                                    },
+                                                    "override_ownership_player": {
+                                                        "$ref": "#/$defs/action_player"
+                                                    },
+                                                    "override_ownership_unit": {
+                                                        "$ref": "#/$defs/action_unit"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "buff"
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "if": {
+                                                "properties": {
+                                                    "operator_type": {
+                                                        "const": "apply_damage"
+                                                    }
+                                                }
+                                            },
+                                            "then": {
+                                                "properties": {
+                                                    "bypass_shields_chance_value": {
+                                                        "$ref": "#/$defs/action_value_id"
+                                                    },
+                                                    "can_damage_be_propagated": {
+                                                        "description": "default=true",
+                                                        "type": "boolean"
+                                                    },
+                                                    "damage_value": {
+                                                        "$ref": "#/$defs/action_value_id"
+                                                    },
+                                                    "ignore_infinite_recursion_guard": {
+                                                        "description": "default=false",
+                                                        "type": "boolean"
+                                                    },
+                                                    "penetration_value": {
+                                                        "$ref": "#/$defs/action_value_id"
+                                                    },
+                                                    "source_unit": {
+                                                        "description": "default=first_spawner",
+                                                        "$ref": "#/$defs/action_unit"
+                                                    },
+                                                    "use_source_weapon_properties": {
+                                                        "description": "default=false",
+                                                        "type": "boolean"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "damage_value",
+                                                    "penetration_value"
+                                                ],
+                                                "if": {
+                                                    "properties": {
+                                                        "use_source_weapon_properties": {
+                                                            "const": false
+                                                        }
+                                                    }
+                                                },
+                                                "then": {
+                                                    "properties": {
+                                                        "damage_affect_type": {
+                                                            "$ref": "#/$defs/damage_affect_type"
+                                                        },
+                                                        "damage_source": {
+                                                            "$ref": "#/$defs/damage_source_type"
+                                                        },
+                                                        "weapon_tags": {
+                                                            "$ref": "#/$defs/weapon_tag_set"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "damage_affect_type",
+                                                        "damage_source"
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "if": {
+                                                "properties": {
+                                                    "operator_type": {
+                                                        "const": "bomb_planet"
+                                                    }
+                                                }
+                                            },
+                                            "then": {
+                                                "properties": {
+                                                    "bombing_damage_value": {
+                                                        "$ref": "#/$defs/action_value_id"
+                                                    },
+                                                    "damage_source": {
+                                                        "$ref": "#/$defs/damage_source_type"
+                                                    },
+                                                    "show_enemy_planet_made_dead_from_bombing_notification": {
+                                                        "description": "default=true",
+                                                        "type": "boolean"
+                                                    },
+                                                    "weapon_tags": {
+                                                        "$ref": "#/$defs/weapon_tag_set"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "bombing_damage_value",
+                                                    "damage_source"
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "if": {
+                                                "properties": {
+                                                    "operator_type": {
+                                                        "const": "change_buff_memory_float_value"
+                                                    }
+                                                }
+                                            },
+                                            "then": {
+                                                "properties": {
+                                                    "buff": {
+                                                        "description": "default=current_buff",
+                                                        "$ref": "#/$defs/action_buff"
+                                                    },
+                                                    "float_variable": {
+                                                        "$ref": "#/$defs/action_memory_float_variable_id"
+                                                    },
+                                                    "math_operators": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "$ref": "#/$defs/action_math_operator"
+                                                        }
+                                                    }
+                                                },
+                                                "required": [
+                                                    "float_variable",
+                                                    "math_operators"
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "if": {
+                                                "properties": {
+                                                    "operator_type": {
+                                                        "const": "change_buff_memory_unit_value"
+                                                    }
+                                                }
+                                            },
+                                            "then": {
+                                                "properties": {
+                                                    "buff": {
+                                                        "description": "default=current_buff",
+                                                        "$ref": "#/$defs/action_buff"
+                                                    },
+                                                    "new_unit_value": {
+                                                        "$ref": "#/$defs/action_unit"
+                                                    },
+                                                    "unit_variable": {
+                                                        "$ref": "#/$defs/action_memory_unit_variable_id"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "new_unit_value",
+                                                    "unit_variable"
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "if": {
+                                                "properties": {
+                                                    "operator_type": {
+                                                        "const": "change_owner_player"
+                                                    }
+                                                }
+                                            },
+                                            "then": {
+                                                "properties": {
+                                                    "auto_add_to_source_unit_fleet": {
+                                                        "description": "default=first_spawner",
+                                                        "$ref": "#/$defs/action_unit"
+                                                    },
+                                                    "keep_planet_track_levels": {
+                                                        "description": "default=false",
+                                                        "type": "boolean"
+                                                    },
+                                                    "new_owner_player": {
+                                                        "$ref": "#/$defs/action_player"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "new_owner_player"
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "if": {
+                                                "properties": {
+                                                    "operator_type": {
+                                                        "const": "colonize_planet"
+                                                    }
+                                                }
+                                            },
+                                            "then": {
+                                                "properties": {
+                                                    "buff_on_planet": {
+                                                        "$ref": "#/$defs/buff_definition_ptr"
+                                                    },
+                                                    "copy_parent_buff_memory_values": {
+                                                        "description": "default=false",
+                                                        "type": "boolean"
+                                                    },
+                                                    "initial_float_values": {
+                                                        "$ref": "#/$defs/action_memory_float_value_vector"
+                                                    },
+                                                    "override_ownership_player": {
+                                                        "$ref": "#/$defs/action_player"
+                                                    },
+                                                    "override_ownership_unit": {
+                                                        "$ref": "#/$defs/action_unit"
+                                                    },
+                                                    "show_planet_colonized_notification": {
+                                                        "description": "default=true",
+                                                        "type": "boolean"
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "if": {
+                                                "properties": {
+                                                    "operator_type": {
+                                                        "const": "create_clones"
+                                                    }
+                                                }
+                                            },
+                                            "then": {
+                                                "properties": {
+                                                    "buff_on_clone": {
+                                                        "$ref": "#/$defs/buff_definition_ptr"
+                                                    },
+                                                    "clone_count": {
+                                                        "description": "default=1",
+                                                        "$ref": "#/$defs/action_value_id"
+                                                    },
+                                                    "clone_forward": {
+                                                        "$ref": "#/$defs/action_direction"
+                                                    },
+                                                    "clone_spawn_position": {
+                                                        "$ref": "#/$defs/action_position"
+                                                    },
+                                                    "copy_destination_unit_state": {
+                                                        "description": "default=false",
+                                                        "type": "boolean"
+                                                    },
+                                                    "copy_parent_buff_memory_values": {
+                                                        "description": "default=false",
+                                                        "type": "boolean"
+                                                    },
+                                                    "initial_float_values": {
+                                                        "$ref": "#/$defs/action_memory_float_value_vector"
+                                                    },
+                                                    "override_ownership_unit": {
+                                                        "$ref": "#/$defs/action_unit"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "clone_forward",
+                                                    "clone_spawn_position"
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "if": {
+                                                "properties": {
+                                                    "operator_type": {
+                                                        "const": "create_phase_lane"
+                                                    }
+                                                }
+                                            },
+                                            "then": {
+                                                "properties": {
+                                                    "buff": {
+                                                        "$ref": "#/$defs/buff_definition_ptr"
+                                                    },
+                                                    "destination_gravity_well": {
+                                                        "$ref": "#/$defs/action_unit"
+                                                    },
+                                                    "owner_player": {
+                                                        "$ref": "#/$defs/action_player"
+                                                    },
+                                                    "source_gravity_well": {
+                                                        "$ref": "#/$defs/action_unit"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "destination_gravity_well",
+                                                    "owner_player",
+                                                    "source_gravity_well"
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "if": {
+                                                "properties": {
+                                                    "operator_type": {
+                                                        "const": "give_assets"
+                                                    }
+                                                }
+                                            },
+                                            "then": {
+                                                "properties": {
+                                                    "asset_type": {
+                                                        "$ref": "#/$defs/asset_type"
+                                                    },
+                                                    "asset_value": {
+                                                        "$ref": "#/$defs/action_value_id"
+                                                    },
+                                                    "context": {
+                                                        "description": "default=action",
+                                                        "$ref": "#/$defs/player_asset_delta_source"
+                                                    },
+                                                    "destination_unit": {
+                                                        "description": "default=operand_destination",
+                                                        "$ref": "#/$defs/action_unit"
+                                                    },
+                                                    "log_different_fixtures_as_unique_events": {
+                                                        "description": "default=false",
+                                                        "type": "boolean"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "asset_type",
+                                                    "asset_value"
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "if": {
+                                                "properties": {
+                                                    "operator_type": {
+                                                        "const": "give_destroy_planet_rewards"
+                                                    }
+                                                }
+                                            },
+                                            "then": {
+                                                "properties": {
+                                                    "give_assets_context": {
+                                                        "description": "default=action",
+                                                        "$ref": "#/$defs/player_asset_delta_source"
+                                                    },
+                                                    "give_exotic_context": {
+                                                        "description": "default=destroy_planet_rewards",
+                                                        "$ref": "#/$defs/give_exotic_context"
+                                                    },
+                                                    "rewards_destination_player": {
+                                                        "$ref": "#/$defs/action_player"
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "if": {
+                                                "properties": {
+                                                    "operator_type": {
+                                                        "const": "give_experience"
+                                                    }
+                                                }
+                                            },
+                                            "then": {
+                                                "properties": {
+                                                    "context": {
+                                                        "description": "default=buff",
+                                                        "type": "string",
+                                                        "enum": [
+                                                            "debug",
+                                                            "create_unit",
+                                                            "buff",
+                                                            "unit_death",
+                                                            "planet_bombing",
+                                                            "loot_collection"
+                                                        ]
+                                                    },
+                                                    "experience_value": {
+                                                        "$ref": "#/$defs/action_value_id"
+                                                    },
+                                                    "level_cap_value": {
+                                                        "$ref": "#/$defs/action_value_id"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "experience_value"
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "if": {
+                                                "properties": {
+                                                    "operator_type": {
+                                                        "const": "give_exotics"
+                                                    }
+                                                }
+                                            },
+                                            "then": {
+                                                "properties": {
+                                                    "context": {
+                                                        "description": "default=action",
+                                                        "$ref": "#/$defs/give_exotic_context"
+                                                    },
+                                                    "destination_unit": {
+                                                        "description": "default=operand_destination",
+                                                        "$ref": "#/$defs/action_unit"
+                                                    },
+                                                    "exotics": {
+                                                        "$ref": "#/$defs/action_exotics"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "exotics"
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "if": {
+                                                "properties": {
+                                                    "operator_type": {
+                                                        "const": "make_dead"
+                                                    }
+                                                }
+                                            },
+                                            "then": {
+                                                "properties": {
+                                                    "skip_awarding_experience": {
+                                                        "description": "default=true",
+                                                        "type": "boolean"
+                                                    },
+                                                    "skip_death_sequence": {
+                                                        "description": "default=false",
+                                                        "type": "boolean"
+                                                    },
+                                                    "skip_player_statistics": {
+                                                        "description": "default=true",
+                                                        "type": "boolean"
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "if": {
+                                                "properties": {
+                                                    "operator_type": {
+                                                        "const": "play_point_effect"
+                                                    }
+                                                }
+                                            },
+                                            "then": {
+                                                "properties": {
+                                                    "effect_definition": {
+                                                        "$ref": "#/$defs/action_effect_definition"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "effect_definition"
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "if": {
+                                                "properties": {
+                                                    "operator_type": {
+                                                        "const": "play_weapon_effects"
+                                                    }
+                                                }
+                                            },
+                                            "then": {
+                                                "properties": {
+                                                    "beam_duration": {
+                                                        "$ref": "#/$defs/action_value_id"
+                                                    },
+                                                    "charge_duration": {
+                                                        "$ref": "#/$defs/action_value_id"
+                                                    },
+                                                    "effect_alias_binding": {
+                                                        "$ref": "#/$defs/action_effect_alias_binding"
+                                                    },
+                                                    "effects": {
+                                                        "$ref": "#/$defs/weapon_effects_definition"
+                                                    },
+                                                    "mesh_point": {
+                                                        "$ref": "#/$defs/mesh_point_name"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "effect_alias_binding",
+                                                    "effects",
+                                                    "mesh_point"
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "if": {
+                                                "properties": {
+                                                    "operator_type": {
+                                                        "const": "remove_antimatter"
+                                                    }
+                                                }
+                                            },
+                                            "then": {
+                                                "properties": {
+                                                    "antimatter_remove_value": {
+                                                        "$ref": "#/$defs/action_value_id"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "antimatter_remove_value"
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "if": {
+                                                "properties": {
+                                                    "operator_type": {
+                                                        "const": "restore_antimatter"
+                                                    }
+                                                }
+                                            },
+                                            "then": {
+                                                "properties": {
+                                                    "antimatter_restore_value": {
+                                                        "$ref": "#/$defs/action_value_id"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "antimatter_restore_value"
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "if": {
+                                                "properties": {
+                                                    "operator_type": {
+                                                        "const": "repair_damage"
+                                                    }
+                                                }
+                                            },
+                                            "then": {
+                                                "properties": {
+                                                    "affect_type": {
+                                                        "$ref": "#/$defs/damage_affect_type"
+                                                    },
+                                                    "can_damage_be_propagated": {
+                                                        "description": "default=true",
+                                                        "type": "boolean"
+                                                    },
+                                                    "destination_unit": {
+                                                        "description": "default=operand_destination",
+                                                        "$ref": "#/$defs/action_unit"
+                                                    },
+                                                    "ignore_infinite_recursion_guard": {
+                                                        "description": "default=false",
+                                                        "type": "boolean"
+                                                    },
+                                                    "repair_value": {
+                                                        "$ref": "#/$defs/action_value_id"
+                                                    },
+                                                    "source_unit": {
+                                                        "description": "default=first_spawner",
+                                                        "$ref": "#/$defs/action_unit"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "affect_type",
+                                                    "repair_value"
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "if": {
+                                                "properties": {
+                                                    "operator_type": {
+                                                        "const": "restore_planet_health"
+                                                    }
+                                                }
+                                            },
+                                            "then": {
+                                                "properties": {
+                                                    "damage_source": {
+                                                        "$ref": "#/$defs/damage_source_type"
+                                                    },
+                                                    "restore_amount_value": {
+                                                        "$ref": "#/$defs/action_value_id"
+                                                    },
+                                                    "weapon_tags": {
+                                                        "$ref": "#/$defs/weapon_tag_set"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "restore_amount_value"
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "if": {
+                                                "properties": {
+                                                    "operator_type": {
+                                                        "const": "stop_move"
+                                                    }
+                                                }
+                                            },
+                                            "then": {}
+                                        },
+                                        {
+                                            "if": {
+                                                "properties": {
+                                                    "operator_type": {
+                                                        "const": "teleport"
+                                                    }
+                                                }
+                                            },
+                                            "then": {
+                                                "properties": {
+                                                    "destination_position": {
+                                                        "$ref": "#/$defs/action_position"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "destination_position"
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "if": {
+                                                "properties": {
+                                                    "operator_type": {
+                                                        "const": "teleport_to_gravity_well"
+                                                    }
+                                                }
+                                            },
+                                            "then": {
+                                                "properties": {
+                                                    "destination_reference_unit": {
+                                                        "$ref": "#/$defs/action_unit"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "destination_reference_unit"
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "if": {
+                                                "properties": {
+                                                    "operator_type": {
+                                                        "const": "explore"
+                                                    }
+                                                }
+                                            },
+                                            "then": {}
+                                        },
+                                        {
+                                            "if": {
+                                                "properties": {
+                                                    "operator_type": {
+                                                        "const": "spawn_units"
+                                                    }
+                                                }
+                                            },
+                                            "then": {
+                                                "properties": {
+                                                    "arrival_delay_value": {
+                                                        "$ref": "#/$defs/action_value_id"
+                                                    },
+                                                    "available_supply_value": {
+                                                        "$ref": "#/$defs/action_value_id"
+                                                    },
+                                                    "check_research_prerequisites": {
+                                                        "type": "boolean"
+                                                    },
+                                                    "constrain_available_supply_to_owner_player": {
+                                                        "type": "boolean"
+                                                    },
+                                                    "in_hyperspace": {
+                                                        "type": "boolean"
+                                                    },
+                                                    "owner_player": {
+                                                        "$ref": "#/$defs/action_player"
+                                                    },
+                                                    "special_operation_unit_kind": {
+                                                        "$ref": "#/$defs/special_operation_unit_kind"
+                                                    },
+                                                    "units": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "formation_type": {
+                                                                "$ref": "#/$defs/formation_type"
+                                                            },
+                                                            "random_units": {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "type": "object",
+                                                                    "properties": {
+                                                                        "options": {
+                                                                            "type": "object",
+                                                                            "properties": {
+                                                                                "forced_leveled_up_ability": {
+                                                                                    "$ref": "#/$defs/ability_definition_ptr"
+                                                                                },
+                                                                                "forced_strikecraft_index": {
+                                                                                    "type": "integer"
+                                                                                },
+                                                                                "is_temporary_ruler_ship": {
+                                                                                    "type": "boolean"
+                                                                                },
+                                                                                "items": {
+                                                                                    "type": "array",
+                                                                                    "items": {
+                                                                                        "$ref": "#/$defs/unit_item_definition_ptr"
+                                                                                    }
+                                                                                },
+                                                                                "level": {
+                                                                                    "type": "integer"
+                                                                                }
+                                                                            },
+                                                                            "unevaluatedProperties": false
+                                                                        },
+                                                                        "unit": {
+                                                                            "$ref": "#/$defs/unit_definition_ptr"
+                                                                        },
+                                                                        "weight": {
+                                                                            "type": "number"
+                                                                        }
+                                                                    },
+                                                                    "required": [
+                                                                        "unit",
+                                                                        "weight"
+                                                                    ],
+                                                                    "unevaluatedProperties": false
+                                                                }
+                                                            },
+                                                            "required_units": {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "type": "object",
+                                                                    "properties": {
+                                                                        "count": {
+                                                                            "type": "array",
+                                                                            "items": {
+                                                                                "type": "integer"
+                                                                            },
+                                                                            "minItems": 2,
+                                                                            "maxItems": 2
+                                                                        },
+                                                                        "options": {
+                                                                            "type": "object",
+                                                                            "properties": {
+                                                                                "forced_leveled_up_ability": {
+                                                                                    "$ref": "#/$defs/ability_definition_ptr"
+                                                                                },
+                                                                                "forced_strikecraft_index": {
+                                                                                    "type": "integer"
+                                                                                },
+                                                                                "is_temporary_ruler_ship": {
+                                                                                    "type": "boolean"
+                                                                                },
+                                                                                "items": {
+                                                                                    "type": "array",
+                                                                                    "items": {
+                                                                                        "$ref": "#/$defs/unit_item_definition_ptr"
+                                                                                    }
+                                                                                },
+                                                                                "level": {
+                                                                                    "type": "integer"
+                                                                                }
+                                                                            },
+                                                                            "unevaluatedProperties": false
+                                                                        },
+                                                                        "unit": {
+                                                                            "$ref": "#/$defs/unit_definition_ptr"
+                                                                        }
+                                                                    },
+                                                                    "required": [
+                                                                        "unit"
+                                                                    ],
+                                                                    "unevaluatedProperties": false
+                                                                }
+                                                            }
+                                                        },
+                                                        "unevaluatedProperties": false
+                                                    }
+                                                },
+                                                "required": [
+                                                    "arrival_delay_value",
+                                                    "check_research_prerequisites",
+                                                    "constrain_available_supply_to_owner_player",
+                                                    "in_hyperspace",
+                                                    "owner_player",
+                                                    "units"
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "if": {
+                                                "properties": {
+                                                    "operator_type": {
+                                                        "const": "destroy_planet"
+                                                    }
+                                                }
+                                            },
+                                            "then": {
+                                                "properties": {
+                                                    "suppress_ui_notifications": {
+                                                        "description": "default=true",
+                                                        "type": "boolean"
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "if": {
+                                                "properties": {
+                                                    "operator_type": {
+                                                        "const": "build_instant_strikecraft"
+                                                    }
+                                                }
+                                            },
+                                            "then": {
+                                                "properties": {
+                                                    "build_strikecraft_count": {
+                                                        "$ref": "#/$defs/action_value_id"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "build_strikecraft_count"
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "if": {
+                                                "properties": {
+                                                    "operator_type": {
+                                                        "const": "spawn_detached_strikecraft"
+                                                    }
+                                                }
+                                            },
+                                            "then": {
+                                                "properties": {
+                                                    "buff_on_strikecraft": {
+                                                        "$ref": "#/$defs/buff_definition_ptr"
+                                                    },
+                                                    "strikecraft_count_value": {
+                                                        "$ref": "#/$defs/action_value_id"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "buff_on_strikecraft",
+                                                    "strikecraft_count_value"
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "if": {
+                                                "properties": {
+                                                    "operator_type": {
+                                                        "const": "increase_planet_track_level"
+                                                    }
+                                                }
+                                            },
+                                            "then": {
+                                                "properties": {
+                                                    "ignore_research": {
+                                                        "description": "if true the levels added even if player does not have research to support these track levels",
+                                                        "type": "boolean"
+                                                    },
+                                                    "level_count_value": {
+                                                        "$ref": "#/$defs/action_value_id"
+                                                    },
+                                                    "planet_track_type": {
+                                                        "$ref": "#/$defs/planet_track_type"
+                                                    },
+                                                    "will_offset_development_track_upgrade_price": {
+                                                        "type": "boolean"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "ignore_research",
+                                                    "planet_track_type",
+                                                    "will_offset_development_track_upgrade_price"
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "if": {
+                                                "properties": {
+                                                    "operator_type": {
+                                                        "const": "remove_unit_item"
+                                                    }
+                                                }
+                                            },
+                                            "then": {
+                                                "properties": {
+                                                    "unit_item": {
+                                                        "$ref": "#/$defs/unit_item_definition_ptr"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "unit_item"
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "if": {
+                                                "properties": {
+                                                    "operator_type": {
+                                                        "const": "add_unit_item"
+                                                    }
+                                                }
+                                            },
+                                            "then": {
+                                                "properties": {
+                                                    "unit_item": {
+                                                        "$ref": "#/$defs/unit_item_definition_ptr"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "unit_item"
+                                                ]
+                                            }
+                                        }
+                                    ],
                                     "unevaluatedProperties": false
                                 }
                             },
@@ -7315,6 +8310,7 @@
                 "can_be_targeted_by_enemies",
                 "can_be_damaged",
                 "can_planet_be_damaged",
+                "can_planet_update_track_upgrade_progress",
                 "can_have_hull_restored",
                 "can_have_armor_restored",
                 "can_have_shields_restored",
@@ -7325,13 +8321,18 @@
                 "can_passively_regenerate_shields",
                 "can_update_build_progress",
                 "can_use_weapons",
+                "can_use_missile_weapons",
+                "can_update_weapon_cooldown_progress",
                 "can_use_weapons_when_crippled",
                 "can_use_active_abilities",
                 "can_use_abilities_when_crippled",
+                "can_update_ability_cooldown_progress",
                 "can_be_colonized",
                 "can_launch_or_dock_strikecraft",
+                "can_have_any_strikecraft_launched",
                 "can_update_unit_production",
-                "can_create_retargeting_torpedoes"
+                "can_create_retargeting_torpedoes",
+                "can_update_unit_item_build_progress"
             ]
         },
         "unit_modifier_type": {

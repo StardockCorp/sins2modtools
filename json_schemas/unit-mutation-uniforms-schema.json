@@ -33,6 +33,15 @@
                 "unevaluatedProperties": false
             }
         },
+        "overwrite_mutations": {
+            "type": "boolean"
+        },
+        "overwrite_permission_infos": {
+            "type": "boolean"
+        },
+        "overwrite_suppressors": {
+            "type": "boolean"
+        },
         "permission_infos": {
             "type": "object",
             "properties": {

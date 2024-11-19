@@ -4,6 +4,9 @@
     "description": "",
     "type": "object",
     "properties": {
+        "overwrite_tutorials": {
+            "type": "boolean"
+        },
         "tutorials": {
             "type": "array",
             "items": {

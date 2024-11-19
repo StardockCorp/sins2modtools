@@ -57,6 +57,27 @@
         "min_elevator_buffer_distance_surface_radius_scalar": {
             "type": "number"
         },
+        "overwrite_artifacts": {
+            "type": "boolean"
+        },
+        "overwrite_crystal_asteroids": {
+            "type": "boolean"
+        },
+        "overwrite_easter_egg_planet_bonuses": {
+            "type": "boolean"
+        },
+        "overwrite_metal_asteroids": {
+            "type": "boolean"
+        },
+        "overwrite_planet_types": {
+            "type": "boolean"
+        },
+        "overwrite_planets": {
+            "type": "boolean"
+        },
+        "overwrite_random_planet_bonuses": {
+            "type": "boolean"
+        },
         "planet_types": {
             "type": "array",
             "items": {

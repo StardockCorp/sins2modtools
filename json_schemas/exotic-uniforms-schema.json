@@ -4,6 +4,9 @@
     "description": "",
     "type": "object",
     "properties": {
+        "overwrite_type_datas": {
+            "type": "boolean"
+        },
         "type_datas": {
             "type": "array",
             "items": {

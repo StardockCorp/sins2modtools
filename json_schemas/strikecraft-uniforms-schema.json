@@ -7,6 +7,9 @@
         "no_owner_carrier_self_destruct_duration": {
             "type": "integer"
         },
+        "overwrite_strikecraft_kinds": {
+            "type": "boolean"
+        },
         "strikecraft_kinds": {
             "type": "array",
             "items": {

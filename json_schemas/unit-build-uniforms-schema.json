@@ -23,6 +23,9 @@
                 "unevaluatedProperties": false
             }
         },
+        "overwrite_build_kinds": {
+            "type": "boolean"
+        },
         "version": {
             "type": "integer"
         }

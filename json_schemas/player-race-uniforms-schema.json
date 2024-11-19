@@ -4,6 +4,9 @@
     "description": "",
     "type": "object",
     "properties": {
+        "overwrite_races": {
+            "type": "boolean"
+        },
         "races": {
             "type": "array",
             "items": {

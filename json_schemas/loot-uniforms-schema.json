@@ -43,6 +43,9 @@
                 "unevaluatedProperties": false
             }
         },
+        "overwrite_random_loots": {
+            "type": "boolean"
+        },
         "random_loots": {
             "type": "array",
             "items": {

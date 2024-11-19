@@ -4,6 +4,9 @@
     "description": "",
     "type": "object",
     "properties": {
+        "overwrite_special_operation_unit_kinds": {
+            "type": "boolean"
+        },
         "special_operation_unit_kinds": {
             "type": "array",
             "items": {

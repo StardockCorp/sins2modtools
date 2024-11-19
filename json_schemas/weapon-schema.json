@@ -12,6 +12,9 @@
                 "best_target_in_range"
             ]
         },
+        "always_check_is_dead_soon": {
+            "type": "boolean"
+        },
         "attack_target_type_groups": {
             "type": "array",
             "items": {
@@ -614,6 +617,10 @@
                                     "properties": {
                                         "amount_missing_threshold": {
                                             "type": "number"
+                                        },
+                                        "include_crippled_hull_points": {
+                                            "description": "default=false",
+                                            "type": "boolean"
                                         },
                                         "percentage_missing_threshold": {
                                             "type": "number"
@@ -1613,6 +1620,10 @@
                             "amount_missing_threshold": {
                                 "type": "number"
                             },
+                            "include_crippled_hull_points": {
+                                "description": "default=false",
+                                "type": "boolean"
+                            },
                             "percentage_missing_threshold": {
                                 "type": "number"
                             }
@@ -2342,6 +2353,7 @@
                 "can_be_targeted_by_enemies",
                 "can_be_damaged",
                 "can_planet_be_damaged",
+                "can_planet_update_track_upgrade_progress",
                 "can_have_hull_restored",
                 "can_have_armor_restored",
                 "can_have_shields_restored",
@@ -2352,13 +2364,18 @@
                 "can_passively_regenerate_shields",
                 "can_update_build_progress",
                 "can_use_weapons",
+                "can_use_missile_weapons",
+                "can_update_weapon_cooldown_progress",
                 "can_use_weapons_when_crippled",
                 "can_use_active_abilities",
                 "can_use_abilities_when_crippled",
+                "can_update_ability_cooldown_progress",
                 "can_be_colonized",
                 "can_launch_or_dock_strikecraft",
+                "can_have_any_strikecraft_launched",
                 "can_update_unit_production",
-                "can_create_retargeting_torpedoes"
+                "can_create_retargeting_torpedoes",
+                "can_update_unit_item_build_progress"
             ]
         },
         "weapon_tag": {

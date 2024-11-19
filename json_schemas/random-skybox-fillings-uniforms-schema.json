@@ -7,6 +7,9 @@
         "dark_skybox": {
             "type": "string"
         },
+        "overwrite_random_skybox_fillings": {
+            "type": "boolean"
+        },
         "random_skybox_fillings": {
             "type": "array",
             "items": {

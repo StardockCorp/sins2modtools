@@ -316,6 +316,18 @@
             },
             "unevaluatedProperties": false
         },
+        "npc_players_with_reputation": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "overwrite_npc_players_with_reputation": {
+            "type": "boolean"
+        },
+        "overwrite_pickable_players": {
+            "type": "boolean"
+        },
         "pickable_players": {
             "type": "array",
             "items": {
@@ -345,6 +357,7 @@
         "max_fleet_count",
         "max_research_points_overflow",
         "max_research_rate_scalar",
+        "npc_players_with_reputation",
         "pickable_players",
         "refund_percentage",
         "research_overflow_tier_nth_root_modifier"

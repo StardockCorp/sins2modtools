@@ -10,6 +10,12 @@
                 "type": "string"
             }
         },
+        "overwrite_fake_server_scenarios": {
+            "type": "boolean"
+        },
+        "overwrite_scenarios": {
+            "type": "boolean"
+        },
         "scenarios": {
             "type": "array",
             "items": {

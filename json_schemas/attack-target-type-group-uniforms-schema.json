@@ -7,6 +7,9 @@
         "attack_target_type_groups": {
             "$ref": "#/$defs/unit_attack_target_type_group_map"
         },
+        "overwrite_attack_target_type_groups": {
+            "type": "boolean"
+        },
         "version": {
             "type": "integer"
         }

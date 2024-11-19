@@ -4,6 +4,9 @@
     "description": "",
     "type": "object",
     "properties": {
+        "overwrite_weapon_tags": {
+            "type": "boolean"
+        },
         "recently_fired_time_threshold": {
             "type": "number"
         },

@@ -541,6 +541,22 @@
                     },
                     "then": {
                         "properties": {
+                            "linear_deceleration_scalar": {
+                                "type": "number"
+                            }
+                        }
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "can_move_linear": {
+                                "const": true
+                            }
+                        }
+                    },
+                    "then": {
+                        "properties": {
                             "arrival_tolerance_spatial_radius_scalar": {
                                 "type": "number"
                             }
@@ -593,6 +609,22 @@
                     "then": {
                         "properties": {
                             "time_to_max_angular_speed": {
+                                "type": "number"
+                            }
+                        }
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "can_move_angular": {
+                                "const": true
+                            }
+                        }
+                    },
+                    "then": {
+                        "properties": {
+                            "angular_deceleration_scalar": {
                                 "type": "number"
                             }
                         }
