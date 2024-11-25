@@ -1,7 +1,7 @@
 {
-    "time": "2024-10-04 09:14:16.213046",
-    "user": "Jamie",
-    "local_sha": "16c1a3f946d6bcae634c9c4ec23d4c0f51e31d8e",
-    "remote_sha": "6c4ae6d9008050e6f2d72291fc70a8283bacad07",
+    "time": "2024-11-22 14:50:42.867630",
+    "user": "bclair",
+    "local_sha": "c53e0c6349b576a6d323914f9946c0241769905f",
+    "remote_sha": "0d5cdadc8d492fbc03ac03a4c227438865d63801",
     "configuration": "Release"
 }
