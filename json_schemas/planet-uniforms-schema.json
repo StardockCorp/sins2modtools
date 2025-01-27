@@ -57,9 +57,6 @@
         "min_elevator_buffer_distance_surface_radius_scalar": {
             "type": "number"
         },
-        "overwrite_artifacts": {
-            "type": "boolean"
-        },
         "overwrite_crystal_asteroids": {
             "type": "boolean"
         },
@@ -243,7 +240,6 @@
     },
     "required": [
         "artifact_to_planet_count_ratio",
-        "artifacts",
         "asteroid_y_offset_range",
         "chance_of_easter_egg_planet_bonus",
         "chance_of_first_planet_bonus",

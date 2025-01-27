@@ -2698,6 +2698,18 @@
                     "minItems": 2,
                     "maxItems": 2
                 },
+                "chaos_factor_range": {
+                    "type": "array",
+                    "items": {
+                        "type": "number"
+                    },
+                    "minItems": 2,
+                    "maxItems": 2
+                },
+                "chaos_factor_update_interval": {
+                    "description": "default=300",
+                    "type": "number"
+                },
                 "defense_to_offsense_spend_ratio": {
                     "description": "default=1",
                     "type": "number"

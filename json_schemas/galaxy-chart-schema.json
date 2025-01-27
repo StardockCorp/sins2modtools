@@ -36,6 +36,9 @@
         "galaxy_chart_node": {
             "type": "object",
             "properties": {
+                "artifact_name": {
+                    "type": "string"
+                },
                 "chance_of_first_planet_bonus": {
                     "type": "number"
                 },

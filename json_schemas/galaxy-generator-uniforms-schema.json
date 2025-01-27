@@ -101,6 +101,12 @@
         "galaxy_chart_fillings": {
             "type": "object",
             "properties": {
+                "artifacts": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
                 "fixture_fillings": {
                     "type": "array",
                     "items": {
@@ -328,6 +334,9 @@
                         "unevaluatedProperties": false
                     }
                 },
+                "overwrite_artifacts": {
+                    "type": "boolean"
+                },
                 "overwrite_fixture_fillings": {
                     "type": "boolean"
                 },
@@ -350,6 +359,9 @@
                     "type": "boolean"
                 },
                 "overwrite_random_skybox_fillings": {
+                    "type": "boolean"
+                },
+                "overwrite_wormhole_fillings": {
                     "type": "boolean"
                 },
                 "random_fixture_fillings": {
@@ -435,6 +447,36 @@
                                                     "type": "number"
                                                 },
                                                 "skybox": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "unevaluatedProperties": false
+                                        }
+                                    }
+                                },
+                                "unevaluatedProperties": false
+                            },
+                            "name": {
+                                "type": "string"
+                            }
+                        },
+                        "unevaluatedProperties": false
+                    }
+                },
+                "wormhole_fillings": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "filling": {
+                                "type": "object",
+                                "properties": {
+                                    "wormholes": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "filling_name": {
                                                     "type": "string"
                                                 }
                                             },
