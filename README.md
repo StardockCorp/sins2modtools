@@ -215,3 +215,9 @@ Export meshes directly from Blender.
 ```
 Makes the modding workflow cozier, with various QoL features to simplify ship rigging along with helpful documentation in the side panel
 ```
+
+## [BabylonJS_Exporters](./BabylonJS_Exporters/)
+
+```
+For those who use 3DS Max or Maya, this plugin will easily let you export to gltf format. Note that this exporter is not supported as the source repo has been deprecated.
+```
