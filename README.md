@@ -44,6 +44,19 @@ From command line:
 .\MeshBuilder\bin\MeshBuilder.exe --input_path=examples/meshes/advent_interceptor_strikecraft.gltf --output_folder_path=.out --mesh_output_format=binary
 ```
 
+### Poly Counts
+
+Final, low-poly models should not exceed the following count for each asset size:
+
+- Strikecraft = 2,000
+- Frigate = 12,500
+- Cruiser = 25,000
+- Capital Ship = 75,000
+- Titan = 225,000
+
+Sins II assets typically ended up far below these limits, so it's possible to create a great 
+looking model without using a ton of polys.
+
 ### Mesh Textures
 
 Mesh Textures have specific requirements to look correct with Iron Engine 3's shaders. Use [Texconv](https://github.com/Microsoft/DirectXTex/wiki/Texconv) to convert from `.png` to `.dds` using the specifications below. This process can be simplified and automated by using Peon.
