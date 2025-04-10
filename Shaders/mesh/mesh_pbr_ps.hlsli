@@ -158,7 +158,7 @@ ps_output main(mesh_ps_input input)
 	float3 emissive = emissive_color * emissive_mask_strength * emissive_hue_strength;
 	#endif
 		
-	const float2 normal_t_sample = normal_texture.Sample(mesh_anisotropic_clamp_sampler, texcoord0).xy;
+	const float2 normal_t_sample = normal_texture.Sample(mesh_anisotropic_wrap_sampler, texcoord0).xy;
 	const float4 normal_t_debug = get_normal_t_debug(normal_t_sample);
 	const float3 N = get_perturbed_normal_w_from_normal_map(input.position_w, input.normal_w, input.tangent_w, input.fsign, texcoord0, normal_t_sample);	
 		

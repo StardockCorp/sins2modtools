@@ -51,6 +51,21 @@
         "culture": {
             "type": "object",
             "properties": {
+                "base_allegiance_growth_rate_from_neutral": {
+                    "type": "number"
+                },
+                "base_allegiance_growth_rate_from_other_players": {
+                    "type": "number"
+                },
+                "base_max_allegiance_factor": {
+                    "type": "number"
+                },
+                "base_per_population_bonus_per_allied_population_percentage_scalar": {
+                    "type": "number"
+                },
+                "base_per_population_penalty_per_other_population_percentage_scalar": {
+                    "type": "number"
+                },
                 "decay_rates": {
                     "type": "array",
                     "items": {
@@ -122,6 +137,11 @@
                 }
             },
             "required": [
+                "base_allegiance_growth_rate_from_neutral",
+                "base_allegiance_growth_rate_from_other_players",
+                "base_max_allegiance_factor",
+                "base_per_population_bonus_per_allied_population_percentage_scalar",
+                "base_per_population_penalty_per_other_population_percentage_scalar",
                 "propagation_rates"
             ],
             "unevaluatedProperties": false
@@ -249,6 +269,18 @@
                                         },
                                         "unevaluatedProperties": false
                                     },
+                                    "bombing_population_damage_taken": {
+                                        "type": "object",
+                                        "properties": {
+                                            "additive": {
+                                                "type": "number"
+                                            },
+                                            "scalar": {
+                                                "type": "number"
+                                            }
+                                        },
+                                        "unevaluatedProperties": false
+                                    },
                                     "civilian_research_points": {
                                         "type": "object",
                                         "properties": {
@@ -262,6 +294,18 @@
                                         "unevaluatedProperties": false
                                     },
                                     "civilian_research_rate": {
+                                        "type": "object",
+                                        "properties": {
+                                            "additive": {
+                                                "type": "number"
+                                            },
+                                            "scalar": {
+                                                "type": "number"
+                                            }
+                                        },
+                                        "unevaluatedProperties": false
+                                    },
+                                    "civilian_research_rate_per_population": {
                                         "type": "object",
                                         "properties": {
                                             "additive": {
@@ -298,6 +342,18 @@
                                         "unevaluatedProperties": false
                                     },
                                     "commerce_track_credit_income_rate": {
+                                        "type": "object",
+                                        "properties": {
+                                            "additive": {
+                                                "type": "number"
+                                            },
+                                            "scalar": {
+                                                "type": "number"
+                                            }
+                                        },
+                                        "unevaluatedProperties": false
+                                    },
+                                    "commerce_track_credit_income_rate_per_population": {
                                         "type": "object",
                                         "properties": {
                                             "additive": {
@@ -346,6 +402,18 @@
                                         "unevaluatedProperties": false
                                     },
                                     "defense_track_build_time": {
+                                        "type": "object",
+                                        "properties": {
+                                            "additive": {
+                                                "type": "number"
+                                            },
+                                            "scalar": {
+                                                "type": "number"
+                                            }
+                                        },
+                                        "unevaluatedProperties": false
+                                    },
+                                    "enemy_population_assimilation_rate": {
                                         "type": "object",
                                         "properties": {
                                             "additive": {
@@ -441,6 +509,18 @@
                                         },
                                         "unevaluatedProperties": false
                                     },
+                                    "max_allied_population_factor": {
+                                        "type": "object",
+                                        "properties": {
+                                            "additive": {
+                                                "type": "number"
+                                            },
+                                            "scalar": {
+                                                "type": "number"
+                                            }
+                                        },
+                                        "unevaluatedProperties": false
+                                    },
                                     "max_civilian_structure_slots": {
                                         "type": "object",
                                         "properties": {
@@ -513,6 +593,18 @@
                                         },
                                         "unevaluatedProperties": false
                                     },
+                                    "max_population_points": {
+                                        "type": "object",
+                                        "properties": {
+                                            "additive": {
+                                                "type": "number"
+                                            },
+                                            "scalar": {
+                                                "type": "number"
+                                            }
+                                        },
+                                        "unevaluatedProperties": false
+                                    },
                                     "max_shield_points": {
                                         "type": "object",
                                         "properties": {
@@ -538,6 +630,18 @@
                                         "unevaluatedProperties": false
                                     },
                                     "military_research_rate": {
+                                        "type": "object",
+                                        "properties": {
+                                            "additive": {
+                                                "type": "number"
+                                            },
+                                            "scalar": {
+                                                "type": "number"
+                                            }
+                                        },
+                                        "unevaluatedProperties": false
+                                    },
+                                    "military_research_rate_per_population": {
                                         "type": "object",
                                         "properties": {
                                             "additive": {
@@ -585,7 +689,43 @@
                                         },
                                         "unevaluatedProperties": false
                                     },
+                                    "mining_track_crystal_income_rate_per_population": {
+                                        "type": "object",
+                                        "properties": {
+                                            "additive": {
+                                                "type": "number"
+                                            },
+                                            "scalar": {
+                                                "type": "number"
+                                            }
+                                        },
+                                        "unevaluatedProperties": false
+                                    },
                                     "mining_track_metal_income_rate": {
+                                        "type": "object",
+                                        "properties": {
+                                            "additive": {
+                                                "type": "number"
+                                            },
+                                            "scalar": {
+                                                "type": "number"
+                                            }
+                                        },
+                                        "unevaluatedProperties": false
+                                    },
+                                    "mining_track_metal_income_rate_per_population": {
+                                        "type": "object",
+                                        "properties": {
+                                            "additive": {
+                                                "type": "number"
+                                            },
+                                            "scalar": {
+                                                "type": "number"
+                                            }
+                                        },
+                                        "unevaluatedProperties": false
+                                    },
+                                    "neutral_population_assimilation_rate": {
                                         "type": "object",
                                         "properties": {
                                             "additive": {
@@ -622,6 +762,18 @@
                                         "unevaluatedProperties": false
                                     },
                                     "planet_component_price": {
+                                        "type": "object",
+                                        "properties": {
+                                            "additive": {
+                                                "type": "number"
+                                            },
+                                            "scalar": {
+                                                "type": "number"
+                                            }
+                                        },
+                                        "unevaluatedProperties": false
+                                    },
+                                    "population_growth_rate": {
                                         "type": "object",
                                         "properties": {
                                             "additive": {
@@ -925,13 +1077,22 @@
                                 "civilian_research_points": {
                                     "type": "integer"
                                 },
+                                "civilian_research_rate_per_population_scalar": {
+                                    "type": "number"
+                                },
                                 "civilian_research_rate_scalar": {
                                     "type": "number"
                                 },
                                 "credits_income_rate": {
                                     "type": "number"
                                 },
+                                "credits_income_rate_per_population": {
+                                    "type": "number"
+                                },
                                 "crystal_income_rate": {
+                                    "type": "number"
+                                },
+                                "crystal_income_rate_per_population": {
                                     "type": "number"
                                 },
                                 "health_points_restore_rate": {
@@ -949,14 +1110,23 @@
                                 "max_planet_component_slots": {
                                     "type": "integer"
                                 },
+                                "max_population_points": {
+                                    "type": "number"
+                                },
                                 "max_shield_points": {
                                     "type": "number"
                                 },
                                 "metal_income_rate": {
                                     "type": "number"
                                 },
+                                "metal_income_rate_per_population": {
+                                    "type": "number"
+                                },
                                 "military_research_points": {
                                     "type": "integer"
+                                },
+                                "military_research_rate_per_population_scalar": {
+                                    "type": "number"
                                 },
                                 "military_research_rate_scalar": {
                                     "type": "number"
@@ -985,13 +1155,22 @@
                                 "civilian_research_points": {
                                     "type": "integer"
                                 },
+                                "civilian_research_rate_per_population_scalar": {
+                                    "type": "number"
+                                },
                                 "civilian_research_rate_scalar": {
                                     "type": "number"
                                 },
                                 "credits_income_rate": {
                                     "type": "number"
                                 },
+                                "credits_income_rate_per_population": {
+                                    "type": "number"
+                                },
                                 "crystal_income_rate": {
+                                    "type": "number"
+                                },
+                                "crystal_income_rate_per_population": {
                                     "type": "number"
                                 },
                                 "health_points_restore_rate": {
@@ -1009,14 +1188,23 @@
                                 "max_planet_component_slots": {
                                     "type": "integer"
                                 },
+                                "max_population_points": {
+                                    "type": "number"
+                                },
                                 "max_shield_points": {
                                     "type": "number"
                                 },
                                 "metal_income_rate": {
                                     "type": "number"
                                 },
+                                "metal_income_rate_per_population": {
+                                    "type": "number"
+                                },
                                 "military_research_points": {
                                     "type": "integer"
+                                },
+                                "military_research_rate_per_population_scalar": {
+                                    "type": "number"
                                 },
                                 "military_research_rate_scalar": {
                                     "type": "number"
@@ -1045,13 +1233,22 @@
                                 "civilian_research_points": {
                                     "type": "integer"
                                 },
+                                "civilian_research_rate_per_population_scalar": {
+                                    "type": "number"
+                                },
                                 "civilian_research_rate_scalar": {
                                     "type": "number"
                                 },
                                 "credits_income_rate": {
                                     "type": "number"
                                 },
+                                "credits_income_rate_per_population": {
+                                    "type": "number"
+                                },
                                 "crystal_income_rate": {
+                                    "type": "number"
+                                },
+                                "crystal_income_rate_per_population": {
                                     "type": "number"
                                 },
                                 "health_points_restore_rate": {
@@ -1069,14 +1266,23 @@
                                 "max_planet_component_slots": {
                                     "type": "integer"
                                 },
+                                "max_population_points": {
+                                    "type": "number"
+                                },
                                 "max_shield_points": {
                                     "type": "number"
                                 },
                                 "metal_income_rate": {
                                     "type": "number"
                                 },
+                                "metal_income_rate_per_population": {
+                                    "type": "number"
+                                },
                                 "military_research_points": {
                                     "type": "integer"
+                                },
+                                "military_research_rate_per_population_scalar": {
+                                    "type": "number"
                                 },
                                 "military_research_rate_scalar": {
                                     "type": "number"
@@ -1105,13 +1311,22 @@
                                 "civilian_research_points": {
                                     "type": "integer"
                                 },
+                                "civilian_research_rate_per_population_scalar": {
+                                    "type": "number"
+                                },
                                 "civilian_research_rate_scalar": {
                                     "type": "number"
                                 },
                                 "credits_income_rate": {
                                     "type": "number"
                                 },
+                                "credits_income_rate_per_population": {
+                                    "type": "number"
+                                },
                                 "crystal_income_rate": {
+                                    "type": "number"
+                                },
+                                "crystal_income_rate_per_population": {
                                     "type": "number"
                                 },
                                 "health_points_restore_rate": {
@@ -1129,14 +1344,23 @@
                                 "max_planet_component_slots": {
                                     "type": "integer"
                                 },
+                                "max_population_points": {
+                                    "type": "number"
+                                },
                                 "max_shield_points": {
                                     "type": "number"
                                 },
                                 "metal_income_rate": {
                                     "type": "number"
                                 },
+                                "metal_income_rate_per_population": {
+                                    "type": "number"
+                                },
                                 "military_research_points": {
                                     "type": "integer"
+                                },
+                                "military_research_rate_per_population_scalar": {
+                                    "type": "number"
                                 },
                                 "military_research_rate_scalar": {
                                     "type": "number"
@@ -1165,13 +1389,22 @@
                                 "civilian_research_points": {
                                     "type": "integer"
                                 },
+                                "civilian_research_rate_per_population_scalar": {
+                                    "type": "number"
+                                },
                                 "civilian_research_rate_scalar": {
                                     "type": "number"
                                 },
                                 "credits_income_rate": {
                                     "type": "number"
                                 },
+                                "credits_income_rate_per_population": {
+                                    "type": "number"
+                                },
                                 "crystal_income_rate": {
+                                    "type": "number"
+                                },
+                                "crystal_income_rate_per_population": {
                                     "type": "number"
                                 },
                                 "health_points_restore_rate": {
@@ -1189,14 +1422,23 @@
                                 "max_planet_component_slots": {
                                     "type": "integer"
                                 },
+                                "max_population_points": {
+                                    "type": "number"
+                                },
                                 "max_shield_points": {
                                     "type": "number"
                                 },
                                 "metal_income_rate": {
                                     "type": "number"
                                 },
+                                "metal_income_rate_per_population": {
+                                    "type": "number"
+                                },
                                 "military_research_points": {
                                     "type": "integer"
+                                },
+                                "military_research_rate_per_population_scalar": {
+                                    "type": "number"
                                 },
                                 "military_research_rate_scalar": {
                                     "type": "number"
@@ -1225,13 +1467,22 @@
                                 "civilian_research_points": {
                                     "type": "integer"
                                 },
+                                "civilian_research_rate_per_population_scalar": {
+                                    "type": "number"
+                                },
                                 "civilian_research_rate_scalar": {
                                     "type": "number"
                                 },
                                 "credits_income_rate": {
                                     "type": "number"
                                 },
+                                "credits_income_rate_per_population": {
+                                    "type": "number"
+                                },
                                 "crystal_income_rate": {
+                                    "type": "number"
+                                },
+                                "crystal_income_rate_per_population": {
                                     "type": "number"
                                 },
                                 "health_points_restore_rate": {
@@ -1249,14 +1500,23 @@
                                 "max_planet_component_slots": {
                                     "type": "integer"
                                 },
+                                "max_population_points": {
+                                    "type": "number"
+                                },
                                 "max_shield_points": {
                                     "type": "number"
                                 },
                                 "metal_income_rate": {
                                     "type": "number"
                                 },
+                                "metal_income_rate_per_population": {
+                                    "type": "number"
+                                },
                                 "military_research_points": {
                                     "type": "integer"
+                                },
+                                "military_research_rate_per_population_scalar": {
+                                    "type": "number"
                                 },
                                 "military_research_rate_scalar": {
                                     "type": "number"
@@ -1772,6 +2032,7 @@
                     "type": "string",
                     "enum": [
                         "damage",
+                        "population_damage",
                         "cooldown_duration",
                         "range",
                         "tracking_speed",
@@ -2539,6 +2800,7 @@
                     "type": "string",
                     "enum": [
                         "damage",
+                        "population_damage",
                         "cooldown_duration",
                         "range",
                         "tracking_speed",
@@ -2849,13 +3111,22 @@
                             "civilian_research_points": {
                                 "type": "integer"
                             },
+                            "civilian_research_rate_per_population_scalar": {
+                                "type": "number"
+                            },
                             "civilian_research_rate_scalar": {
                                 "type": "number"
                             },
                             "credits_income_rate": {
                                 "type": "number"
                             },
+                            "credits_income_rate_per_population": {
+                                "type": "number"
+                            },
                             "crystal_income_rate": {
+                                "type": "number"
+                            },
+                            "crystal_income_rate_per_population": {
                                 "type": "number"
                             },
                             "health_points_restore_rate": {
@@ -2873,14 +3144,23 @@
                             "max_planet_component_slots": {
                                 "type": "integer"
                             },
+                            "max_population_points": {
+                                "type": "number"
+                            },
                             "max_shield_points": {
                                 "type": "number"
                             },
                             "metal_income_rate": {
                                 "type": "number"
                             },
+                            "metal_income_rate_per_population": {
+                                "type": "number"
+                            },
                             "military_research_points": {
                                 "type": "integer"
+                            },
+                            "military_research_rate_per_population_scalar": {
+                                "type": "number"
                             },
                             "military_research_rate_scalar": {
                                 "type": "number"
@@ -2912,13 +3192,22 @@
                             "civilian_research_points": {
                                 "type": "integer"
                             },
+                            "civilian_research_rate_per_population_scalar": {
+                                "type": "number"
+                            },
                             "civilian_research_rate_scalar": {
                                 "type": "number"
                             },
                             "credits_income_rate": {
                                 "type": "number"
                             },
+                            "credits_income_rate_per_population": {
+                                "type": "number"
+                            },
                             "crystal_income_rate": {
+                                "type": "number"
+                            },
+                            "crystal_income_rate_per_population": {
                                 "type": "number"
                             },
                             "health_points_restore_rate": {
@@ -2936,14 +3225,23 @@
                             "max_planet_component_slots": {
                                 "type": "integer"
                             },
+                            "max_population_points": {
+                                "type": "number"
+                            },
                             "max_shield_points": {
                                 "type": "number"
                             },
                             "metal_income_rate": {
                                 "type": "number"
                             },
+                            "metal_income_rate_per_population": {
+                                "type": "number"
+                            },
                             "military_research_points": {
                                 "type": "integer"
+                            },
+                            "military_research_rate_per_population_scalar": {
+                                "type": "number"
                             },
                             "military_research_rate_scalar": {
                                 "type": "number"
@@ -2975,13 +3273,22 @@
                             "civilian_research_points": {
                                 "type": "integer"
                             },
+                            "civilian_research_rate_per_population_scalar": {
+                                "type": "number"
+                            },
                             "civilian_research_rate_scalar": {
                                 "type": "number"
                             },
                             "credits_income_rate": {
                                 "type": "number"
                             },
+                            "credits_income_rate_per_population": {
+                                "type": "number"
+                            },
                             "crystal_income_rate": {
+                                "type": "number"
+                            },
+                            "crystal_income_rate_per_population": {
                                 "type": "number"
                             },
                             "health_points_restore_rate": {
@@ -2999,14 +3306,23 @@
                             "max_planet_component_slots": {
                                 "type": "integer"
                             },
+                            "max_population_points": {
+                                "type": "number"
+                            },
                             "max_shield_points": {
                                 "type": "number"
                             },
                             "metal_income_rate": {
                                 "type": "number"
                             },
+                            "metal_income_rate_per_population": {
+                                "type": "number"
+                            },
                             "military_research_points": {
                                 "type": "integer"
+                            },
+                            "military_research_rate_per_population_scalar": {
+                                "type": "number"
                             },
                             "military_research_rate_scalar": {
                                 "type": "number"
@@ -3038,13 +3354,22 @@
                             "civilian_research_points": {
                                 "type": "integer"
                             },
+                            "civilian_research_rate_per_population_scalar": {
+                                "type": "number"
+                            },
                             "civilian_research_rate_scalar": {
                                 "type": "number"
                             },
                             "credits_income_rate": {
                                 "type": "number"
                             },
+                            "credits_income_rate_per_population": {
+                                "type": "number"
+                            },
                             "crystal_income_rate": {
+                                "type": "number"
+                            },
+                            "crystal_income_rate_per_population": {
                                 "type": "number"
                             },
                             "health_points_restore_rate": {
@@ -3062,14 +3387,23 @@
                             "max_planet_component_slots": {
                                 "type": "integer"
                             },
+                            "max_population_points": {
+                                "type": "number"
+                            },
                             "max_shield_points": {
                                 "type": "number"
                             },
                             "metal_income_rate": {
                                 "type": "number"
                             },
+                            "metal_income_rate_per_population": {
+                                "type": "number"
+                            },
                             "military_research_points": {
                                 "type": "integer"
+                            },
+                            "military_research_rate_per_population_scalar": {
+                                "type": "number"
                             },
                             "military_research_rate_scalar": {
                                 "type": "number"
@@ -3101,13 +3435,22 @@
                             "civilian_research_points": {
                                 "type": "integer"
                             },
+                            "civilian_research_rate_per_population_scalar": {
+                                "type": "number"
+                            },
                             "civilian_research_rate_scalar": {
                                 "type": "number"
                             },
                             "credits_income_rate": {
                                 "type": "number"
                             },
+                            "credits_income_rate_per_population": {
+                                "type": "number"
+                            },
                             "crystal_income_rate": {
+                                "type": "number"
+                            },
+                            "crystal_income_rate_per_population": {
                                 "type": "number"
                             },
                             "health_points_restore_rate": {
@@ -3125,14 +3468,23 @@
                             "max_planet_component_slots": {
                                 "type": "integer"
                             },
+                            "max_population_points": {
+                                "type": "number"
+                            },
                             "max_shield_points": {
                                 "type": "number"
                             },
                             "metal_income_rate": {
                                 "type": "number"
                             },
+                            "metal_income_rate_per_population": {
+                                "type": "number"
+                            },
                             "military_research_points": {
                                 "type": "integer"
+                            },
+                            "military_research_rate_per_population_scalar": {
+                                "type": "number"
                             },
                             "military_research_rate_scalar": {
                                 "type": "number"
@@ -3164,13 +3516,22 @@
                             "civilian_research_points": {
                                 "type": "integer"
                             },
+                            "civilian_research_rate_per_population_scalar": {
+                                "type": "number"
+                            },
                             "civilian_research_rate_scalar": {
                                 "type": "number"
                             },
                             "credits_income_rate": {
                                 "type": "number"
                             },
+                            "credits_income_rate_per_population": {
+                                "type": "number"
+                            },
                             "crystal_income_rate": {
+                                "type": "number"
+                            },
+                            "crystal_income_rate_per_population": {
                                 "type": "number"
                             },
                             "health_points_restore_rate": {
@@ -3188,14 +3549,23 @@
                             "max_planet_component_slots": {
                                 "type": "integer"
                             },
+                            "max_population_points": {
+                                "type": "number"
+                            },
                             "max_shield_points": {
                                 "type": "number"
                             },
                             "metal_income_rate": {
                                 "type": "number"
                             },
+                            "metal_income_rate_per_population": {
+                                "type": "number"
+                            },
                             "military_research_points": {
                                 "type": "integer"
+                            },
+                            "military_research_rate_per_population_scalar": {
+                                "type": "number"
                             },
                             "military_research_rate_scalar": {
                                 "type": "number"
@@ -3342,11 +3712,16 @@
                                     "credit_income_rate",
                                     "metal_income_rate",
                                     "crystal_income_rate",
+                                    "credit_income_rate_per_population",
+                                    "metal_income_rate_per_population",
+                                    "crystal_income_rate_per_population",
                                     "percentage_of_other_players_total_credit_income",
                                     "surveying_bonus_exotic_chance",
                                     "factory_build_exotic_price",
                                     "civilian_research_rate",
                                     "military_research_rate",
+                                    "civilian_research_rate_per_population",
+                                    "military_research_rate_per_population",
                                     "max_supply",
                                     "trade_credits_income_rate",
                                     "trade_metal_income_rate",
@@ -3476,12 +3851,17 @@
                                     "commerce_track_credit_income_rate",
                                     "mining_track_metal_income_rate",
                                     "mining_track_crystal_income_rate",
+                                    "commerce_track_credit_income_rate_per_population",
+                                    "mining_track_metal_income_rate_per_population",
+                                    "mining_track_crystal_income_rate_per_population",
                                     "orbital_extraction_metal_income_rate",
                                     "orbital_extraction_crystal_income_rate",
                                     "civilian_research_points",
                                     "military_research_points",
                                     "civilian_research_rate",
                                     "military_research_rate",
+                                    "civilian_research_rate_per_population",
+                                    "military_research_rate_per_population",
                                     "culture_rate",
                                     "culture_resistance_rate",
                                     "unity_points",
@@ -3489,6 +3869,11 @@
                                     "health_points_restore_rate",
                                     "max_shield_points",
                                     "shield_points_restore_rate",
+                                    "max_population_points",
+                                    "population_growth_rate",
+                                    "max_allied_population_factor",
+                                    "neutral_population_assimilation_rate",
+                                    "enemy_population_assimilation_rate",
                                     "factory_unit_build_price",
                                     "factory_unit_build_time",
                                     "factory_exotic_build_time",
@@ -3512,6 +3897,7 @@
                                     "structure_builder_count",
                                     "max_garrison_supply",
                                     "bombing_damage_taken",
+                                    "bombing_population_damage_taken",
                                     "planet_component_price",
                                     "max_planet_component_slots",
                                     "max_influence_points"
@@ -3639,13 +4025,16 @@
                                     "hull_crippled_percentage",
                                     "hull_point_restore_rate",
                                     "hull_point_restore_cooldown_duration_after_damage_taken",
+                                    "hull_point_restore_scalar_after_damage_taken",
                                     "max_armor_points",
                                     "armor_point_restore_rate",
                                     "armor_point_restore_cooldown_duration_after_damage_taken",
+                                    "armor_point_restore_scalar_after_damage_taken",
                                     "armor_strength",
                                     "max_shield_points",
                                     "shield_point_restore_rate",
                                     "shield_point_restore_cooldown_duration_after_damage_taken",
+                                    "shield_point_restore_scalar_after_damage_taken",
                                     "shield_burst_restore_points",
                                     "shield_burst_restore_cooldown_duration",
                                     "damage_taken",
@@ -3658,6 +4047,9 @@
                                     "credit_income_rate",
                                     "metal_income_rate",
                                     "crystal_income_rate",
+                                    "credit_income_rate_per_population",
+                                    "metal_income_rate_per_population",
+                                    "crystal_income_rate_per_population",
                                     "civilian_research_points",
                                     "military_research_points",
                                     "culture_rate",
@@ -3708,6 +4100,7 @@
                                 "type": "string",
                                 "enum": [
                                     "damage",
+                                    "population_damage",
                                     "cooldown_duration",
                                     "range",
                                     "tracking_speed",
@@ -3810,11 +4203,16 @@
                         "credit_income_rate",
                         "metal_income_rate",
                         "crystal_income_rate",
+                        "credit_income_rate_per_population",
+                        "metal_income_rate_per_population",
+                        "crystal_income_rate_per_population",
                         "percentage_of_other_players_total_credit_income",
                         "surveying_bonus_exotic_chance",
                         "factory_build_exotic_price",
                         "civilian_research_rate",
                         "military_research_rate",
+                        "civilian_research_rate_per_population",
+                        "military_research_rate_per_population",
                         "max_supply",
                         "trade_credits_income_rate",
                         "trade_metal_income_rate",
@@ -3902,12 +4300,17 @@
                         "commerce_track_credit_income_rate",
                         "mining_track_metal_income_rate",
                         "mining_track_crystal_income_rate",
+                        "commerce_track_credit_income_rate_per_population",
+                        "mining_track_metal_income_rate_per_population",
+                        "mining_track_crystal_income_rate_per_population",
                         "orbital_extraction_metal_income_rate",
                         "orbital_extraction_crystal_income_rate",
                         "civilian_research_points",
                         "military_research_points",
                         "civilian_research_rate",
                         "military_research_rate",
+                        "civilian_research_rate_per_population",
+                        "military_research_rate_per_population",
                         "culture_rate",
                         "culture_resistance_rate",
                         "unity_points",
@@ -3915,6 +4318,11 @@
                         "health_points_restore_rate",
                         "max_shield_points",
                         "shield_points_restore_rate",
+                        "max_population_points",
+                        "population_growth_rate",
+                        "max_allied_population_factor",
+                        "neutral_population_assimilation_rate",
+                        "enemy_population_assimilation_rate",
                         "factory_unit_build_price",
                         "factory_unit_build_time",
                         "factory_exotic_build_time",
@@ -3938,6 +4346,7 @@
                         "structure_builder_count",
                         "max_garrison_supply",
                         "bombing_damage_taken",
+                        "bombing_population_damage_taken",
                         "planet_component_price",
                         "max_planet_component_slots",
                         "max_influence_points"
@@ -4350,13 +4759,16 @@
                         "hull_crippled_percentage",
                         "hull_point_restore_rate",
                         "hull_point_restore_cooldown_duration_after_damage_taken",
+                        "hull_point_restore_scalar_after_damage_taken",
                         "max_armor_points",
                         "armor_point_restore_rate",
                         "armor_point_restore_cooldown_duration_after_damage_taken",
+                        "armor_point_restore_scalar_after_damage_taken",
                         "armor_strength",
                         "max_shield_points",
                         "shield_point_restore_rate",
                         "shield_point_restore_cooldown_duration_after_damage_taken",
+                        "shield_point_restore_scalar_after_damage_taken",
                         "shield_burst_restore_points",
                         "shield_burst_restore_cooldown_duration",
                         "damage_taken",
@@ -4369,6 +4781,9 @@
                         "credit_income_rate",
                         "metal_income_rate",
                         "crystal_income_rate",
+                        "credit_income_rate_per_population",
+                        "metal_income_rate_per_population",
+                        "crystal_income_rate_per_population",
                         "civilian_research_points",
                         "military_research_points",
                         "culture_rate",
@@ -4424,13 +4839,16 @@
                         "hull_crippled_percentage",
                         "hull_point_restore_rate",
                         "hull_point_restore_cooldown_duration_after_damage_taken",
+                        "hull_point_restore_scalar_after_damage_taken",
                         "max_armor_points",
                         "armor_point_restore_rate",
                         "armor_point_restore_cooldown_duration_after_damage_taken",
+                        "armor_point_restore_scalar_after_damage_taken",
                         "armor_strength",
                         "max_shield_points",
                         "shield_point_restore_rate",
                         "shield_point_restore_cooldown_duration_after_damage_taken",
+                        "shield_point_restore_scalar_after_damage_taken",
                         "shield_burst_restore_points",
                         "shield_burst_restore_cooldown_duration",
                         "damage_taken",
@@ -4443,6 +4861,9 @@
                         "credit_income_rate",
                         "metal_income_rate",
                         "crystal_income_rate",
+                        "credit_income_rate_per_population",
+                        "metal_income_rate_per_population",
+                        "crystal_income_rate_per_population",
                         "civilian_research_points",
                         "military_research_points",
                         "culture_rate",
@@ -4624,13 +5045,22 @@
                                                 "civilian_research_points": {
                                                     "type": "integer"
                                                 },
+                                                "civilian_research_rate_per_population_scalar": {
+                                                    "type": "number"
+                                                },
                                                 "civilian_research_rate_scalar": {
                                                     "type": "number"
                                                 },
                                                 "credits_income_rate": {
                                                     "type": "number"
                                                 },
+                                                "credits_income_rate_per_population": {
+                                                    "type": "number"
+                                                },
                                                 "crystal_income_rate": {
+                                                    "type": "number"
+                                                },
+                                                "crystal_income_rate_per_population": {
                                                     "type": "number"
                                                 },
                                                 "health_points_restore_rate": {
@@ -4648,14 +5078,23 @@
                                                 "max_planet_component_slots": {
                                                     "type": "integer"
                                                 },
+                                                "max_population_points": {
+                                                    "type": "number"
+                                                },
                                                 "max_shield_points": {
                                                     "type": "number"
                                                 },
                                                 "metal_income_rate": {
                                                     "type": "number"
                                                 },
+                                                "metal_income_rate_per_population": {
+                                                    "type": "number"
+                                                },
                                                 "military_research_points": {
                                                     "type": "integer"
+                                                },
+                                                "military_research_rate_per_population_scalar": {
+                                                    "type": "number"
                                                 },
                                                 "military_research_rate_scalar": {
                                                     "type": "number"
@@ -4687,13 +5126,22 @@
                                                 "civilian_research_points": {
                                                     "type": "integer"
                                                 },
+                                                "civilian_research_rate_per_population_scalar": {
+                                                    "type": "number"
+                                                },
                                                 "civilian_research_rate_scalar": {
                                                     "type": "number"
                                                 },
                                                 "credits_income_rate": {
                                                     "type": "number"
                                                 },
+                                                "credits_income_rate_per_population": {
+                                                    "type": "number"
+                                                },
                                                 "crystal_income_rate": {
+                                                    "type": "number"
+                                                },
+                                                "crystal_income_rate_per_population": {
                                                     "type": "number"
                                                 },
                                                 "health_points_restore_rate": {
@@ -4711,14 +5159,23 @@
                                                 "max_planet_component_slots": {
                                                     "type": "integer"
                                                 },
+                                                "max_population_points": {
+                                                    "type": "number"
+                                                },
                                                 "max_shield_points": {
                                                     "type": "number"
                                                 },
                                                 "metal_income_rate": {
                                                     "type": "number"
                                                 },
+                                                "metal_income_rate_per_population": {
+                                                    "type": "number"
+                                                },
                                                 "military_research_points": {
                                                     "type": "integer"
+                                                },
+                                                "military_research_rate_per_population_scalar": {
+                                                    "type": "number"
                                                 },
                                                 "military_research_rate_scalar": {
                                                     "type": "number"
@@ -4750,13 +5207,22 @@
                                                 "civilian_research_points": {
                                                     "type": "integer"
                                                 },
+                                                "civilian_research_rate_per_population_scalar": {
+                                                    "type": "number"
+                                                },
                                                 "civilian_research_rate_scalar": {
                                                     "type": "number"
                                                 },
                                                 "credits_income_rate": {
                                                     "type": "number"
                                                 },
+                                                "credits_income_rate_per_population": {
+                                                    "type": "number"
+                                                },
                                                 "crystal_income_rate": {
+                                                    "type": "number"
+                                                },
+                                                "crystal_income_rate_per_population": {
                                                     "type": "number"
                                                 },
                                                 "health_points_restore_rate": {
@@ -4774,14 +5240,23 @@
                                                 "max_planet_component_slots": {
                                                     "type": "integer"
                                                 },
+                                                "max_population_points": {
+                                                    "type": "number"
+                                                },
                                                 "max_shield_points": {
                                                     "type": "number"
                                                 },
                                                 "metal_income_rate": {
                                                     "type": "number"
                                                 },
+                                                "metal_income_rate_per_population": {
+                                                    "type": "number"
+                                                },
                                                 "military_research_points": {
                                                     "type": "integer"
+                                                },
+                                                "military_research_rate_per_population_scalar": {
+                                                    "type": "number"
                                                 },
                                                 "military_research_rate_scalar": {
                                                     "type": "number"
@@ -4813,13 +5288,22 @@
                                                 "civilian_research_points": {
                                                     "type": "integer"
                                                 },
+                                                "civilian_research_rate_per_population_scalar": {
+                                                    "type": "number"
+                                                },
                                                 "civilian_research_rate_scalar": {
                                                     "type": "number"
                                                 },
                                                 "credits_income_rate": {
                                                     "type": "number"
                                                 },
+                                                "credits_income_rate_per_population": {
+                                                    "type": "number"
+                                                },
                                                 "crystal_income_rate": {
+                                                    "type": "number"
+                                                },
+                                                "crystal_income_rate_per_population": {
                                                     "type": "number"
                                                 },
                                                 "health_points_restore_rate": {
@@ -4837,14 +5321,23 @@
                                                 "max_planet_component_slots": {
                                                     "type": "integer"
                                                 },
+                                                "max_population_points": {
+                                                    "type": "number"
+                                                },
                                                 "max_shield_points": {
                                                     "type": "number"
                                                 },
                                                 "metal_income_rate": {
                                                     "type": "number"
                                                 },
+                                                "metal_income_rate_per_population": {
+                                                    "type": "number"
+                                                },
                                                 "military_research_points": {
                                                     "type": "integer"
+                                                },
+                                                "military_research_rate_per_population_scalar": {
+                                                    "type": "number"
                                                 },
                                                 "military_research_rate_scalar": {
                                                     "type": "number"
@@ -4876,13 +5369,22 @@
                                                 "civilian_research_points": {
                                                     "type": "integer"
                                                 },
+                                                "civilian_research_rate_per_population_scalar": {
+                                                    "type": "number"
+                                                },
                                                 "civilian_research_rate_scalar": {
                                                     "type": "number"
                                                 },
                                                 "credits_income_rate": {
                                                     "type": "number"
                                                 },
+                                                "credits_income_rate_per_population": {
+                                                    "type": "number"
+                                                },
                                                 "crystal_income_rate": {
+                                                    "type": "number"
+                                                },
+                                                "crystal_income_rate_per_population": {
                                                     "type": "number"
                                                 },
                                                 "health_points_restore_rate": {
@@ -4900,14 +5402,23 @@
                                                 "max_planet_component_slots": {
                                                     "type": "integer"
                                                 },
+                                                "max_population_points": {
+                                                    "type": "number"
+                                                },
                                                 "max_shield_points": {
                                                     "type": "number"
                                                 },
                                                 "metal_income_rate": {
                                                     "type": "number"
                                                 },
+                                                "metal_income_rate_per_population": {
+                                                    "type": "number"
+                                                },
                                                 "military_research_points": {
                                                     "type": "integer"
+                                                },
+                                                "military_research_rate_per_population_scalar": {
+                                                    "type": "number"
                                                 },
                                                 "military_research_rate_scalar": {
                                                     "type": "number"
@@ -4939,13 +5450,22 @@
                                                 "civilian_research_points": {
                                                     "type": "integer"
                                                 },
+                                                "civilian_research_rate_per_population_scalar": {
+                                                    "type": "number"
+                                                },
                                                 "civilian_research_rate_scalar": {
                                                     "type": "number"
                                                 },
                                                 "credits_income_rate": {
                                                     "type": "number"
                                                 },
+                                                "credits_income_rate_per_population": {
+                                                    "type": "number"
+                                                },
                                                 "crystal_income_rate": {
+                                                    "type": "number"
+                                                },
+                                                "crystal_income_rate_per_population": {
                                                     "type": "number"
                                                 },
                                                 "health_points_restore_rate": {
@@ -4963,14 +5483,23 @@
                                                 "max_planet_component_slots": {
                                                     "type": "integer"
                                                 },
+                                                "max_population_points": {
+                                                    "type": "number"
+                                                },
                                                 "max_shield_points": {
                                                     "type": "number"
                                                 },
                                                 "metal_income_rate": {
                                                     "type": "number"
                                                 },
+                                                "metal_income_rate_per_population": {
+                                                    "type": "number"
+                                                },
                                                 "military_research_points": {
                                                     "type": "integer"
+                                                },
+                                                "military_research_rate_per_population_scalar": {
+                                                    "type": "number"
                                                 },
                                                 "military_research_rate_scalar": {
                                                     "type": "number"
@@ -5190,6 +5719,9 @@
                                     "insufficient_economic_exotics",
                                     "insufficient_ultimate_exotics",
                                     "insufficient_generic_exotics",
+                                    "insufficient_custom_exotics_a",
+                                    "insufficient_custom_exotics_b",
+                                    "insufficient_custom_exotics_c",
                                     "scuttle_planet_started",
                                     "scuttle_unit_started",
                                     "insufficient_unity_points",
@@ -6330,6 +6862,57 @@
                             "unevaluatedProperties": false
                         },
                         "insufficient_crystal": {
+                            "type": "object",
+                            "properties": {
+                                "is_dialogue": {
+                                    "description": "json_schema_object",
+                                    "type": "boolean"
+                                },
+                                "sound": {
+                                    "description": "json_schema_object",
+                                    "$ref": "#/$defs/sound_ptr"
+                                }
+                            },
+                            "required": [
+                                "sound"
+                            ],
+                            "unevaluatedProperties": false
+                        },
+                        "insufficient_custom_exotics_a": {
+                            "type": "object",
+                            "properties": {
+                                "is_dialogue": {
+                                    "description": "json_schema_object",
+                                    "type": "boolean"
+                                },
+                                "sound": {
+                                    "description": "json_schema_object",
+                                    "$ref": "#/$defs/sound_ptr"
+                                }
+                            },
+                            "required": [
+                                "sound"
+                            ],
+                            "unevaluatedProperties": false
+                        },
+                        "insufficient_custom_exotics_b": {
+                            "type": "object",
+                            "properties": {
+                                "is_dialogue": {
+                                    "description": "json_schema_object",
+                                    "type": "boolean"
+                                },
+                                "sound": {
+                                    "description": "json_schema_object",
+                                    "$ref": "#/$defs/sound_ptr"
+                                }
+                            },
+                            "required": [
+                                "sound"
+                            ],
+                            "unevaluatedProperties": false
+                        },
+                        "insufficient_custom_exotics_c": {
                             "type": "object",
                             "properties": {
                                 "is_dialogue": {
@@ -7537,13 +8120,16 @@
                         "hull_crippled_percentage",
                         "hull_point_restore_rate",
                         "hull_point_restore_cooldown_duration_after_damage_taken",
+                        "hull_point_restore_scalar_after_damage_taken",
                         "max_armor_points",
                         "armor_point_restore_rate",
                         "armor_point_restore_cooldown_duration_after_damage_taken",
+                        "armor_point_restore_scalar_after_damage_taken",
                         "armor_strength",
                         "max_shield_points",
                         "shield_point_restore_rate",
                         "shield_point_restore_cooldown_duration_after_damage_taken",
+                        "shield_point_restore_scalar_after_damage_taken",
                         "shield_burst_restore_points",
                         "shield_burst_restore_cooldown_duration",
                         "damage_taken",
@@ -7556,6 +8142,9 @@
                         "credit_income_rate",
                         "metal_income_rate",
                         "crystal_income_rate",
+                        "credit_income_rate_per_population",
+                        "metal_income_rate_per_population",
+                        "crystal_income_rate_per_population",
                         "civilian_research_points",
                         "military_research_points",
                         "culture_rate",

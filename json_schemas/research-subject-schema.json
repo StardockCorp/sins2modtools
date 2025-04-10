@@ -147,11 +147,16 @@
                             "credit_income_rate",
                             "metal_income_rate",
                             "crystal_income_rate",
+                            "credit_income_rate_per_population",
+                            "metal_income_rate_per_population",
+                            "crystal_income_rate_per_population",
                             "percentage_of_other_players_total_credit_income",
                             "surveying_bonus_exotic_chance",
                             "factory_build_exotic_price",
                             "civilian_research_rate",
                             "military_research_rate",
+                            "civilian_research_rate_per_population",
+                            "military_research_rate_per_population",
                             "max_supply",
                             "trade_credits_income_rate",
                             "trade_metal_income_rate",
@@ -346,12 +351,17 @@
                             "commerce_track_credit_income_rate",
                             "mining_track_metal_income_rate",
                             "mining_track_crystal_income_rate",
+                            "commerce_track_credit_income_rate_per_population",
+                            "mining_track_metal_income_rate_per_population",
+                            "mining_track_crystal_income_rate_per_population",
                             "orbital_extraction_metal_income_rate",
                             "orbital_extraction_crystal_income_rate",
                             "civilian_research_points",
                             "military_research_points",
                             "civilian_research_rate",
                             "military_research_rate",
+                            "civilian_research_rate_per_population",
+                            "military_research_rate_per_population",
                             "culture_rate",
                             "culture_resistance_rate",
                             "unity_points",
@@ -359,6 +369,11 @@
                             "health_points_restore_rate",
                             "max_shield_points",
                             "shield_points_restore_rate",
+                            "max_population_points",
+                            "population_growth_rate",
+                            "max_allied_population_factor",
+                            "neutral_population_assimilation_rate",
+                            "enemy_population_assimilation_rate",
                             "factory_unit_build_price",
                             "factory_unit_build_time",
                             "factory_exotic_build_time",
@@ -382,6 +397,7 @@
                             "structure_builder_count",
                             "max_garrison_supply",
                             "bombing_damage_taken",
+                            "bombing_population_damage_taken",
                             "planet_component_price",
                             "max_planet_component_slots",
                             "max_influence_points"
@@ -426,11 +442,16 @@
                                     "credit_income_rate",
                                     "metal_income_rate",
                                     "crystal_income_rate",
+                                    "credit_income_rate_per_population",
+                                    "metal_income_rate_per_population",
+                                    "crystal_income_rate_per_population",
                                     "percentage_of_other_players_total_credit_income",
                                     "surveying_bonus_exotic_chance",
                                     "factory_build_exotic_price",
                                     "civilian_research_rate",
                                     "military_research_rate",
+                                    "civilian_research_rate_per_population",
+                                    "military_research_rate_per_population",
                                     "max_supply",
                                     "trade_credits_income_rate",
                                     "trade_metal_income_rate",
@@ -560,12 +581,17 @@
                                     "commerce_track_credit_income_rate",
                                     "mining_track_metal_income_rate",
                                     "mining_track_crystal_income_rate",
+                                    "commerce_track_credit_income_rate_per_population",
+                                    "mining_track_metal_income_rate_per_population",
+                                    "mining_track_crystal_income_rate_per_population",
                                     "orbital_extraction_metal_income_rate",
                                     "orbital_extraction_crystal_income_rate",
                                     "civilian_research_points",
                                     "military_research_points",
                                     "civilian_research_rate",
                                     "military_research_rate",
+                                    "civilian_research_rate_per_population",
+                                    "military_research_rate_per_population",
                                     "culture_rate",
                                     "culture_resistance_rate",
                                     "unity_points",
@@ -573,6 +599,11 @@
                                     "health_points_restore_rate",
                                     "max_shield_points",
                                     "shield_points_restore_rate",
+                                    "max_population_points",
+                                    "population_growth_rate",
+                                    "max_allied_population_factor",
+                                    "neutral_population_assimilation_rate",
+                                    "enemy_population_assimilation_rate",
                                     "factory_unit_build_price",
                                     "factory_unit_build_time",
                                     "factory_exotic_build_time",
@@ -596,6 +627,7 @@
                                     "structure_builder_count",
                                     "max_garrison_supply",
                                     "bombing_damage_taken",
+                                    "bombing_population_damage_taken",
                                     "planet_component_price",
                                     "max_planet_component_slots",
                                     "max_influence_points"
@@ -723,13 +755,16 @@
                                     "hull_crippled_percentage",
                                     "hull_point_restore_rate",
                                     "hull_point_restore_cooldown_duration_after_damage_taken",
+                                    "hull_point_restore_scalar_after_damage_taken",
                                     "max_armor_points",
                                     "armor_point_restore_rate",
                                     "armor_point_restore_cooldown_duration_after_damage_taken",
+                                    "armor_point_restore_scalar_after_damage_taken",
                                     "armor_strength",
                                     "max_shield_points",
                                     "shield_point_restore_rate",
                                     "shield_point_restore_cooldown_duration_after_damage_taken",
+                                    "shield_point_restore_scalar_after_damage_taken",
                                     "shield_burst_restore_points",
                                     "shield_burst_restore_cooldown_duration",
                                     "damage_taken",
@@ -742,6 +777,9 @@
                                     "credit_income_rate",
                                     "metal_income_rate",
                                     "crystal_income_rate",
+                                    "credit_income_rate_per_population",
+                                    "metal_income_rate_per_population",
+                                    "crystal_income_rate_per_population",
                                     "civilian_research_points",
                                     "military_research_points",
                                     "culture_rate",
@@ -792,6 +830,7 @@
                                 "type": "string",
                                 "enum": [
                                     "damage",
+                                    "population_damage",
                                     "cooldown_duration",
                                     "range",
                                     "tracking_speed",
@@ -968,13 +1007,16 @@
                             "hull_crippled_percentage",
                             "hull_point_restore_rate",
                             "hull_point_restore_cooldown_duration_after_damage_taken",
+                            "hull_point_restore_scalar_after_damage_taken",
                             "max_armor_points",
                             "armor_point_restore_rate",
                             "armor_point_restore_cooldown_duration_after_damage_taken",
+                            "armor_point_restore_scalar_after_damage_taken",
                             "armor_strength",
                             "max_shield_points",
                             "shield_point_restore_rate",
                             "shield_point_restore_cooldown_duration_after_damage_taken",
+                            "shield_point_restore_scalar_after_damage_taken",
                             "shield_burst_restore_points",
                             "shield_burst_restore_cooldown_duration",
                             "damage_taken",
@@ -987,6 +1029,9 @@
                             "credit_income_rate",
                             "metal_income_rate",
                             "crystal_income_rate",
+                            "credit_income_rate_per_population",
+                            "metal_income_rate_per_population",
+                            "crystal_income_rate_per_population",
                             "civilian_research_points",
                             "military_research_points",
                             "culture_rate",
@@ -1040,6 +1085,7 @@
                         "type": "string",
                         "enum": [
                             "damage",
+                            "population_damage",
                             "cooldown_duration",
                             "range",
                             "tracking_speed",
@@ -1626,6 +1672,9 @@
                                     "is_in_fleet",
                                     "is_in_current_gravity_well",
                                     "is_in_dominant_culture",
+                                    "has_allied_population_amount",
+                                    "has_missing_population_amount",
+                                    "has_minimum_population_amount",
                                     "is_inner_planet",
                                     "can_ever_hyperspace",
                                     "can_ever_move",
@@ -2352,6 +2401,63 @@
                                 "if": {
                                     "properties": {
                                         "constraint_type": {
+                                            "const": "has_allied_population_amount"
+                                        }
+                                    }
+                                },
+                                "then": {
+                                    "properties": {
+                                        "percentage_of_current_pop": {
+                                            "type": "number"
+                                        },
+                                        "real_population_number": {
+                                            "type": "integer"
+                                        }
+                                    }
+                                }
+                            },
+                            {
+                                "if": {
+                                    "properties": {
+                                        "constraint_type": {
+                                            "const": "has_missing_population_amount"
+                                        }
+                                    }
+                                },
+                                "then": {
+                                    "properties": {
+                                        "missing_population_percent_of_maximum": {
+                                            "type": "number"
+                                        },
+                                        "real_missing_population": {
+                                            "type": "integer"
+                                        }
+                                    }
+                                }
+                            },
+                            {
+                                "if": {
+                                    "properties": {
+                                        "constraint_type": {
+                                            "const": "has_minimum_population_amount"
+                                        }
+                                    }
+                                },
+                                "then": {
+                                    "properties": {
+                                        "minimum_population_percent_of_maximum": {
+                                            "type": "number"
+                                        },
+                                        "real_minimum_population": {
+                                            "type": "integer"
+                                        }
+                                    }
+                                }
+                            },
+                            {
+                                "if": {
+                                    "properties": {
+                                        "constraint_type": {
                                             "const": "is_inner_planet"
                                         }
                                     }
@@ -2679,6 +2785,8 @@
                         "per_planet_max_health_points",
                         "per_planet_current_shield_points",
                         "per_planet_max_shield_points",
+                        "per_planet_current_population_points",
+                        "per_planet_max_population_points",
                         "per_planet_max_civilian_slots",
                         "per_planet_max_military_slots",
                         "per_planet_commerce_track_credit_income",
@@ -2836,6 +2944,38 @@
                         "properties": {
                             "transform_type": {
                                 "const": "per_planet_max_shield_points"
+                            }
+                        }
+                    },
+                    "then": {
+                        "properties": {
+                            "transform_unit": {
+                                "$ref": "#/$defs/action_unit"
+                            }
+                        }
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "transform_type": {
+                                "const": "per_planet_current_population_points"
+                            }
+                        }
+                    },
+                    "then": {
+                        "properties": {
+                            "transform_unit": {
+                                "$ref": "#/$defs/action_unit"
+                            }
+                        }
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "transform_type": {
+                                "const": "per_planet_max_population_points"
                             }
                         }
                     },
@@ -3400,10 +3540,13 @@
                         "no_decimal_place_with_sign",
                         "one_decimal_place_with_sign",
                         "two_decimal_place_with_sign",
+                        "three_decimal_place_with_sign",
                         "percentage",
                         "percentage_one_decimal_place",
                         "percentage_with_sign",
-                        "percentage_one_decimal_place_with_sign"
+                        "percentage_one_decimal_place_with_sign",
+                        "percentage_two_decimal_place_with_sign",
+                        "percentage_three_decimal_place_with_sign"
                     ]
                 },
                 "heading": {
@@ -3758,10 +3901,13 @@
                         "no_decimal_place_with_sign",
                         "one_decimal_place_with_sign",
                         "two_decimal_place_with_sign",
+                        "three_decimal_place_with_sign",
                         "percentage",
                         "percentage_one_decimal_place",
                         "percentage_with_sign",
-                        "percentage_one_decimal_place_with_sign"
+                        "percentage_one_decimal_place_with_sign",
+                        "percentage_two_decimal_place_with_sign",
+                        "percentage_three_decimal_place_with_sign"
                     ]
                 },
                 "rendering_type": {
@@ -3826,10 +3972,13 @@
                         "no_decimal_place_with_sign",
                         "one_decimal_place_with_sign",
                         "two_decimal_place_with_sign",
+                        "three_decimal_place_with_sign",
                         "percentage",
                         "percentage_one_decimal_place",
                         "percentage_with_sign",
-                        "percentage_one_decimal_place_with_sign"
+                        "percentage_one_decimal_place_with_sign",
+                        "percentage_two_decimal_place_with_sign",
+                        "percentage_three_decimal_place_with_sign"
                     ]
                 },
                 "value_id": {
@@ -5104,6 +5253,9 @@
                                                             },
                                                             "target_filter_id": {
                                                                 "$ref": "#/$defs/target_filter_id"
+                                                            },
+                                                            "target_override_filter_id": {
+                                                                "$ref": "#/$defs/target_filter_id"
                                                             }
                                                         },
                                                         "required": [
@@ -5465,7 +5617,10 @@
                                                 "spawn_detached_strikecraft",
                                                 "increase_planet_track_level",
                                                 "remove_unit_item",
-                                                "add_unit_item"
+                                                "add_unit_item",
+                                                "apply_population_damage",
+                                                "convert_population",
+                                                "cull_allegiance_population"
                                             ]
                                         }
                                     },
@@ -5588,6 +5743,9 @@
                                                     "bombing_damage_value": {
                                                         "$ref": "#/$defs/action_value_id"
                                                     },
+                                                    "bombing_population_damage_value": {
+                                                        "$ref": "#/$defs/action_value_id"
+                                                    },
                                                     "damage_source": {
                                                         "$ref": "#/$defs/damage_source_type"
                                                     },
@@ -5601,6 +5759,7 @@
                                                 },
                                                 "required": [
                                                     "bombing_damage_value",
+                                                    "bombing_population_damage_value",
                                                     "damage_source"
                                                 ]
                                             }
@@ -6420,6 +6579,175 @@
                                                 "required": [
                                                     "unit_item"
                                                 ]
+                                            }
+                                        },
+                                        {
+                                            "if": {
+                                                "properties": {
+                                                    "operator_type": {
+                                                        "const": "apply_population_damage"
+                                                    }
+                                                }
+                                            },
+                                            "then": {
+                                                "properties": {
+                                                    "can_damage_be_propagated": {
+                                                        "description": "default=true",
+                                                        "type": "boolean"
+                                                    },
+                                                    "damage_value": {
+                                                        "$ref": "#/$defs/action_value_id"
+                                                    },
+                                                    "ignore_infinite_recursion_guard": {
+                                                        "description": "default=false",
+                                                        "type": "boolean"
+                                                    },
+                                                    "population_damage_modifier_type": {
+                                                        "$ref": "#/$defs/modifier_value_behavior"
+                                                    },
+                                                    "population_reduction_type": {
+                                                        "$ref": "#/$defs/population_reduction_type"
+                                                    },
+                                                    "source_unit": {
+                                                        "description": "default=first_spawner",
+                                                        "$ref": "#/$defs/action_unit"
+                                                    },
+                                                    "use_source_weapon_properties": {
+                                                        "description": "default=false",
+                                                        "type": "boolean"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "damage_value",
+                                                    "population_reduction_type"
+                                                ],
+                                                "if": {
+                                                    "properties": {
+                                                        "use_source_weapon_properties": {
+                                                            "const": false
+                                                        }
+                                                    }
+                                                },
+                                                "then": {
+                                                    "properties": {
+                                                        "damage_source": {
+                                                            "$ref": "#/$defs/damage_source_type"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "damage_source"
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "if": {
+                                                "properties": {
+                                                    "operator_type": {
+                                                        "const": "convert_population"
+                                                    }
+                                                }
+                                            },
+                                            "then": {
+                                                "properties": {
+                                                    "allegiance_destination_player": {
+                                                        "$ref": "#/$defs/action_player"
+                                                    },
+                                                    "conversion_value": {
+                                                        "$ref": "#/$defs/action_value_id"
+                                                    },
+                                                    "ignore_infinite_recursion_guard": {
+                                                        "description": "default=false",
+                                                        "type": "boolean"
+                                                    },
+                                                    "population_reduction_modifier_type": {
+                                                        "$ref": "#/$defs/modifier_value_behavior"
+                                                    },
+                                                    "population_reduction_type": {
+                                                        "$ref": "#/$defs/population_reduction_type"
+                                                    },
+                                                    "source_unit": {
+                                                        "description": "default=first_spawner",
+                                                        "$ref": "#/$defs/action_unit"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "allegiance_destination_player",
+                                                    "conversion_value",
+                                                    "population_reduction_type"
+                                                ],
+                                                "if": {
+                                                    "properties": {
+                                                        "use_source_weapon_properties": {
+                                                            "const": false
+                                                        }
+                                                    }
+                                                },
+                                                "then": {
+                                                    "properties": {
+                                                        "conversion_source": {
+                                                            "$ref": "#/$defs/damage_source_type"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "conversion_source"
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "if": {
+                                                "properties": {
+                                                    "operator_type": {
+                                                        "const": "cull_allegiance_population"
+                                                    }
+                                                }
+                                            },
+                                            "then": {
+                                                "properties": {
+                                                    "ignore_infinite_recursion_guard": {
+                                                        "description": "default=false",
+                                                        "type": "boolean"
+                                                    },
+                                                    "player_allegiance_to_cull": {
+                                                        "$ref": "#/$defs/action_player"
+                                                    },
+                                                    "population_culled_value": {
+                                                        "$ref": "#/$defs/action_value_id"
+                                                    },
+                                                    "population_reduction_modifier_type": {
+                                                        "$ref": "#/$defs/modifier_value_behavior"
+                                                    },
+                                                    "population_reduction_type": {
+                                                        "$ref": "#/$defs/population_reduction_type"
+                                                    },
+                                                    "source_unit": {
+                                                        "description": "default=first_spawner",
+                                                        "$ref": "#/$defs/action_unit"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "player_allegiance_to_cull",
+                                                    "population_culled_value",
+                                                    "population_reduction_type"
+                                                ],
+                                                "if": {
+                                                    "properties": {
+                                                        "use_source_weapon_properties": {
+                                                            "const": false
+                                                        }
+                                                    }
+                                                },
+                                                "then": {
+                                                    "properties": {
+                                                        "damage_source": {
+                                                            "$ref": "#/$defs/damage_source_type"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "damage_source"
+                                                    ]
+                                                }
                                             }
                                         }
                                     ],
@@ -7263,6 +7591,9 @@
                             },
                             "target_filter_id": {
                                 "$ref": "#/$defs/target_filter_id"
+                            },
+                            "target_override_filter_id": {
+                                "$ref": "#/$defs/target_filter_id"
                             }
                         },
                         "required": [
@@ -7983,7 +8314,10 @@
                         "spawn_detached_strikecraft",
                         "increase_planet_track_level",
                         "remove_unit_item",
-                        "add_unit_item"
+                        "add_unit_item",
+                        "apply_population_damage",
+                        "convert_population",
+                        "cull_allegiance_population"
                     ]
                 }
             },
@@ -8109,6 +8443,9 @@
                             "bombing_damage_value": {
                                 "$ref": "#/$defs/action_value_id"
                             },
+                            "bombing_population_damage_value": {
+                                "$ref": "#/$defs/action_value_id"
+                            },
                             "damage_source": {
                                 "$ref": "#/$defs/damage_source_type"
                             },
@@ -8122,6 +8459,7 @@
                         },
                         "required": [
                             "bombing_damage_value",
+                            "bombing_population_damage_value",
                             "damage_source"
                         ]
                     }
@@ -8942,6 +9280,175 @@
                             "unit_item"
                         ]
                     }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "operator_type": {
+                                "const": "apply_population_damage"
+                            }
+                        }
+                    },
+                    "then": {
+                        "properties": {
+                            "can_damage_be_propagated": {
+                                "description": "default=true",
+                                "type": "boolean"
+                            },
+                            "damage_value": {
+                                "$ref": "#/$defs/action_value_id"
+                            },
+                            "ignore_infinite_recursion_guard": {
+                                "description": "default=false",
+                                "type": "boolean"
+                            },
+                            "population_damage_modifier_type": {
+                                "$ref": "#/$defs/modifier_value_behavior"
+                            },
+                            "population_reduction_type": {
+                                "$ref": "#/$defs/population_reduction_type"
+                            },
+                            "source_unit": {
+                                "description": "default=first_spawner",
+                                "$ref": "#/$defs/action_unit"
+                            },
+                            "use_source_weapon_properties": {
+                                "description": "default=false",
+                                "type": "boolean"
+                            }
+                        },
+                        "required": [
+                            "damage_value",
+                            "population_reduction_type"
+                        ],
+                        "if": {
+                            "properties": {
+                                "use_source_weapon_properties": {
+                                    "const": false
+                                }
+                            }
+                        },
+                        "then": {
+                            "properties": {
+                                "damage_source": {
+                                    "$ref": "#/$defs/damage_source_type"
+                                }
+                            },
+                            "required": [
+                                "damage_source"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "operator_type": {
+                                "const": "convert_population"
+                            }
+                        }
+                    },
+                    "then": {
+                        "properties": {
+                            "allegiance_destination_player": {
+                                "$ref": "#/$defs/action_player"
+                            },
+                            "conversion_value": {
+                                "$ref": "#/$defs/action_value_id"
+                            },
+                            "ignore_infinite_recursion_guard": {
+                                "description": "default=false",
+                                "type": "boolean"
+                            },
+                            "population_reduction_modifier_type": {
+                                "$ref": "#/$defs/modifier_value_behavior"
+                            },
+                            "population_reduction_type": {
+                                "$ref": "#/$defs/population_reduction_type"
+                            },
+                            "source_unit": {
+                                "description": "default=first_spawner",
+                                "$ref": "#/$defs/action_unit"
+                            }
+                        },
+                        "required": [
+                            "allegiance_destination_player",
+                            "conversion_value",
+                            "population_reduction_type"
+                        ],
+                        "if": {
+                            "properties": {
+                                "use_source_weapon_properties": {
+                                    "const": false
+                                }
+                            }
+                        },
+                        "then": {
+                            "properties": {
+                                "conversion_source": {
+                                    "$ref": "#/$defs/damage_source_type"
+                                }
+                            },
+                            "required": [
+                                "conversion_source"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "operator_type": {
+                                "const": "cull_allegiance_population"
+                            }
+                        }
+                    },
+                    "then": {
+                        "properties": {
+                            "ignore_infinite_recursion_guard": {
+                                "description": "default=false",
+                                "type": "boolean"
+                            },
+                            "player_allegiance_to_cull": {
+                                "$ref": "#/$defs/action_player"
+                            },
+                            "population_culled_value": {
+                                "$ref": "#/$defs/action_value_id"
+                            },
+                            "population_reduction_modifier_type": {
+                                "$ref": "#/$defs/modifier_value_behavior"
+                            },
+                            "population_reduction_type": {
+                                "$ref": "#/$defs/population_reduction_type"
+                            },
+                            "source_unit": {
+                                "description": "default=first_spawner",
+                                "$ref": "#/$defs/action_unit"
+                            }
+                        },
+                        "required": [
+                            "player_allegiance_to_cull",
+                            "population_culled_value",
+                            "population_reduction_type"
+                        ],
+                        "if": {
+                            "properties": {
+                                "use_source_weapon_properties": {
+                                    "const": false
+                                }
+                            }
+                        },
+                        "then": {
+                            "properties": {
+                                "damage_source": {
+                                    "$ref": "#/$defs/damage_source_type"
+                                }
+                            },
+                            "required": [
+                                "damage_source"
+                            ]
+                        }
+                    }
                 }
             ],
             "unevaluatedProperties": false
@@ -9030,12 +9537,17 @@
                 "commerce_track_credit_income_rate",
                 "mining_track_metal_income_rate",
                 "mining_track_crystal_income_rate",
+                "commerce_track_credit_income_rate_per_population",
+                "mining_track_metal_income_rate_per_population",
+                "mining_track_crystal_income_rate_per_population",
                 "orbital_extraction_metal_income_rate",
                 "orbital_extraction_crystal_income_rate",
                 "civilian_research_points",
                 "military_research_points",
                 "civilian_research_rate",
                 "military_research_rate",
+                "civilian_research_rate_per_population",
+                "military_research_rate_per_population",
                 "culture_rate",
                 "culture_resistance_rate",
                 "unity_points",
@@ -9043,6 +9555,11 @@
                 "health_points_restore_rate",
                 "max_shield_points",
                 "shield_points_restore_rate",
+                "max_population_points",
+                "population_growth_rate",
+                "max_allied_population_factor",
+                "neutral_population_assimilation_rate",
+                "enemy_population_assimilation_rate",
                 "factory_unit_build_price",
                 "factory_unit_build_time",
                 "factory_exotic_build_time",
@@ -9066,6 +9583,7 @@
                 "structure_builder_count",
                 "max_garrison_supply",
                 "bombing_damage_taken",
+                "bombing_population_damage_taken",
                 "planet_component_price",
                 "max_planet_component_slots",
                 "max_influence_points"
@@ -9085,6 +9603,7 @@
             "type": "string",
             "enum": [
                 "damage",
+                "population_damage",
                 "cooldown_duration",
                 "range",
                 "tracking_speed",
@@ -9169,11 +9688,16 @@
                 "credit_income_rate",
                 "metal_income_rate",
                 "crystal_income_rate",
+                "credit_income_rate_per_population",
+                "metal_income_rate_per_population",
+                "crystal_income_rate_per_population",
                 "percentage_of_other_players_total_credit_income",
                 "surveying_bonus_exotic_chance",
                 "factory_build_exotic_price",
                 "civilian_research_rate",
                 "military_research_rate",
+                "civilian_research_rate_per_population",
+                "military_research_rate_per_population",
                 "max_supply",
                 "trade_credits_income_rate",
                 "trade_metal_income_rate",
@@ -9235,6 +9759,9 @@
                         "is_in_fleet",
                         "is_in_current_gravity_well",
                         "is_in_dominant_culture",
+                        "has_allied_population_amount",
+                        "has_missing_population_amount",
+                        "has_minimum_population_amount",
                         "is_inner_planet",
                         "can_ever_hyperspace",
                         "can_ever_move",
@@ -9961,6 +10488,63 @@
                     "if": {
                         "properties": {
                             "constraint_type": {
+                                "const": "has_allied_population_amount"
+                            }
+                        }
+                    },
+                    "then": {
+                        "properties": {
+                            "percentage_of_current_pop": {
+                                "type": "number"
+                            },
+                            "real_population_number": {
+                                "type": "integer"
+                            }
+                        }
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "constraint_type": {
+                                "const": "has_missing_population_amount"
+                            }
+                        }
+                    },
+                    "then": {
+                        "properties": {
+                            "missing_population_percent_of_maximum": {
+                                "type": "number"
+                            },
+                            "real_missing_population": {
+                                "type": "integer"
+                            }
+                        }
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "constraint_type": {
+                                "const": "has_minimum_population_amount"
+                            }
+                        }
+                    },
+                    "then": {
+                        "properties": {
+                            "minimum_population_percent_of_maximum": {
+                                "type": "number"
+                            },
+                            "real_minimum_population": {
+                                "type": "integer"
+                            }
+                        }
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "constraint_type": {
                                 "const": "is_inner_planet"
                             }
                         }
@@ -10130,13 +10714,16 @@
                 "hull_crippled_percentage",
                 "hull_point_restore_rate",
                 "hull_point_restore_cooldown_duration_after_damage_taken",
+                "hull_point_restore_scalar_after_damage_taken",
                 "max_armor_points",
                 "armor_point_restore_rate",
                 "armor_point_restore_cooldown_duration_after_damage_taken",
+                "armor_point_restore_scalar_after_damage_taken",
                 "armor_strength",
                 "max_shield_points",
                 "shield_point_restore_rate",
                 "shield_point_restore_cooldown_duration_after_damage_taken",
+                "shield_point_restore_scalar_after_damage_taken",
                 "shield_burst_restore_points",
                 "shield_burst_restore_cooldown_duration",
                 "damage_taken",
@@ -10149,6 +10736,9 @@
                 "credit_income_rate",
                 "metal_income_rate",
                 "crystal_income_rate",
+                "credit_income_rate_per_population",
+                "metal_income_rate_per_population",
+                "crystal_income_rate_per_population",
                 "civilian_research_points",
                 "military_research_points",
                 "culture_rate",
@@ -10348,6 +10938,16 @@
                 "anti_structure",
                 "bomb_planet",
                 "raid"
+            ]
+        },
+        "population_reduction_type": {
+            "type": "string",
+            "enum": [
+                "all_equally",
+                "neutral_only",
+                "owner_only",
+                "enemy_only",
+                "all_except_owner"
             ]
         }
     }

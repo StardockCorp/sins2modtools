@@ -1,7 +1,9 @@
+#include "skybox_rays_cb_data.hlsli"
 #include "skybox_rays_ps_input.hlsli"
 #include "../color_utility.hlsli"
 #include "../post_process/exposure_state_sb_data.hlsli"
 #include "../external/tone_mapping_utility.hlsli"
+#include "../color_utility.hlsli"
 
 Texture2D texture_0 : register(t0);
 StructuredBuffer<exposure_state_sb_data> exposure : register(t1);
@@ -49,6 +51,10 @@ skybox_ps_output main(skybox_rays_ps_input input)
     output.scene_color = create_starbox_rays(sampled_color, input.texcoord);
     
     output.scene_color.rgb *= exposure[0].exposure_rcp;
+
+    float3 hsl = rgb_to_hsl(output.scene_color.rgb);
+    hsl.z *= brightness_scaler;
+    output.scene_color.rgb = hsl_to_rgb(hsl);
 
     return output;
 }

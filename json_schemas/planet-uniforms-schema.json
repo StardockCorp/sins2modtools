@@ -92,6 +92,30 @@
                     "name": {
                         "type": "string"
                     },
+                    "population": {
+                        "type": "object",
+                        "properties": {
+                            "growth_rate": {
+                                "type": "number"
+                            },
+                            "growth_rate_if_above_max_population": {
+                                "type": "number"
+                            },
+                            "population_maximum": {
+                                "type": "number"
+                            },
+                            "starting_population": {
+                                "type": "number"
+                            }
+                        },
+                        "required": [
+                            "growth_rate",
+                            "growth_rate_if_above_max_population",
+                            "population_maximum",
+                            "starting_population"
+                        ],
+                        "unevaluatedProperties": false
+                    },
                     "surveying_track_levels": {
                         "type": "array",
                         "items": {
@@ -210,6 +234,7 @@
                 "required": [
                     "localized_name",
                     "name",
+                    "population",
                     "surveying_track_levels",
                     "tooltip_icon"
                 ],

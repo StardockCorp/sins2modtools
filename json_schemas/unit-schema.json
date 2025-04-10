@@ -115,6 +115,12 @@
         "is_phase_resonance_synchronizer": {
             "type": "boolean"
         },
+        "item_builds": {
+            "type": "array",
+            "items": {
+                "$ref": "#/$defs/unit_items_build_definition"
+            }
+        },
         "items": {
             "$ref": "#/$defs/unit_items_definition"
         },
@@ -374,7 +380,8 @@
                             "auto_follow_unit_attacking_any_or_is_damaged",
                             "auto_follow_unit_attacking_any",
                             "auto_follow_unit_attacking_threat",
-                            "auto_capture_loot"
+                            "auto_capture_loot",
+                            "auto_resolve_objective_based_structure"
                         ]
                     }
                 },
@@ -1232,6 +1239,9 @@
                                             "armor_point_restore_rate": {
                                                 "type": "number"
                                             },
+                                            "armor_point_restore_scalar_after_damage_taken": {
+                                                "type": "number"
+                                            },
                                             "armor_strength": {
                                                 "type": "number"
                                             },
@@ -1241,7 +1251,13 @@
                                             "credit_income_rate": {
                                                 "type": "number"
                                             },
+                                            "credit_income_rate_per_population": {
+                                                "type": "number"
+                                            },
                                             "crystal_income_rate": {
+                                                "type": "number"
+                                            },
+                                            "crystal_income_rate_per_population": {
                                                 "type": "number"
                                             },
                                             "culture_rate": {
@@ -1272,6 +1288,9 @@
                                                 "type": "number"
                                             },
                                             "hull_point_restore_rate": {
+                                                "type": "number"
+                                            },
+                                            "hull_point_restore_scalar_after_damage_taken": {
                                                 "type": "number"
                                             },
                                             "hyperspace_charge_time": {
@@ -1310,6 +1329,9 @@
                                             "metal_income_rate": {
                                                 "type": "number"
                                             },
+                                            "metal_income_rate_per_population": {
+                                                "type": "number"
+                                            },
                                             "military_research_points": {
                                                 "type": "number"
                                             },
@@ -1329,6 +1351,9 @@
                                                 "type": "number"
                                             },
                                             "shield_point_restore_rate": {
+                                                "type": "number"
+                                            },
+                                            "shield_point_restore_scalar_after_damage_taken": {
                                                 "type": "number"
                                             },
                                             "ship_component_price": {
@@ -1388,6 +1413,9 @@
                                             "damage": {
                                                 "type": "number"
                                             },
+                                            "population_damage": {
+                                                "type": "number"
+                                            },
                                             "range": {
                                                 "type": "number"
                                             },
@@ -1423,6 +1451,21 @@
                 "levels",
                 "type"
             ],
+            "unevaluatedProperties": false
+        },
+        "unit_items_build_definition": {
+            "type": "object",
+            "properties": {
+                "build_group": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "weight": {
+                    "type": "number"
+                }
+            },
             "unevaluatedProperties": false
         },
         "carrier_definition": {
@@ -2155,12 +2198,17 @@
                         "commerce_track_credit_income_rate",
                         "mining_track_metal_income_rate",
                         "mining_track_crystal_income_rate",
+                        "commerce_track_credit_income_rate_per_population",
+                        "mining_track_metal_income_rate_per_population",
+                        "mining_track_crystal_income_rate_per_population",
                         "orbital_extraction_metal_income_rate",
                         "orbital_extraction_crystal_income_rate",
                         "civilian_research_points",
                         "military_research_points",
                         "civilian_research_rate",
                         "military_research_rate",
+                        "civilian_research_rate_per_population",
+                        "military_research_rate_per_population",
                         "culture_rate",
                         "culture_resistance_rate",
                         "unity_points",
@@ -2168,6 +2216,11 @@
                         "health_points_restore_rate",
                         "max_shield_points",
                         "shield_points_restore_rate",
+                        "max_population_points",
+                        "population_growth_rate",
+                        "max_allied_population_factor",
+                        "neutral_population_assimilation_rate",
+                        "enemy_population_assimilation_rate",
                         "factory_unit_build_price",
                         "factory_unit_build_time",
                         "factory_exotic_build_time",
@@ -2191,6 +2244,7 @@
                         "structure_builder_count",
                         "max_garrison_supply",
                         "bombing_damage_taken",
+                        "bombing_population_damage_taken",
                         "planet_component_price",
                         "max_planet_component_slots",
                         "max_influence_points"
@@ -2572,18 +2626,6 @@
             ],
             "unevaluatedProperties": false
         },
-        "unit_unity_provider_definition": {
-            "type": "object",
-            "properties": {
-                "provided_unity_points": {
-                    "type": "number"
-                }
-            },
-            "required": [
-                "provided_unity_points"
-            ],
-            "unevaluatedProperties": false
-        },
         "unit_health_level_definition": {
             "type": "object",
             "properties": {
@@ -2591,6 +2633,9 @@
                     "type": "number"
                 },
                 "armor_point_restore_rate": {
+                    "type": "number"
+                },
+                "armor_point_restore_scalar_after_damage_taken": {
                     "type": "number"
                 },
                 "armor_strength": {
@@ -2606,6 +2651,9 @@
                     "type": "number"
                 },
                 "hull_point_restore_rate": {
+                    "type": "number"
+                },
+                "hull_point_restore_scalar_after_damage_taken": {
                     "type": "number"
                 },
                 "max_armor_points": {
@@ -2637,6 +2685,9 @@
                     "type": "number"
                 },
                 "shield_point_restore_rate": {
+                    "type": "number"
+                },
+                "shield_point_restore_scalar_after_damage_taken": {
                     "type": "number"
                 }
             },
@@ -2811,13 +2862,16 @@
                         "hull_crippled_percentage",
                         "hull_point_restore_rate",
                         "hull_point_restore_cooldown_duration_after_damage_taken",
+                        "hull_point_restore_scalar_after_damage_taken",
                         "max_armor_points",
                         "armor_point_restore_rate",
                         "armor_point_restore_cooldown_duration_after_damage_taken",
+                        "armor_point_restore_scalar_after_damage_taken",
                         "armor_strength",
                         "max_shield_points",
                         "shield_point_restore_rate",
                         "shield_point_restore_cooldown_duration_after_damage_taken",
+                        "shield_point_restore_scalar_after_damage_taken",
                         "shield_burst_restore_points",
                         "shield_burst_restore_cooldown_duration",
                         "damage_taken",
@@ -2830,6 +2884,9 @@
                         "credit_income_rate",
                         "metal_income_rate",
                         "crystal_income_rate",
+                        "credit_income_rate_per_population",
+                        "metal_income_rate_per_population",
+                        "crystal_income_rate_per_population",
                         "civilian_research_points",
                         "military_research_points",
                         "culture_rate",
@@ -2949,6 +3006,18 @@
             },
             "required": [
                 "stages"
+            ],
+            "unevaluatedProperties": false
+        },
+        "unit_unity_provider_definition": {
+            "type": "object",
+            "properties": {
+                "provided_unity_points": {
+                    "type": "number"
+                }
+            },
+            "required": [
+                "provided_unity_points"
             ],
             "unevaluatedProperties": false
         },

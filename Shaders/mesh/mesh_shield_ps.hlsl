@@ -55,43 +55,45 @@ ps_output main(mesh_ps_input input)
 
     for(uint i = 0; i < shield_impact_count; i++)
     {
-        if(length(final_color) <= 0.f)
-        { 
-            const float radius = shield_impacts[i].radius;
-            const float impact_width = radius * 2.f;
-                        
-            const float4 pos_in_object_space = mul(float4(input.position_w, 1), shield_impacts[i].world_transform_inverse);
-            const float dist = length(pos_in_object_space.xyz);                        
-            if(dist < radius)
-            {
-                float2 uv = pos_in_object_space.xy;
+        const float radius = shield_impacts[i].radius;
+        const float impact_width = radius * 2.f;
 
-                // remove stretching artifacts from extreme angles
-                // https://gamedev.net/forums/topic/666883-projected-decals-stretching/5218384/
-                const float3x3 impact_rotation_inverse = get_rotation(shield_impacts[i].world_transform_inverse);
-                
-                const float3 normal_in_object_space = mul(input.normal_w, impact_rotation_inverse);
-                uv.xy -= 1.5f * pos_in_object_space.z * normal_in_object_space.xy;
-                                
-                // uv_rect is stored as left/top/right/bottom
-                const float left = shield_impacts[i].uv_rect.x;
-                const float top = shield_impacts[i].uv_rect.y;
-                const float right = shield_impacts[i].uv_rect.z;
-                const float bottom = shield_impacts[i].uv_rect.w;
+        const float4 pos_in_object_space = mul(float4(input.position_w, 1), shield_impacts[i].world_transform_inverse);
+        const float dist = length(pos_in_object_space.xyz);                        
+        if(dist < radius)
+        {
+            float2 uv = pos_in_object_space.xy;
 
-                const float w = right - left;
-                const float h = bottom - top; // top left is origin with v increasing from top to bottom
-                const float u_offset = left;
-                const float v_offset = top;
+            // remove stretching artifacts from extreme angles
+            // https://gamedev.net/forums/topic/666883-projected-decals-stretching/5218384/
+            const float3x3 impact_rotation_inverse = get_rotation(shield_impacts[i].world_transform_inverse);
+            
+            const float3 normal_in_object_space = mul(input.normal_w, impact_rotation_inverse);
+            uv.xy -= 1.5f * pos_in_object_space.z * normal_in_object_space.xy;
+                            
+            // uv_rect is stored as left/top/right/bottom
+            const float left = shield_impacts[i].uv_rect.x;
+            const float top = shield_impacts[i].uv_rect.y;
+            const float right = shield_impacts[i].uv_rect.z;
+            const float bottom = shield_impacts[i].uv_rect.w;
 
-                const float u = ((uv.x + radius) / impact_width * w) + u_offset;
-                const float v = ((uv.y + radius) / impact_width * h) + v_offset;
+            const float w = right - left;
+            const float h = bottom - top; // top left is origin with v increasing from top to bottom
+            const float u_offset = left;
+            const float v_offset = top;
 
-                if(u >= left && u <= right && v >= top && v <= bottom)
-                {            
-                    float2 impact_texcoord = float2(u, v);
-                    const float4 impact_color = srgb_to_linear(impact_texture.Sample(mesh_anisotropic_clamp_sampler, impact_texcoord));
-                    final_color = impact_color * shield_impacts[i].color; // color was passed in linear, no need to convert from srgb
+            const float u = ((uv.x + radius) / impact_width * w) + u_offset;
+            const float v = ((uv.y + radius) / impact_width * h) + v_offset;
+
+            if(u >= left && u <= right && v >= top && v <= bottom)
+            {            
+                float2 impact_texcoord = float2(u, v);
+                const float4 impact_color = srgb_to_linear(impact_texture.Sample(mesh_anisotropic_clamp_sampler, impact_texcoord));
+
+                const float4 new_color = impact_color * shield_impacts[i].color; // color was passed in linear, no need to convert from srgb
+                if (new_color.a > final_color.a)
+                {
+                    final_color = new_color;
                     emissive_factor = shield_impacts[i].emissive_factor;
 
                     // fade off points opposite the impact point to minimize the mirroring effect
@@ -101,10 +103,10 @@ ps_output main(mesh_ps_input input)
                     {   
                         final_color *= saturate(lerp(1.f, 0.f, -8.f * dt));
                     }
-                }                
+                }
             }
         }
-    }   
+    }
     
     ps_output output;
     output.scene_color = final_color;

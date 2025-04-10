@@ -186,6 +186,7 @@
                         "type": "string",
                         "enum": [
                             "damage",
+                            "population_damage",
                             "cooldown_duration",
                             "range",
                             "tracking_speed",
@@ -406,10 +407,15 @@
                             "bombing_damage": {
                                 "type": "number",
                                 "minimum": 0.0
+                            },
+                            "population_damage": {
+                                "type": "number",
+                                "minimum": 0.0
                             }
                         },
                         "required": [
-                            "bombing_damage"
+                            "bombing_damage",
+                            "population_damage"
                         ],
                         "unevaluatedProperties": false
                     }
@@ -498,6 +504,9 @@
                                     "is_in_fleet",
                                     "is_in_current_gravity_well",
                                     "is_in_dominant_culture",
+                                    "has_allied_population_amount",
+                                    "has_missing_population_amount",
+                                    "has_minimum_population_amount",
                                     "is_inner_planet",
                                     "can_ever_hyperspace",
                                     "can_ever_move",
@@ -1224,6 +1233,63 @@
                                 "if": {
                                     "properties": {
                                         "constraint_type": {
+                                            "const": "has_allied_population_amount"
+                                        }
+                                    }
+                                },
+                                "then": {
+                                    "properties": {
+                                        "percentage_of_current_pop": {
+                                            "type": "number"
+                                        },
+                                        "real_population_number": {
+                                            "type": "integer"
+                                        }
+                                    }
+                                }
+                            },
+                            {
+                                "if": {
+                                    "properties": {
+                                        "constraint_type": {
+                                            "const": "has_missing_population_amount"
+                                        }
+                                    }
+                                },
+                                "then": {
+                                    "properties": {
+                                        "missing_population_percent_of_maximum": {
+                                            "type": "number"
+                                        },
+                                        "real_missing_population": {
+                                            "type": "integer"
+                                        }
+                                    }
+                                }
+                            },
+                            {
+                                "if": {
+                                    "properties": {
+                                        "constraint_type": {
+                                            "const": "has_minimum_population_amount"
+                                        }
+                                    }
+                                },
+                                "then": {
+                                    "properties": {
+                                        "minimum_population_percent_of_maximum": {
+                                            "type": "number"
+                                        },
+                                        "real_minimum_population": {
+                                            "type": "integer"
+                                        }
+                                    }
+                                }
+                            },
+                            {
+                                "if": {
+                                    "properties": {
+                                        "constraint_type": {
                                             "const": "is_inner_planet"
                                         }
                                     }
@@ -1500,6 +1566,9 @@
                         "is_in_fleet",
                         "is_in_current_gravity_well",
                         "is_in_dominant_culture",
+                        "has_allied_population_amount",
+                        "has_missing_population_amount",
+                        "has_minimum_population_amount",
                         "is_inner_planet",
                         "can_ever_hyperspace",
                         "can_ever_move",
@@ -2218,6 +2287,63 @@
                                     "enemy",
                                     "none"
                                 ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "constraint_type": {
+                                "const": "has_allied_population_amount"
+                            }
+                        }
+                    },
+                    "then": {
+                        "properties": {
+                            "percentage_of_current_pop": {
+                                "type": "number"
+                            },
+                            "real_population_number": {
+                                "type": "integer"
+                            }
+                        }
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "constraint_type": {
+                                "const": "has_missing_population_amount"
+                            }
+                        }
+                    },
+                    "then": {
+                        "properties": {
+                            "missing_population_percent_of_maximum": {
+                                "type": "number"
+                            },
+                            "real_missing_population": {
+                                "type": "integer"
+                            }
+                        }
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "constraint_type": {
+                                "const": "has_minimum_population_amount"
+                            }
+                        }
+                    },
+                    "then": {
+                        "properties": {
+                            "minimum_population_percent_of_maximum": {
+                                "type": "number"
+                            },
+                            "real_minimum_population": {
+                                "type": "integer"
                             }
                         }
                     }

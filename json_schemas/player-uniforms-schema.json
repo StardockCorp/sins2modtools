@@ -105,6 +105,12 @@
         "colonization_victory_planet_count_percentage": {
             "type": "number"
         },
+        "dlc_only_pickable_players": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
         "dominant_culture_influence_points_gained_duration": {
             "type": "array",
             "items": {
@@ -188,6 +194,9 @@
         },
         "max_fleet_count": {
             "type": "integer"
+        },
+        "max_fleet_supply_scalar": {
+            "type": "number"
         },
         "max_research_points_overflow": {
             "type": "number"
@@ -347,6 +356,7 @@
     "required": [
         "auto_upgrade_planet_track_price_threshold_multiplier",
         "colonization_victory_planet_count_percentage",
+        "dlc_only_pickable_players",
         "dominant_culture_influence_points_gained_duration",
         "fallback_theme_picker_skybox",
         "fleet_factory_rally_hyperspace_charge_time",
@@ -355,6 +365,7 @@
         "fleet_factory_rally_subspace_speed",
         "marginal_tax_rate_levels",
         "max_fleet_count",
+        "max_fleet_supply_scalar",
         "max_research_points_overflow",
         "max_research_rate_scalar",
         "npc_players_with_reputation",
