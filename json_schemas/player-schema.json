@@ -281,7 +281,43 @@
                                         },
                                         "unevaluatedProperties": false
                                     },
+                                    "bonus_max_mana": {
+                                        "type": "object",
+                                        "properties": {
+                                            "additive": {
+                                                "type": "number"
+                                            },
+                                            "scalar": {
+                                                "type": "number"
+                                            }
+                                        },
+                                        "unevaluatedProperties": false
+                                    },
+                                    "bonus_max_mana_per_population": {
+                                        "type": "object",
+                                        "properties": {
+                                            "additive": {
+                                                "type": "number"
+                                            },
+                                            "scalar": {
+                                                "type": "number"
+                                            }
+                                        },
+                                        "unevaluatedProperties": false
+                                    },
                                     "civilian_research_points": {
+                                        "type": "object",
+                                        "properties": {
+                                            "additive": {
+                                                "type": "number"
+                                            },
+                                            "scalar": {
+                                                "type": "number"
+                                            }
+                                        },
+                                        "unevaluatedProperties": false
+                                    },
+                                    "civilian_research_points_per_population": {
                                         "type": "object",
                                         "properties": {
                                             "additive": {
@@ -461,6 +497,30 @@
                                         },
                                         "unevaluatedProperties": false
                                     },
+                                    "focus_track_build_price": {
+                                        "type": "object",
+                                        "properties": {
+                                            "additive": {
+                                                "type": "number"
+                                            },
+                                            "scalar": {
+                                                "type": "number"
+                                            }
+                                        },
+                                        "unevaluatedProperties": false
+                                    },
+                                    "focus_track_build_time": {
+                                        "type": "object",
+                                        "properties": {
+                                            "additive": {
+                                                "type": "number"
+                                            },
+                                            "scalar": {
+                                                "type": "number"
+                                            }
+                                        },
+                                        "unevaluatedProperties": false
+                                    },
                                     "gravity_well_radius": {
                                         "type": "object",
                                         "properties": {
@@ -498,6 +558,30 @@
                                         "unevaluatedProperties": false
                                     },
                                     "logistics_track_build_time": {
+                                        "type": "object",
+                                        "properties": {
+                                            "additive": {
+                                                "type": "number"
+                                            },
+                                            "scalar": {
+                                                "type": "number"
+                                            }
+                                        },
+                                        "unevaluatedProperties": false
+                                    },
+                                    "mana_restore_rate": {
+                                        "type": "object",
+                                        "properties": {
+                                            "additive": {
+                                                "type": "number"
+                                            },
+                                            "scalar": {
+                                                "type": "number"
+                                            }
+                                        },
+                                        "unevaluatedProperties": false
+                                    },
+                                    "mana_restore_rate_per_population": {
                                         "type": "object",
                                         "properties": {
                                             "additive": {
@@ -618,6 +702,18 @@
                                         "unevaluatedProperties": false
                                     },
                                     "military_research_points": {
+                                        "type": "object",
+                                        "properties": {
+                                            "additive": {
+                                                "type": "number"
+                                            },
+                                            "scalar": {
+                                                "type": "number"
+                                            }
+                                        },
+                                        "unevaluatedProperties": false
+                                    },
+                                    "military_research_points_per_population": {
                                         "type": "object",
                                         "properties": {
                                             "additive": {
@@ -762,6 +858,30 @@
                                         "unevaluatedProperties": false
                                     },
                                     "planet_component_price": {
+                                        "type": "object",
+                                        "properties": {
+                                            "additive": {
+                                                "type": "number"
+                                            },
+                                            "scalar": {
+                                                "type": "number"
+                                            }
+                                        },
+                                        "unevaluatedProperties": false
+                                    },
+                                    "planet_shield_burst_cooldown": {
+                                        "type": "object",
+                                        "properties": {
+                                            "additive": {
+                                                "type": "number"
+                                            },
+                                            "scalar": {
+                                                "type": "number"
+                                            }
+                                        },
+                                        "unevaluatedProperties": false
+                                    },
+                                    "planet_shield_burst_restore": {
                                         "type": "object",
                                         "properties": {
                                             "additive": {
@@ -932,6 +1052,10 @@
                             "type": "integer",
                             "minimum": 0
                         },
+                        "focus": {
+                            "type": "integer",
+                            "minimum": 0
+                        },
                         "logistics": {
                             "type": "integer",
                             "minimum": 0
@@ -1074,8 +1198,17 @@
                         "commerce": {
                             "type": "object",
                             "properties": {
+                                "bonus_max_mana": {
+                                    "type": "number"
+                                },
+                                "bonus_max_mana_per_population": {
+                                    "type": "number"
+                                },
                                 "civilian_research_points": {
                                     "type": "integer"
+                                },
+                                "civilian_research_points_per_population": {
+                                    "type": "number"
                                 },
                                 "civilian_research_rate_per_population_scalar": {
                                     "type": "number"
@@ -1098,6 +1231,12 @@
                                 "health_points_restore_rate": {
                                     "type": "number"
                                 },
+                                "mana_restore_rate": {
+                                    "type": "number"
+                                },
+                                "mana_restore_rate_per_population": {
+                                    "type": "number"
+                                },
                                 "max_civilian_structure_slots": {
                                     "type": "integer"
                                 },
@@ -1116,6 +1255,9 @@
                                 "max_shield_points": {
                                     "type": "number"
                                 },
+                                "max_unity_provider_count": {
+                                    "type": "integer"
+                                },
                                 "metal_income_rate": {
                                     "type": "number"
                                 },
@@ -1124,6 +1266,9 @@
                                 },
                                 "military_research_points": {
                                     "type": "integer"
+                                },
+                                "military_research_points_per_population": {
+                                    "type": "number"
                                 },
                                 "military_research_rate_per_population_scalar": {
                                     "type": "number"
@@ -1152,8 +1297,17 @@
                         "defense": {
                             "type": "object",
                             "properties": {
+                                "bonus_max_mana": {
+                                    "type": "number"
+                                },
+                                "bonus_max_mana_per_population": {
+                                    "type": "number"
+                                },
                                 "civilian_research_points": {
                                     "type": "integer"
+                                },
+                                "civilian_research_points_per_population": {
+                                    "type": "number"
                                 },
                                 "civilian_research_rate_per_population_scalar": {
                                     "type": "number"
@@ -1176,6 +1330,12 @@
                                 "health_points_restore_rate": {
                                     "type": "number"
                                 },
+                                "mana_restore_rate": {
+                                    "type": "number"
+                                },
+                                "mana_restore_rate_per_population": {
+                                    "type": "number"
+                                },
                                 "max_civilian_structure_slots": {
                                     "type": "integer"
                                 },
@@ -1194,6 +1354,9 @@
                                 "max_shield_points": {
                                     "type": "number"
                                 },
+                                "max_unity_provider_count": {
+                                    "type": "integer"
+                                },
                                 "metal_income_rate": {
                                     "type": "number"
                                 },
@@ -1202,6 +1365,108 @@
                                 },
                                 "military_research_points": {
                                     "type": "integer"
+                                },
+                                "military_research_points_per_population": {
+                                    "type": "number"
+                                },
+                                "military_research_rate_per_population_scalar": {
+                                    "type": "number"
+                                },
+                                "military_research_rate_scalar": {
+                                    "type": "number"
+                                },
+                                "mutation": {
+                                    "$ref": "#/$defs/unit_mutation_name"
+                                },
+                                "prerequisites": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/$defs/prerequisites"
+                                    }
+                                },
+                                "shield_points_restore_rate": {
+                                    "type": "number"
+                                },
+                                "structure_builder_count": {
+                                    "type": "integer"
+                                }
+                            },
+                            "unevaluatedProperties": false
+                        },
+                        "focus": {
+                            "type": "object",
+                            "properties": {
+                                "bonus_max_mana": {
+                                    "type": "number"
+                                },
+                                "bonus_max_mana_per_population": {
+                                    "type": "number"
+                                },
+                                "civilian_research_points": {
+                                    "type": "integer"
+                                },
+                                "civilian_research_points_per_population": {
+                                    "type": "number"
+                                },
+                                "civilian_research_rate_per_population_scalar": {
+                                    "type": "number"
+                                },
+                                "civilian_research_rate_scalar": {
+                                    "type": "number"
+                                },
+                                "credits_income_rate": {
+                                    "type": "number"
+                                },
+                                "credits_income_rate_per_population": {
+                                    "type": "number"
+                                },
+                                "crystal_income_rate": {
+                                    "type": "number"
+                                },
+                                "crystal_income_rate_per_population": {
+                                    "type": "number"
+                                },
+                                "health_points_restore_rate": {
+                                    "type": "number"
+                                },
+                                "mana_restore_rate": {
+                                    "type": "number"
+                                },
+                                "mana_restore_rate_per_population": {
+                                    "type": "number"
+                                },
+                                "max_civilian_structure_slots": {
+                                    "type": "integer"
+                                },
+                                "max_health_points": {
+                                    "type": "number"
+                                },
+                                "max_military_structure_slots": {
+                                    "type": "integer"
+                                },
+                                "max_planet_component_slots": {
+                                    "type": "integer"
+                                },
+                                "max_population_points": {
+                                    "type": "number"
+                                },
+                                "max_shield_points": {
+                                    "type": "number"
+                                },
+                                "max_unity_provider_count": {
+                                    "type": "integer"
+                                },
+                                "metal_income_rate": {
+                                    "type": "number"
+                                },
+                                "metal_income_rate_per_population": {
+                                    "type": "number"
+                                },
+                                "military_research_points": {
+                                    "type": "integer"
+                                },
+                                "military_research_points_per_population": {
+                                    "type": "number"
                                 },
                                 "military_research_rate_per_population_scalar": {
                                     "type": "number"
@@ -1230,8 +1495,17 @@
                         "logistics": {
                             "type": "object",
                             "properties": {
+                                "bonus_max_mana": {
+                                    "type": "number"
+                                },
+                                "bonus_max_mana_per_population": {
+                                    "type": "number"
+                                },
                                 "civilian_research_points": {
                                     "type": "integer"
+                                },
+                                "civilian_research_points_per_population": {
+                                    "type": "number"
                                 },
                                 "civilian_research_rate_per_population_scalar": {
                                     "type": "number"
@@ -1254,6 +1528,12 @@
                                 "health_points_restore_rate": {
                                     "type": "number"
                                 },
+                                "mana_restore_rate": {
+                                    "type": "number"
+                                },
+                                "mana_restore_rate_per_population": {
+                                    "type": "number"
+                                },
                                 "max_civilian_structure_slots": {
                                     "type": "integer"
                                 },
@@ -1272,6 +1552,9 @@
                                 "max_shield_points": {
                                     "type": "number"
                                 },
+                                "max_unity_provider_count": {
+                                    "type": "integer"
+                                },
                                 "metal_income_rate": {
                                     "type": "number"
                                 },
@@ -1280,6 +1563,9 @@
                                 },
                                 "military_research_points": {
                                     "type": "integer"
+                                },
+                                "military_research_points_per_population": {
+                                    "type": "number"
                                 },
                                 "military_research_rate_per_population_scalar": {
                                     "type": "number"
@@ -1308,8 +1594,17 @@
                         "mining": {
                             "type": "object",
                             "properties": {
+                                "bonus_max_mana": {
+                                    "type": "number"
+                                },
+                                "bonus_max_mana_per_population": {
+                                    "type": "number"
+                                },
                                 "civilian_research_points": {
                                     "type": "integer"
+                                },
+                                "civilian_research_points_per_population": {
+                                    "type": "number"
                                 },
                                 "civilian_research_rate_per_population_scalar": {
                                     "type": "number"
@@ -1332,6 +1627,12 @@
                                 "health_points_restore_rate": {
                                     "type": "number"
                                 },
+                                "mana_restore_rate": {
+                                    "type": "number"
+                                },
+                                "mana_restore_rate_per_population": {
+                                    "type": "number"
+                                },
                                 "max_civilian_structure_slots": {
                                     "type": "integer"
                                 },
@@ -1350,6 +1651,9 @@
                                 "max_shield_points": {
                                     "type": "number"
                                 },
+                                "max_unity_provider_count": {
+                                    "type": "integer"
+                                },
                                 "metal_income_rate": {
                                     "type": "number"
                                 },
@@ -1358,6 +1662,9 @@
                                 },
                                 "military_research_points": {
                                     "type": "integer"
+                                },
+                                "military_research_points_per_population": {
+                                    "type": "number"
                                 },
                                 "military_research_rate_per_population_scalar": {
                                     "type": "number"
@@ -1386,8 +1693,17 @@
                         "research": {
                             "type": "object",
                             "properties": {
+                                "bonus_max_mana": {
+                                    "type": "number"
+                                },
+                                "bonus_max_mana_per_population": {
+                                    "type": "number"
+                                },
                                 "civilian_research_points": {
                                     "type": "integer"
+                                },
+                                "civilian_research_points_per_population": {
+                                    "type": "number"
                                 },
                                 "civilian_research_rate_per_population_scalar": {
                                     "type": "number"
@@ -1410,6 +1726,12 @@
                                 "health_points_restore_rate": {
                                     "type": "number"
                                 },
+                                "mana_restore_rate": {
+                                    "type": "number"
+                                },
+                                "mana_restore_rate_per_population": {
+                                    "type": "number"
+                                },
                                 "max_civilian_structure_slots": {
                                     "type": "integer"
                                 },
@@ -1428,6 +1750,9 @@
                                 "max_shield_points": {
                                     "type": "number"
                                 },
+                                "max_unity_provider_count": {
+                                    "type": "integer"
+                                },
                                 "metal_income_rate": {
                                     "type": "number"
                                 },
@@ -1436,6 +1761,9 @@
                                 },
                                 "military_research_points": {
                                     "type": "integer"
+                                },
+                                "military_research_points_per_population": {
+                                    "type": "number"
                                 },
                                 "military_research_rate_per_population_scalar": {
                                     "type": "number"
@@ -1464,8 +1792,17 @@
                         "surveying": {
                             "type": "object",
                             "properties": {
+                                "bonus_max_mana": {
+                                    "type": "number"
+                                },
+                                "bonus_max_mana_per_population": {
+                                    "type": "number"
+                                },
                                 "civilian_research_points": {
                                     "type": "integer"
+                                },
+                                "civilian_research_points_per_population": {
+                                    "type": "number"
                                 },
                                 "civilian_research_rate_per_population_scalar": {
                                     "type": "number"
@@ -1488,6 +1825,12 @@
                                 "health_points_restore_rate": {
                                     "type": "number"
                                 },
+                                "mana_restore_rate": {
+                                    "type": "number"
+                                },
+                                "mana_restore_rate_per_population": {
+                                    "type": "number"
+                                },
                                 "max_civilian_structure_slots": {
                                     "type": "integer"
                                 },
@@ -1506,6 +1849,9 @@
                                 "max_shield_points": {
                                     "type": "number"
                                 },
+                                "max_unity_provider_count": {
+                                    "type": "integer"
+                                },
                                 "metal_income_rate": {
                                     "type": "number"
                                 },
@@ -1514,6 +1860,9 @@
                                 },
                                 "military_research_points": {
                                     "type": "integer"
+                                },
+                                "military_research_points_per_population": {
+                                    "type": "number"
                                 },
                                 "military_research_rate_per_population_scalar": {
                                     "type": "number"
@@ -2893,7 +3242,13 @@
                 "research_points_name": {
                     "$ref": "#/$defs/localized_text_ptr"
                 },
+                "research_points_per_population_name": {
+                    "$ref": "#/$defs/localized_text_ptr"
+                },
                 "research_rate_name": {
+                    "$ref": "#/$defs/localized_text_ptr"
+                },
+                "research_rate_per_population_name": {
                     "$ref": "#/$defs/localized_text_ptr"
                 },
                 "research_tiers": {
@@ -2944,7 +3299,9 @@
                 "partial_name",
                 "research_fields",
                 "research_points_name",
+                "research_points_per_population_name",
                 "research_rate_name",
+                "research_rate_per_population_name",
                 "research_tiers"
             ],
             "unevaluatedProperties": false
@@ -3108,8 +3465,17 @@
                     "items": {
                         "type": "object",
                         "properties": {
+                            "bonus_max_mana": {
+                                "type": "number"
+                            },
+                            "bonus_max_mana_per_population": {
+                                "type": "number"
+                            },
                             "civilian_research_points": {
                                 "type": "integer"
+                            },
+                            "civilian_research_points_per_population": {
+                                "type": "number"
                             },
                             "civilian_research_rate_per_population_scalar": {
                                 "type": "number"
@@ -3132,6 +3498,12 @@
                             "health_points_restore_rate": {
                                 "type": "number"
                             },
+                            "mana_restore_rate": {
+                                "type": "number"
+                            },
+                            "mana_restore_rate_per_population": {
+                                "type": "number"
+                            },
                             "max_civilian_structure_slots": {
                                 "type": "integer"
                             },
@@ -3150,6 +3522,9 @@
                             "max_shield_points": {
                                 "type": "number"
                             },
+                            "max_unity_provider_count": {
+                                "type": "integer"
+                            },
                             "metal_income_rate": {
                                 "type": "number"
                             },
@@ -3158,6 +3533,9 @@
                             },
                             "military_research_points": {
                                 "type": "integer"
+                            },
+                            "military_research_points_per_population": {
+                                "type": "number"
                             },
                             "military_research_rate_per_population_scalar": {
                                 "type": "number"
@@ -3189,8 +3567,17 @@
                     "items": {
                         "type": "object",
                         "properties": {
+                            "bonus_max_mana": {
+                                "type": "number"
+                            },
+                            "bonus_max_mana_per_population": {
+                                "type": "number"
+                            },
                             "civilian_research_points": {
                                 "type": "integer"
+                            },
+                            "civilian_research_points_per_population": {
+                                "type": "number"
                             },
                             "civilian_research_rate_per_population_scalar": {
                                 "type": "number"
@@ -3213,6 +3600,12 @@
                             "health_points_restore_rate": {
                                 "type": "number"
                             },
+                            "mana_restore_rate": {
+                                "type": "number"
+                            },
+                            "mana_restore_rate_per_population": {
+                                "type": "number"
+                            },
                             "max_civilian_structure_slots": {
                                 "type": "integer"
                             },
@@ -3231,6 +3624,9 @@
                             "max_shield_points": {
                                 "type": "number"
                             },
+                            "max_unity_provider_count": {
+                                "type": "integer"
+                            },
                             "metal_income_rate": {
                                 "type": "number"
                             },
@@ -3239,6 +3635,111 @@
                             },
                             "military_research_points": {
                                 "type": "integer"
+                            },
+                            "military_research_points_per_population": {
+                                "type": "number"
+                            },
+                            "military_research_rate_per_population_scalar": {
+                                "type": "number"
+                            },
+                            "military_research_rate_scalar": {
+                                "type": "number"
+                            },
+                            "mutation": {
+                                "$ref": "#/$defs/unit_mutation_name"
+                            },
+                            "prerequisites": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/$defs/prerequisites"
+                                }
+                            },
+                            "shield_points_restore_rate": {
+                                "type": "number"
+                            },
+                            "structure_builder_count": {
+                                "type": "integer"
+                            }
+                        },
+                        "unevaluatedProperties": false
+                    }
+                },
+                "focus": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "bonus_max_mana": {
+                                "type": "number"
+                            },
+                            "bonus_max_mana_per_population": {
+                                "type": "number"
+                            },
+                            "civilian_research_points": {
+                                "type": "integer"
+                            },
+                            "civilian_research_points_per_population": {
+                                "type": "number"
+                            },
+                            "civilian_research_rate_per_population_scalar": {
+                                "type": "number"
+                            },
+                            "civilian_research_rate_scalar": {
+                                "type": "number"
+                            },
+                            "credits_income_rate": {
+                                "type": "number"
+                            },
+                            "credits_income_rate_per_population": {
+                                "type": "number"
+                            },
+                            "crystal_income_rate": {
+                                "type": "number"
+                            },
+                            "crystal_income_rate_per_population": {
+                                "type": "number"
+                            },
+                            "health_points_restore_rate": {
+                                "type": "number"
+                            },
+                            "mana_restore_rate": {
+                                "type": "number"
+                            },
+                            "mana_restore_rate_per_population": {
+                                "type": "number"
+                            },
+                            "max_civilian_structure_slots": {
+                                "type": "integer"
+                            },
+                            "max_health_points": {
+                                "type": "number"
+                            },
+                            "max_military_structure_slots": {
+                                "type": "integer"
+                            },
+                            "max_planet_component_slots": {
+                                "type": "integer"
+                            },
+                            "max_population_points": {
+                                "type": "number"
+                            },
+                            "max_shield_points": {
+                                "type": "number"
+                            },
+                            "max_unity_provider_count": {
+                                "type": "integer"
+                            },
+                            "metal_income_rate": {
+                                "type": "number"
+                            },
+                            "metal_income_rate_per_population": {
+                                "type": "number"
+                            },
+                            "military_research_points": {
+                                "type": "integer"
+                            },
+                            "military_research_points_per_population": {
+                                "type": "number"
                             },
                             "military_research_rate_per_population_scalar": {
                                 "type": "number"
@@ -3270,8 +3771,17 @@
                     "items": {
                         "type": "object",
                         "properties": {
+                            "bonus_max_mana": {
+                                "type": "number"
+                            },
+                            "bonus_max_mana_per_population": {
+                                "type": "number"
+                            },
                             "civilian_research_points": {
                                 "type": "integer"
+                            },
+                            "civilian_research_points_per_population": {
+                                "type": "number"
                             },
                             "civilian_research_rate_per_population_scalar": {
                                 "type": "number"
@@ -3294,6 +3804,12 @@
                             "health_points_restore_rate": {
                                 "type": "number"
                             },
+                            "mana_restore_rate": {
+                                "type": "number"
+                            },
+                            "mana_restore_rate_per_population": {
+                                "type": "number"
+                            },
                             "max_civilian_structure_slots": {
                                 "type": "integer"
                             },
@@ -3312,6 +3828,9 @@
                             "max_shield_points": {
                                 "type": "number"
                             },
+                            "max_unity_provider_count": {
+                                "type": "integer"
+                            },
                             "metal_income_rate": {
                                 "type": "number"
                             },
@@ -3320,6 +3839,9 @@
                             },
                             "military_research_points": {
                                 "type": "integer"
+                            },
+                            "military_research_points_per_population": {
+                                "type": "number"
                             },
                             "military_research_rate_per_population_scalar": {
                                 "type": "number"
@@ -3351,8 +3873,17 @@
                     "items": {
                         "type": "object",
                         "properties": {
+                            "bonus_max_mana": {
+                                "type": "number"
+                            },
+                            "bonus_max_mana_per_population": {
+                                "type": "number"
+                            },
                             "civilian_research_points": {
                                 "type": "integer"
+                            },
+                            "civilian_research_points_per_population": {
+                                "type": "number"
                             },
                             "civilian_research_rate_per_population_scalar": {
                                 "type": "number"
@@ -3375,6 +3906,12 @@
                             "health_points_restore_rate": {
                                 "type": "number"
                             },
+                            "mana_restore_rate": {
+                                "type": "number"
+                            },
+                            "mana_restore_rate_per_population": {
+                                "type": "number"
+                            },
                             "max_civilian_structure_slots": {
                                 "type": "integer"
                             },
@@ -3393,6 +3930,9 @@
                             "max_shield_points": {
                                 "type": "number"
                             },
+                            "max_unity_provider_count": {
+                                "type": "integer"
+                            },
                             "metal_income_rate": {
                                 "type": "number"
                             },
@@ -3401,6 +3941,9 @@
                             },
                             "military_research_points": {
                                 "type": "integer"
+                            },
+                            "military_research_points_per_population": {
+                                "type": "number"
                             },
                             "military_research_rate_per_population_scalar": {
                                 "type": "number"
@@ -3432,8 +3975,17 @@
                     "items": {
                         "type": "object",
                         "properties": {
+                            "bonus_max_mana": {
+                                "type": "number"
+                            },
+                            "bonus_max_mana_per_population": {
+                                "type": "number"
+                            },
                             "civilian_research_points": {
                                 "type": "integer"
+                            },
+                            "civilian_research_points_per_population": {
+                                "type": "number"
                             },
                             "civilian_research_rate_per_population_scalar": {
                                 "type": "number"
@@ -3456,6 +4008,12 @@
                             "health_points_restore_rate": {
                                 "type": "number"
                             },
+                            "mana_restore_rate": {
+                                "type": "number"
+                            },
+                            "mana_restore_rate_per_population": {
+                                "type": "number"
+                            },
                             "max_civilian_structure_slots": {
                                 "type": "integer"
                             },
@@ -3474,6 +4032,9 @@
                             "max_shield_points": {
                                 "type": "number"
                             },
+                            "max_unity_provider_count": {
+                                "type": "integer"
+                            },
                             "metal_income_rate": {
                                 "type": "number"
                             },
@@ -3482,6 +4043,9 @@
                             },
                             "military_research_points": {
                                 "type": "integer"
+                            },
+                            "military_research_points_per_population": {
+                                "type": "number"
                             },
                             "military_research_rate_per_population_scalar": {
                                 "type": "number"
@@ -3513,8 +4077,17 @@
                     "items": {
                         "type": "object",
                         "properties": {
+                            "bonus_max_mana": {
+                                "type": "number"
+                            },
+                            "bonus_max_mana_per_population": {
+                                "type": "number"
+                            },
                             "civilian_research_points": {
                                 "type": "integer"
+                            },
+                            "civilian_research_points_per_population": {
+                                "type": "number"
                             },
                             "civilian_research_rate_per_population_scalar": {
                                 "type": "number"
@@ -3537,6 +4110,12 @@
                             "health_points_restore_rate": {
                                 "type": "number"
                             },
+                            "mana_restore_rate": {
+                                "type": "number"
+                            },
+                            "mana_restore_rate_per_population": {
+                                "type": "number"
+                            },
                             "max_civilian_structure_slots": {
                                 "type": "integer"
                             },
@@ -3555,6 +4134,9 @@
                             "max_shield_points": {
                                 "type": "number"
                             },
+                            "max_unity_provider_count": {
+                                "type": "integer"
+                            },
                             "metal_income_rate": {
                                 "type": "number"
                             },
@@ -3563,6 +4145,9 @@
                             },
                             "military_research_points": {
                                 "type": "integer"
+                            },
+                            "military_research_points_per_population": {
+                                "type": "number"
                             },
                             "military_research_rate_per_population_scalar": {
                                 "type": "number"
@@ -3858,6 +4443,8 @@
                                     "orbital_extraction_crystal_income_rate",
                                     "civilian_research_points",
                                     "military_research_points",
+                                    "civilian_research_points_per_population",
+                                    "military_research_points_per_population",
                                     "civilian_research_rate",
                                     "military_research_rate",
                                     "civilian_research_rate_per_population",
@@ -3869,6 +4456,8 @@
                                     "health_points_restore_rate",
                                     "max_shield_points",
                                     "shield_points_restore_rate",
+                                    "planet_shield_burst_restore",
+                                    "planet_shield_burst_cooldown",
                                     "max_population_points",
                                     "population_growth_rate",
                                     "max_allied_population_factor",
@@ -3889,6 +4478,8 @@
                                     "mining_track_build_time",
                                     "research_track_build_price",
                                     "research_track_build_time",
+                                    "focus_track_build_price",
+                                    "focus_track_build_time",
                                     "surveying_track_build_price",
                                     "surveying_track_build_time",
                                     "structure_build_price",
@@ -3900,7 +4491,11 @@
                                     "bombing_population_damage_taken",
                                     "planet_component_price",
                                     "max_planet_component_slots",
-                                    "max_influence_points"
+                                    "max_influence_points",
+                                    "mana_restore_rate",
+                                    "bonus_max_mana",
+                                    "mana_restore_rate_per_population",
+                                    "bonus_max_mana_per_population"
                                 ]
                             },
                             "planet_types": {
@@ -4307,6 +4902,8 @@
                         "orbital_extraction_crystal_income_rate",
                         "civilian_research_points",
                         "military_research_points",
+                        "civilian_research_points_per_population",
+                        "military_research_points_per_population",
                         "civilian_research_rate",
                         "military_research_rate",
                         "civilian_research_rate_per_population",
@@ -4318,6 +4915,8 @@
                         "health_points_restore_rate",
                         "max_shield_points",
                         "shield_points_restore_rate",
+                        "planet_shield_burst_restore",
+                        "planet_shield_burst_cooldown",
                         "max_population_points",
                         "population_growth_rate",
                         "max_allied_population_factor",
@@ -4338,6 +4937,8 @@
                         "mining_track_build_time",
                         "research_track_build_price",
                         "research_track_build_time",
+                        "focus_track_build_price",
+                        "focus_track_build_time",
                         "surveying_track_build_price",
                         "surveying_track_build_time",
                         "structure_build_price",
@@ -4349,7 +4950,11 @@
                         "bombing_population_damage_taken",
                         "planet_component_price",
                         "max_planet_component_slots",
-                        "max_influence_points"
+                        "max_influence_points",
+                        "mana_restore_rate",
+                        "bonus_max_mana",
+                        "mana_restore_rate_per_population",
+                        "bonus_max_mana_per_population"
                     ]
                 },
                 "value_behavior": {
@@ -4917,6 +5522,15 @@
                 "load_screen_character_brush": {
                     "$ref": "#/$defs/brush_ptr"
                 },
+                "mission_notification_icon": {
+                    "$ref": "#/$defs/brush_ptr"
+                },
+                "mission_notification_sound_override": {
+                    "type": "string"
+                },
+                "mission_tooltip_notification_icon": {
+                    "$ref": "#/$defs/brush_ptr"
+                },
                 "no_credit_income_description": {
                     "$ref": "#/$defs/localized_text_ptr"
                 },
@@ -4967,6 +5581,7 @@
                         "commerce",
                         "mining",
                         "research",
+                        "focus",
                         "surveying"
                     ]
                 }
@@ -5042,8 +5657,17 @@
                                         "items": {
                                             "type": "object",
                                             "properties": {
+                                                "bonus_max_mana": {
+                                                    "type": "number"
+                                                },
+                                                "bonus_max_mana_per_population": {
+                                                    "type": "number"
+                                                },
                                                 "civilian_research_points": {
                                                     "type": "integer"
+                                                },
+                                                "civilian_research_points_per_population": {
+                                                    "type": "number"
                                                 },
                                                 "civilian_research_rate_per_population_scalar": {
                                                     "type": "number"
@@ -5066,6 +5690,12 @@
                                                 "health_points_restore_rate": {
                                                     "type": "number"
                                                 },
+                                                "mana_restore_rate": {
+                                                    "type": "number"
+                                                },
+                                                "mana_restore_rate_per_population": {
+                                                    "type": "number"
+                                                },
                                                 "max_civilian_structure_slots": {
                                                     "type": "integer"
                                                 },
@@ -5084,6 +5714,9 @@
                                                 "max_shield_points": {
                                                     "type": "number"
                                                 },
+                                                "max_unity_provider_count": {
+                                                    "type": "integer"
+                                                },
                                                 "metal_income_rate": {
                                                     "type": "number"
                                                 },
@@ -5092,6 +5725,9 @@
                                                 },
                                                 "military_research_points": {
                                                     "type": "integer"
+                                                },
+                                                "military_research_points_per_population": {
+                                                    "type": "number"
                                                 },
                                                 "military_research_rate_per_population_scalar": {
                                                     "type": "number"
@@ -5123,8 +5759,17 @@
                                         "items": {
                                             "type": "object",
                                             "properties": {
+                                                "bonus_max_mana": {
+                                                    "type": "number"
+                                                },
+                                                "bonus_max_mana_per_population": {
+                                                    "type": "number"
+                                                },
                                                 "civilian_research_points": {
                                                     "type": "integer"
+                                                },
+                                                "civilian_research_points_per_population": {
+                                                    "type": "number"
                                                 },
                                                 "civilian_research_rate_per_population_scalar": {
                                                     "type": "number"
@@ -5147,6 +5792,12 @@
                                                 "health_points_restore_rate": {
                                                     "type": "number"
                                                 },
+                                                "mana_restore_rate": {
+                                                    "type": "number"
+                                                },
+                                                "mana_restore_rate_per_population": {
+                                                    "type": "number"
+                                                },
                                                 "max_civilian_structure_slots": {
                                                     "type": "integer"
                                                 },
@@ -5165,6 +5816,9 @@
                                                 "max_shield_points": {
                                                     "type": "number"
                                                 },
+                                                "max_unity_provider_count": {
+                                                    "type": "integer"
+                                                },
                                                 "metal_income_rate": {
                                                     "type": "number"
                                                 },
@@ -5173,6 +5827,111 @@
                                                 },
                                                 "military_research_points": {
                                                     "type": "integer"
+                                                },
+                                                "military_research_points_per_population": {
+                                                    "type": "number"
+                                                },
+                                                "military_research_rate_per_population_scalar": {
+                                                    "type": "number"
+                                                },
+                                                "military_research_rate_scalar": {
+                                                    "type": "number"
+                                                },
+                                                "mutation": {
+                                                    "$ref": "#/$defs/unit_mutation_name"
+                                                },
+                                                "prerequisites": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "$ref": "#/$defs/prerequisites"
+                                                    }
+                                                },
+                                                "shield_points_restore_rate": {
+                                                    "type": "number"
+                                                },
+                                                "structure_builder_count": {
+                                                    "type": "integer"
+                                                }
+                                            },
+                                            "unevaluatedProperties": false
+                                        }
+                                    },
+                                    "focus": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "bonus_max_mana": {
+                                                    "type": "number"
+                                                },
+                                                "bonus_max_mana_per_population": {
+                                                    "type": "number"
+                                                },
+                                                "civilian_research_points": {
+                                                    "type": "integer"
+                                                },
+                                                "civilian_research_points_per_population": {
+                                                    "type": "number"
+                                                },
+                                                "civilian_research_rate_per_population_scalar": {
+                                                    "type": "number"
+                                                },
+                                                "civilian_research_rate_scalar": {
+                                                    "type": "number"
+                                                },
+                                                "credits_income_rate": {
+                                                    "type": "number"
+                                                },
+                                                "credits_income_rate_per_population": {
+                                                    "type": "number"
+                                                },
+                                                "crystal_income_rate": {
+                                                    "type": "number"
+                                                },
+                                                "crystal_income_rate_per_population": {
+                                                    "type": "number"
+                                                },
+                                                "health_points_restore_rate": {
+                                                    "type": "number"
+                                                },
+                                                "mana_restore_rate": {
+                                                    "type": "number"
+                                                },
+                                                "mana_restore_rate_per_population": {
+                                                    "type": "number"
+                                                },
+                                                "max_civilian_structure_slots": {
+                                                    "type": "integer"
+                                                },
+                                                "max_health_points": {
+                                                    "type": "number"
+                                                },
+                                                "max_military_structure_slots": {
+                                                    "type": "integer"
+                                                },
+                                                "max_planet_component_slots": {
+                                                    "type": "integer"
+                                                },
+                                                "max_population_points": {
+                                                    "type": "number"
+                                                },
+                                                "max_shield_points": {
+                                                    "type": "number"
+                                                },
+                                                "max_unity_provider_count": {
+                                                    "type": "integer"
+                                                },
+                                                "metal_income_rate": {
+                                                    "type": "number"
+                                                },
+                                                "metal_income_rate_per_population": {
+                                                    "type": "number"
+                                                },
+                                                "military_research_points": {
+                                                    "type": "integer"
+                                                },
+                                                "military_research_points_per_population": {
+                                                    "type": "number"
                                                 },
                                                 "military_research_rate_per_population_scalar": {
                                                     "type": "number"
@@ -5204,8 +5963,17 @@
                                         "items": {
                                             "type": "object",
                                             "properties": {
+                                                "bonus_max_mana": {
+                                                    "type": "number"
+                                                },
+                                                "bonus_max_mana_per_population": {
+                                                    "type": "number"
+                                                },
                                                 "civilian_research_points": {
                                                     "type": "integer"
+                                                },
+                                                "civilian_research_points_per_population": {
+                                                    "type": "number"
                                                 },
                                                 "civilian_research_rate_per_population_scalar": {
                                                     "type": "number"
@@ -5228,6 +5996,12 @@
                                                 "health_points_restore_rate": {
                                                     "type": "number"
                                                 },
+                                                "mana_restore_rate": {
+                                                    "type": "number"
+                                                },
+                                                "mana_restore_rate_per_population": {
+                                                    "type": "number"
+                                                },
                                                 "max_civilian_structure_slots": {
                                                     "type": "integer"
                                                 },
@@ -5246,6 +6020,9 @@
                                                 "max_shield_points": {
                                                     "type": "number"
                                                 },
+                                                "max_unity_provider_count": {
+                                                    "type": "integer"
+                                                },
                                                 "metal_income_rate": {
                                                     "type": "number"
                                                 },
@@ -5254,6 +6031,9 @@
                                                 },
                                                 "military_research_points": {
                                                     "type": "integer"
+                                                },
+                                                "military_research_points_per_population": {
+                                                    "type": "number"
                                                 },
                                                 "military_research_rate_per_population_scalar": {
                                                     "type": "number"
@@ -5285,8 +6065,17 @@
                                         "items": {
                                             "type": "object",
                                             "properties": {
+                                                "bonus_max_mana": {
+                                                    "type": "number"
+                                                },
+                                                "bonus_max_mana_per_population": {
+                                                    "type": "number"
+                                                },
                                                 "civilian_research_points": {
                                                     "type": "integer"
+                                                },
+                                                "civilian_research_points_per_population": {
+                                                    "type": "number"
                                                 },
                                                 "civilian_research_rate_per_population_scalar": {
                                                     "type": "number"
@@ -5309,6 +6098,12 @@
                                                 "health_points_restore_rate": {
                                                     "type": "number"
                                                 },
+                                                "mana_restore_rate": {
+                                                    "type": "number"
+                                                },
+                                                "mana_restore_rate_per_population": {
+                                                    "type": "number"
+                                                },
                                                 "max_civilian_structure_slots": {
                                                     "type": "integer"
                                                 },
@@ -5327,6 +6122,9 @@
                                                 "max_shield_points": {
                                                     "type": "number"
                                                 },
+                                                "max_unity_provider_count": {
+                                                    "type": "integer"
+                                                },
                                                 "metal_income_rate": {
                                                     "type": "number"
                                                 },
@@ -5335,6 +6133,9 @@
                                                 },
                                                 "military_research_points": {
                                                     "type": "integer"
+                                                },
+                                                "military_research_points_per_population": {
+                                                    "type": "number"
                                                 },
                                                 "military_research_rate_per_population_scalar": {
                                                     "type": "number"
@@ -5366,8 +6167,17 @@
                                         "items": {
                                             "type": "object",
                                             "properties": {
+                                                "bonus_max_mana": {
+                                                    "type": "number"
+                                                },
+                                                "bonus_max_mana_per_population": {
+                                                    "type": "number"
+                                                },
                                                 "civilian_research_points": {
                                                     "type": "integer"
+                                                },
+                                                "civilian_research_points_per_population": {
+                                                    "type": "number"
                                                 },
                                                 "civilian_research_rate_per_population_scalar": {
                                                     "type": "number"
@@ -5390,6 +6200,12 @@
                                                 "health_points_restore_rate": {
                                                     "type": "number"
                                                 },
+                                                "mana_restore_rate": {
+                                                    "type": "number"
+                                                },
+                                                "mana_restore_rate_per_population": {
+                                                    "type": "number"
+                                                },
                                                 "max_civilian_structure_slots": {
                                                     "type": "integer"
                                                 },
@@ -5408,6 +6224,9 @@
                                                 "max_shield_points": {
                                                     "type": "number"
                                                 },
+                                                "max_unity_provider_count": {
+                                                    "type": "integer"
+                                                },
                                                 "metal_income_rate": {
                                                     "type": "number"
                                                 },
@@ -5416,6 +6235,9 @@
                                                 },
                                                 "military_research_points": {
                                                     "type": "integer"
+                                                },
+                                                "military_research_points_per_population": {
+                                                    "type": "number"
                                                 },
                                                 "military_research_rate_per_population_scalar": {
                                                     "type": "number"
@@ -5447,8 +6269,17 @@
                                         "items": {
                                             "type": "object",
                                             "properties": {
+                                                "bonus_max_mana": {
+                                                    "type": "number"
+                                                },
+                                                "bonus_max_mana_per_population": {
+                                                    "type": "number"
+                                                },
                                                 "civilian_research_points": {
                                                     "type": "integer"
+                                                },
+                                                "civilian_research_points_per_population": {
+                                                    "type": "number"
                                                 },
                                                 "civilian_research_rate_per_population_scalar": {
                                                     "type": "number"
@@ -5471,6 +6302,12 @@
                                                 "health_points_restore_rate": {
                                                     "type": "number"
                                                 },
+                                                "mana_restore_rate": {
+                                                    "type": "number"
+                                                },
+                                                "mana_restore_rate_per_population": {
+                                                    "type": "number"
+                                                },
                                                 "max_civilian_structure_slots": {
                                                     "type": "integer"
                                                 },
@@ -5489,6 +6326,9 @@
                                                 "max_shield_points": {
                                                     "type": "number"
                                                 },
+                                                "max_unity_provider_count": {
+                                                    "type": "integer"
+                                                },
                                                 "metal_income_rate": {
                                                     "type": "number"
                                                 },
@@ -5497,6 +6337,9 @@
                                                 },
                                                 "military_research_points": {
                                                     "type": "integer"
+                                                },
+                                                "military_research_points_per_population": {
+                                                    "type": "number"
                                                 },
                                                 "military_research_rate_per_population_scalar": {
                                                     "type": "number"
@@ -5563,23 +6406,6 @@
                                 "items": {
                                     "$ref": "#/$defs/trade_capacity_definition"
                                 }
-                            }
-                        }
-                    }
-                },
-                {
-                    "if": {
-                        "properties": {
-                            "can_ever_be_colonized": {
-                                "const": true
-                            }
-                        }
-                    },
-                    "then": {
-                        "properties": {
-                            "max_unity_provider_count": {
-                                "type": "integer",
-                                "minimum": 0
                             }
                         }
                     }
@@ -5656,6 +6482,7 @@
                                     "planet_track_upgrade_commerce_completed",
                                     "planet_track_upgrade_mining_completed",
                                     "planet_track_upgrade_research_completed",
+                                    "planet_track_upgrade_focus_completed",
                                     "planet_component_finished_building",
                                     "orbital_cannon_shell_detected",
                                     "enemy_units_incoming",
@@ -7644,6 +8471,23 @@
                             "unevaluatedProperties": false
                         },
                         "planet_track_upgrade_defense_completed": {
+                            "type": "object",
+                            "properties": {
+                                "is_dialogue": {
+                                    "description": "json_schema_object",
+                                    "type": "boolean"
+                                },
+                                "sound": {
+                                    "description": "json_schema_object",
+                                    "$ref": "#/$defs/sound_ptr"
+                                }
+                            },
+                            "required": [
+                                "sound"
+                            ],
+                            "unevaluatedProperties": false
+                        },
+                        "planet_track_upgrade_focus_completed": {
                             "type": "object",
                             "properties": {
                                 "is_dialogue": {

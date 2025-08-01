@@ -90,30 +90,64 @@ ps_output main(prim3d_ps_input input)
 		output.scene_color.a = ramped_alpha * noise1 + ramped_alpha;
 	}
 #elif defined(PLANET_CORONA)
-	{		
+	{
 		const float3 dir_to_light = normalize(light_position - corona_position);
 		const float3 normal = normalize(input.position_w - corona_position);
-		
-		// light_side - controls glow from points facing the star
-		const float d = dot(normal, dir_to_light);
+		const float3 view_dir = normalize(-input.position_w);
+
+		// === PARAMETERS ===
+		const float corona_edge_softness       = 3.0f;
+		const float corona_tint_focus          = 3.0f;
+		const float corona_inner_fade_start    = 0.8f;
+		const float corona_inner_fade_end      = 1.0f;
+		const float corona_alpha_multiplier    = 1.5f;
+		const float noise_contribution         = 0.75f;
+		const float scattering_anisotropy      = 0.6f;  // forward scatter
+		const float scattering_strength        = 2.f;
+		const float3 warm_tint_color           = float3(1.0f, 0.6f, 0.3f);
+		const float max_corona_visible_distance = 500000.0f;
+
+		// === Light-side mask
 		const float lower = -corona_curvature_bleed_distance;
-		const float upper = 0.f; //this ensures we hit 100% at the dividing line between light and dark
-		float light_side_t = max((d - lower) / (upper - lower), 0.f);
-		
-		// texcoords are 0..1 - no need for division by z
+		const float upper = 0.0f;
+		const float d = dot(normal, dir_to_light);
+		const float light_side_t = saturate((d - lower) / (upper - lower));
+
+		// === Texture blend
 		const float4 s0 = srgb_to_linear(base_texture_0.Sample(wrap_sampler, input.texcoord0.xy));
-		const float4 s1 = srgb_to_linear(noise_texture.Sample(wrap_sampler, input.texcoord0.xy));		
-		const float4 combined_s0 = s0 + s1;
+		const float4 s1 = srgb_to_linear(noise_texture.Sample(wrap_sampler, input.texcoord0.xy));
+		const float4 combined = saturate(s0 + s1 * noise_contribution);
+		const float3 base_color = combined.rgb * input.color0.rgb;
 
-		const float3 base_color = (combined_s0.rgb * input.color0.rgb);
+		// === Warm tint
+		const float warm_factor = saturate(dot(normal, dir_to_light));
+		float3 tinted_color = lerp(base_color, warm_tint_color, pow(warm_factor, corona_tint_focus));
 
-		// custom planet corona color mutation (scale by exposure to star light)
-		output.scene_color.rgb = base_color * light_side_t;
+		// === Henyey-Greenstein phase function (forward scatter)
+		const float cos_theta = dot(view_dir, dir_to_light);
+		const float g = scattering_anisotropy;
+		const float phase = (1.0f - g * g) / pow(max(1.0f + g * g - 2.0f * g * cos_theta, 0.05f), 1.5f);
+		tinted_color *= 1.0f + phase * scattering_strength;
 
-		const float ramped_alpha = get_ramped_alpha(combined_s0.a, 1.f, depth_fade, input.color0.a);
+		// === Volumetric fade from view alignment (thicker at glancing)
+		float view_thickness = pow(1.0f - saturate(dot(normal, view_dir)), corona_edge_softness);
 
-		// custom planet corona alpha mutation (scale by exposure to star light)
-		output.scene_color.a = ramped_alpha * light_side_t;
+		// === Radial fade
+		const float dist = length(input.position_w - corona_position);
+		const float inner_fade = smoothstep(corona_inner_fade_start, corona_inner_fade_end, dist);
+
+		// === Fade to space
+		const float camera_dist = length(input.position_w);
+		const float space_fade = saturate(1.0f - (camera_dist / max_corona_visible_distance));
+
+		// === Combined fade
+		const float fade = view_thickness * inner_fade * space_fade;
+
+		// === Final output
+		output.scene_color.rgb = tinted_color * light_side_t * fade;
+
+		const float ramped_alpha = get_ramped_alpha(combined.a, corona_alpha_multiplier, depth_fade, input.color0.a);
+		output.scene_color.a = ramped_alpha * light_side_t * fade;
 	}
 #else
 	{

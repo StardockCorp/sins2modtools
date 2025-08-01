@@ -112,6 +112,7 @@
                     "cannon_shell",
                     "loot",
                     "debris",
+                    "uncolonizable",
                     "untargetable"
                 ]
             }

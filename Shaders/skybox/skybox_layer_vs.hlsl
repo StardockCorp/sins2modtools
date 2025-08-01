@@ -26,7 +26,8 @@ skybox_ps_input main(skybox_vs_input input)
 	float4 position_v = mul(output.position_h, projection_inverse);
 	position_v.xyz /= position_v.w;
 
-	output.position_w = mul(get_rotation(rotation), mul(position_v, view_inverse).xyz);
+	//output.position_w = mul(get_rotation(rotation), mul(position_v, view_inverse).xyz);
+	output.position_w =  mul(position_v, view_inverse).xyz;
 
 	return output;
 }

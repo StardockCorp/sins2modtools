@@ -5,6 +5,8 @@
 #include "../external/tone_mapping_utility.hlsli"
 #include "../color_utility.hlsli"
 
+#include "../mesh/ex_features_ps_data.hlsli"
+
 Texture2D texture_0 : register(t0);
 StructuredBuffer<exposure_state_sb_data> exposure : register(t1);
 
@@ -46,15 +48,18 @@ float4 create_starbox_rays(float4 source_color, float2 uv)
 skybox_ps_output main(skybox_rays_ps_input input)
 {
     skybox_ps_output output;
-    
-    const float4 sampled_color = texture_0.Sample(linear_border_sampler, input.texcoord);    
-    output.scene_color = create_starbox_rays(sampled_color, input.texcoord);
-    
-    output.scene_color.rgb *= exposure[0].exposure_rcp;
 
-    float3 hsl = rgb_to_hsl(output.scene_color.rgb);
-    hsl.z *= brightness_scaler;
-    output.scene_color.rgb = hsl_to_rgb(hsl);
+    float use_simple = step(1.0, float(g_retro_enabled + g_liq_crys_enabled));
 
+    float4 sampled_color = texture_0.Sample(linear_border_sampler, input.texcoord);
+    float3 simple_rgb = sampled_color.rgb * exposure[0].exposure_rcp;
+    float4 simple_color = float4(simple_rgb, 1.0);
+
+    float4 rays_color = create_starbox_rays(sampled_color, input.texcoord);
+    float3 computed_rgb = rays_color.rgb * exposure[0].exposure_rcp * brightness_scaler;
+    float4 computed_color = float4(computed_rgb, 1.0);
+
+    output.scene_color = lerp(computed_color, simple_color, use_simple);
     return output;
 }
+

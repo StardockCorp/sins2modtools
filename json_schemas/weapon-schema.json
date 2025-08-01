@@ -430,7 +430,7 @@
             "items": {
                 "$ref": "#/$defs/target_filter_unit_type"
             },
-            "maxItems": 18
+            "maxItems": 19
         },
         "target_filter_id": {
             "type": "string"
@@ -1262,7 +1262,7 @@
                                             "type": "number"
                                         },
                                         "real_missing_population": {
-                                            "type": "integer"
+                                            "type": "number"
                                         }
                                     }
                                 }
@@ -1281,7 +1281,7 @@
                                             "type": "number"
                                         },
                                         "real_minimum_population": {
-                                            "type": "integer"
+                                            "type": "number"
                                         }
                                     }
                                 }
@@ -1447,7 +1447,7 @@
                     "items": {
                         "$ref": "#/$defs/target_filter_unit_type"
                     },
-                    "maxItems": 18
+                    "maxItems": 19
                 }
             },
             "required": [
@@ -1513,6 +1513,7 @@
                 "cannon_shell",
                 "loot",
                 "debris",
+                "uncolonizable",
                 "untargetable"
             ]
         },
@@ -2324,7 +2325,7 @@
                                 "type": "number"
                             },
                             "real_missing_population": {
-                                "type": "integer"
+                                "type": "number"
                             }
                         }
                     }
@@ -2343,7 +2344,7 @@
                                 "type": "number"
                             },
                             "real_minimum_population": {
-                                "type": "integer"
+                                "type": "number"
                             }
                         }
                     }

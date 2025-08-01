@@ -1,0 +1,1586 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Mission Uniforms",
+    "description": "The Player Mission system has the primary function for ingame quests with the intention of guiding new players in how to play Sins 2. Largely these take the form of 'Do X->Get Y Reward->Repeat'. The uniform file that this schema governs defines those missions, their order, and certain parts of the ingame HUD.",
+    "type": "object",
+    "properties": {
+        "game_state": {
+            "description": "Localized text to show player what game phase they are in.",
+            "type": "string"
+        },
+        "game_state_tooltip_description": {
+            "description": "Description for the game phase tooltip.",
+            "type": "string"
+        },
+        "game_state_tooltip_title": {
+            "description": "Title for game phase tooltip.",
+            "type": "string"
+        },
+        "icon": {
+            "description": "Just the icon for the mission trigger tooltip.",
+            "type": "string"
+        },
+        "main_mission_chains": {
+            "description": "These act as game phases. Early game operations, mid-game, etc.",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "advance_id": {
+                        "description": "What main mission to advance to after this is complete.",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "Main phase ID.",
+                        "type": "string"
+                    },
+                    "operation_chains": {
+                        "description": "Array of operation lines within a main phase.",
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "advance": {
+                                    "description": "Operation advance conditions.",
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "advance_id": {
+                                                "description": "Where the player goes when the mission is complete.",
+                                                "type": "string"
+                                            },
+                                            "build_kind": {
+                                                "description": "ship build kind",
+                                                "type": "string"
+                                            },
+                                            "count": {
+                                                "description": "count for numbered conditions.",
+                                                "type": "integer"
+                                            },
+                                            "exotic": {
+                                                "description": "Check against exotics in factory.",
+                                                "type": "object",
+                                                "properties": {
+                                                    "count": {
+                                                        "type": "number"
+                                                    },
+                                                    "exotic_type": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "count",
+                                                    "exotic_type"
+                                                ],
+                                                "unevaluatedProperties": false
+                                            },
+                                            "factions": {
+                                                "description": "array of player def ptrs.",
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "home_planet_track": {
+                                                "description": "Planet track to be increased at homeworld",
+                                                "type": "string",
+                                                "enum": [
+                                                    "defense",
+                                                    "logistics",
+                                                    "commerce",
+                                                    "mining",
+                                                    "research",
+                                                    "focus",
+                                                    "surveying"
+                                                ]
+                                            },
+                                            "is_last_mission": {
+                                                "description": "When true, the player will advance out of the operation chain when completing this mission.",
+                                                "type": "boolean"
+                                            },
+                                            "is_main_chain_end": {
+                                                "description": "Completing this mission treats this game phase as complete, and moves on when this is true.",
+                                                "type": "boolean"
+                                            },
+                                            "main_chain_advance_id": {
+                                                "description": "Used with is_main_chain_end. The player will move to this chain on completion.",
+                                                "type": "string"
+                                            },
+                                            "map_percentage": {
+                                                "description": "percentage of map",
+                                                "type": "number"
+                                            },
+                                            "operation_advance_id": {
+                                                "description": "Used with is_main_chain_end. The player will move to this operation, within the chain set by main_chain_advance_id on completion.",
+                                                "type": "string"
+                                            },
+                                            "passthrough_enabled": {
+                                                "description": "When true, if the player may already fill the conditions for completion, it's skipped.",
+                                                "type": "boolean"
+                                            },
+                                            "research_subjects": {
+                                                "description": "array of research subjects",
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "send_to_side_operations": {
+                                                "description": "When true, the player will be shoved into this game phases' side operations.",
+                                                "type": "boolean"
+                                            },
+                                            "tier": {
+                                                "description": "meant for research tiers",
+                                                "type": "integer"
+                                            },
+                                            "trigger_type": {
+                                                "description": "Type of condition to fulfill for the player to advance.",
+                                                "type": "string",
+                                                "enum": [
+                                                    "build_ships",
+                                                    "build_units_of_type",
+                                                    "have_colonized_total_planets",
+                                                    "colonize_new_planets",
+                                                    "has_player_finished_military_research_tier",
+                                                    "has_player_finished_civilian_research_tier",
+                                                    "build_any_capital_ship",
+                                                    "build_any_research_provider_structure",
+                                                    "build_civilian_research_provider_structure",
+                                                    "build_military_research_provider_structure",
+                                                    "research_any_valid_subject",
+                                                    "has_any_faction",
+                                                    "has_titans",
+                                                    "has_starbase_count",
+                                                    "own_unit_item",
+                                                    "spend_influence",
+                                                    "buy_from_market",
+                                                    "sell_to_market",
+                                                    "faction_system_point_spend",
+                                                    "create_exotic",
+                                                    "increase_planet_track_at_home_planet"
+                                                ]
+                                            },
+                                            "unit": {
+                                                "description": "unit definition ptr",
+                                                "type": "string"
+                                            }
+                                        },
+                                        "unevaluatedProperties": false
+                                    }
+                                },
+                                "chains": {
+                                    "description": "Array of missions within the operation chain.",
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "advance": {
+                                                "description": "Mission advancement.",
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "advance_id": {
+                                                            "description": "Where the player goes when the mission is complete.",
+                                                            "type": "string"
+                                                        },
+                                                        "build_kind": {
+                                                            "description": "ship build kind",
+                                                            "type": "string"
+                                                        },
+                                                        "count": {
+                                                            "description": "count for numbered conditions.",
+                                                            "type": "integer"
+                                                        },
+                                                        "exotic": {
+                                                            "description": "Check against exotics in factory.",
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "count": {
+                                                                    "type": "number"
+                                                                },
+                                                                "exotic_type": {
+                                                                    "type": "string"
+                                                                }
+                                                            },
+                                                            "required": [
+                                                                "count",
+                                                                "exotic_type"
+                                                            ],
+                                                            "unevaluatedProperties": false
+                                                        },
+                                                        "factions": {
+                                                            "description": "array of player def ptrs.",
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "string"
+                                                            }
+                                                        },
+                                                        "home_planet_track": {
+                                                            "description": "Planet track to be increased at homeworld",
+                                                            "type": "string",
+                                                            "enum": [
+                                                                "defense",
+                                                                "logistics",
+                                                                "commerce",
+                                                                "mining",
+                                                                "research",
+                                                                "focus",
+                                                                "surveying"
+                                                            ]
+                                                        },
+                                                        "is_last_mission": {
+                                                            "description": "When true, the player will advance out of the operation chain when completing this mission.",
+                                                            "type": "boolean"
+                                                        },
+                                                        "is_main_chain_end": {
+                                                            "description": "Completing this mission treats this game phase as complete, and moves on when this is true.",
+                                                            "type": "boolean"
+                                                        },
+                                                        "main_chain_advance_id": {
+                                                            "description": "Used with is_main_chain_end. The player will move to this chain on completion.",
+                                                            "type": "string"
+                                                        },
+                                                        "map_percentage": {
+                                                            "description": "percentage of map",
+                                                            "type": "number"
+                                                        },
+                                                        "operation_advance_id": {
+                                                            "description": "Used with is_main_chain_end. The player will move to this operation, within the chain set by main_chain_advance_id on completion.",
+                                                            "type": "string"
+                                                        },
+                                                        "passthrough_enabled": {
+                                                            "description": "When true, if the player may already fill the conditions for completion, it's skipped.",
+                                                            "type": "boolean"
+                                                        },
+                                                        "research_subjects": {
+                                                            "description": "array of research subjects",
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "string"
+                                                            }
+                                                        },
+                                                        "send_to_side_operations": {
+                                                            "description": "When true, the player will be shoved into this game phases' side operations.",
+                                                            "type": "boolean"
+                                                        },
+                                                        "tier": {
+                                                            "description": "meant for research tiers",
+                                                            "type": "integer"
+                                                        },
+                                                        "trigger_type": {
+                                                            "description": "Type of condition to fulfill for the player to advance.",
+                                                            "type": "string",
+                                                            "enum": [
+                                                                "build_ships",
+                                                                "build_units_of_type",
+                                                                "have_colonized_total_planets",
+                                                                "colonize_new_planets",
+                                                                "has_player_finished_military_research_tier",
+                                                                "has_player_finished_civilian_research_tier",
+                                                                "build_any_capital_ship",
+                                                                "build_any_research_provider_structure",
+                                                                "build_civilian_research_provider_structure",
+                                                                "build_military_research_provider_structure",
+                                                                "research_any_valid_subject",
+                                                                "has_any_faction",
+                                                                "has_titans",
+                                                                "has_starbase_count",
+                                                                "own_unit_item",
+                                                                "spend_influence",
+                                                                "buy_from_market",
+                                                                "sell_to_market",
+                                                                "faction_system_point_spend",
+                                                                "create_exotic",
+                                                                "increase_planet_track_at_home_planet"
+                                                            ]
+                                                        },
+                                                        "unit": {
+                                                            "description": "unit definition ptr",
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "unevaluatedProperties": false
+                                                }
+                                            },
+                                            "description": {
+                                                "description": "Description of the mission. Displayed in tooltip.",
+                                                "type": "string"
+                                            },
+                                            "id": {
+                                                "description": "Id of the mission. Referenced by advance_id",
+                                                "type": "string"
+                                            },
+                                            "name": {
+                                                "description": "Mission name. Displayed in tooltip.",
+                                                "type": "string"
+                                            },
+                                            "reward": {
+                                                "description": "Reward for the mission.",
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "count": {
+                                                            "description": "Amount of reward given. For credits, metal, and crystal.",
+                                                            "type": "integer"
+                                                        },
+                                                        "exotics": {
+                                                            "description": "Exotics as a reward.",
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "object",
+                                                                "properties": {
+                                                                    "count": {
+                                                                        "description": "Amount of Exotic.",
+                                                                        "type": "integer"
+                                                                    },
+                                                                    "exotic_type": {
+                                                                        "description": "Exotic type",
+                                                                        "type": "string"
+                                                                    }
+                                                                },
+                                                                "required": [
+                                                                    "exotic_type"
+                                                                ],
+                                                                "unevaluatedProperties": false
+                                                            }
+                                                        },
+                                                        "homeworld_buff": {
+                                                            "description": "Create a buff on user homeworld.",
+                                                            "type": "string"
+                                                        },
+                                                        "homeworld_buff_action_data_source": {
+                                                            "description": "Optional. Set this when buff definition name and action data source are different.",
+                                                            "type": "string"
+                                                        },
+                                                        "reward_type": {
+                                                            "type": "string",
+                                                            "enum": [
+                                                                "credits",
+                                                                "metal",
+                                                                "crystal",
+                                                                "exotics",
+                                                                "item",
+                                                                "unit",
+                                                                "homeworld_buff"
+                                                            ]
+                                                        },
+                                                        "spawn_unit_reward": {
+                                                            "description": "Spawn a unit at player homeworld in hyperspace as a reward.",
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "formation_type": {
+                                                                    "$ref": "#/$defs/formation_type"
+                                                                },
+                                                                "random_units": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "object",
+                                                                        "properties": {
+                                                                            "options": {
+                                                                                "type": "object",
+                                                                                "properties": {
+                                                                                    "forced_leveled_up_ability": {
+                                                                                        "$ref": "#/$defs/ability_definition_ptr"
+                                                                                    },
+                                                                                    "forced_strikecraft_index": {
+                                                                                        "type": "integer"
+                                                                                    },
+                                                                                    "is_temporary_ruler_ship": {
+                                                                                        "type": "boolean"
+                                                                                    },
+                                                                                    "items": {
+                                                                                        "type": "array",
+                                                                                        "items": {
+                                                                                            "$ref": "#/$defs/unit_item_definition_ptr"
+                                                                                        }
+                                                                                    },
+                                                                                    "level": {
+                                                                                        "type": "integer"
+                                                                                    }
+                                                                                },
+                                                                                "unevaluatedProperties": false
+                                                                            },
+                                                                            "unit": {
+                                                                                "$ref": "#/$defs/unit_definition_ptr"
+                                                                            },
+                                                                            "weight": {
+                                                                                "type": "number"
+                                                                            }
+                                                                        },
+                                                                        "required": [
+                                                                            "unit",
+                                                                            "weight"
+                                                                        ],
+                                                                        "unevaluatedProperties": false
+                                                                    }
+                                                                },
+                                                                "required_units": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "object",
+                                                                        "properties": {
+                                                                            "count": {
+                                                                                "type": "array",
+                                                                                "items": {
+                                                                                    "type": "integer"
+                                                                                },
+                                                                                "minItems": 2,
+                                                                                "maxItems": 2
+                                                                            },
+                                                                            "options": {
+                                                                                "type": "object",
+                                                                                "properties": {
+                                                                                    "forced_leveled_up_ability": {
+                                                                                        "$ref": "#/$defs/ability_definition_ptr"
+                                                                                    },
+                                                                                    "forced_strikecraft_index": {
+                                                                                        "type": "integer"
+                                                                                    },
+                                                                                    "is_temporary_ruler_ship": {
+                                                                                        "type": "boolean"
+                                                                                    },
+                                                                                    "items": {
+                                                                                        "type": "array",
+                                                                                        "items": {
+                                                                                            "$ref": "#/$defs/unit_item_definition_ptr"
+                                                                                        }
+                                                                                    },
+                                                                                    "level": {
+                                                                                        "type": "integer"
+                                                                                    }
+                                                                                },
+                                                                                "unevaluatedProperties": false
+                                                                            },
+                                                                            "unit": {
+                                                                                "$ref": "#/$defs/unit_definition_ptr"
+                                                                            }
+                                                                        },
+                                                                        "required": [
+                                                                            "unit"
+                                                                        ],
+                                                                        "unevaluatedProperties": false
+                                                                    }
+                                                                }
+                                                            },
+                                                            "unevaluatedProperties": false
+                                                        },
+                                                        "unit_item": {
+                                                            "description": "If you want, you can give the player a unit item.",
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "reward_type"
+                                                    ],
+                                                    "unevaluatedProperties": false
+                                                }
+                                            },
+                                            "sound_override": {
+                                                "description": "You may override a mission complete sound based on the mission.",
+                                                "type": "string"
+                                            },
+                                            "trigger": {
+                                                "description": "Mission completion trigger.",
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "build_kind": {
+                                                            "description": "ship build kind",
+                                                            "type": "string"
+                                                        },
+                                                        "count": {
+                                                            "description": "count for numbered conditions.",
+                                                            "type": "integer"
+                                                        },
+                                                        "exotic": {
+                                                            "description": "Check against exotics in factory.",
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "count": {
+                                                                    "type": "number"
+                                                                },
+                                                                "exotic_type": {
+                                                                    "type": "string"
+                                                                }
+                                                            },
+                                                            "required": [
+                                                                "count",
+                                                                "exotic_type"
+                                                            ],
+                                                            "unevaluatedProperties": false
+                                                        },
+                                                        "factions": {
+                                                            "description": "array of player def ptrs.",
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "string"
+                                                            }
+                                                        },
+                                                        "home_planet_track": {
+                                                            "description": "Planet track to be increased at homeworld",
+                                                            "type": "string",
+                                                            "enum": [
+                                                                "defense",
+                                                                "logistics",
+                                                                "commerce",
+                                                                "mining",
+                                                                "research",
+                                                                "focus",
+                                                                "surveying"
+                                                            ]
+                                                        },
+                                                        "map_percentage": {
+                                                            "description": "percentage of map",
+                                                            "type": "number"
+                                                        },
+                                                        "passthrough_enabled": {
+                                                            "description": "When true, if the player may already fill the conditions for completion, it's skipped.",
+                                                            "type": "boolean"
+                                                        },
+                                                        "research_subjects": {
+                                                            "description": "array of research subjects",
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "string"
+                                                            }
+                                                        },
+                                                        "send_to_side_operations": {
+                                                            "description": "When true, the player will be shoved into this game phases' side operations.",
+                                                            "type": "boolean"
+                                                        },
+                                                        "tier": {
+                                                            "description": "meant for research tiers",
+                                                            "type": "integer"
+                                                        },
+                                                        "trigger_type": {
+                                                            "description": "Type of condition to fulfill for the player to advance.",
+                                                            "type": "string",
+                                                            "enum": [
+                                                                "build_ships",
+                                                                "build_units_of_type",
+                                                                "have_colonized_total_planets",
+                                                                "colonize_new_planets",
+                                                                "has_player_finished_military_research_tier",
+                                                                "has_player_finished_civilian_research_tier",
+                                                                "build_any_capital_ship",
+                                                                "build_any_research_provider_structure",
+                                                                "build_civilian_research_provider_structure",
+                                                                "build_military_research_provider_structure",
+                                                                "research_any_valid_subject",
+                                                                "has_any_faction",
+                                                                "has_titans",
+                                                                "has_starbase_count",
+                                                                "own_unit_item",
+                                                                "spend_influence",
+                                                                "buy_from_market",
+                                                                "sell_to_market",
+                                                                "faction_system_point_spend",
+                                                                "create_exotic",
+                                                                "increase_planet_track_at_home_planet"
+                                                            ]
+                                                        },
+                                                        "unit": {
+                                                            "description": "unit definition ptr",
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "trigger_type"
+                                                    ],
+                                                    "unevaluatedProperties": false
+                                                }
+                                            }
+                                        },
+                                        "required": [
+                                            "advance",
+                                            "id",
+                                            "trigger"
+                                        ],
+                                        "unevaluatedProperties": false
+                                    }
+                                },
+                                "operation_id": {
+                                    "description": "Id of the operation chain.",
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "operation_id"
+                            ],
+                            "unevaluatedProperties": false
+                        }
+                    },
+                    "side_operations": {
+                        "description": "When a player finishes certain conditions, you can shove them into side quests until you want them out. Missions here are selected randomly from the set.",
+                        "type": "object",
+                        "properties": {
+                            "operation_chains": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "advance": {
+                                            "description": "Mission advancement.",
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "advance_id": {
+                                                        "description": "Where the player goes when the mission is complete.",
+                                                        "type": "string"
+                                                    },
+                                                    "build_kind": {
+                                                        "description": "ship build kind",
+                                                        "type": "string"
+                                                    },
+                                                    "count": {
+                                                        "description": "count for numbered conditions.",
+                                                        "type": "integer"
+                                                    },
+                                                    "exotic": {
+                                                        "description": "Check against exotics in factory.",
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "count": {
+                                                                "type": "number"
+                                                            },
+                                                            "exotic_type": {
+                                                                "type": "string"
+                                                            }
+                                                        },
+                                                        "required": [
+                                                            "count",
+                                                            "exotic_type"
+                                                        ],
+                                                        "unevaluatedProperties": false
+                                                    },
+                                                    "factions": {
+                                                        "description": "array of player def ptrs.",
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "home_planet_track": {
+                                                        "description": "Planet track to be increased at homeworld",
+                                                        "type": "string",
+                                                        "enum": [
+                                                            "defense",
+                                                            "logistics",
+                                                            "commerce",
+                                                            "mining",
+                                                            "research",
+                                                            "focus",
+                                                            "surveying"
+                                                        ]
+                                                    },
+                                                    "is_last_mission": {
+                                                        "description": "When true, the player will advance out of the operation chain when completing this mission.",
+                                                        "type": "boolean"
+                                                    },
+                                                    "is_main_chain_end": {
+                                                        "description": "Completing this mission treats this game phase as complete, and moves on when this is true.",
+                                                        "type": "boolean"
+                                                    },
+                                                    "main_chain_advance_id": {
+                                                        "description": "Used with is_main_chain_end. The player will move to this chain on completion.",
+                                                        "type": "string"
+                                                    },
+                                                    "map_percentage": {
+                                                        "description": "percentage of map",
+                                                        "type": "number"
+                                                    },
+                                                    "operation_advance_id": {
+                                                        "description": "Used with is_main_chain_end. The player will move to this operation, within the chain set by main_chain_advance_id on completion.",
+                                                        "type": "string"
+                                                    },
+                                                    "passthrough_enabled": {
+                                                        "description": "When true, if the player may already fill the conditions for completion, it's skipped.",
+                                                        "type": "boolean"
+                                                    },
+                                                    "research_subjects": {
+                                                        "description": "array of research subjects",
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "send_to_side_operations": {
+                                                        "description": "When true, the player will be shoved into this game phases' side operations.",
+                                                        "type": "boolean"
+                                                    },
+                                                    "tier": {
+                                                        "description": "meant for research tiers",
+                                                        "type": "integer"
+                                                    },
+                                                    "trigger_type": {
+                                                        "description": "Type of condition to fulfill for the player to advance.",
+                                                        "type": "string",
+                                                        "enum": [
+                                                            "build_ships",
+                                                            "build_units_of_type",
+                                                            "have_colonized_total_planets",
+                                                            "colonize_new_planets",
+                                                            "has_player_finished_military_research_tier",
+                                                            "has_player_finished_civilian_research_tier",
+                                                            "build_any_capital_ship",
+                                                            "build_any_research_provider_structure",
+                                                            "build_civilian_research_provider_structure",
+                                                            "build_military_research_provider_structure",
+                                                            "research_any_valid_subject",
+                                                            "has_any_faction",
+                                                            "has_titans",
+                                                            "has_starbase_count",
+                                                            "own_unit_item",
+                                                            "spend_influence",
+                                                            "buy_from_market",
+                                                            "sell_to_market",
+                                                            "faction_system_point_spend",
+                                                            "create_exotic",
+                                                            "increase_planet_track_at_home_planet"
+                                                        ]
+                                                    },
+                                                    "unit": {
+                                                        "description": "unit definition ptr",
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "unevaluatedProperties": false
+                                            }
+                                        },
+                                        "description": {
+                                            "description": "Description of the mission. Displayed in tooltip.",
+                                            "type": "string"
+                                        },
+                                        "id": {
+                                            "description": "Id of the mission. Referenced by advance_id",
+                                            "type": "string"
+                                        },
+                                        "name": {
+                                            "description": "Mission name. Displayed in tooltip.",
+                                            "type": "string"
+                                        },
+                                        "reward": {
+                                            "description": "Reward for the mission.",
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "count": {
+                                                        "description": "Amount of reward given. For credits, metal, and crystal.",
+                                                        "type": "integer"
+                                                    },
+                                                    "exotics": {
+                                                        "description": "Exotics as a reward.",
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "count": {
+                                                                    "description": "Amount of Exotic.",
+                                                                    "type": "integer"
+                                                                },
+                                                                "exotic_type": {
+                                                                    "description": "Exotic type",
+                                                                    "type": "string"
+                                                                }
+                                                            },
+                                                            "required": [
+                                                                "exotic_type"
+                                                            ],
+                                                            "unevaluatedProperties": false
+                                                        }
+                                                    },
+                                                    "homeworld_buff": {
+                                                        "description": "Create a buff on user homeworld.",
+                                                        "type": "string"
+                                                    },
+                                                    "homeworld_buff_action_data_source": {
+                                                        "description": "Optional. Set this when buff definition name and action data source are different.",
+                                                        "type": "string"
+                                                    },
+                                                    "reward_type": {
+                                                        "type": "string",
+                                                        "enum": [
+                                                            "credits",
+                                                            "metal",
+                                                            "crystal",
+                                                            "exotics",
+                                                            "item",
+                                                            "unit",
+                                                            "homeworld_buff"
+                                                        ]
+                                                    },
+                                                    "spawn_unit_reward": {
+                                                        "description": "Spawn a unit at player homeworld in hyperspace as a reward.",
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "formation_type": {
+                                                                "$ref": "#/$defs/formation_type"
+                                                            },
+                                                            "random_units": {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "type": "object",
+                                                                    "properties": {
+                                                                        "options": {
+                                                                            "type": "object",
+                                                                            "properties": {
+                                                                                "forced_leveled_up_ability": {
+                                                                                    "$ref": "#/$defs/ability_definition_ptr"
+                                                                                },
+                                                                                "forced_strikecraft_index": {
+                                                                                    "type": "integer"
+                                                                                },
+                                                                                "is_temporary_ruler_ship": {
+                                                                                    "type": "boolean"
+                                                                                },
+                                                                                "items": {
+                                                                                    "type": "array",
+                                                                                    "items": {
+                                                                                        "$ref": "#/$defs/unit_item_definition_ptr"
+                                                                                    }
+                                                                                },
+                                                                                "level": {
+                                                                                    "type": "integer"
+                                                                                }
+                                                                            },
+                                                                            "unevaluatedProperties": false
+                                                                        },
+                                                                        "unit": {
+                                                                            "$ref": "#/$defs/unit_definition_ptr"
+                                                                        },
+                                                                        "weight": {
+                                                                            "type": "number"
+                                                                        }
+                                                                    },
+                                                                    "required": [
+                                                                        "unit",
+                                                                        "weight"
+                                                                    ],
+                                                                    "unevaluatedProperties": false
+                                                                }
+                                                            },
+                                                            "required_units": {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "type": "object",
+                                                                    "properties": {
+                                                                        "count": {
+                                                                            "type": "array",
+                                                                            "items": {
+                                                                                "type": "integer"
+                                                                            },
+                                                                            "minItems": 2,
+                                                                            "maxItems": 2
+                                                                        },
+                                                                        "options": {
+                                                                            "type": "object",
+                                                                            "properties": {
+                                                                                "forced_leveled_up_ability": {
+                                                                                    "$ref": "#/$defs/ability_definition_ptr"
+                                                                                },
+                                                                                "forced_strikecraft_index": {
+                                                                                    "type": "integer"
+                                                                                },
+                                                                                "is_temporary_ruler_ship": {
+                                                                                    "type": "boolean"
+                                                                                },
+                                                                                "items": {
+                                                                                    "type": "array",
+                                                                                    "items": {
+                                                                                        "$ref": "#/$defs/unit_item_definition_ptr"
+                                                                                    }
+                                                                                },
+                                                                                "level": {
+                                                                                    "type": "integer"
+                                                                                }
+                                                                            },
+                                                                            "unevaluatedProperties": false
+                                                                        },
+                                                                        "unit": {
+                                                                            "$ref": "#/$defs/unit_definition_ptr"
+                                                                        }
+                                                                    },
+                                                                    "required": [
+                                                                        "unit"
+                                                                    ],
+                                                                    "unevaluatedProperties": false
+                                                                }
+                                                            }
+                                                        },
+                                                        "unevaluatedProperties": false
+                                                    },
+                                                    "unit_item": {
+                                                        "description": "If you want, you can give the player a unit item.",
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "reward_type"
+                                                ],
+                                                "unevaluatedProperties": false
+                                            }
+                                        },
+                                        "sound_override": {
+                                            "description": "You may override a mission complete sound based on the mission.",
+                                            "type": "string"
+                                        },
+                                        "trigger": {
+                                            "description": "Mission completion trigger.",
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "build_kind": {
+                                                        "description": "ship build kind",
+                                                        "type": "string"
+                                                    },
+                                                    "count": {
+                                                        "description": "count for numbered conditions.",
+                                                        "type": "integer"
+                                                    },
+                                                    "exotic": {
+                                                        "description": "Check against exotics in factory.",
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "count": {
+                                                                "type": "number"
+                                                            },
+                                                            "exotic_type": {
+                                                                "type": "string"
+                                                            }
+                                                        },
+                                                        "required": [
+                                                            "count",
+                                                            "exotic_type"
+                                                        ],
+                                                        "unevaluatedProperties": false
+                                                    },
+                                                    "factions": {
+                                                        "description": "array of player def ptrs.",
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "home_planet_track": {
+                                                        "description": "Planet track to be increased at homeworld",
+                                                        "type": "string",
+                                                        "enum": [
+                                                            "defense",
+                                                            "logistics",
+                                                            "commerce",
+                                                            "mining",
+                                                            "research",
+                                                            "focus",
+                                                            "surveying"
+                                                        ]
+                                                    },
+                                                    "map_percentage": {
+                                                        "description": "percentage of map",
+                                                        "type": "number"
+                                                    },
+                                                    "passthrough_enabled": {
+                                                        "description": "When true, if the player may already fill the conditions for completion, it's skipped.",
+                                                        "type": "boolean"
+                                                    },
+                                                    "research_subjects": {
+                                                        "description": "array of research subjects",
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "send_to_side_operations": {
+                                                        "description": "When true, the player will be shoved into this game phases' side operations.",
+                                                        "type": "boolean"
+                                                    },
+                                                    "tier": {
+                                                        "description": "meant for research tiers",
+                                                        "type": "integer"
+                                                    },
+                                                    "trigger_type": {
+                                                        "description": "Type of condition to fulfill for the player to advance.",
+                                                        "type": "string",
+                                                        "enum": [
+                                                            "build_ships",
+                                                            "build_units_of_type",
+                                                            "have_colonized_total_planets",
+                                                            "colonize_new_planets",
+                                                            "has_player_finished_military_research_tier",
+                                                            "has_player_finished_civilian_research_tier",
+                                                            "build_any_capital_ship",
+                                                            "build_any_research_provider_structure",
+                                                            "build_civilian_research_provider_structure",
+                                                            "build_military_research_provider_structure",
+                                                            "research_any_valid_subject",
+                                                            "has_any_faction",
+                                                            "has_titans",
+                                                            "has_starbase_count",
+                                                            "own_unit_item",
+                                                            "spend_influence",
+                                                            "buy_from_market",
+                                                            "sell_to_market",
+                                                            "faction_system_point_spend",
+                                                            "create_exotic",
+                                                            "increase_planet_track_at_home_planet"
+                                                        ]
+                                                    },
+                                                    "unit": {
+                                                        "description": "unit definition ptr",
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "trigger_type"
+                                                ],
+                                                "unevaluatedProperties": false
+                                            }
+                                        }
+                                    },
+                                    "required": [
+                                        "advance",
+                                        "id",
+                                        "trigger"
+                                    ],
+                                    "unevaluatedProperties": false
+                                }
+                            },
+                            "operation_id": {
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "operation_id"
+                        ],
+                        "unevaluatedProperties": false
+                    },
+                    "stage_name": {
+                        "description": "Localized text for the tooltip.",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "id"
+                ],
+                "unevaluatedProperties": false
+            }
+        },
+        "mission_complete_sound": {
+            "description": "sound_ptr that plays whan a player accepts a reward.",
+            "type": "string"
+        },
+        "missions_complete": {
+            "description": "Text to be shown when mission complete. Best practice is to shove the player into side operations instead though.",
+            "type": "string"
+        },
+        "tooltip_definition": {
+            "description": "Definition for mission trigger tooltips.",
+            "type": "object",
+            "properties": {
+                "build_any_capital_ship": {
+                    "type": "object",
+                    "properties": {
+                        "description": {
+                            "description": "Description for the trigger type tooltip. Localized text.",
+                            "type": "string"
+                        },
+                        "icon": {
+                            "description": "Icon for the trigger type tooltip. Brush ptr. Optional.",
+                            "type": "string"
+                        },
+                        "title": {
+                            "description": "Title for the trigger type tooltip. Localized text.",
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "description",
+                        "title"
+                    ],
+                    "unevaluatedProperties": false
+                },
+                "build_any_research_provider_structure": {
+                    "type": "object",
+                    "properties": {
+                        "description": {
+                            "description": "Description for the trigger type tooltip. Localized text.",
+                            "type": "string"
+                        },
+                        "icon": {
+                            "description": "Icon for the trigger type tooltip. Brush ptr. Optional.",
+                            "type": "string"
+                        },
+                        "title": {
+                            "description": "Title for the trigger type tooltip. Localized text.",
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "description",
+                        "title"
+                    ],
+                    "unevaluatedProperties": false
+                },
+                "build_civilian_research_provider_structure": {
+                    "type": "object",
+                    "properties": {
+                        "description": {
+                            "description": "Description for the trigger type tooltip. Localized text.",
+                            "type": "string"
+                        },
+                        "icon": {
+                            "description": "Icon for the trigger type tooltip. Brush ptr. Optional.",
+                            "type": "string"
+                        },
+                        "title": {
+                            "description": "Title for the trigger type tooltip. Localized text.",
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "description",
+                        "title"
+                    ],
+                    "unevaluatedProperties": false
+                },
+                "build_military_research_provider_structure": {
+                    "type": "object",
+                    "properties": {
+                        "description": {
+                            "description": "Description for the trigger type tooltip. Localized text.",
+                            "type": "string"
+                        },
+                        "icon": {
+                            "description": "Icon for the trigger type tooltip. Brush ptr. Optional.",
+                            "type": "string"
+                        },
+                        "title": {
+                            "description": "Title for the trigger type tooltip. Localized text.",
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "description",
+                        "title"
+                    ],
+                    "unevaluatedProperties": false
+                },
+                "build_ships": {
+                    "type": "object",
+                    "properties": {
+                        "description": {
+                            "description": "Description for the trigger type tooltip. Localized text.",
+                            "type": "string"
+                        },
+                        "icon": {
+                            "description": "Icon for the trigger type tooltip. Brush ptr. Optional.",
+                            "type": "string"
+                        },
+                        "title": {
+                            "description": "Title for the trigger type tooltip. Localized text.",
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "description",
+                        "title"
+                    ],
+                    "unevaluatedProperties": false
+                },
+                "build_units_of_type": {
+                    "type": "object",
+                    "properties": {
+                        "description": {
+                            "description": "Description for the trigger type tooltip. Localized text.",
+                            "type": "string"
+                        },
+                        "icon": {
+                            "description": "Icon for the trigger type tooltip. Brush ptr. Optional.",
+                            "type": "string"
+                        },
+                        "title": {
+                            "description": "Title for the trigger type tooltip. Localized text.",
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "description",
+                        "title"
+                    ],
+                    "unevaluatedProperties": false
+                },
+                "buy_from_market": {
+                    "type": "object",
+                    "properties": {
+                        "description": {
+                            "description": "Description for the trigger type tooltip. Localized text.",
+                            "type": "string"
+                        },
+                        "icon": {
+                            "description": "Icon for the trigger type tooltip. Brush ptr. Optional.",
+                            "type": "string"
+                        },
+                        "title": {
+                            "description": "Title for the trigger type tooltip. Localized text.",
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "description",
+                        "title"
+                    ],
+                    "unevaluatedProperties": false
+                },
+                "colonize_new_planets": {
+                    "type": "object",
+                    "properties": {
+                        "description": {
+                            "description": "Description for the trigger type tooltip. Localized text.",
+                            "type": "string"
+                        },
+                        "icon": {
+                            "description": "Icon for the trigger type tooltip. Brush ptr. Optional.",
+                            "type": "string"
+                        },
+                        "title": {
+                            "description": "Title for the trigger type tooltip. Localized text.",
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "description",
+                        "title"
+                    ],
+                    "unevaluatedProperties": false
+                },
+                "create_exotic": {
+                    "type": "object",
+                    "properties": {
+                        "description": {
+                            "description": "Description for the trigger type tooltip. Localized text.",
+                            "type": "string"
+                        },
+                        "icon": {
+                            "description": "Icon for the trigger type tooltip. Brush ptr. Optional.",
+                            "type": "string"
+                        },
+                        "title": {
+                            "description": "Title for the trigger type tooltip. Localized text.",
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "description",
+                        "title"
+                    ],
+                    "unevaluatedProperties": false
+                },
+                "faction_system_point_spend": {
+                    "type": "object",
+                    "properties": {
+                        "description": {
+                            "description": "Description for the trigger type tooltip. Localized text.",
+                            "type": "string"
+                        },
+                        "icon": {
+                            "description": "Icon for the trigger type tooltip. Brush ptr. Optional.",
+                            "type": "string"
+                        },
+                        "title": {
+                            "description": "Title for the trigger type tooltip. Localized text.",
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "description",
+                        "title"
+                    ],
+                    "unevaluatedProperties": false
+                },
+                "has_any_faction": {
+                    "type": "object",
+                    "properties": {
+                        "description": {
+                            "description": "Description for the trigger type tooltip. Localized text.",
+                            "type": "string"
+                        },
+                        "icon": {
+                            "description": "Icon for the trigger type tooltip. Brush ptr. Optional.",
+                            "type": "string"
+                        },
+                        "title": {
+                            "description": "Title for the trigger type tooltip. Localized text.",
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "description",
+                        "title"
+                    ],
+                    "unevaluatedProperties": false
+                },
+                "has_player_finished_civilian_research_tier": {
+                    "type": "object",
+                    "properties": {
+                        "description": {
+                            "description": "Description for the trigger type tooltip. Localized text.",
+                            "type": "string"
+                        },
+                        "icon": {
+                            "description": "Icon for the trigger type tooltip. Brush ptr. Optional.",
+                            "type": "string"
+                        },
+                        "title": {
+                            "description": "Title for the trigger type tooltip. Localized text.",
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "description",
+                        "title"
+                    ],
+                    "unevaluatedProperties": false
+                },
+                "has_player_finished_military_research_tier": {
+                    "type": "object",
+                    "properties": {
+                        "description": {
+                            "description": "Description for the trigger type tooltip. Localized text.",
+                            "type": "string"
+                        },
+                        "icon": {
+                            "description": "Icon for the trigger type tooltip. Brush ptr. Optional.",
+                            "type": "string"
+                        },
+                        "title": {
+                            "description": "Title for the trigger type tooltip. Localized text.",
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "description",
+                        "title"
+                    ],
+                    "unevaluatedProperties": false
+                },
+                "has_starbase_count": {
+                    "type": "object",
+                    "properties": {
+                        "description": {
+                            "description": "Description for the trigger type tooltip. Localized text.",
+                            "type": "string"
+                        },
+                        "icon": {
+                            "description": "Icon for the trigger type tooltip. Brush ptr. Optional.",
+                            "type": "string"
+                        },
+                        "title": {
+                            "description": "Title for the trigger type tooltip. Localized text.",
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "description",
+                        "title"
+                    ],
+                    "unevaluatedProperties": false
+                },
+                "has_titans": {
+                    "type": "object",
+                    "properties": {
+                        "description": {
+                            "description": "Description for the trigger type tooltip. Localized text.",
+                            "type": "string"
+                        },
+                        "icon": {
+                            "description": "Icon for the trigger type tooltip. Brush ptr. Optional.",
+                            "type": "string"
+                        },
+                        "title": {
+                            "description": "Title for the trigger type tooltip. Localized text.",
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "description",
+                        "title"
+                    ],
+                    "unevaluatedProperties": false
+                },
+                "have_colonized_total_planets": {
+                    "type": "object",
+                    "properties": {
+                        "description": {
+                            "description": "Description for the trigger type tooltip. Localized text.",
+                            "type": "string"
+                        },
+                        "icon": {
+                            "description": "Icon for the trigger type tooltip. Brush ptr. Optional.",
+                            "type": "string"
+                        },
+                        "title": {
+                            "description": "Title for the trigger type tooltip. Localized text.",
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "description",
+                        "title"
+                    ],
+                    "unevaluatedProperties": false
+                },
+                "increase_planet_track_at_home_planet": {
+                    "type": "object",
+                    "properties": {
+                        "description": {
+                            "description": "Description for the trigger type tooltip. Localized text.",
+                            "type": "string"
+                        },
+                        "icon": {
+                            "description": "Icon for the trigger type tooltip. Brush ptr. Optional.",
+                            "type": "string"
+                        },
+                        "title": {
+                            "description": "Title for the trigger type tooltip. Localized text.",
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "description",
+                        "title"
+                    ],
+                    "unevaluatedProperties": false
+                },
+                "own_unit_item": {
+                    "type": "object",
+                    "properties": {
+                        "description": {
+                            "description": "Description for the trigger type tooltip. Localized text.",
+                            "type": "string"
+                        },
+                        "icon": {
+                            "description": "Icon for the trigger type tooltip. Brush ptr. Optional.",
+                            "type": "string"
+                        },
+                        "title": {
+                            "description": "Title for the trigger type tooltip. Localized text.",
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "description",
+                        "title"
+                    ],
+                    "unevaluatedProperties": false
+                },
+                "research_any_valid_subject": {
+                    "type": "object",
+                    "properties": {
+                        "description": {
+                            "description": "Description for the trigger type tooltip. Localized text.",
+                            "type": "string"
+                        },
+                        "icon": {
+                            "description": "Icon for the trigger type tooltip. Brush ptr. Optional.",
+                            "type": "string"
+                        },
+                        "title": {
+                            "description": "Title for the trigger type tooltip. Localized text.",
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "description",
+                        "title"
+                    ],
+                    "unevaluatedProperties": false
+                },
+                "sell_to_market": {
+                    "type": "object",
+                    "properties": {
+                        "description": {
+                            "description": "Description for the trigger type tooltip. Localized text.",
+                            "type": "string"
+                        },
+                        "icon": {
+                            "description": "Icon for the trigger type tooltip. Brush ptr. Optional.",
+                            "type": "string"
+                        },
+                        "title": {
+                            "description": "Title for the trigger type tooltip. Localized text.",
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "description",
+                        "title"
+                    ],
+                    "unevaluatedProperties": false
+                },
+                "spend_influence": {
+                    "type": "object",
+                    "properties": {
+                        "description": {
+                            "description": "Description for the trigger type tooltip. Localized text.",
+                            "type": "string"
+                        },
+                        "icon": {
+                            "description": "Icon for the trigger type tooltip. Brush ptr. Optional.",
+                            "type": "string"
+                        },
+                        "title": {
+                            "description": "Title for the trigger type tooltip. Localized text.",
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "description",
+                        "title"
+                    ],
+                    "unevaluatedProperties": false
+                }
+            },
+            "unevaluatedProperties": false
+        },
+        "unnamed_mission": {
+            "description": "Debug in the very unlikely event you find yourself in an unnamed mission.",
+            "type": "string"
+        },
+        "unnamed_reward": {
+            "description": "Debug in the very unlikely event you find yourself with an unnamed reward.",
+            "type": "string"
+        },
+        "version": {
+            "type": "integer"
+        }
+    },
+    "required": [
+        "main_mission_chains",
+        "tooltip_definition"
+    ],
+    "unevaluatedProperties": false,
+    "$defs": {
+        "ability_definition_ptr": {
+            "type": "string"
+        },
+        "formation_type": {
+            "type": "string",
+            "enum": [
+                "ships_and_structures",
+                "strikecraft_only"
+            ]
+        },
+        "unit_item_definition_ptr": {
+            "type": "string"
+        },
+        "unit_definition_ptr": {
+            "type": "string"
+        }
+    }
+}

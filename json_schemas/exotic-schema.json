@@ -58,6 +58,7 @@
                 "planet_track_upgrade_commerce_completed",
                 "planet_track_upgrade_mining_completed",
                 "planet_track_upgrade_research_completed",
+                "planet_track_upgrade_focus_completed",
                 "planet_component_finished_building",
                 "orbital_cannon_shell_detected",
                 "enemy_units_incoming",

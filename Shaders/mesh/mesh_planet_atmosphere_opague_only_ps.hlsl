@@ -1,7 +1,10 @@
+#define ENABLE_SHADOWS
 #define RESTRICT_EMISSIVE_TO_DARK_SIDE
+#define ENABLE_FLOW_MAP
 #define ENABLE_PLANET_ATMOSPHERE
 #define ENABLE_EMISSIVE
 #define ENABLE_OPAGUE_ONLY
+#define ENABLE_TOON_SHADING	
 
 cbuffer atmosphere_cb_data : register(b6)
 {	

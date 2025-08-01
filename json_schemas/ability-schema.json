@@ -165,6 +165,12 @@
                 "planet_health_cost": {
                     "$ref": "#/$defs/action_value_id"
                 },
+                "planet_owner_allied_population_cost": {
+                    "$ref": "#/$defs/action_value_id"
+                },
+                "planet_population_cost": {
+                    "$ref": "#/$defs/action_value_id"
+                },
                 "range": {
                     "$ref": "#/$defs/action_value_id"
                 },
@@ -486,6 +492,7 @@
                         "per_planet_max_shield_points",
                         "per_planet_current_population_points",
                         "per_planet_max_population_points",
+                        "per_planet_owner_allied_population_points",
                         "per_planet_max_civilian_slots",
                         "per_planet_max_military_slots",
                         "per_planet_commerce_track_credit_income",
@@ -675,6 +682,22 @@
                         "properties": {
                             "transform_type": {
                                 "const": "per_planet_max_population_points"
+                            }
+                        }
+                    },
+                    "then": {
+                        "properties": {
+                            "transform_unit": {
+                                "$ref": "#/$defs/action_unit"
+                            }
+                        }
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "transform_type": {
+                                "const": "per_planet_owner_allied_population_points"
                             }
                         }
                     },
@@ -1269,6 +1292,8 @@
                 "orbital_extraction_crystal_income_rate",
                 "civilian_research_points",
                 "military_research_points",
+                "civilian_research_points_per_population",
+                "military_research_points_per_population",
                 "civilian_research_rate",
                 "military_research_rate",
                 "civilian_research_rate_per_population",
@@ -1280,6 +1305,8 @@
                 "health_points_restore_rate",
                 "max_shield_points",
                 "shield_points_restore_rate",
+                "planet_shield_burst_restore",
+                "planet_shield_burst_cooldown",
                 "max_population_points",
                 "population_growth_rate",
                 "max_allied_population_factor",
@@ -1300,6 +1327,8 @@
                 "mining_track_build_time",
                 "research_track_build_price",
                 "research_track_build_time",
+                "focus_track_build_price",
+                "focus_track_build_time",
                 "surveying_track_build_price",
                 "surveying_track_build_time",
                 "structure_build_price",
@@ -1311,7 +1340,11 @@
                 "bombing_population_damage_taken",
                 "planet_component_price",
                 "max_planet_component_slots",
-                "max_influence_points"
+                "max_influence_points",
+                "mana_restore_rate",
+                "bonus_max_mana",
+                "mana_restore_rate_per_population",
+                "bonus_max_mana_per_population"
             ]
         },
         "unit_level": {
@@ -1895,6 +1928,7 @@
                 "cannon_shell",
                 "loot",
                 "debris",
+                "uncolonizable",
                 "untargetable"
             ]
         },
@@ -2943,7 +2977,7 @@
                                 "type": "number"
                             },
                             "real_missing_population": {
-                                "type": "integer"
+                                "type": "number"
                             }
                         }
                     }
@@ -2962,7 +2996,7 @@
                                 "type": "number"
                             },
                             "real_minimum_population": {
-                                "type": "integer"
+                                "type": "number"
                             }
                         }
                     }
@@ -8986,7 +9020,8 @@
                 "starting",
                 "trade_ship_killed",
                 "synergy_ally_dead",
-                "surveying_reward"
+                "surveying_reward",
+                "mission_reward"
             ]
         },
         "exotic_type": {
@@ -9048,6 +9083,7 @@
                 "commerce",
                 "mining",
                 "research",
+                "focus",
                 "surveying"
             ]
         },

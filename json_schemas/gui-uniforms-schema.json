@@ -708,7 +708,16 @@
                         "bombing_population_damage_taken": {
                             "type": "string"
                         },
+                        "bonus_max_mana": {
+                            "type": "string"
+                        },
+                        "bonus_max_mana_per_population": {
+                            "type": "string"
+                        },
                         "civilian_research_points": {
+                            "type": "string"
+                        },
+                        "civilian_research_points_per_population": {
                             "type": "string"
                         },
                         "civilian_research_rate": {
@@ -753,6 +762,12 @@
                         "factory_unit_build_time": {
                             "type": "string"
                         },
+                        "focus_track_build_price": {
+                            "type": "string"
+                        },
+                        "focus_track_build_time": {
+                            "type": "string"
+                        },
                         "gravity_well_radius": {
                             "type": "string"
                         },
@@ -763,6 +778,12 @@
                             "type": "string"
                         },
                         "logistics_track_build_time": {
+                            "type": "string"
+                        },
+                        "mana_restore_rate": {
+                            "type": "string"
+                        },
+                        "mana_restore_rate_per_population": {
                             "type": "string"
                         },
                         "max_allied_population_factor": {
@@ -793,6 +814,9 @@
                             "type": "string"
                         },
                         "military_research_points": {
+                            "type": "string"
+                        },
+                        "military_research_points_per_population": {
                             "type": "string"
                         },
                         "military_research_rate": {
@@ -829,6 +853,12 @@
                             "type": "string"
                         },
                         "planet_component_price": {
+                            "type": "string"
+                        },
+                        "planet_shield_burst_cooldown": {
+                            "type": "string"
+                        },
+                        "planet_shield_burst_restore": {
                             "type": "string"
                         },
                         "population_growth_rate": {
@@ -1318,6 +1348,9 @@
                         "increase_ability_level_owner_not_high_enough_level": {
                             "type": "string"
                         },
+                        "insufficient_allied_population": {
+                            "type": "string"
+                        },
                         "insufficient_antimatter": {
                             "type": "string"
                         },
@@ -1367,6 +1400,9 @@
                             "type": "string"
                         },
                         "insufficient_planet_health": {
+                            "type": "string"
+                        },
+                        "insufficient_planet_population": {
                             "type": "string"
                         },
                         "insufficient_player_phase_resonance_points": {
@@ -1580,6 +1616,9 @@
                             "type": "string"
                         },
                         "purchase_item_unit_is_not_fully_built": {
+                            "type": "string"
+                        },
+                        "purchase_item_unit_missing_culture_provider": {
                             "type": "string"
                         },
                         "purchase_item_unit_missing_required_tag": {
@@ -1966,6 +2005,9 @@
                         "increase_ability_level_owner_not_high_enough_level": {
                             "type": "string"
                         },
+                        "insufficient_allied_population": {
+                            "type": "string"
+                        },
                         "insufficient_antimatter": {
                             "type": "string"
                         },
@@ -2015,6 +2057,9 @@
                             "type": "string"
                         },
                         "insufficient_planet_health": {
+                            "type": "string"
+                        },
+                        "insufficient_planet_population": {
                             "type": "string"
                         },
                         "insufficient_player_phase_resonance_points": {
@@ -2228,6 +2273,9 @@
                             "type": "string"
                         },
                         "purchase_item_unit_is_not_fully_built": {
+                            "type": "string"
+                        },
+                        "purchase_item_unit_missing_culture_provider": {
                             "type": "string"
                         },
                         "purchase_item_unit_missing_required_tag": {
@@ -2627,6 +2675,9 @@
                     "type": "string"
                 },
                 "torpedo": {
+                    "type": "string"
+                },
+                "uncolonizable": {
                     "type": "string"
                 },
                 "untargetable": {

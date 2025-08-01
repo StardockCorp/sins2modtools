@@ -4,8 +4,17 @@
     "description": "",
     "type": "object",
     "properties": {
+        "ancient_starbase_id": {
+            "type": "string"
+        },
         "base_fillings": {
             "$ref": "#/$defs/galaxy_chart_fillings"
+        },
+        "capturable_units": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
         },
         "combined_fillings": {
             "$ref": "#/$defs/galaxy_chart_fillings"
@@ -21,6 +30,12 @@
             "items": {
                 "$ref": "#/$defs/float_range"
             }
+        },
+        "max_ancient_starbases": {
+            "type": "integer"
+        },
+        "max_capturable_units": {
+            "type": "integer"
         },
         "min_jumps_to_any_home_planet_for_loot_level": {
             "type": "array",

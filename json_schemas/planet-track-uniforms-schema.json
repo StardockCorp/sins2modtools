@@ -63,6 +63,34 @@
                     ],
                     "unevaluatedProperties": false
                 },
+                "focus": {
+                    "type": "object",
+                    "properties": {
+                        "current_level_label": {
+                            "type": "string"
+                        },
+                        "desc": {
+                            "type": "string"
+                        },
+                        "hud_icon": {
+                            "type": "string"
+                        },
+                        "max_level_label": {
+                            "type": "string"
+                        },
+                        "name": {
+                            "type": "string"
+                        },
+                        "tooltip_icon": {
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "hud_icon",
+                        "tooltip_icon"
+                    ],
+                    "unevaluatedProperties": false
+                },
                 "logistics": {
                     "type": "object",
                     "properties": {

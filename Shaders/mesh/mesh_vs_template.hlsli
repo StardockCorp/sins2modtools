@@ -40,24 +40,33 @@ mesh_ps_input main(mesh_vs_input input)
 	#else 
 	const float3 input_position = input.position;
 	#endif
-
+	
+	// Standard outputs
 	output.position_h = mul(float4(input_position, 1.0f), this_world_view_projection);
 	output.position_v = mul(float4(input_position, 1.0f), this_world_view).xyz;
 	output.position_w = mul(float4(input_position, 1.0f), this_world).xyz;
 	output.position_l = input_position.xyz;
 	output.texcoord0 = input.texcoord0;
 	output.texcoord1 = input.texcoord1;
-	output.normal_w = mul(input.normal, (float3x3)this_world);
-	output.tangent_w = mul(input.tangent.xyz, (float3x3)this_world);
+	output.normal_w = normalize(mul(input.normal, (float3x3)this_world));
+	output.tangent_w = normalize(mul(input.tangent.xyz, (float3x3)this_world));
 	output.fsign = input.tangent.w; // #mikktspace_decoding
 
-#ifdef ENABLE_SHADOWS
+	// === Compute bitangent and TBN matrix ===
+	float3 bitangent_w = normalize(cross(output.normal_w, output.tangent_w) * output.fsign);
+	float3x3 TBN = float3x3(output.tangent_w, bitangent_w, output.normal_w);
+
+	// === View direction in world and tangent space ===
+	float3 view_dir_world = normalize(camera_position.xyz - output.position_w);
+	output.view_dir_tangent = mul(view_dir_world, transpose(TBN)); // to tangent space
+
+	#ifdef ENABLE_SHADOWS
 	[unroll]
 	for (uint i = 0; i < shadow_map_count; ++i)
 	{		
 		output.shadow_map_uvz[i] = get_shadow_map_uvz(this_world, input.position, input.normal, i);
 	}
-#endif
+	#endif
 
 	return output;
 }

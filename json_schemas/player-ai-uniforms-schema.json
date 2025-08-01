@@ -348,6 +348,8 @@
                                                     "orbital_extraction_crystal_income_rate",
                                                     "civilian_research_points",
                                                     "military_research_points",
+                                                    "civilian_research_points_per_population",
+                                                    "military_research_points_per_population",
                                                     "civilian_research_rate",
                                                     "military_research_rate",
                                                     "civilian_research_rate_per_population",
@@ -359,6 +361,8 @@
                                                     "health_points_restore_rate",
                                                     "max_shield_points",
                                                     "shield_points_restore_rate",
+                                                    "planet_shield_burst_restore",
+                                                    "planet_shield_burst_cooldown",
                                                     "max_population_points",
                                                     "population_growth_rate",
                                                     "max_allied_population_factor",
@@ -379,6 +383,8 @@
                                                     "mining_track_build_time",
                                                     "research_track_build_price",
                                                     "research_track_build_time",
+                                                    "focus_track_build_price",
+                                                    "focus_track_build_time",
                                                     "surveying_track_build_price",
                                                     "surveying_track_build_time",
                                                     "structure_build_price",
@@ -390,7 +396,11 @@
                                                     "bombing_population_damage_taken",
                                                     "planet_component_price",
                                                     "max_planet_component_slots",
-                                                    "max_influence_points"
+                                                    "max_influence_points",
+                                                    "mana_restore_rate",
+                                                    "bonus_max_mana",
+                                                    "mana_restore_rate_per_population",
+                                                    "bonus_max_mana_per_population"
                                                 ]
                                             },
                                             "planet_types": {
@@ -848,6 +858,8 @@
                                                     "orbital_extraction_crystal_income_rate",
                                                     "civilian_research_points",
                                                     "military_research_points",
+                                                    "civilian_research_points_per_population",
+                                                    "military_research_points_per_population",
                                                     "civilian_research_rate",
                                                     "military_research_rate",
                                                     "civilian_research_rate_per_population",
@@ -859,6 +871,8 @@
                                                     "health_points_restore_rate",
                                                     "max_shield_points",
                                                     "shield_points_restore_rate",
+                                                    "planet_shield_burst_restore",
+                                                    "planet_shield_burst_cooldown",
                                                     "max_population_points",
                                                     "population_growth_rate",
                                                     "max_allied_population_factor",
@@ -879,6 +893,8 @@
                                                     "mining_track_build_time",
                                                     "research_track_build_price",
                                                     "research_track_build_time",
+                                                    "focus_track_build_price",
+                                                    "focus_track_build_time",
                                                     "surveying_track_build_price",
                                                     "surveying_track_build_time",
                                                     "structure_build_price",
@@ -890,7 +906,11 @@
                                                     "bombing_population_damage_taken",
                                                     "planet_component_price",
                                                     "max_planet_component_slots",
-                                                    "max_influence_points"
+                                                    "max_influence_points",
+                                                    "mana_restore_rate",
+                                                    "bonus_max_mana",
+                                                    "mana_restore_rate_per_population",
+                                                    "bonus_max_mana_per_population"
                                                 ]
                                             },
                                             "planet_types": {
@@ -1348,6 +1368,8 @@
                                                     "orbital_extraction_crystal_income_rate",
                                                     "civilian_research_points",
                                                     "military_research_points",
+                                                    "civilian_research_points_per_population",
+                                                    "military_research_points_per_population",
                                                     "civilian_research_rate",
                                                     "military_research_rate",
                                                     "civilian_research_rate_per_population",
@@ -1359,6 +1381,8 @@
                                                     "health_points_restore_rate",
                                                     "max_shield_points",
                                                     "shield_points_restore_rate",
+                                                    "planet_shield_burst_restore",
+                                                    "planet_shield_burst_cooldown",
                                                     "max_population_points",
                                                     "population_growth_rate",
                                                     "max_allied_population_factor",
@@ -1379,6 +1403,8 @@
                                                     "mining_track_build_time",
                                                     "research_track_build_price",
                                                     "research_track_build_time",
+                                                    "focus_track_build_price",
+                                                    "focus_track_build_time",
                                                     "surveying_track_build_price",
                                                     "surveying_track_build_time",
                                                     "structure_build_price",
@@ -1390,7 +1416,11 @@
                                                     "bombing_population_damage_taken",
                                                     "planet_component_price",
                                                     "max_planet_component_slots",
-                                                    "max_influence_points"
+                                                    "max_influence_points",
+                                                    "mana_restore_rate",
+                                                    "bonus_max_mana",
+                                                    "mana_restore_rate_per_population",
+                                                    "bonus_max_mana_per_population"
                                                 ]
                                             },
                                             "planet_types": {
@@ -1848,6 +1878,8 @@
                                                     "orbital_extraction_crystal_income_rate",
                                                     "civilian_research_points",
                                                     "military_research_points",
+                                                    "civilian_research_points_per_population",
+                                                    "military_research_points_per_population",
                                                     "civilian_research_rate",
                                                     "military_research_rate",
                                                     "civilian_research_rate_per_population",
@@ -1859,6 +1891,8 @@
                                                     "health_points_restore_rate",
                                                     "max_shield_points",
                                                     "shield_points_restore_rate",
+                                                    "planet_shield_burst_restore",
+                                                    "planet_shield_burst_cooldown",
                                                     "max_population_points",
                                                     "population_growth_rate",
                                                     "max_allied_population_factor",
@@ -1879,6 +1913,8 @@
                                                     "mining_track_build_time",
                                                     "research_track_build_price",
                                                     "research_track_build_time",
+                                                    "focus_track_build_price",
+                                                    "focus_track_build_time",
                                                     "surveying_track_build_price",
                                                     "surveying_track_build_time",
                                                     "structure_build_price",
@@ -1890,7 +1926,11 @@
                                                     "bombing_population_damage_taken",
                                                     "planet_component_price",
                                                     "max_planet_component_slots",
-                                                    "max_influence_points"
+                                                    "max_influence_points",
+                                                    "mana_restore_rate",
+                                                    "bonus_max_mana",
+                                                    "mana_restore_rate_per_population",
+                                                    "bonus_max_mana_per_population"
                                                 ]
                                             },
                                             "planet_types": {
@@ -2348,6 +2388,8 @@
                                                     "orbital_extraction_crystal_income_rate",
                                                     "civilian_research_points",
                                                     "military_research_points",
+                                                    "civilian_research_points_per_population",
+                                                    "military_research_points_per_population",
                                                     "civilian_research_rate",
                                                     "military_research_rate",
                                                     "civilian_research_rate_per_population",
@@ -2359,6 +2401,8 @@
                                                     "health_points_restore_rate",
                                                     "max_shield_points",
                                                     "shield_points_restore_rate",
+                                                    "planet_shield_burst_restore",
+                                                    "planet_shield_burst_cooldown",
                                                     "max_population_points",
                                                     "population_growth_rate",
                                                     "max_allied_population_factor",
@@ -2379,6 +2423,8 @@
                                                     "mining_track_build_time",
                                                     "research_track_build_price",
                                                     "research_track_build_time",
+                                                    "focus_track_build_price",
+                                                    "focus_track_build_time",
                                                     "surveying_track_build_price",
                                                     "surveying_track_build_time",
                                                     "structure_build_price",
@@ -2390,7 +2436,11 @@
                                                     "bombing_population_damage_taken",
                                                     "planet_component_price",
                                                     "max_planet_component_slots",
-                                                    "max_influence_points"
+                                                    "max_influence_points",
+                                                    "mana_restore_rate",
+                                                    "bonus_max_mana",
+                                                    "mana_restore_rate_per_population",
+                                                    "bonus_max_mana_per_population"
                                                 ]
                                             },
                                             "planet_types": {
@@ -2848,6 +2898,8 @@
                                                     "orbital_extraction_crystal_income_rate",
                                                     "civilian_research_points",
                                                     "military_research_points",
+                                                    "civilian_research_points_per_population",
+                                                    "military_research_points_per_population",
                                                     "civilian_research_rate",
                                                     "military_research_rate",
                                                     "civilian_research_rate_per_population",
@@ -2859,6 +2911,8 @@
                                                     "health_points_restore_rate",
                                                     "max_shield_points",
                                                     "shield_points_restore_rate",
+                                                    "planet_shield_burst_restore",
+                                                    "planet_shield_burst_cooldown",
                                                     "max_population_points",
                                                     "population_growth_rate",
                                                     "max_allied_population_factor",
@@ -2879,6 +2933,8 @@
                                                     "mining_track_build_time",
                                                     "research_track_build_price",
                                                     "research_track_build_time",
+                                                    "focus_track_build_price",
+                                                    "focus_track_build_time",
                                                     "surveying_track_build_price",
                                                     "surveying_track_build_time",
                                                     "structure_build_price",
@@ -2890,7 +2946,11 @@
                                                     "bombing_population_damage_taken",
                                                     "planet_component_price",
                                                     "max_planet_component_slots",
-                                                    "max_influence_points"
+                                                    "max_influence_points",
+                                                    "mana_restore_rate",
+                                                    "bonus_max_mana",
+                                                    "mana_restore_rate_per_population",
+                                                    "bonus_max_mana_per_population"
                                                 ]
                                             },
                                             "planet_types": {
