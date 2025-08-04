@@ -203,8 +203,7 @@ You can also generate a .zip file to update to mod.io by adding `--package_mod`
 py .\run-peon.py --src_folder=".\examples\mods\super_fast_trader_scout_corvette" --dst_folder=".out\super_fast_trader_scout_corvette" --package_mod
 ```
 
-### Building Shaders makes the modding workflow cozier, with various QoL features to simplify ship rigging along with helpful documentation in the side panel
-
+## Building Shaders
 Official `.hlsl` shaders can be found in the Shaders folder. If you want to create your own shaders you can use Peon to compile them for the game.
 
 If you would like to use Peon to compile shaders:
@@ -212,8 +211,6 @@ If you would like to use Peon to compile shaders:
 ```
 py .\run-peon.py -s .\examples\shaders -d .out\shaders --fxc_exe_path c:/path/to/fxc.exe
 ```
-
-`fxc.exe` is located in the fxc directory.
 
 ## [LocalizedTextBuilder](./LocalizedTextBuilder/bin/)
 
