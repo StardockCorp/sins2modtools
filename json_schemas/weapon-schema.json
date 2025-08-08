@@ -21,10 +21,6 @@
                 "type": "string"
             }
         },
-        "bombing_damage": {
-            "type": "number",
-            "minimum": 0.0
-        },
         "burst_pattern": {
             "type": "array",
             "items": {

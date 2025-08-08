@@ -153,6 +153,7 @@
                                                     "has_titans",
                                                     "has_starbase_count",
                                                     "own_unit_item",
+                                                    "own_any_unit_item",
                                                     "spend_influence",
                                                     "buy_from_market",
                                                     "sell_to_market",
@@ -164,6 +165,17 @@
                                             "unit": {
                                                 "description": "unit definition ptr",
                                                 "type": "string"
+                                            },
+                                            "unit_item": {
+                                                "description": "unit item definition ptr",
+                                                "type": "string"
+                                            },
+                                            "unit_items": {
+                                                "description": "unit item definition ptr array",
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "string"
+                                                }
                                             }
                                         },
                                         "unevaluatedProperties": false
@@ -288,6 +300,7 @@
                                                                 "has_titans",
                                                                 "has_starbase_count",
                                                                 "own_unit_item",
+                                                                "own_any_unit_item",
                                                                 "spend_influence",
                                                                 "buy_from_market",
                                                                 "sell_to_market",
@@ -299,6 +312,17 @@
                                                         "unit": {
                                                             "description": "unit definition ptr",
                                                             "type": "string"
+                                                        },
+                                                        "unit_item": {
+                                                            "description": "unit item definition ptr",
+                                                            "type": "string"
+                                                        },
+                                                        "unit_items": {
+                                                            "description": "unit item definition ptr array",
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "string"
+                                                            }
                                                         }
                                                     },
                                                     "unevaluatedProperties": false
@@ -575,6 +599,7 @@
                                                                 "has_titans",
                                                                 "has_starbase_count",
                                                                 "own_unit_item",
+                                                                "own_any_unit_item",
                                                                 "spend_influence",
                                                                 "buy_from_market",
                                                                 "sell_to_market",
@@ -586,6 +611,17 @@
                                                         "unit": {
                                                             "description": "unit definition ptr",
                                                             "type": "string"
+                                                        },
+                                                        "unit_item": {
+                                                            "description": "unit item definition ptr",
+                                                            "type": "string"
+                                                        },
+                                                        "unit_items": {
+                                                            "description": "unit item definition ptr array",
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "string"
+                                                            }
                                                         }
                                                     },
                                                     "required": [
@@ -736,6 +772,7 @@
                                                             "has_titans",
                                                             "has_starbase_count",
                                                             "own_unit_item",
+                                                            "own_any_unit_item",
                                                             "spend_influence",
                                                             "buy_from_market",
                                                             "sell_to_market",
@@ -747,6 +784,17 @@
                                                     "unit": {
                                                         "description": "unit definition ptr",
                                                         "type": "string"
+                                                    },
+                                                    "unit_item": {
+                                                        "description": "unit item definition ptr",
+                                                        "type": "string"
+                                                    },
+                                                    "unit_items": {
+                                                        "description": "unit item definition ptr array",
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "string"
+                                                        }
                                                     }
                                                 },
                                                 "unevaluatedProperties": false
@@ -1023,6 +1071,7 @@
                                                             "has_titans",
                                                             "has_starbase_count",
                                                             "own_unit_item",
+                                                            "own_any_unit_item",
                                                             "spend_influence",
                                                             "buy_from_market",
                                                             "sell_to_market",
@@ -1034,6 +1083,17 @@
                                                     "unit": {
                                                         "description": "unit definition ptr",
                                                         "type": "string"
+                                                    },
+                                                    "unit_item": {
+                                                        "description": "unit item definition ptr",
+                                                        "type": "string"
+                                                    },
+                                                    "unit_items": {
+                                                        "description": "unit item definition ptr array",
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "string"
+                                                        }
                                                     }
                                                 },
                                                 "required": [
@@ -1436,6 +1496,28 @@
                     "unevaluatedProperties": false
                 },
                 "increase_planet_track_at_home_planet": {
+                    "type": "object",
+                    "properties": {
+                        "description": {
+                            "description": "Description for the trigger type tooltip. Localized text.",
+                            "type": "string"
+                        },
+                        "icon": {
+                            "description": "Icon for the trigger type tooltip. Brush ptr. Optional.",
+                            "type": "string"
+                        },
+                        "title": {
+                            "description": "Title for the trigger type tooltip. Localized text.",
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "description",
+                        "title"
+                    ],
+                    "unevaluatedProperties": false
+                },
+                "own_any_unit_item": {
                     "type": "object",
                     "properties": {
                         "description": {

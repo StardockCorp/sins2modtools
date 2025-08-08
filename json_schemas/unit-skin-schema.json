@@ -260,11 +260,17 @@
                             "has_unit_item",
                             "does_not_have_unit_item",
                             "is_crippled",
-                            "is_not_crippled"
+                            "is_not_crippled",
+                            "is_not_in_phase_space_or_charging",
+                            "is_collecting_loot"
                         ]
                     },
                     "hull_damage_percentage": {
                         "description": "default=0.5",
+                        "type": "number"
+                    },
+                    "hyperspace_effect_delay": {
+                        "description": "optional delay for usage with is_not_in_phase_space_or_charging. allows for particle effects to hold off to play until after an arbitary amount of time after hyperspace is complete.",
                         "type": "number"
                     },
                     "mesh_point_name": {
