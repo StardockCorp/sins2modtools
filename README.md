@@ -1,7 +1,16 @@
 # [Iron Engine 3 Tools](https://github.com/StardockCorp/sins2modtools)
 
+![License: All Rights Reserved](https://img.shields.io/badge/License-All%20Rights%20Reserved-red.svg)
+
 Public tools provided by Ironclad Games to support modding Iron Engine 3.
 Iron Engine 3 was used to build [Sins of a Solar Empire II](https://store.steampowered.com/app/1575940/Sins_of_a_Solar_Empire_II/)
+
+## License
+
+🔒 **Proprietary – All Rights Reserved**  
+This repository and its contents are provided **as-is** and may not be copied, modified, or redistributed without prior written permission.  
+
+See [LICENSE.md](LICENSE.md) for full details.
 
 ## Getting Started
 
