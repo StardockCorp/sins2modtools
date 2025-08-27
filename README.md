@@ -10,7 +10,7 @@ Iron Engine 3 was used to build [Sins of a Solar Empire II](https://store.steamp
 🔒 **Proprietary – All Rights Reserved**  
 This repository and its contents are provided **as-is** and may not be copied, modified, or redistributed without prior written permission.  
 
-See [LICENSE.md](LICENSE.md) for full details.
+See [LICENSE.md](License.md) for full details.
 
 ## Getting Started
 
