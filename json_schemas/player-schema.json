@@ -170,6 +170,57 @@
                 "$ref": "#/$defs/unit_definition_ptr"
             }
         },
+        "factional_victory": {
+            "type": "object",
+            "properties": {
+                "active_ability": {
+                    "type": "boolean"
+                },
+                "countdown_line": {
+                    "type": "object",
+                    "properties": {
+                        "countdown_line": {
+                            "type": "string"
+                        },
+                        "item_prefix": {
+                            "type": "string"
+                        },
+                        "optional_item_postfix": {
+                            "type": "string"
+                        },
+                        "optional_tooltip_line": {
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "item_prefix"
+                    ],
+                    "unevaluatedProperties": false
+                },
+                "hyperspace_on_victory": {
+                    "type": "boolean"
+                },
+                "objective_item_buildable_unit": {
+                    "type": "string"
+                },
+                "objective_unit_item": {
+                    "type": "string"
+                },
+                "objectives_required": {
+                    "type": "integer"
+                },
+                "system_population_percent": {
+                    "type": "number"
+                },
+                "victory_countdown_in_seconds": {
+                    "type": "number"
+                }
+            },
+            "required": [
+                "objectives_required"
+            ],
+            "unevaluatedProperties": false
+        },
         "find_npc_explore_prerequisites": {
             "type": "array",
             "items": {
@@ -3371,6 +3422,9 @@
                 "max_fleet_capital_ship_count": {
                     "type": "integer"
                 },
+                "max_fleet_super_capital_ship_count": {
+                    "type": "integer"
+                },
                 "max_jumps_from_home_planet_for_fleets": {
                     "description": "restrict how far from home planet fleets will move",
                     "type": "integer"
@@ -5150,6 +5204,62 @@
                             "unevaluatedProperties": false
                         },
                         "diplomatic": {
+                            "type": "object",
+                            "properties": {
+                                "lost_pictures": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/$defs/brush_ptr"
+                                    }
+                                },
+                                "lost_texts": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "phrase": {
+                                                "type": "string"
+                                            },
+                                            "status": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": [
+                                            "phrase",
+                                            "status"
+                                        ],
+                                        "unevaluatedProperties": false
+                                    }
+                                },
+                                "won_pictures": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/$defs/brush_ptr"
+                                    }
+                                },
+                                "won_texts": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "phrase": {
+                                                "type": "string"
+                                            },
+                                            "status": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": [
+                                            "phrase",
+                                            "status"
+                                        ],
+                                        "unevaluatedProperties": false
+                                    }
+                                }
+                            },
+                            "unevaluatedProperties": false
+                        },
+                        "factional": {
                             "type": "object",
                             "properties": {
                                 "lost_pictures": {

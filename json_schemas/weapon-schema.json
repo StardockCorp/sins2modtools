@@ -225,6 +225,10 @@
             "type": "number",
             "minimum": 0.0
         },
+        "population_damage": {
+            "type": "number",
+            "minimum": 0.0
+        },
         "range": {
             "type": "number"
         },
@@ -403,15 +407,10 @@
                             "bombing_damage": {
                                 "type": "number",
                                 "minimum": 0.0
-                            },
-                            "population_damage": {
-                                "type": "number",
-                                "minimum": 0.0
                             }
                         },
                         "required": [
-                            "bombing_damage",
-                            "population_damage"
+                            "bombing_damage"
                         ],
                         "unevaluatedProperties": false
                     }
@@ -426,7 +425,7 @@
             "items": {
                 "$ref": "#/$defs/target_filter_unit_type"
             },
-            "maxItems": 19
+            "maxItems": 20
         },
         "target_filter_id": {
             "type": "string"
@@ -507,6 +506,8 @@
                                     "can_ever_hyperspace",
                                     "can_ever_move",
                                     "is_structure_builder",
+                                    "gravity_well_contains_unit_type",
+                                    "is_in_gravity_well_or_adjacent_phase_lane",
                                     "not_self",
                                     "composite_not",
                                     "composite_and",
@@ -1326,6 +1327,35 @@
                                 "if": {
                                     "properties": {
                                         "constraint_type": {
+                                            "const": "gravity_well_contains_unit_type"
+                                        }
+                                    }
+                                },
+                                "then": {
+                                    "properties": {
+                                        "unit_type": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "unit_type"
+                                    ]
+                                }
+                            },
+                            {
+                                "if": {
+                                    "properties": {
+                                        "constraint_type": {
+                                            "const": "is_in_gravity_well_or_adjacent_phase_lane"
+                                        }
+                                    }
+                                },
+                                "then": {}
+                            },
+                            {
+                                "if": {
+                                    "properties": {
+                                        "constraint_type": {
                                             "const": "not_self"
                                         }
                                     }
@@ -1443,7 +1473,7 @@
                     "items": {
                         "$ref": "#/$defs/target_filter_unit_type"
                     },
-                    "maxItems": 19
+                    "maxItems": 20
                 }
             },
             "required": [
@@ -1497,6 +1527,7 @@
                 "frigate",
                 "cruiser",
                 "capital_ship",
+                "super_capital_ship",
                 "titan",
                 "structure",
                 "starbase",
@@ -1570,6 +1601,8 @@
                         "can_ever_hyperspace",
                         "can_ever_move",
                         "is_structure_builder",
+                        "gravity_well_contains_unit_type",
+                        "is_in_gravity_well_or_adjacent_phase_lane",
                         "not_self",
                         "composite_not",
                         "composite_and",
@@ -2380,6 +2413,35 @@
                         "properties": {
                             "constraint_type": {
                                 "const": "is_structure_builder"
+                            }
+                        }
+                    },
+                    "then": {}
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "constraint_type": {
+                                "const": "gravity_well_contains_unit_type"
+                            }
+                        }
+                    },
+                    "then": {
+                        "properties": {
+                            "unit_type": {
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "unit_type"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "constraint_type": {
+                                "const": "is_in_gravity_well_or_adjacent_phase_lane"
                             }
                         }
                     },

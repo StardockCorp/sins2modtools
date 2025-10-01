@@ -13,13 +13,17 @@
                         "type": "array",
                         "items": {
                             "type": "number"
-                        }
+                        },
+                        "minItems": 3,
+                        "maxItems": 3
                     },
                     "rotation": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/$defs/float3"
-                        }
+                            "type": "number"
+                        },
+                        "minItems": 9,
+                        "maxItems": 9
                     }
                 },
                 "required": [
@@ -34,6 +38,9 @@
         "active_actions": {
             "type": "object",
             "properties": {
+                "ability_action_will_ignore_gravity_well_unit_limits": {
+                    "type": "boolean"
+                },
                 "actions": {
                     "$ref": "#/$defs/action_group"
                 },
@@ -1916,6 +1923,7 @@
                 "frigate",
                 "cruiser",
                 "capital_ship",
+                "super_capital_ship",
                 "titan",
                 "structure",
                 "starbase",
@@ -2226,6 +2234,8 @@
                         "can_ever_hyperspace",
                         "can_ever_move",
                         "is_structure_builder",
+                        "gravity_well_contains_unit_type",
+                        "is_in_gravity_well_or_adjacent_phase_lane",
                         "not_self",
                         "composite_not",
                         "composite_and",
@@ -3045,6 +3055,35 @@
                     "if": {
                         "properties": {
                             "constraint_type": {
+                                "const": "gravity_well_contains_unit_type"
+                            }
+                        }
+                    },
+                    "then": {
+                        "properties": {
+                            "unit_type": {
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "unit_type"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "constraint_type": {
+                                "const": "is_in_gravity_well_or_adjacent_phase_lane"
+                            }
+                        }
+                    },
+                    "then": {}
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "constraint_type": {
                                 "const": "not_self"
                             }
                         }
@@ -3169,7 +3208,9 @@
                         "use_unit_operators_on_units_in_phase_lanes",
                         "use_unit_operators_on_closest_owned_planet",
                         "use_unit_operators_on_units_owned_by_player",
-                        "use_unit_operators_on_units_with_child_buffs_of_parent_buff"
+                        "use_unit_operators_on_units_with_child_buffs_of_parent_buff",
+                        "add_factional_objective",
+                        "remove_factional_objective"
                     ]
                 },
                 "constraint": {
@@ -4061,6 +4102,7 @@
                                                         "players_have_alliance_relationship",
                                                         "random_chance",
                                                         "research_prerequisites_are_met",
+                                                        "player_has_factional_victory_active",
                                                         "unit_comparison",
                                                         "unit_passes_target_filter",
                                                         "unit_passes_unit_constraint",
@@ -4488,6 +4530,25 @@
                                                             "player",
                                                             "prerequisites"
                                                         ]
+                                                    }
+                                                },
+                                                {
+                                                    "if": {
+                                                        "properties": {
+                                                            "constraint_type": {
+                                                                "const": "player_has_factional_victory_active"
+                                                            }
+                                                        }
+                                                    },
+                                                    "then": {
+                                                        "properties": {
+                                                            "objectives_active": {
+                                                                "type": "integer"
+                                                            },
+                                                            "player": {
+                                                                "$ref": "#/$defs/action_player"
+                                                            }
+                                                        }
                                                     }
                                                 },
                                                 {
@@ -6216,6 +6277,50 @@
                             "operators"
                         ]
                     }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "action_type": {
+                                "const": "add_factional_objective"
+                            }
+                        }
+                    },
+                    "then": {
+                        "properties": {
+                            "objectives_completed_value": {
+                                "$ref": "#/$defs/action_value_id"
+                            },
+                            "player": {
+                                "$ref": "#/$defs/action_player"
+                            }
+                        },
+                        "required": [
+                            "objectives_completed_value"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "action_type": {
+                                "const": "remove_factional_objective"
+                            }
+                        }
+                    },
+                    "then": {
+                        "properties": {
+                            "objectives_completed_value": {
+                                "$ref": "#/$defs/action_value_id"
+                            },
+                            "player": {
+                                "$ref": "#/$defs/action_player"
+                            }
+                        },
+                        "required": [
+                            "objectives_completed_value"
+                        ]
+                    }
                 }
             ],
             "unevaluatedProperties": false
@@ -6399,6 +6504,7 @@
                         "players_have_alliance_relationship",
                         "random_chance",
                         "research_prerequisites_are_met",
+                        "player_has_factional_victory_active",
                         "unit_comparison",
                         "unit_passes_target_filter",
                         "unit_passes_unit_constraint",
@@ -6826,6 +6932,25 @@
                             "player",
                             "prerequisites"
                         ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "constraint_type": {
+                                "const": "player_has_factional_victory_active"
+                            }
+                        }
+                    },
+                    "then": {
+                        "properties": {
+                            "objectives_active": {
+                                "type": "integer"
+                            },
+                            "player": {
+                                "$ref": "#/$defs/action_player"
+                            }
+                        }
                     }
                 },
                 {

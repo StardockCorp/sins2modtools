@@ -195,6 +195,7 @@
                 "frigate",
                 "cruiser",
                 "capital_ship",
+                "super_capital_ship",
                 "titan",
                 "structure",
                 "starbase",
@@ -1478,10 +1479,22 @@
                 "base_max_squadron_capacity": {
                     "type": "integer"
                 },
-                "hangar_points": {
+                "hangar_data": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/$defs/basis"
+                        "type": "object",
+                        "properties": {
+                            "hangar_basis": {
+                                "$ref": "#/$defs/basis"
+                            },
+                            "required_unit_item": {
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "hangar_basis"
+                        ],
+                        "unevaluatedProperties": false
                     }
                 },
                 "launch_destination_formation": {
@@ -1512,7 +1525,7 @@
             },
             "required": [
                 "base_max_squadron_capacity",
-                "hangar_points",
+                "hangar_data",
                 "launch_destination_formation",
                 "launch_destination_formation_offset",
                 "strikecraft_kinds"
@@ -3080,6 +3093,7 @@
                     "enum": [
                         "starbase",
                         "titan",
+                        "super_capital_ship",
                         "capital_ship",
                         "cruiser",
                         "frigate",

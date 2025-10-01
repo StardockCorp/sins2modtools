@@ -1792,6 +1792,9 @@
                         "unit_cannot_move": {
                             "type": "string"
                         },
+                        "unit_exceeds_planet_slot_limit": {
+                            "type": "string"
+                        },
                         "unit_factory_does_not_exist": {
                             "type": "string"
                         },
@@ -2449,6 +2452,9 @@
                         "unit_cannot_move": {
                             "type": "string"
                         },
+                        "unit_exceeds_planet_slot_limit": {
+                            "type": "string"
+                        },
                         "unit_factory_does_not_exist": {
                             "type": "string"
                         },
@@ -2669,6 +2675,9 @@
                     "type": "string"
                 },
                 "structure": {
+                    "type": "string"
+                },
+                "super_capital_ship": {
                     "type": "string"
                 },
                 "titan": {

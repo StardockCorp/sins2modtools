@@ -665,6 +665,9 @@
                         "max_fleet_capital_ship_count": {
                             "type": "integer"
                         },
+                        "max_fleet_super_capital_ship_count": {
+                            "type": "integer"
+                        },
                         "max_supply_percentage_relative_to_human_players": {
                             "type": "number"
                         },
@@ -1173,6 +1176,9 @@
                             "type": "string"
                         },
                         "max_fleet_capital_ship_count": {
+                            "type": "integer"
+                        },
+                        "max_fleet_super_capital_ship_count": {
                             "type": "integer"
                         },
                         "max_supply_percentage_relative_to_human_players": {
@@ -1685,6 +1691,9 @@
                         "max_fleet_capital_ship_count": {
                             "type": "integer"
                         },
+                        "max_fleet_super_capital_ship_count": {
+                            "type": "integer"
+                        },
                         "max_supply_percentage_relative_to_human_players": {
                             "type": "number"
                         },
@@ -2193,6 +2202,9 @@
                             "type": "string"
                         },
                         "max_fleet_capital_ship_count": {
+                            "type": "integer"
+                        },
+                        "max_fleet_super_capital_ship_count": {
                             "type": "integer"
                         },
                         "max_supply_percentage_relative_to_human_players": {
@@ -2705,6 +2717,9 @@
                         "max_fleet_capital_ship_count": {
                             "type": "integer"
                         },
+                        "max_fleet_super_capital_ship_count": {
+                            "type": "integer"
+                        },
                         "max_supply_percentage_relative_to_human_players": {
                             "type": "number"
                         },
@@ -3215,6 +3230,9 @@
                         "max_fleet_capital_ship_count": {
                             "type": "integer"
                         },
+                        "max_fleet_super_capital_ship_count": {
+                            "type": "integer"
+                        },
                         "max_supply_percentage_relative_to_human_players": {
                             "type": "number"
                         },
@@ -3260,6 +3278,9 @@
                 "type": "string"
             }
         },
+        "super_capital_ship_build_kind": {
+            "type": "string"
+        },
         "titan_build_kind": {
             "type": "string"
         },
@@ -3274,6 +3295,7 @@
         "difficulties",
         "random_exotics",
         "ship_factory_build_kinds",
+        "super_capital_ship_build_kind",
         "titan_build_kind"
     ],
     "unevaluatedProperties": false,
