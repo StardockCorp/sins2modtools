@@ -19,6 +19,12 @@
         "ai": {
             "$ref": "#/$defs/player_ai_definition"
         },
+        "allowed_traffic_ports": {
+            "type": "array",
+            "items": {
+                "$ref": "#/$defs/unit_definition_ptr"
+            }
+        },
         "asteroid_extraction_rates": {
             "$ref": "#/$defs/asset_values"
         },

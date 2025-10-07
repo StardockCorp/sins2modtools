@@ -81,6 +81,9 @@
                             "will_give_experience": {
                                 "type": "boolean"
                             },
+                            "will_ignore_planet_slot_costs": {
+                                "type": "boolean"
+                            },
                             "will_notify_enemy_player_when_entering_gravity_well": {
                                 "type": "boolean"
                             }
