@@ -57,6 +57,15 @@
         "culture": {
             "type": "object",
             "properties": {
+                "allegiance_decay_exponent": {
+                    "type": "number"
+                },
+                "allegiance_decay_minimum_percentage": {
+                    "type": "number"
+                },
+                "base_allegiance_decay_rate": {
+                    "type": "number"
+                },
                 "base_allegiance_growth_rate_from_neutral": {
                     "type": "number"
                 },
@@ -1336,6 +1345,22 @@
                                 "mutation": {
                                     "$ref": "#/$defs/unit_mutation_name"
                                 },
+                                "planet_shield_burst_restore": {
+                                    "type": "object",
+                                    "properties": {
+                                        "cooldown_duration": {
+                                            "type": "number"
+                                        },
+                                        "restore_percentage": {
+                                            "type": "number"
+                                        }
+                                    },
+                                    "required": [
+                                        "cooldown_duration",
+                                        "restore_percentage"
+                                    ],
+                                    "unevaluatedProperties": false
+                                },
                                 "prerequisites": {
                                     "type": "array",
                                     "items": {
@@ -1434,6 +1459,22 @@
                                 },
                                 "mutation": {
                                     "$ref": "#/$defs/unit_mutation_name"
+                                },
+                                "planet_shield_burst_restore": {
+                                    "type": "object",
+                                    "properties": {
+                                        "cooldown_duration": {
+                                            "type": "number"
+                                        },
+                                        "restore_percentage": {
+                                            "type": "number"
+                                        }
+                                    },
+                                    "required": [
+                                        "cooldown_duration",
+                                        "restore_percentage"
+                                    ],
+                                    "unevaluatedProperties": false
                                 },
                                 "prerequisites": {
                                     "type": "array",
@@ -1534,6 +1575,22 @@
                                 "mutation": {
                                     "$ref": "#/$defs/unit_mutation_name"
                                 },
+                                "planet_shield_burst_restore": {
+                                    "type": "object",
+                                    "properties": {
+                                        "cooldown_duration": {
+                                            "type": "number"
+                                        },
+                                        "restore_percentage": {
+                                            "type": "number"
+                                        }
+                                    },
+                                    "required": [
+                                        "cooldown_duration",
+                                        "restore_percentage"
+                                    ],
+                                    "unevaluatedProperties": false
+                                },
                                 "prerequisites": {
                                     "type": "array",
                                     "items": {
@@ -1632,6 +1689,22 @@
                                 },
                                 "mutation": {
                                     "$ref": "#/$defs/unit_mutation_name"
+                                },
+                                "planet_shield_burst_restore": {
+                                    "type": "object",
+                                    "properties": {
+                                        "cooldown_duration": {
+                                            "type": "number"
+                                        },
+                                        "restore_percentage": {
+                                            "type": "number"
+                                        }
+                                    },
+                                    "required": [
+                                        "cooldown_duration",
+                                        "restore_percentage"
+                                    ],
+                                    "unevaluatedProperties": false
                                 },
                                 "prerequisites": {
                                     "type": "array",
@@ -1732,6 +1805,22 @@
                                 "mutation": {
                                     "$ref": "#/$defs/unit_mutation_name"
                                 },
+                                "planet_shield_burst_restore": {
+                                    "type": "object",
+                                    "properties": {
+                                        "cooldown_duration": {
+                                            "type": "number"
+                                        },
+                                        "restore_percentage": {
+                                            "type": "number"
+                                        }
+                                    },
+                                    "required": [
+                                        "cooldown_duration",
+                                        "restore_percentage"
+                                    ],
+                                    "unevaluatedProperties": false
+                                },
                                 "prerequisites": {
                                     "type": "array",
                                     "items": {
@@ -1831,6 +1920,22 @@
                                 "mutation": {
                                     "$ref": "#/$defs/unit_mutation_name"
                                 },
+                                "planet_shield_burst_restore": {
+                                    "type": "object",
+                                    "properties": {
+                                        "cooldown_duration": {
+                                            "type": "number"
+                                        },
+                                        "restore_percentage": {
+                                            "type": "number"
+                                        }
+                                    },
+                                    "required": [
+                                        "cooldown_duration",
+                                        "restore_percentage"
+                                    ],
+                                    "unevaluatedProperties": false
+                                },
                                 "prerequisites": {
                                     "type": "array",
                                     "items": {
@@ -1929,6 +2034,22 @@
                                 },
                                 "mutation": {
                                     "$ref": "#/$defs/unit_mutation_name"
+                                },
+                                "planet_shield_burst_restore": {
+                                    "type": "object",
+                                    "properties": {
+                                        "cooldown_duration": {
+                                            "type": "number"
+                                        },
+                                        "restore_percentage": {
+                                            "type": "number"
+                                        }
+                                    },
+                                    "required": [
+                                        "cooldown_duration",
+                                        "restore_percentage"
+                                    ],
+                                    "unevaluatedProperties": false
                                 },
                                 "prerequisites": {
                                     "type": "array",
@@ -2543,6 +2664,9 @@
                         "factory_build_time": {
                             "type": "number",
                             "minimum": 0.0
+                        },
+                        "input_exotic_cost": {
+                            "$ref": "#/$defs/exotic_price"
                         }
                     },
                     "unevaluatedProperties": false
@@ -2598,10 +2722,16 @@
                         "could_not_accept_due_to_insufficient_exotics": {
                             "$ref": "#/$defs/localized_text_ptr"
                         },
+                        "could_not_accept_due_to_insufficient_influence": {
+                            "$ref": "#/$defs/localized_text_ptr"
+                        },
                         "could_not_accept_due_to_other_reasons": {
                             "$ref": "#/$defs/localized_text_ptr"
                         },
                         "give_planets_requires_synergy_alliance": {
+                            "$ref": "#/$defs/localized_text_ptr"
+                        },
+                        "out_of_patience": {
                             "$ref": "#/$defs/localized_text_ptr"
                         },
                         "trade_is_not_reasonable": {
@@ -2921,6 +3051,9 @@
                         "factory_build_time": {
                             "type": "number",
                             "minimum": 0.0
+                        },
+                        "input_exotic_cost": {
+                            "$ref": "#/$defs/exotic_price"
                         }
                     },
                     "unevaluatedProperties": false
@@ -3606,6 +3739,22 @@
                             "mutation": {
                                 "$ref": "#/$defs/unit_mutation_name"
                             },
+                            "planet_shield_burst_restore": {
+                                "type": "object",
+                                "properties": {
+                                    "cooldown_duration": {
+                                        "type": "number"
+                                    },
+                                    "restore_percentage": {
+                                        "type": "number"
+                                    }
+                                },
+                                "required": [
+                                    "cooldown_duration",
+                                    "restore_percentage"
+                                ],
+                                "unevaluatedProperties": false
+                            },
                             "prerequisites": {
                                 "type": "array",
                                 "items": {
@@ -3707,6 +3856,22 @@
                             },
                             "mutation": {
                                 "$ref": "#/$defs/unit_mutation_name"
+                            },
+                            "planet_shield_burst_restore": {
+                                "type": "object",
+                                "properties": {
+                                    "cooldown_duration": {
+                                        "type": "number"
+                                    },
+                                    "restore_percentage": {
+                                        "type": "number"
+                                    }
+                                },
+                                "required": [
+                                    "cooldown_duration",
+                                    "restore_percentage"
+                                ],
+                                "unevaluatedProperties": false
                             },
                             "prerequisites": {
                                 "type": "array",
@@ -3810,6 +3975,22 @@
                             "mutation": {
                                 "$ref": "#/$defs/unit_mutation_name"
                             },
+                            "planet_shield_burst_restore": {
+                                "type": "object",
+                                "properties": {
+                                    "cooldown_duration": {
+                                        "type": "number"
+                                    },
+                                    "restore_percentage": {
+                                        "type": "number"
+                                    }
+                                },
+                                "required": [
+                                    "cooldown_duration",
+                                    "restore_percentage"
+                                ],
+                                "unevaluatedProperties": false
+                            },
                             "prerequisites": {
                                 "type": "array",
                                 "items": {
@@ -3911,6 +4092,22 @@
                             },
                             "mutation": {
                                 "$ref": "#/$defs/unit_mutation_name"
+                            },
+                            "planet_shield_burst_restore": {
+                                "type": "object",
+                                "properties": {
+                                    "cooldown_duration": {
+                                        "type": "number"
+                                    },
+                                    "restore_percentage": {
+                                        "type": "number"
+                                    }
+                                },
+                                "required": [
+                                    "cooldown_duration",
+                                    "restore_percentage"
+                                ],
+                                "unevaluatedProperties": false
                             },
                             "prerequisites": {
                                 "type": "array",
@@ -4014,6 +4211,22 @@
                             "mutation": {
                                 "$ref": "#/$defs/unit_mutation_name"
                             },
+                            "planet_shield_burst_restore": {
+                                "type": "object",
+                                "properties": {
+                                    "cooldown_duration": {
+                                        "type": "number"
+                                    },
+                                    "restore_percentage": {
+                                        "type": "number"
+                                    }
+                                },
+                                "required": [
+                                    "cooldown_duration",
+                                    "restore_percentage"
+                                ],
+                                "unevaluatedProperties": false
+                            },
                             "prerequisites": {
                                 "type": "array",
                                 "items": {
@@ -4116,6 +4329,22 @@
                             "mutation": {
                                 "$ref": "#/$defs/unit_mutation_name"
                             },
+                            "planet_shield_burst_restore": {
+                                "type": "object",
+                                "properties": {
+                                    "cooldown_duration": {
+                                        "type": "number"
+                                    },
+                                    "restore_percentage": {
+                                        "type": "number"
+                                    }
+                                },
+                                "required": [
+                                    "cooldown_duration",
+                                    "restore_percentage"
+                                ],
+                                "unevaluatedProperties": false
+                            },
                             "prerequisites": {
                                 "type": "array",
                                 "items": {
@@ -4217,6 +4446,22 @@
                             },
                             "mutation": {
                                 "$ref": "#/$defs/unit_mutation_name"
+                            },
+                            "planet_shield_burst_restore": {
+                                "type": "object",
+                                "properties": {
+                                    "cooldown_duration": {
+                                        "type": "number"
+                                    },
+                                    "restore_percentage": {
+                                        "type": "number"
+                                    }
+                                },
+                                "required": [
+                                    "cooldown_duration",
+                                    "restore_percentage"
+                                ],
+                                "unevaluatedProperties": false
                             },
                             "prerequisites": {
                                 "type": "array",
@@ -4375,7 +4620,11 @@
                                     "influence_points_recharge_rate",
                                     "unity_points",
                                     "unity_max_mana_points",
-                                    "unity_mana_restore_rate"
+                                    "unity_mana_restore_rate",
+                                    "diplomatic_bonus",
+                                    "player_intelligence_purchase_influence_point_cost",
+                                    "player_intelligence_purchase_spool_up_time",
+                                    "player_intelligence_purchase_cooldown_duration"
                                 ]
                             },
                             "value": {
@@ -4411,7 +4660,8 @@
                             "modifier_type": {
                                 "type": "string",
                                 "enum": [
-                                    "build_time"
+                                    "build_time",
+                                    "max_concurrent_builds"
                                 ]
                             },
                             "value": {
@@ -4876,7 +5126,11 @@
                         "influence_points_recharge_rate",
                         "unity_points",
                         "unity_max_mana_points",
-                        "unity_mana_restore_rate"
+                        "unity_mana_restore_rate",
+                        "diplomatic_bonus",
+                        "player_intelligence_purchase_influence_point_cost",
+                        "player_intelligence_purchase_spool_up_time",
+                        "player_intelligence_purchase_cooldown_duration"
                     ]
                 },
                 "value_behavior": {
@@ -5854,6 +6108,22 @@
                                                 "mutation": {
                                                     "$ref": "#/$defs/unit_mutation_name"
                                                 },
+                                                "planet_shield_burst_restore": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "cooldown_duration": {
+                                                            "type": "number"
+                                                        },
+                                                        "restore_percentage": {
+                                                            "type": "number"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "cooldown_duration",
+                                                        "restore_percentage"
+                                                    ],
+                                                    "unevaluatedProperties": false
+                                                },
                                                 "prerequisites": {
                                                     "type": "array",
                                                     "items": {
@@ -5955,6 +6225,22 @@
                                                 },
                                                 "mutation": {
                                                     "$ref": "#/$defs/unit_mutation_name"
+                                                },
+                                                "planet_shield_burst_restore": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "cooldown_duration": {
+                                                            "type": "number"
+                                                        },
+                                                        "restore_percentage": {
+                                                            "type": "number"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "cooldown_duration",
+                                                        "restore_percentage"
+                                                    ],
+                                                    "unevaluatedProperties": false
                                                 },
                                                 "prerequisites": {
                                                     "type": "array",
@@ -6058,6 +6344,22 @@
                                                 "mutation": {
                                                     "$ref": "#/$defs/unit_mutation_name"
                                                 },
+                                                "planet_shield_burst_restore": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "cooldown_duration": {
+                                                            "type": "number"
+                                                        },
+                                                        "restore_percentage": {
+                                                            "type": "number"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "cooldown_duration",
+                                                        "restore_percentage"
+                                                    ],
+                                                    "unevaluatedProperties": false
+                                                },
                                                 "prerequisites": {
                                                     "type": "array",
                                                     "items": {
@@ -6159,6 +6461,22 @@
                                                 },
                                                 "mutation": {
                                                     "$ref": "#/$defs/unit_mutation_name"
+                                                },
+                                                "planet_shield_burst_restore": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "cooldown_duration": {
+                                                            "type": "number"
+                                                        },
+                                                        "restore_percentage": {
+                                                            "type": "number"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "cooldown_duration",
+                                                        "restore_percentage"
+                                                    ],
+                                                    "unevaluatedProperties": false
                                                 },
                                                 "prerequisites": {
                                                     "type": "array",
@@ -6262,6 +6580,22 @@
                                                 "mutation": {
                                                     "$ref": "#/$defs/unit_mutation_name"
                                                 },
+                                                "planet_shield_burst_restore": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "cooldown_duration": {
+                                                            "type": "number"
+                                                        },
+                                                        "restore_percentage": {
+                                                            "type": "number"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "cooldown_duration",
+                                                        "restore_percentage"
+                                                    ],
+                                                    "unevaluatedProperties": false
+                                                },
                                                 "prerequisites": {
                                                     "type": "array",
                                                     "items": {
@@ -6364,6 +6698,22 @@
                                                 "mutation": {
                                                     "$ref": "#/$defs/unit_mutation_name"
                                                 },
+                                                "planet_shield_burst_restore": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "cooldown_duration": {
+                                                            "type": "number"
+                                                        },
+                                                        "restore_percentage": {
+                                                            "type": "number"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "cooldown_duration",
+                                                        "restore_percentage"
+                                                    ],
+                                                    "unevaluatedProperties": false
+                                                },
                                                 "prerequisites": {
                                                     "type": "array",
                                                     "items": {
@@ -6465,6 +6815,22 @@
                                                 },
                                                 "mutation": {
                                                     "$ref": "#/$defs/unit_mutation_name"
+                                                },
+                                                "planet_shield_burst_restore": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "cooldown_duration": {
+                                                            "type": "number"
+                                                        },
+                                                        "restore_percentage": {
+                                                            "type": "number"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "cooldown_duration",
+                                                        "restore_percentage"
+                                                    ],
+                                                    "unevaluatedProperties": false
                                                 },
                                                 "prerequisites": {
                                                     "type": "array",

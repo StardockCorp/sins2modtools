@@ -1,0 +1,42 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Start Mode Uniforms",
+    "description": "",
+    "type": "object",
+    "properties": {
+        "overwrite_start_modes": {
+            "type": "boolean"
+        },
+        "start_modes": {
+            "type": "array",
+            "items": {
+                "$ref": "#/$defs/start_mode_uniform_data"
+            }
+        },
+        "version": {
+            "type": "integer"
+        }
+    },
+    "unevaluatedProperties": false,
+    "$defs": {
+        "start_mode_uniform_data": {
+            "type": "object",
+            "properties": {
+                "entity": {
+                    "$ref": "#/$defs/start_mode_definition_ptr"
+                },
+                "name": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "entity",
+                "name"
+            ],
+            "unevaluatedProperties": false
+        },
+        "start_mode_definition_ptr": {
+            "type": "string"
+        }
+    }
+}

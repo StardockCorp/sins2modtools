@@ -603,6 +603,9 @@
                         "crystal_income_rate_per_population": {
                             "type": "string"
                         },
+                        "diplomatic_bonus": {
+                            "type": "string"
+                        },
                         "factory_build_exotic_price": {
                             "type": "string"
                         },
@@ -628,6 +631,15 @@
                             "type": "string"
                         },
                         "percentage_of_other_players_total_credit_income": {
+                            "type": "string"
+                        },
+                        "player_intelligence_purchase_cooldown_duration": {
+                            "type": "string"
+                        },
+                        "player_intelligence_purchase_influence_point_cost": {
+                            "type": "string"
+                        },
+                        "player_intelligence_purchase_spool_up_time": {
                             "type": "string"
                         },
                         "surveying_bonus_exotic_chance": {
@@ -658,6 +670,9 @@
                     "type": "object",
                     "properties": {
                         "build_time": {
+                            "type": "string"
+                        },
+                        "max_concurrent_builds": {
                             "type": "string"
                         }
                     },
@@ -1249,6 +1264,9 @@
                         "alliance_cannot_be_broken_when_self": {
                             "type": "string"
                         },
+                        "alliance_offer_ai_player_is_out_of_patience": {
+                            "type": "string"
+                        },
                         "alliance_offer_does_not_exist": {
                             "type": "string"
                         },
@@ -1274,6 +1292,12 @@
                             "type": "string"
                         },
                         "alliance_offer_planet_not_owned_by_player": {
+                            "type": "string"
+                        },
+                        "alliance_offer_player_cannot_commit_item": {
+                            "type": "string"
+                        },
+                        "alliance_offer_player_cannot_receive_item": {
                             "type": "string"
                         },
                         "alliance_offer_player_lost": {
@@ -1579,6 +1603,21 @@
                         "position_is_not_within_structure_build_distance": {
                             "type": "string"
                         },
+                        "purchase_intelligence_cannot_purchase_for_self": {
+                            "type": "string"
+                        },
+                        "purchase_intelligence_on_cooldown": {
+                            "type": "string"
+                        },
+                        "purchase_intelligence_player_not_discovered": {
+                            "type": "string"
+                        },
+                        "purchase_intelligence_research_prerequisite_not_met": {
+                            "type": "string"
+                        },
+                        "purchase_intelligence_spooling_up": {
+                            "type": "string"
+                        },
                         "purchase_item_buying_player_is_not_planet_owner": {
                             "type": "string"
                         },
@@ -1654,6 +1693,9 @@
                         "research_subject_already_researching": {
                             "type": "string"
                         },
+                        "research_subject_mutually_exclusive_research_completed": {
+                            "type": "string"
+                        },
                         "research_subject_not_owned": {
                             "type": "string"
                         },
@@ -1661,6 +1703,24 @@
                             "type": "string"
                         },
                         "research_subject_required_allied_player_race_missing": {
+                            "type": "string"
+                        },
+                        "research_subject_required_npc_reputation_level_not_met": {
+                            "type": "string"
+                        },
+                        "research_subject_required_owned_planet_types_missing": {
+                            "type": "string"
+                        },
+                        "research_subject_required_owned_structure_types_missing": {
+                            "type": "string"
+                        },
+                        "research_subject_required_owned_unit_item_types_missing": {
+                            "type": "string"
+                        },
+                        "research_subject_required_owned_unit_types_missing": {
+                            "type": "string"
+                        },
+                        "research_subject_required_phase_resonance_track_level_not_met": {
                             "type": "string"
                         },
                         "research_tier_already_acquired": {
@@ -1909,6 +1969,9 @@
                         "alliance_cannot_be_broken_when_self": {
                             "type": "string"
                         },
+                        "alliance_offer_ai_player_is_out_of_patience": {
+                            "type": "string"
+                        },
                         "alliance_offer_does_not_exist": {
                             "type": "string"
                         },
@@ -1934,6 +1997,12 @@
                             "type": "string"
                         },
                         "alliance_offer_planet_not_owned_by_player": {
+                            "type": "string"
+                        },
+                        "alliance_offer_player_cannot_commit_item": {
+                            "type": "string"
+                        },
+                        "alliance_offer_player_cannot_receive_item": {
                             "type": "string"
                         },
                         "alliance_offer_player_lost": {
@@ -2239,6 +2308,21 @@
                         "position_is_not_within_structure_build_distance": {
                             "type": "string"
                         },
+                        "purchase_intelligence_cannot_purchase_for_self": {
+                            "type": "string"
+                        },
+                        "purchase_intelligence_on_cooldown": {
+                            "type": "string"
+                        },
+                        "purchase_intelligence_player_not_discovered": {
+                            "type": "string"
+                        },
+                        "purchase_intelligence_research_prerequisite_not_met": {
+                            "type": "string"
+                        },
+                        "purchase_intelligence_spooling_up": {
+                            "type": "string"
+                        },
                         "purchase_item_buying_player_is_not_planet_owner": {
                             "type": "string"
                         },
@@ -2314,6 +2398,9 @@
                         "research_subject_already_researching": {
                             "type": "string"
                         },
+                        "research_subject_mutually_exclusive_research_completed": {
+                            "type": "string"
+                        },
                         "research_subject_not_owned": {
                             "type": "string"
                         },
@@ -2321,6 +2408,24 @@
                             "type": "string"
                         },
                         "research_subject_required_allied_player_race_missing": {
+                            "type": "string"
+                        },
+                        "research_subject_required_npc_reputation_level_not_met": {
+                            "type": "string"
+                        },
+                        "research_subject_required_owned_planet_types_missing": {
+                            "type": "string"
+                        },
+                        "research_subject_required_owned_structure_types_missing": {
+                            "type": "string"
+                        },
+                        "research_subject_required_owned_unit_item_types_missing": {
+                            "type": "string"
+                        },
+                        "research_subject_required_owned_unit_types_missing": {
+                            "type": "string"
+                        },
+                        "research_subject_required_phase_resonance_track_level_not_met": {
                             "type": "string"
                         },
                         "research_tier_already_acquired": {

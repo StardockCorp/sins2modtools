@@ -165,7 +165,11 @@
                             "influence_points_recharge_rate",
                             "unity_points",
                             "unity_max_mana_points",
-                            "unity_mana_restore_rate"
+                            "unity_mana_restore_rate",
+                            "diplomatic_bonus",
+                            "player_intelligence_purchase_influence_point_cost",
+                            "player_intelligence_purchase_spool_up_time",
+                            "player_intelligence_purchase_cooldown_duration"
                         ]
                     },
                     "value": {
@@ -201,7 +205,8 @@
                     "modifier_type": {
                         "type": "string",
                         "enum": [
-                            "build_time"
+                            "build_time",
+                            "max_concurrent_builds"
                         ]
                     },
                     "value": {
@@ -261,6 +266,17 @@
         },
         "hud_icon": {
             "$ref": "#/$defs/brush_ptr"
+        },
+        "influence_points_price": {
+            "description": "Cost in influence points to start this research",
+            "type": "integer"
+        },
+        "mutually_exclusive_research_subjects": {
+            "description": "When this research is completed, all research subjects in this list become locked and cannot be researched",
+            "type": "array",
+            "items": {
+                "$ref": "#/$defs/research_subject_definition_ptr"
+            }
         },
         "name": {
             "$ref": "#/$defs/localized_text_ptr"
@@ -470,7 +486,11 @@
                                     "influence_points_recharge_rate",
                                     "unity_points",
                                     "unity_max_mana_points",
-                                    "unity_mana_restore_rate"
+                                    "unity_mana_restore_rate",
+                                    "diplomatic_bonus",
+                                    "player_intelligence_purchase_influence_point_cost",
+                                    "player_intelligence_purchase_spool_up_time",
+                                    "player_intelligence_purchase_cooldown_duration"
                                 ]
                             },
                             "value": {
@@ -506,7 +526,8 @@
                             "modifier_type": {
                                 "type": "string",
                                 "enum": [
-                                    "build_time"
+                                    "build_time",
+                                    "max_concurrent_builds"
                                 ]
                             },
                             "value": {
@@ -918,6 +939,72 @@
         "required_allied_player_race": {
             "$ref": "#/$defs/player_race_name"
         },
+        "required_npc_reputation_level": {
+            "description": "Research cannot be started until player has at least this reputation level with the specified NPC",
+            "type": "object",
+            "properties": {
+                "npc_tag": {
+                    "description": "The NPC tag to check reputation with",
+                    "$ref": "#/$defs/npc_tag_name"
+                },
+                "reputation_level": {
+                    "description": "The minimum reputation level required (0-based index)",
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "npc_tag",
+                "reputation_level"
+            ],
+            "unevaluatedProperties": false
+        },
+        "required_owned_planet_types": {
+            "description": "Research cannot be started until player owns at least one planet of any of these types",
+            "type": "array",
+            "items": {
+                "$ref": "#/$defs/planet_type"
+            }
+        },
+        "required_owned_structure_types": {
+            "description": "Research cannot be started until player owns at least one structure unit of any of these types",
+            "type": "array",
+            "items": {
+                "$ref": "#/$defs/unit_definition_ptr"
+            }
+        },
+        "required_owned_unit_item_types": {
+            "description": "Research cannot be started until player owns at least one unit item (planet component) of any of these types",
+            "type": "array",
+            "items": {
+                "$ref": "#/$defs/unit_item_definition_ptr"
+            }
+        },
+        "required_owned_unit_types": {
+            "description": "Research cannot be started until player owns at least one unit of any of these types",
+            "type": "array",
+            "items": {
+                "$ref": "#/$defs/unit_definition_ptr"
+            }
+        },
+        "required_phase_resonance_track_level": {
+            "description": "Research cannot be started until player has at least this phase resonance track level",
+            "type": "object",
+            "properties": {
+                "minimum_level": {
+                    "description": "The minimum track level required (0-based index)",
+                    "type": "integer"
+                },
+                "track_type": {
+                    "description": "The phase resonance track to check",
+                    "$ref": "#/$defs/player_phase_resonance_track_type"
+                }
+            },
+            "required": [
+                "minimum_level",
+                "track_type"
+            ],
+            "unevaluatedProperties": false
+        },
         "research_time": {
             "type": "number"
         },
@@ -1092,6 +1179,10 @@
                 ],
                 "unevaluatedProperties": false
             }
+        },
+        "unity_mana_price": {
+            "description": "Cost in unity mana to start this research",
+            "type": "number"
         },
         "version": {
             "type": "integer"
@@ -1428,6 +1519,17 @@
         },
         "planet_type": {
             "type": "string"
+        },
+        "unit_tag": {
+            "type": "string"
+        },
+        "player_phase_resonance_track_type": {
+            "type": "string",
+            "enum": [
+                "movement",
+                "combat",
+                "utility"
+            ]
         },
         "action_effect_mesh_point_usage": {
             "type": "string",
@@ -2797,9 +2899,6 @@
         "unit_definition_ptr": {
             "type": "string"
         },
-        "unit_tag": {
-            "type": "string"
-        },
         "action_data_source_definition_ptr": {
             "type": "string"
         },
@@ -2844,6 +2943,13 @@
                         "per_planet_commerce_track_credit_income",
                         "per_planet_mining_track_metal_income",
                         "per_planet_mining_track_crystal_income",
+                        "per_planet_current_defense_track_level",
+                        "per_planet_current_logistics_track_level",
+                        "per_planet_current_commerce_track_level",
+                        "per_planet_current_mining_track_level",
+                        "per_planet_current_research_track_level",
+                        "per_planet_current_focus_track_level",
+                        "per_planet_current_survey_track_level",
                         "per_current_hull_points",
                         "per_missing_hull_points",
                         "per_max_hull_points",
@@ -3124,6 +3230,118 @@
                         "properties": {
                             "transform_type": {
                                 "const": "per_planet_mining_track_crystal_income"
+                            }
+                        }
+                    },
+                    "then": {
+                        "properties": {
+                            "transform_unit": {
+                                "$ref": "#/$defs/action_unit"
+                            }
+                        }
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "transform_type": {
+                                "const": "per_planet_current_defense_track_level"
+                            }
+                        }
+                    },
+                    "then": {
+                        "properties": {
+                            "transform_unit": {
+                                "$ref": "#/$defs/action_unit"
+                            }
+                        }
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "transform_type": {
+                                "const": "per_planet_current_logistics_track_level"
+                            }
+                        }
+                    },
+                    "then": {
+                        "properties": {
+                            "transform_unit": {
+                                "$ref": "#/$defs/action_unit"
+                            }
+                        }
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "transform_type": {
+                                "const": "per_planet_current_commerce_track_level"
+                            }
+                        }
+                    },
+                    "then": {
+                        "properties": {
+                            "transform_unit": {
+                                "$ref": "#/$defs/action_unit"
+                            }
+                        }
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "transform_type": {
+                                "const": "per_planet_current_mining_track_level"
+                            }
+                        }
+                    },
+                    "then": {
+                        "properties": {
+                            "transform_unit": {
+                                "$ref": "#/$defs/action_unit"
+                            }
+                        }
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "transform_type": {
+                                "const": "per_planet_current_research_track_level"
+                            }
+                        }
+                    },
+                    "then": {
+                        "properties": {
+                            "transform_unit": {
+                                "$ref": "#/$defs/action_unit"
+                            }
+                        }
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "transform_type": {
+                                "const": "per_planet_current_focus_track_level"
+                            }
+                        }
+                    },
+                    "then": {
+                        "properties": {
+                            "transform_unit": {
+                                "$ref": "#/$defs/action_unit"
+                            }
+                        }
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "transform_type": {
+                                "const": "per_planet_current_survey_track_level"
                             }
                         }
                     },
@@ -3563,25 +3781,6 @@
         },
         "unit_tags": {
             "type": "string"
-        },
-        "action_tooltip_line_group": {
-            "type": "object",
-            "properties": {
-                "header_text": {
-                    "$ref": "#/$defs/localized_text_ptr"
-                },
-                "is_visible_constraint": {
-                    "description": "todo_json_schema",
-                    "$ref": "#/$defs/action_constraint"
-                },
-                "lines": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/$defs/action_tooltip_line"
-                    }
-                }
-            },
-            "unevaluatedProperties": false
         },
         "arbitary_research_line": {
             "type": "object",
@@ -9673,6 +9872,25 @@
                 "trigger_event_weapon"
             ]
         },
+        "action_tooltip_line_group": {
+            "type": "object",
+            "properties": {
+                "header_text": {
+                    "$ref": "#/$defs/localized_text_ptr"
+                },
+                "is_visible_constraint": {
+                    "description": "todo_json_schema",
+                    "$ref": "#/$defs/action_constraint"
+                },
+                "lines": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/$defs/action_tooltip_line"
+                    }
+                }
+            },
+            "unevaluatedProperties": false
+        },
         "unit_factory_modifier_type": {
             "type": "string",
             "enum": [
@@ -9682,7 +9900,8 @@
         "exotic_factory_modifier_type": {
             "type": "string",
             "enum": [
-                "build_time"
+                "build_time",
+                "max_concurrent_builds"
             ]
         },
         "planet_modifier_type": {
@@ -9872,7 +10091,11 @@
                 "influence_points_recharge_rate",
                 "unity_points",
                 "unity_max_mana_points",
-                "unity_mana_restore_rate"
+                "unity_mana_restore_rate",
+                "diplomatic_bonus",
+                "player_intelligence_purchase_influence_point_cost",
+                "player_intelligence_purchase_spool_up_time",
+                "player_intelligence_purchase_cooldown_duration"
             ]
         },
         "unit_constraint": {

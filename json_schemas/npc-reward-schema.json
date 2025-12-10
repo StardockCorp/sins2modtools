@@ -717,7 +717,11 @@
                                     "influence_points_recharge_rate",
                                     "unity_points",
                                     "unity_max_mana_points",
-                                    "unity_mana_restore_rate"
+                                    "unity_mana_restore_rate",
+                                    "diplomatic_bonus",
+                                    "player_intelligence_purchase_influence_point_cost",
+                                    "player_intelligence_purchase_spool_up_time",
+                                    "player_intelligence_purchase_cooldown_duration"
                                 ]
                             },
                             "value": {
@@ -753,7 +757,8 @@
                             "modifier_type": {
                                 "type": "string",
                                 "enum": [
-                                    "build_time"
+                                    "build_time",
+                                    "max_concurrent_builds"
                                 ]
                             },
                             "value": {

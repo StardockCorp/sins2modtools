@@ -1,0 +1,57 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Diplomatic Tag Uniforms",
+    "description": "The diplomatic tag system is a good way to allow faction mods to be cross compatible with each other, without having to deal with faction_definitions->modifiers in the player_ai_diplomacy.uniforms file. Simply set up some tags, apply them to your player definition file, and voila. As long as the other mod has those tags, they can interact with faction modifiers.",
+    "type": "object",
+    "properties": {
+        "diplomatic_tags": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "base_modifier": {
+                        "type": "number"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "tag_relationships": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "type": "string"
+                                },
+                                "relationship_modifier": {
+                                    "type": "number"
+                                }
+                            },
+                            "required": [
+                                "name",
+                                "relationship_modifier"
+                            ],
+                            "unevaluatedProperties": false
+                        }
+                    }
+                },
+                "required": [
+                    "base_modifier",
+                    "name",
+                    "tag_relationships"
+                ],
+                "unevaluatedProperties": false
+            }
+        },
+        "overwrite_diplomatic_tags": {
+            "type": "boolean"
+        },
+        "version": {
+            "type": "integer"
+        }
+    },
+    "required": [
+        "diplomatic_tags"
+    ],
+    "unevaluatedProperties": false
+}

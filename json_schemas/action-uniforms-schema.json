@@ -367,6 +367,13 @@
                         "per_planet_commerce_track_credit_income",
                         "per_planet_mining_track_metal_income",
                         "per_planet_mining_track_crystal_income",
+                        "per_planet_current_defense_track_level",
+                        "per_planet_current_logistics_track_level",
+                        "per_planet_current_commerce_track_level",
+                        "per_planet_current_mining_track_level",
+                        "per_planet_current_research_track_level",
+                        "per_planet_current_focus_track_level",
+                        "per_planet_current_survey_track_level",
                         "per_current_hull_points",
                         "per_missing_hull_points",
                         "per_max_hull_points",
@@ -647,6 +654,118 @@
                         "properties": {
                             "transform_type": {
                                 "const": "per_planet_mining_track_crystal_income"
+                            }
+                        }
+                    },
+                    "then": {
+                        "properties": {
+                            "transform_unit": {
+                                "$ref": "#/$defs/action_unit"
+                            }
+                        }
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "transform_type": {
+                                "const": "per_planet_current_defense_track_level"
+                            }
+                        }
+                    },
+                    "then": {
+                        "properties": {
+                            "transform_unit": {
+                                "$ref": "#/$defs/action_unit"
+                            }
+                        }
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "transform_type": {
+                                "const": "per_planet_current_logistics_track_level"
+                            }
+                        }
+                    },
+                    "then": {
+                        "properties": {
+                            "transform_unit": {
+                                "$ref": "#/$defs/action_unit"
+                            }
+                        }
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "transform_type": {
+                                "const": "per_planet_current_commerce_track_level"
+                            }
+                        }
+                    },
+                    "then": {
+                        "properties": {
+                            "transform_unit": {
+                                "$ref": "#/$defs/action_unit"
+                            }
+                        }
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "transform_type": {
+                                "const": "per_planet_current_mining_track_level"
+                            }
+                        }
+                    },
+                    "then": {
+                        "properties": {
+                            "transform_unit": {
+                                "$ref": "#/$defs/action_unit"
+                            }
+                        }
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "transform_type": {
+                                "const": "per_planet_current_research_track_level"
+                            }
+                        }
+                    },
+                    "then": {
+                        "properties": {
+                            "transform_unit": {
+                                "$ref": "#/$defs/action_unit"
+                            }
+                        }
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "transform_type": {
+                                "const": "per_planet_current_focus_track_level"
+                            }
+                        }
+                    },
+                    "then": {
+                        "properties": {
+                            "transform_unit": {
+                                "$ref": "#/$defs/action_unit"
+                            }
+                        }
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "transform_type": {
+                                "const": "per_planet_current_survey_track_level"
                             }
                         }
                     },
@@ -1080,7 +1199,8 @@
         "exotic_factory_modifier_type": {
             "type": "string",
             "enum": [
-                "build_time"
+                "build_time",
+                "max_concurrent_builds"
             ]
         },
         "buff_planet_modifier_id": {
@@ -8446,7 +8566,11 @@
                 "influence_points_recharge_rate",
                 "unity_points",
                 "unity_max_mana_points",
-                "unity_mana_restore_rate"
+                "unity_mana_restore_rate",
+                "diplomatic_bonus",
+                "player_intelligence_purchase_influence_point_cost",
+                "player_intelligence_purchase_spool_up_time",
+                "player_intelligence_purchase_cooldown_duration"
             ]
         },
         "unit_permission_type": {

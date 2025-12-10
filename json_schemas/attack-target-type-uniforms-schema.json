@@ -1,0 +1,36 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Unit Attack Target Type Uniforms",
+    "description": "",
+    "type": "object",
+    "properties": {
+        "attack_target_types": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "localized_name": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "name"
+                ],
+                "unevaluatedProperties": false
+            }
+        },
+        "overwrite_attack_target_types": {
+            "type": "boolean"
+        },
+        "version": {
+            "type": "integer"
+        }
+    },
+    "required": [
+        "attack_target_types"
+    ],
+    "unevaluatedProperties": false
+}

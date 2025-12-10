@@ -117,6 +117,9 @@
                 "type": "number"
             }
         },
+        "exotics_refund_percentage": {
+            "type": "number"
+        },
         "fallback_theme_picker_skybox": {
             "type": "string"
         },
@@ -358,6 +361,7 @@
         "colonization_victory_planet_count_percentage",
         "dlc_only_pickable_players",
         "dominant_culture_influence_points_gained_duration",
+        "exotics_refund_percentage",
         "fallback_theme_picker_skybox",
         "fleet_factory_rally_hyperspace_charge_time",
         "fleet_factory_rally_hyperspace_speed",

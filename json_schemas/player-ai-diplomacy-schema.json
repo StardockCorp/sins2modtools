@@ -1,0 +1,899 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Player AI Diplomacy Uniforms",
+    "description": "Defines AI diplomacy behavior, trust/hatred systems, and trade valuations.",
+    "type": "object",
+    "properties": {
+        "alliance_lock_divisor": {
+            "description": "When proposing an alliance lock, the minutes will be divided by this to return the value of said proposition",
+            "type": "number"
+        },
+        "alliance_stage_modifiers": {
+            "description": "Percentage modifiers applied when requesting each alliance tier.",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "acceptance_modifier": {
+                        "description": "Percentage modifier applied when requesting this alliance type.",
+                        "type": "number"
+                    },
+                    "alliance_type": {
+                        "description": "The alliance type (cease_fire, shared_vision, synergy).",
+                        "type": "string"
+                    },
+                    "trust_growth_under_agreement": {
+                        "description": "How much passive trust growth per agreement level",
+                        "type": "number"
+                    }
+                },
+                "required": [
+                    "acceptance_modifier",
+                    "alliance_type",
+                    "trust_growth_under_agreement"
+                ],
+                "unevaluatedProperties": false
+            }
+        },
+        "asset_value_diminished_value_per_stage": {
+            "description": "How much trade value is needed for +1% per stage (e.g., [100, 250, 750, 10000, 25000]).",
+            "type": "array",
+            "items": {
+                "type": "number"
+            }
+        },
+        "asset_value_modifier_stages": {
+            "description": "Trade value thresholds for diminishing returns (e.g., [1000, 2500, 10000, 50000]).",
+            "type": "array",
+            "items": {
+                "type": "number"
+            }
+        },
+        "balance_allowed_to_gift_under_seek_protection": {
+            "description": "How much of their assets, as a percent, an AI is allowed to dump into a gift to seek protection from the strongest player",
+            "type": "array",
+            "items": {
+                "type": "number"
+            }
+        },
+        "behavior_definition": {
+            "description": "AI behavior personalities (aggressive, defensive).",
+            "type": "object",
+            "properties": {
+                "aggressive": {
+                    "type": "object",
+                    "properties": {
+                        "base_deal_acceptance": {
+                            "description": "range in which the AI's base deal acceptance will be determined.",
+                            "type": "array",
+                            "items": {
+                                "type": "number"
+                            }
+                        },
+                        "cease_fire_chance": {
+                            "description": "percent chance an ai will offer a ceasefire",
+                            "type": "number"
+                        },
+                        "cease_fire_declined_cooldown_seconds": {
+                            "description": "if a ceasefire an AI reaches out with is declined, how long until it tries again.",
+                            "type": "number"
+                        },
+                        "demand_acceptance_penalty": {
+                            "description": "penalty on demanding resources from an AI",
+                            "type": "number"
+                        },
+                        "gift_trade_value_to_trust_conversion_rate": {
+                            "description": "Gift trade value is multiplied by this number before calculating diminishing trust returns.",
+                            "type": "number"
+                        },
+                        "gift_trust_gain_diminished_value_per_stage": {
+                            "description": "How much trade value is needed for +1 trust per stage (e.g., [100, 250, 750, 10000, 25000]).",
+                            "type": "array",
+                            "items": {
+                                "type": "number"
+                            }
+                        },
+                        "gift_trust_gain_stages": {
+                            "description": "Gift value thresholds for diminishing returns (e.g., [1000, 2500, 10000, 50000])",
+                            "type": "array",
+                            "items": {
+                                "type": "number"
+                            }
+                        },
+                        "hatred_growth_per_enemy_culture_dominated_gravity_well": {
+                            "description": "hate will increase per enemy culture dominated gravity well that they own. how much?",
+                            "type": "number"
+                        },
+                        "max_patience": {
+                            "description": "maximum patience allowed for the AI.",
+                            "type": "integer"
+                        },
+                        "min_trust_for_cease_fire_offer": {
+                            "description": "trust threshold for an AI to reach out to a player with a ceasefire.",
+                            "type": "number"
+                        },
+                        "patience_regen_in_seconds": {
+                            "description": "how long it takes for this AI to regenerate a point of patience.",
+                            "type": "number"
+                        },
+                        "taunt_chance": {
+                            "description": "percent chance an ai will taunt a player",
+                            "type": "number"
+                        },
+                        "taunt_hatred_threshold": {
+                            "description": "hatred threshold for taunting",
+                            "type": "number"
+                        },
+                        "taunt_interval_range": {
+                            "description": "range in seconds for an AI to taunt a player.",
+                            "type": "array",
+                            "items": {
+                                "type": "number"
+                            }
+                        }
+                    },
+                    "required": [
+                        "base_deal_acceptance",
+                        "cease_fire_chance",
+                        "cease_fire_declined_cooldown_seconds",
+                        "demand_acceptance_penalty",
+                        "gift_trade_value_to_trust_conversion_rate",
+                        "gift_trust_gain_diminished_value_per_stage",
+                        "gift_trust_gain_stages",
+                        "hatred_growth_per_enemy_culture_dominated_gravity_well",
+                        "max_patience",
+                        "min_trust_for_cease_fire_offer",
+                        "patience_regen_in_seconds",
+                        "taunt_chance",
+                        "taunt_hatred_threshold",
+                        "taunt_interval_range"
+                    ],
+                    "unevaluatedProperties": false
+                },
+                "defensive": {
+                    "type": "object",
+                    "properties": {
+                        "base_deal_acceptance": {
+                            "description": "range in which the AI's base deal acceptance will be determined.",
+                            "type": "array",
+                            "items": {
+                                "type": "number"
+                            }
+                        },
+                        "cease_fire_chance": {
+                            "description": "percent chance an ai will offer a ceasefire",
+                            "type": "number"
+                        },
+                        "cease_fire_declined_cooldown_seconds": {
+                            "description": "if a ceasefire an AI reaches out with is declined, how long until it tries again.",
+                            "type": "number"
+                        },
+                        "demand_acceptance_penalty": {
+                            "description": "penalty on demanding resources from an AI",
+                            "type": "number"
+                        },
+                        "gift_trade_value_to_trust_conversion_rate": {
+                            "description": "Gift trade value is multiplied by this number before calculating diminishing trust returns.",
+                            "type": "number"
+                        },
+                        "gift_trust_gain_diminished_value_per_stage": {
+                            "description": "How much trade value is needed for +1 trust per stage (e.g., [100, 250, 750, 10000, 25000]).",
+                            "type": "array",
+                            "items": {
+                                "type": "number"
+                            }
+                        },
+                        "gift_trust_gain_stages": {
+                            "description": "Gift value thresholds for diminishing returns (e.g., [1000, 2500, 10000, 50000])",
+                            "type": "array",
+                            "items": {
+                                "type": "number"
+                            }
+                        },
+                        "hatred_growth_per_enemy_culture_dominated_gravity_well": {
+                            "description": "hate will increase per enemy culture dominated gravity well that they own. how much?",
+                            "type": "number"
+                        },
+                        "max_patience": {
+                            "description": "maximum patience allowed for the AI.",
+                            "type": "integer"
+                        },
+                        "min_trust_for_cease_fire_offer": {
+                            "description": "trust threshold for an AI to reach out to a player with a ceasefire.",
+                            "type": "number"
+                        },
+                        "patience_regen_in_seconds": {
+                            "description": "how long it takes for this AI to regenerate a point of patience.",
+                            "type": "number"
+                        },
+                        "taunt_chance": {
+                            "description": "percent chance an ai will taunt a player",
+                            "type": "number"
+                        },
+                        "taunt_hatred_threshold": {
+                            "description": "hatred threshold for taunting",
+                            "type": "number"
+                        },
+                        "taunt_interval_range": {
+                            "description": "range in seconds for an AI to taunt a player.",
+                            "type": "array",
+                            "items": {
+                                "type": "number"
+                            }
+                        }
+                    },
+                    "required": [
+                        "base_deal_acceptance",
+                        "cease_fire_chance",
+                        "cease_fire_declined_cooldown_seconds",
+                        "demand_acceptance_penalty",
+                        "gift_trade_value_to_trust_conversion_rate",
+                        "gift_trust_gain_diminished_value_per_stage",
+                        "gift_trust_gain_stages",
+                        "hatred_growth_per_enemy_culture_dominated_gravity_well",
+                        "max_patience",
+                        "min_trust_for_cease_fire_offer",
+                        "patience_regen_in_seconds",
+                        "taunt_chance",
+                        "taunt_hatred_threshold",
+                        "taunt_interval_range"
+                    ],
+                    "unevaluatedProperties": false
+                }
+            },
+            "unevaluatedProperties": false
+        },
+        "difficulty_definition": {
+            "description": "AI difficulty levels affecting diplomacy parameters.",
+            "type": "object",
+            "properties": {
+                "easy": {
+                    "type": "object",
+                    "properties": {
+                        "hatred_gain_per_owned_killed_unit": {
+                            "description": "How much hate will this AI gain when someone kills their units? Multiplied by unit supply || virtual supply.",
+                            "type": "number"
+                        },
+                        "hatred_gain_per_owned_planet_bombed": {
+                            "description": "How much hate will this AI gain when someone bombs their planets?",
+                            "type": "number"
+                        },
+                        "observer_trust_loss_on_broken_alliance": {
+                            "description": "Observer AI will lose this trust with you when you break an alliance at this amount.",
+                            "type": "number"
+                        },
+                        "trust_gain_on_deal_acceptance": {
+                            "description": "When an alliance is accepted, how much trust will they gain?.",
+                            "type": "number"
+                        },
+                        "trust_gain_per_rival_killed_unit": {
+                            "description": "How much trust will this AI gain when someone kills their rival's units.",
+                            "type": "number"
+                        },
+                        "trust_loss_per_broken_alliance": {
+                            "description": "How much trust will the AI lose when an alliance is broken?",
+                            "type": "number"
+                        },
+                        "trust_loss_per_owned_killed_unit": {
+                            "description": "How much trust will an AI lose when you kill their units?",
+                            "type": "number"
+                        },
+                        "trust_loss_per_owned_planet_bombed": {
+                            "description": "How much trust will this AI lose when you bomb their planets?",
+                            "type": "number"
+                        },
+                        "weakest_military_protection_offer_chance": {
+                            "description": "What chance the weakest AI will roll against to offer a share vision.",
+                            "type": "number"
+                        },
+                        "weakest_military_time_in_minutes_before_protection": {
+                            "description": "How long will an AI sit as the weakest player before they offer the strongest a share vision?",
+                            "type": "number"
+                        }
+                    },
+                    "required": [
+                        "hatred_gain_per_owned_killed_unit",
+                        "hatred_gain_per_owned_planet_bombed",
+                        "observer_trust_loss_on_broken_alliance",
+                        "trust_gain_on_deal_acceptance",
+                        "trust_gain_per_rival_killed_unit",
+                        "trust_loss_per_broken_alliance",
+                        "trust_loss_per_owned_killed_unit",
+                        "trust_loss_per_owned_planet_bombed",
+                        "weakest_military_protection_offer_chance",
+                        "weakest_military_time_in_minutes_before_protection"
+                    ],
+                    "unevaluatedProperties": false
+                },
+                "hard": {
+                    "type": "object",
+                    "properties": {
+                        "hatred_gain_per_owned_killed_unit": {
+                            "description": "How much hate will this AI gain when someone kills their units? Multiplied by unit supply || virtual supply.",
+                            "type": "number"
+                        },
+                        "hatred_gain_per_owned_planet_bombed": {
+                            "description": "How much hate will this AI gain when someone bombs their planets?",
+                            "type": "number"
+                        },
+                        "observer_trust_loss_on_broken_alliance": {
+                            "description": "Observer AI will lose this trust with you when you break an alliance at this amount.",
+                            "type": "number"
+                        },
+                        "trust_gain_on_deal_acceptance": {
+                            "description": "When an alliance is accepted, how much trust will they gain?.",
+                            "type": "number"
+                        },
+                        "trust_gain_per_rival_killed_unit": {
+                            "description": "How much trust will this AI gain when someone kills their rival's units.",
+                            "type": "number"
+                        },
+                        "trust_loss_per_broken_alliance": {
+                            "description": "How much trust will the AI lose when an alliance is broken?",
+                            "type": "number"
+                        },
+                        "trust_loss_per_owned_killed_unit": {
+                            "description": "How much trust will an AI lose when you kill their units?",
+                            "type": "number"
+                        },
+                        "trust_loss_per_owned_planet_bombed": {
+                            "description": "How much trust will this AI lose when you bomb their planets?",
+                            "type": "number"
+                        },
+                        "weakest_military_protection_offer_chance": {
+                            "description": "What chance the weakest AI will roll against to offer a share vision.",
+                            "type": "number"
+                        },
+                        "weakest_military_time_in_minutes_before_protection": {
+                            "description": "How long will an AI sit as the weakest player before they offer the strongest a share vision?",
+                            "type": "number"
+                        }
+                    },
+                    "required": [
+                        "hatred_gain_per_owned_killed_unit",
+                        "hatred_gain_per_owned_planet_bombed",
+                        "observer_trust_loss_on_broken_alliance",
+                        "trust_gain_on_deal_acceptance",
+                        "trust_gain_per_rival_killed_unit",
+                        "trust_loss_per_broken_alliance",
+                        "trust_loss_per_owned_killed_unit",
+                        "trust_loss_per_owned_planet_bombed",
+                        "weakest_military_protection_offer_chance",
+                        "weakest_military_time_in_minutes_before_protection"
+                    ],
+                    "unevaluatedProperties": false
+                },
+                "impossible": {
+                    "type": "object",
+                    "properties": {
+                        "hatred_gain_per_owned_killed_unit": {
+                            "description": "How much hate will this AI gain when someone kills their units? Multiplied by unit supply || virtual supply.",
+                            "type": "number"
+                        },
+                        "hatred_gain_per_owned_planet_bombed": {
+                            "description": "How much hate will this AI gain when someone bombs their planets?",
+                            "type": "number"
+                        },
+                        "observer_trust_loss_on_broken_alliance": {
+                            "description": "Observer AI will lose this trust with you when you break an alliance at this amount.",
+                            "type": "number"
+                        },
+                        "trust_gain_on_deal_acceptance": {
+                            "description": "When an alliance is accepted, how much trust will they gain?.",
+                            "type": "number"
+                        },
+                        "trust_gain_per_rival_killed_unit": {
+                            "description": "How much trust will this AI gain when someone kills their rival's units.",
+                            "type": "number"
+                        },
+                        "trust_loss_per_broken_alliance": {
+                            "description": "How much trust will the AI lose when an alliance is broken?",
+                            "type": "number"
+                        },
+                        "trust_loss_per_owned_killed_unit": {
+                            "description": "How much trust will an AI lose when you kill their units?",
+                            "type": "number"
+                        },
+                        "trust_loss_per_owned_planet_bombed": {
+                            "description": "How much trust will this AI lose when you bomb their planets?",
+                            "type": "number"
+                        },
+                        "weakest_military_protection_offer_chance": {
+                            "description": "What chance the weakest AI will roll against to offer a share vision.",
+                            "type": "number"
+                        },
+                        "weakest_military_time_in_minutes_before_protection": {
+                            "description": "How long will an AI sit as the weakest player before they offer the strongest a share vision?",
+                            "type": "number"
+                        }
+                    },
+                    "required": [
+                        "hatred_gain_per_owned_killed_unit",
+                        "hatred_gain_per_owned_planet_bombed",
+                        "observer_trust_loss_on_broken_alliance",
+                        "trust_gain_on_deal_acceptance",
+                        "trust_gain_per_rival_killed_unit",
+                        "trust_loss_per_broken_alliance",
+                        "trust_loss_per_owned_killed_unit",
+                        "trust_loss_per_owned_planet_bombed",
+                        "weakest_military_protection_offer_chance",
+                        "weakest_military_time_in_minutes_before_protection"
+                    ],
+                    "unevaluatedProperties": false
+                },
+                "medium": {
+                    "type": "object",
+                    "properties": {
+                        "hatred_gain_per_owned_killed_unit": {
+                            "description": "How much hate will this AI gain when someone kills their units? Multiplied by unit supply || virtual supply.",
+                            "type": "number"
+                        },
+                        "hatred_gain_per_owned_planet_bombed": {
+                            "description": "How much hate will this AI gain when someone bombs their planets?",
+                            "type": "number"
+                        },
+                        "observer_trust_loss_on_broken_alliance": {
+                            "description": "Observer AI will lose this trust with you when you break an alliance at this amount.",
+                            "type": "number"
+                        },
+                        "trust_gain_on_deal_acceptance": {
+                            "description": "When an alliance is accepted, how much trust will they gain?.",
+                            "type": "number"
+                        },
+                        "trust_gain_per_rival_killed_unit": {
+                            "description": "How much trust will this AI gain when someone kills their rival's units.",
+                            "type": "number"
+                        },
+                        "trust_loss_per_broken_alliance": {
+                            "description": "How much trust will the AI lose when an alliance is broken?",
+                            "type": "number"
+                        },
+                        "trust_loss_per_owned_killed_unit": {
+                            "description": "How much trust will an AI lose when you kill their units?",
+                            "type": "number"
+                        },
+                        "trust_loss_per_owned_planet_bombed": {
+                            "description": "How much trust will this AI lose when you bomb their planets?",
+                            "type": "number"
+                        },
+                        "weakest_military_protection_offer_chance": {
+                            "description": "What chance the weakest AI will roll against to offer a share vision.",
+                            "type": "number"
+                        },
+                        "weakest_military_time_in_minutes_before_protection": {
+                            "description": "How long will an AI sit as the weakest player before they offer the strongest a share vision?",
+                            "type": "number"
+                        }
+                    },
+                    "required": [
+                        "hatred_gain_per_owned_killed_unit",
+                        "hatred_gain_per_owned_planet_bombed",
+                        "observer_trust_loss_on_broken_alliance",
+                        "trust_gain_on_deal_acceptance",
+                        "trust_gain_per_rival_killed_unit",
+                        "trust_loss_per_broken_alliance",
+                        "trust_loss_per_owned_killed_unit",
+                        "trust_loss_per_owned_planet_bombed",
+                        "weakest_military_protection_offer_chance",
+                        "weakest_military_time_in_minutes_before_protection"
+                    ],
+                    "unevaluatedProperties": false
+                },
+                "nightmare": {
+                    "type": "object",
+                    "properties": {
+                        "hatred_gain_per_owned_killed_unit": {
+                            "description": "How much hate will this AI gain when someone kills their units? Multiplied by unit supply || virtual supply.",
+                            "type": "number"
+                        },
+                        "hatred_gain_per_owned_planet_bombed": {
+                            "description": "How much hate will this AI gain when someone bombs their planets?",
+                            "type": "number"
+                        },
+                        "observer_trust_loss_on_broken_alliance": {
+                            "description": "Observer AI will lose this trust with you when you break an alliance at this amount.",
+                            "type": "number"
+                        },
+                        "trust_gain_on_deal_acceptance": {
+                            "description": "When an alliance is accepted, how much trust will they gain?.",
+                            "type": "number"
+                        },
+                        "trust_gain_per_rival_killed_unit": {
+                            "description": "How much trust will this AI gain when someone kills their rival's units.",
+                            "type": "number"
+                        },
+                        "trust_loss_per_broken_alliance": {
+                            "description": "How much trust will the AI lose when an alliance is broken?",
+                            "type": "number"
+                        },
+                        "trust_loss_per_owned_killed_unit": {
+                            "description": "How much trust will an AI lose when you kill their units?",
+                            "type": "number"
+                        },
+                        "trust_loss_per_owned_planet_bombed": {
+                            "description": "How much trust will this AI lose when you bomb their planets?",
+                            "type": "number"
+                        },
+                        "weakest_military_protection_offer_chance": {
+                            "description": "What chance the weakest AI will roll against to offer a share vision.",
+                            "type": "number"
+                        },
+                        "weakest_military_time_in_minutes_before_protection": {
+                            "description": "How long will an AI sit as the weakest player before they offer the strongest a share vision?",
+                            "type": "number"
+                        }
+                    },
+                    "required": [
+                        "hatred_gain_per_owned_killed_unit",
+                        "hatred_gain_per_owned_planet_bombed",
+                        "observer_trust_loss_on_broken_alliance",
+                        "trust_gain_on_deal_acceptance",
+                        "trust_gain_per_rival_killed_unit",
+                        "trust_loss_per_broken_alliance",
+                        "trust_loss_per_owned_killed_unit",
+                        "trust_loss_per_owned_planet_bombed",
+                        "weakest_military_protection_offer_chance",
+                        "weakest_military_time_in_minutes_before_protection"
+                    ],
+                    "unevaluatedProperties": false
+                },
+                "unfair": {
+                    "type": "object",
+                    "properties": {
+                        "hatred_gain_per_owned_killed_unit": {
+                            "description": "How much hate will this AI gain when someone kills their units? Multiplied by unit supply || virtual supply.",
+                            "type": "number"
+                        },
+                        "hatred_gain_per_owned_planet_bombed": {
+                            "description": "How much hate will this AI gain when someone bombs their planets?",
+                            "type": "number"
+                        },
+                        "observer_trust_loss_on_broken_alliance": {
+                            "description": "Observer AI will lose this trust with you when you break an alliance at this amount.",
+                            "type": "number"
+                        },
+                        "trust_gain_on_deal_acceptance": {
+                            "description": "When an alliance is accepted, how much trust will they gain?.",
+                            "type": "number"
+                        },
+                        "trust_gain_per_rival_killed_unit": {
+                            "description": "How much trust will this AI gain when someone kills their rival's units.",
+                            "type": "number"
+                        },
+                        "trust_loss_per_broken_alliance": {
+                            "description": "How much trust will the AI lose when an alliance is broken?",
+                            "type": "number"
+                        },
+                        "trust_loss_per_owned_killed_unit": {
+                            "description": "How much trust will an AI lose when you kill their units?",
+                            "type": "number"
+                        },
+                        "trust_loss_per_owned_planet_bombed": {
+                            "description": "How much trust will this AI lose when you bomb their planets?",
+                            "type": "number"
+                        },
+                        "weakest_military_protection_offer_chance": {
+                            "description": "What chance the weakest AI will roll against to offer a share vision.",
+                            "type": "number"
+                        },
+                        "weakest_military_time_in_minutes_before_protection": {
+                            "description": "How long will an AI sit as the weakest player before they offer the strongest a share vision?",
+                            "type": "number"
+                        }
+                    },
+                    "required": [
+                        "hatred_gain_per_owned_killed_unit",
+                        "hatred_gain_per_owned_planet_bombed",
+                        "observer_trust_loss_on_broken_alliance",
+                        "trust_gain_on_deal_acceptance",
+                        "trust_gain_per_rival_killed_unit",
+                        "trust_loss_per_broken_alliance",
+                        "trust_loss_per_owned_killed_unit",
+                        "trust_loss_per_owned_planet_bombed",
+                        "weakest_military_protection_offer_chance",
+                        "weakest_military_time_in_minutes_before_protection"
+                    ],
+                    "unevaluatedProperties": false
+                }
+            },
+            "unevaluatedProperties": false
+        },
+        "faction_definitions": {
+            "description": "Per faction diplomacy settings and trade valuations.",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "chance_to_make_trade_offer": {
+                        "description": "Roll against this value to see if the AI will reach out with trade offers.",
+                        "type": "number"
+                    },
+                    "exotic_valuations": {
+                        "description": "How this faction values exotic resources in trades.",
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "exotic_name": {
+                                    "description": "The name of the exotic resource.",
+                                    "type": "string"
+                                },
+                                "exotic_value": {
+                                    "description": "The AI's valuation of this exotic for trade calculations.",
+                                    "type": "number"
+                                }
+                            },
+                            "required": [
+                                "exotic_name",
+                                "exotic_value"
+                            ],
+                            "unevaluatedProperties": false
+                        }
+                    },
+                    "faction_trade_values": {
+                        "description": "Base asset valuations for this faction's trades.",
+                        "type": "object",
+                        "properties": {
+                            "credits": {
+                                "type": "number"
+                            },
+                            "crystal": {
+                                "type": "number"
+                            },
+                            "metal": {
+                                "type": "number"
+                            }
+                        },
+                        "unevaluatedProperties": false
+                    },
+                    "influence_valuation_diminishing_returns": {
+                        "description": "Diminishing returns per stage.",
+                        "type": "array",
+                        "items": {
+                            "type": "number"
+                        }
+                    },
+                    "influence_valuation_stages": {
+                        "description": "How much this AI values influence in stages.",
+                        "type": "array",
+                        "items": {
+                            "type": "number"
+                        }
+                    },
+                    "intelligence_costs": {
+                        "description": "Influence costs to purchase player intelligence at each alliance level. Keys are alliance types (cease_fire, share_vision, synergy), values are integer costs.",
+                        "type": "object",
+                        "properties": {
+                            "cease_fire": {
+                                "description": "Intelligence cost for this alliance level",
+                                "type": "integer"
+                            },
+                            "share_vision": {
+                                "description": "Intelligence cost for this alliance level",
+                                "type": "integer"
+                            },
+                            "synergy": {
+                                "description": "Intelligence cost for this alliance level",
+                                "type": "integer"
+                            }
+                        },
+                        "unevaluatedProperties": false
+                    },
+                    "min_trust_for_trade_offers": {
+                        "description": "Trust threshold before the AI will reach out with trade offers.",
+                        "type": "number"
+                    },
+                    "modifiers": {
+                        "description": "Diplomacy modifiers against other factions.",
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "base_hatred": {
+                                    "description": "Assigns hatred at start of game to players of this faction.",
+                                    "type": "number"
+                                },
+                                "faction_diplomacy_modifier": {
+                                    "description": "Subfaction global modifier. Permanent throughout game (TEC Primacy will NEVER like Advent Wrath. This is why.)",
+                                    "type": "array",
+                                    "items": {
+                                        "type": "number"
+                                    }
+                                },
+                                "modified_faction": {
+                                    "description": "The faction which this object modifies.",
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "base_hatred",
+                                "faction_diplomacy_modifier",
+                                "modified_faction"
+                            ],
+                            "unevaluatedProperties": false
+                        }
+                    },
+                    "no_alliance_intelligence_cost": {
+                        "description": "Influence cost to purchase player intelligence when there is no alliance.",
+                        "type": "integer"
+                    },
+                    "planet_valuations": {
+                        "description": "How this faction values different planet types in trades.",
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "planet_name": {
+                                    "description": "The type of the planet.",
+                                    "type": "string"
+                                },
+                                "planet_value": {
+                                    "description": "The AI's valuation of this planet type for trade calculations.",
+                                    "type": "number"
+                                }
+                            },
+                            "required": [
+                                "planet_name",
+                                "planet_value"
+                            ],
+                            "unevaluatedProperties": false
+                        }
+                    },
+                    "purchase_intelligence_prerequisite_research_subject": {
+                        "description": "Optional research subject that must be completed before purchasing intelligence. If not specified, no research is required.",
+                        "type": "string"
+                    },
+                    "this_faction": {
+                        "description": "The faction that this definition applies to.",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "chance_to_make_trade_offer",
+                    "exotic_valuations",
+                    "faction_trade_values",
+                    "influence_valuation_diminishing_returns",
+                    "influence_valuation_stages",
+                    "min_trust_for_trade_offers",
+                    "modifiers",
+                    "planet_valuations",
+                    "this_faction"
+                ],
+                "unevaluatedProperties": false
+            }
+        },
+        "fallback_intelligence_cost": {
+            "description": "Fallback intelligence cost when no faction is found. Default: 5",
+            "type": "integer"
+        },
+        "hatred_diminished_value_per_stage": {
+            "description": "How much hatred is needed for -1% per stage (e.g., [10, 25, 75, 1000, 2500]).",
+            "type": "array",
+            "items": {
+                "type": "number"
+            }
+        },
+        "hatred_modifier_stages": {
+            "description": "Hatred score thresholds for diminishing returns (e.g., [100, 250, 1000, 5000]).",
+            "type": "array",
+            "items": {
+                "type": "number"
+            }
+        },
+        "intelligence_purchase_cooldown_duration_in_seconds": {
+            "description": "Cooldown duration in seconds between purchasing intelligence for the same player. Default: 5.0",
+            "type": "number"
+        },
+        "intelligence_purchase_spool_up_time_in_seconds": {
+            "description": "Time in seconds it takes to gather intelligence after purchase. Default: 10.0",
+            "type": "number"
+        },
+        "minutes_allowed_for_reattempt_alliance_building": {
+            "description": "After an AI breaks an alliance with a player, how long in minutes before they are allowed to retry a ceasefire.",
+            "type": "array",
+            "items": {
+                "type": "number"
+            }
+        },
+        "minutes_before_allowed_to_seek_protection": {
+            "description": "How long before an AI is allowed to seek protection from the strongest player",
+            "type": "array",
+            "items": {
+                "type": "number"
+            }
+        },
+        "number_of_allies_modifier_table": {
+            "description": "Percentage penalty for each additional ally the target has (e.g., [-5, -15, -40, -70, -100]).",
+            "type": "array",
+            "items": {
+                "type": "integer"
+            }
+        },
+        "race_definitions": {
+            "description": "Per race diplomacy modifiers.",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "modifiers": {
+                        "description": "Diplomacy modifiers against other races.",
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "modified_race": {
+                                    "description": "The race which this object modifies.",
+                                    "type": "string"
+                                },
+                                "race_diplomacy_modifier": {
+                                    "description": "Race global modifier. Permanent throughout game (TEC will always be suspicious of Advent, etc).",
+                                    "type": "array",
+                                    "items": {
+                                        "type": "number"
+                                    }
+                                }
+                            },
+                            "required": [
+                                "modified_race",
+                                "race_diplomacy_modifier"
+                            ],
+                            "unevaluatedProperties": false
+                        }
+                    },
+                    "this_race": {
+                        "description": "The race that this definition applies to.",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "modifiers",
+                    "this_race"
+                ],
+                "unevaluatedProperties": false
+            }
+        },
+        "seconds_per_hate_growth_passive": {
+            "description": "How long to gain hate from passive sources, such as enemy culture domination",
+            "type": "number"
+        },
+        "seconds_per_trust_growth_passive": {
+            "description": "How long to gain trust from passive sources, such as agreements",
+            "type": "number"
+        },
+        "trust_diminished_value_per_stage": {
+            "description": "How much trust is needed for +1% per stage (e.g., [10, 20, 50, 500, 1000]).",
+            "type": "array",
+            "items": {
+                "type": "number"
+            }
+        },
+        "trust_modifier_stages": {
+            "description": "Trust score thresholds for diminishing returns (e.g., [100, 250, 1000, 5000]).",
+            "type": "array",
+            "items": {
+                "type": "number"
+            }
+        }
+    },
+    "required": [
+        "alliance_lock_divisor",
+        "alliance_stage_modifiers",
+        "asset_value_diminished_value_per_stage",
+        "asset_value_modifier_stages",
+        "balance_allowed_to_gift_under_seek_protection",
+        "behavior_definition",
+        "difficulty_definition",
+        "faction_definitions",
+        "hatred_diminished_value_per_stage",
+        "hatred_modifier_stages",
+        "minutes_allowed_for_reattempt_alliance_building",
+        "minutes_before_allowed_to_seek_protection",
+        "number_of_allies_modifier_table",
+        "race_definitions",
+        "seconds_per_hate_growth_passive",
+        "seconds_per_trust_growth_passive",
+        "trust_diminished_value_per_stage",
+        "trust_modifier_stages"
+    ],
+    "unevaluatedProperties": false
+}

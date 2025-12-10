@@ -87,6 +87,33 @@
                             ],
                             "unevaluatedProperties": false
                         },
+                        "retreat_base_relationship_score_ally": {
+                            "type": "integer"
+                        },
+                        "retreat_base_relationship_score_enemy": {
+                            "type": "integer"
+                        },
+                        "retreat_base_relationship_score_neutral": {
+                            "type": "integer"
+                        },
+                        "retreat_base_relationship_score_self": {
+                            "type": "integer"
+                        },
+                        "retreat_enemy_supply_for_max_penalty": {
+                            "type": "integer"
+                        },
+                        "retreat_enemy_supply_penalty_max": {
+                            "type": "integer"
+                        },
+                        "retreat_flee_away_from_enemy_score_per_jump": {
+                            "type": "integer"
+                        },
+                        "retreat_flee_toward_friendly_score_per_jump": {
+                            "type": "integer"
+                        },
+                        "retreat_jump_node_proximity_bonus_max": {
+                            "type": "integer"
+                        },
                         "steal_ships_from_roam_fleets_to_defend_supply_percentage": {
                             "type": "number"
                         }
@@ -164,6 +191,33 @@
                             ],
                             "unevaluatedProperties": false
                         },
+                        "retreat_base_relationship_score_ally": {
+                            "type": "integer"
+                        },
+                        "retreat_base_relationship_score_enemy": {
+                            "type": "integer"
+                        },
+                        "retreat_base_relationship_score_neutral": {
+                            "type": "integer"
+                        },
+                        "retreat_base_relationship_score_self": {
+                            "type": "integer"
+                        },
+                        "retreat_enemy_supply_for_max_penalty": {
+                            "type": "integer"
+                        },
+                        "retreat_enemy_supply_penalty_max": {
+                            "type": "integer"
+                        },
+                        "retreat_flee_away_from_enemy_score_per_jump": {
+                            "type": "integer"
+                        },
+                        "retreat_flee_toward_friendly_score_per_jump": {
+                            "type": "integer"
+                        },
+                        "retreat_jump_node_proximity_bonus_max": {
+                            "type": "integer"
+                        },
                         "steal_ships_from_roam_fleets_to_defend_supply_percentage": {
                             "type": "number"
                         }
@@ -220,7 +274,11 @@
                                                     "influence_points_recharge_rate",
                                                     "unity_points",
                                                     "unity_max_mana_points",
-                                                    "unity_mana_restore_rate"
+                                                    "unity_mana_restore_rate",
+                                                    "diplomatic_bonus",
+                                                    "player_intelligence_purchase_influence_point_cost",
+                                                    "player_intelligence_purchase_spool_up_time",
+                                                    "player_intelligence_purchase_cooldown_duration"
                                                 ]
                                             },
                                             "value": {
@@ -256,7 +314,8 @@
                                             "modifier_type": {
                                                 "type": "string",
                                                 "enum": [
-                                                    "build_time"
+                                                    "build_time",
+                                                    "max_concurrent_builds"
                                                 ]
                                             },
                                             "value": {
@@ -656,6 +715,9 @@
                         "fleet_colonize_timeout_duration_in_minutes": {
                             "type": "number"
                         },
+                        "fleet_regroup_await_units_time_in_minutes": {
+                            "type": "number"
+                        },
                         "fleet_will_probably_defeat_ratio_range": {
                             "$ref": "#/$defs/float_range"
                         },
@@ -674,6 +736,9 @@
                         "name": {
                             "type": "string"
                         },
+                        "unit_pathfinding_danger_weight_scalar": {
+                            "type": "number"
+                        },
                         "update_interval": {
                             "type": "number"
                         },
@@ -687,6 +752,9 @@
                             "type": "boolean"
                         },
                         "will_fleet_retreat": {
+                            "type": "boolean"
+                        },
+                        "will_regroup_on_losing_engagement": {
                             "type": "boolean"
                         }
                     },
@@ -733,7 +801,11 @@
                                                     "influence_points_recharge_rate",
                                                     "unity_points",
                                                     "unity_max_mana_points",
-                                                    "unity_mana_restore_rate"
+                                                    "unity_mana_restore_rate",
+                                                    "diplomatic_bonus",
+                                                    "player_intelligence_purchase_influence_point_cost",
+                                                    "player_intelligence_purchase_spool_up_time",
+                                                    "player_intelligence_purchase_cooldown_duration"
                                                 ]
                                             },
                                             "value": {
@@ -769,7 +841,8 @@
                                             "modifier_type": {
                                                 "type": "string",
                                                 "enum": [
-                                                    "build_time"
+                                                    "build_time",
+                                                    "max_concurrent_builds"
                                                 ]
                                             },
                                             "value": {
@@ -1169,6 +1242,9 @@
                         "fleet_colonize_timeout_duration_in_minutes": {
                             "type": "number"
                         },
+                        "fleet_regroup_await_units_time_in_minutes": {
+                            "type": "number"
+                        },
                         "fleet_will_probably_defeat_ratio_range": {
                             "$ref": "#/$defs/float_range"
                         },
@@ -1187,6 +1263,9 @@
                         "name": {
                             "type": "string"
                         },
+                        "unit_pathfinding_danger_weight_scalar": {
+                            "type": "number"
+                        },
                         "update_interval": {
                             "type": "number"
                         },
@@ -1200,6 +1279,9 @@
                             "type": "boolean"
                         },
                         "will_fleet_retreat": {
+                            "type": "boolean"
+                        },
+                        "will_regroup_on_losing_engagement": {
                             "type": "boolean"
                         }
                     },
@@ -1246,7 +1328,11 @@
                                                     "influence_points_recharge_rate",
                                                     "unity_points",
                                                     "unity_max_mana_points",
-                                                    "unity_mana_restore_rate"
+                                                    "unity_mana_restore_rate",
+                                                    "diplomatic_bonus",
+                                                    "player_intelligence_purchase_influence_point_cost",
+                                                    "player_intelligence_purchase_spool_up_time",
+                                                    "player_intelligence_purchase_cooldown_duration"
                                                 ]
                                             },
                                             "value": {
@@ -1282,7 +1368,8 @@
                                             "modifier_type": {
                                                 "type": "string",
                                                 "enum": [
-                                                    "build_time"
+                                                    "build_time",
+                                                    "max_concurrent_builds"
                                                 ]
                                             },
                                             "value": {
@@ -1682,6 +1769,9 @@
                         "fleet_colonize_timeout_duration_in_minutes": {
                             "type": "number"
                         },
+                        "fleet_regroup_await_units_time_in_minutes": {
+                            "type": "number"
+                        },
                         "fleet_will_probably_defeat_ratio_range": {
                             "$ref": "#/$defs/float_range"
                         },
@@ -1700,6 +1790,9 @@
                         "name": {
                             "type": "string"
                         },
+                        "unit_pathfinding_danger_weight_scalar": {
+                            "type": "number"
+                        },
                         "update_interval": {
                             "type": "number"
                         },
@@ -1713,6 +1806,9 @@
                             "type": "boolean"
                         },
                         "will_fleet_retreat": {
+                            "type": "boolean"
+                        },
+                        "will_regroup_on_losing_engagement": {
                             "type": "boolean"
                         }
                     },
@@ -1759,7 +1855,11 @@
                                                     "influence_points_recharge_rate",
                                                     "unity_points",
                                                     "unity_max_mana_points",
-                                                    "unity_mana_restore_rate"
+                                                    "unity_mana_restore_rate",
+                                                    "diplomatic_bonus",
+                                                    "player_intelligence_purchase_influence_point_cost",
+                                                    "player_intelligence_purchase_spool_up_time",
+                                                    "player_intelligence_purchase_cooldown_duration"
                                                 ]
                                             },
                                             "value": {
@@ -1795,7 +1895,8 @@
                                             "modifier_type": {
                                                 "type": "string",
                                                 "enum": [
-                                                    "build_time"
+                                                    "build_time",
+                                                    "max_concurrent_builds"
                                                 ]
                                             },
                                             "value": {
@@ -2195,6 +2296,9 @@
                         "fleet_colonize_timeout_duration_in_minutes": {
                             "type": "number"
                         },
+                        "fleet_regroup_await_units_time_in_minutes": {
+                            "type": "number"
+                        },
                         "fleet_will_probably_defeat_ratio_range": {
                             "$ref": "#/$defs/float_range"
                         },
@@ -2213,6 +2317,9 @@
                         "name": {
                             "type": "string"
                         },
+                        "unit_pathfinding_danger_weight_scalar": {
+                            "type": "number"
+                        },
                         "update_interval": {
                             "type": "number"
                         },
@@ -2226,6 +2333,9 @@
                             "type": "boolean"
                         },
                         "will_fleet_retreat": {
+                            "type": "boolean"
+                        },
+                        "will_regroup_on_losing_engagement": {
                             "type": "boolean"
                         }
                     },
@@ -2272,7 +2382,11 @@
                                                     "influence_points_recharge_rate",
                                                     "unity_points",
                                                     "unity_max_mana_points",
-                                                    "unity_mana_restore_rate"
+                                                    "unity_mana_restore_rate",
+                                                    "diplomatic_bonus",
+                                                    "player_intelligence_purchase_influence_point_cost",
+                                                    "player_intelligence_purchase_spool_up_time",
+                                                    "player_intelligence_purchase_cooldown_duration"
                                                 ]
                                             },
                                             "value": {
@@ -2308,7 +2422,8 @@
                                             "modifier_type": {
                                                 "type": "string",
                                                 "enum": [
-                                                    "build_time"
+                                                    "build_time",
+                                                    "max_concurrent_builds"
                                                 ]
                                             },
                                             "value": {
@@ -2708,6 +2823,9 @@
                         "fleet_colonize_timeout_duration_in_minutes": {
                             "type": "number"
                         },
+                        "fleet_regroup_await_units_time_in_minutes": {
+                            "type": "number"
+                        },
                         "fleet_will_probably_defeat_ratio_range": {
                             "$ref": "#/$defs/float_range"
                         },
@@ -2726,6 +2844,9 @@
                         "name": {
                             "type": "string"
                         },
+                        "unit_pathfinding_danger_weight_scalar": {
+                            "type": "number"
+                        },
                         "update_interval": {
                             "type": "number"
                         },
@@ -2739,6 +2860,9 @@
                             "type": "boolean"
                         },
                         "will_fleet_retreat": {
+                            "type": "boolean"
+                        },
+                        "will_regroup_on_losing_engagement": {
                             "type": "boolean"
                         }
                     },
@@ -2785,7 +2909,11 @@
                                                     "influence_points_recharge_rate",
                                                     "unity_points",
                                                     "unity_max_mana_points",
-                                                    "unity_mana_restore_rate"
+                                                    "unity_mana_restore_rate",
+                                                    "diplomatic_bonus",
+                                                    "player_intelligence_purchase_influence_point_cost",
+                                                    "player_intelligence_purchase_spool_up_time",
+                                                    "player_intelligence_purchase_cooldown_duration"
                                                 ]
                                             },
                                             "value": {
@@ -2821,7 +2949,8 @@
                                             "modifier_type": {
                                                 "type": "string",
                                                 "enum": [
-                                                    "build_time"
+                                                    "build_time",
+                                                    "max_concurrent_builds"
                                                 ]
                                             },
                                             "value": {
@@ -3221,6 +3350,9 @@
                         "fleet_colonize_timeout_duration_in_minutes": {
                             "type": "number"
                         },
+                        "fleet_regroup_await_units_time_in_minutes": {
+                            "type": "number"
+                        },
                         "fleet_will_probably_defeat_ratio_range": {
                             "$ref": "#/$defs/float_range"
                         },
@@ -3239,6 +3371,9 @@
                         "name": {
                             "type": "string"
                         },
+                        "unit_pathfinding_danger_weight_scalar": {
+                            "type": "number"
+                        },
                         "update_interval": {
                             "type": "number"
                         },
@@ -3252,6 +3387,9 @@
                             "type": "boolean"
                         },
                         "will_fleet_retreat": {
+                            "type": "boolean"
+                        },
+                        "will_regroup_on_losing_engagement": {
                             "type": "boolean"
                         }
                     },

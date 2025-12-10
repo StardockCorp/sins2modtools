@@ -16,6 +16,9 @@
                 "auto_order_engagement_range": {
                     "type": "number"
                 },
+                "pathfinding_combat_loss_penalty_scalar": {
+                    "type": "number"
+                },
                 "pathfinding_threat_avoidance_base": {
                     "type": "number"
                 },
@@ -25,6 +28,7 @@
             },
             "required": [
                 "auto_order_engagement_range",
+                "pathfinding_combat_loss_penalty_scalar",
                 "pathfinding_threat_avoidance_base",
                 "pathfinding_threat_avoidance_scalar"
             ],

@@ -218,6 +218,9 @@
         "trade_port": {
             "$ref": "#/$defs/trade_port_definition"
         },
+        "traffic_port": {
+            "$ref": "#/$defs/traffic_port_definition"
+        },
         "unit_factory": {
             "$ref": "#/$defs/unit_factory_definition"
         },
@@ -1487,12 +1490,47 @@
                             "hangar_basis": {
                                 "$ref": "#/$defs/basis"
                             },
+                            "land_basis": {
+                                "$ref": "#/$defs/basis"
+                            },
+                            "launch_basis": {
+                                "$ref": "#/$defs/basis"
+                            },
                             "required_unit_item": {
                                 "type": "string"
                             }
                         },
+                        "unevaluatedProperties": false
+                    }
+                },
+                "land_points": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "position": {
+                                "type": "array",
+                                "items": {
+                                    "type": "number"
+                                },
+                                "minItems": 3,
+                                "maxItems": 3
+                            },
+                            "required_unit_item": {
+                                "type": "string"
+                            },
+                            "rotation": {
+                                "type": "array",
+                                "items": {
+                                    "type": "number"
+                                },
+                                "minItems": 9,
+                                "maxItems": 9
+                            }
+                        },
                         "required": [
-                            "hangar_basis"
+                            "position",
+                            "rotation"
                         ],
                         "unevaluatedProperties": false
                     }
@@ -1516,6 +1554,38 @@
                     ],
                     "unevaluatedProperties": false
                 },
+                "launch_points": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "position": {
+                                "type": "array",
+                                "items": {
+                                    "type": "number"
+                                },
+                                "minItems": 3,
+                                "maxItems": 3
+                            },
+                            "required_unit_item": {
+                                "type": "string"
+                            },
+                            "rotation": {
+                                "type": "array",
+                                "items": {
+                                    "type": "number"
+                                },
+                                "minItems": 9,
+                                "maxItems": 9
+                            }
+                        },
+                        "required": [
+                            "position",
+                            "rotation"
+                        ],
+                        "unevaluatedProperties": false
+                    }
+                },
                 "strikecraft_kinds": {
                     "type": "array",
                     "items": {
@@ -1525,7 +1595,6 @@
             },
             "required": [
                 "base_max_squadron_capacity",
-                "hangar_data",
                 "launch_destination_formation",
                 "launch_destination_formation_offset",
                 "strikecraft_kinds"
@@ -1623,6 +1692,12 @@
             "unevaluatedProperties": false
         },
         "float3": {
+            "type": "array",
+            "items": {
+                "type": "number"
+            }
+        },
+        "float3x3": {
             "type": "array",
             "items": {
                 "type": "number"
@@ -1897,55 +1972,6 @@
             ],
             "unevaluatedProperties": false
         },
-        "unit_spatial_definition": {
-            "type": "object",
-            "properties": {
-                "box": {
-                    "type": "object",
-                    "properties": {
-                        "center": {
-                            "type": "array",
-                            "items": {
-                                "type": "number"
-                            }
-                        },
-                        "extents": {
-                            "type": "array",
-                            "items": {
-                                "type": "number"
-                            }
-                        }
-                    },
-                    "required": [
-                        "center",
-                        "extents"
-                    ],
-                    "unevaluatedProperties": false
-                },
-                "can_be_displaced_on_collision": {
-                    "type": "boolean"
-                },
-                "can_collide": {
-                    "type": "boolean"
-                },
-                "can_displace_target_on_collision": {
-                    "type": "boolean"
-                },
-                "collision_rank": {
-                    "type": "integer"
-                },
-                "line_of_sight_radius": {
-                    "type": "number"
-                },
-                "radius": {
-                    "type": "number"
-                },
-                "surface_radius": {
-                    "type": "number"
-                }
-            },
-            "unevaluatedProperties": false
-        },
         "prerequisites": {
             "type": "array",
             "items": {
@@ -2189,21 +2215,6 @@
             ],
             "unevaluatedProperties": false
         },
-        "unit_ruler_ship_definition": {
-            "type": "object",
-            "properties": {
-                "prerequisites": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/$defs/prerequisites"
-                    }
-                }
-            },
-            "required": [
-                "prerequisites"
-            ],
-            "unevaluatedProperties": false
-        },
         "structure_planet_modifier_definition": {
             "type": "object",
             "properties": {
@@ -2278,28 +2289,25 @@
                     ]
                 },
                 "prerequisites": {
-                    "type": "array",
-                    "items": {
-                        "type": "object",
-                        "properties": {
-                            "sets": {
-                                "type": "array",
-                                "items": {
-                                    "type": "object",
-                                    "properties": {
-                                        "research_subject_definition_ptr": {
-                                            "type": "string"
-                                        }
-                                    },
-                                    "required": [
-                                        "research_subject_definition_ptr"
-                                    ],
-                                    "unevaluatedProperties": false
-                                }
+                    "type": "object",
+                    "properties": {
+                        "sets": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "research_subject_definition_ptr": {
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "research_subject_definition_ptr"
+                                ],
+                                "unevaluatedProperties": false
                             }
-                        },
-                        "unevaluatedProperties": false
-                    }
+                        }
+                    },
+                    "unevaluatedProperties": false
                 },
                 "value": {
                     "type": "number"
@@ -2345,20 +2353,7 @@
                     "type": "number"
                 },
                 "attack_target_type": {
-                    "type": "string",
-                    "enum": [
-                        "torpedo",
-                        "strikecraft",
-                        "corvette",
-                        "light",
-                        "flak",
-                        "heavy",
-                        "lrm",
-                        "capital",
-                        "titan",
-                        "starbase",
-                        "defense"
-                    ]
+                    "type": "string"
                 },
                 "is_always_a_threat": {
                     "type": "boolean"
@@ -2395,6 +2390,161 @@
                 "special_operation_unit_kind",
                 "trade_ship",
                 "trade_ship_construction_time"
+            ],
+            "unevaluatedProperties": false
+        },
+        "unit_player_ai_definition": {
+            "type": "object",
+            "properties": {
+                "attack_ship_weight_scalar": {
+                    "type": "number"
+                },
+                "max_count_at_planet": {
+                    "type": "object",
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "enum": [
+                                "constant",
+                                "per_planet_count",
+                                "per_max_supply",
+                                "per_built_supply",
+                                "per_used_military_slots_at_planet"
+                            ]
+                        }
+                    },
+                    "allOf": [
+                        {
+                            "if": {
+                                "properties": {
+                                    "type": {
+                                        "const": "constant"
+                                    }
+                                }
+                            },
+                            "then": {
+                                "properties": {
+                                    "value": {
+                                        "type": "integer"
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": {
+                                    "type": {
+                                        "const": "per_used_military_slots_at_planet"
+                                    }
+                                }
+                            },
+                            "then": {
+                                "properties": {
+                                    "max_value": {
+                                        "type": "number"
+                                    },
+                                    "per_count": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "required": [
+                                    "per_count"
+                                ]
+                            }
+                        }
+                    ],
+                    "unevaluatedProperties": false
+                },
+                "max_count_to_fleet_supply_ratio": {
+                    "type": "integer"
+                },
+                "max_empire_owned_count_percentage": {
+                    "type": "number"
+                }
+            },
+            "unevaluatedProperties": false
+        },
+        "unit_hyperspace_definition": {
+            "type": "object",
+            "properties": {
+                "can_hyperspace_enabled_by_default": {
+                    "type": "boolean"
+                },
+                "charge_time": {
+                    "type": "number"
+                },
+                "charge_time_variance": {
+                    "type": "number"
+                },
+                "max_charge_angle": {
+                    "type": "number"
+                },
+                "min_charge_angle": {
+                    "type": "number"
+                },
+                "speed": {
+                    "type": "number"
+                },
+                "speed_between_stars": {
+                    "type": "number"
+                }
+            },
+            "required": [
+                "charge_time",
+                "charge_time_variance",
+                "max_charge_angle",
+                "min_charge_angle",
+                "speed",
+                "speed_between_stars"
+            ],
+            "unevaluatedProperties": false
+        },
+        "traffic_port_definition": {
+            "type": "object",
+            "properties": {
+                "allowed_destination_units": {
+                    "description": "Units these traffic ships may travel between",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "create_traffic_ship_offset": {
+                    "description": "Offset on spawn",
+                    "$ref": "#/$defs/float3"
+                },
+                "force_stay_in_gravity_well": {
+                    "description": "If true, traffic ships from this port never look outside their gravity well for destinations.",
+                    "type": "boolean"
+                },
+                "max_traffic_ship_count": {
+                    "description": "Max amount of units this traffic port may generate",
+                    "type": "integer"
+                },
+                "special_operation_unit_kind": {
+                    "description": "Traffic ships must have a special operation unit kind",
+                    "type": "string"
+                },
+                "traffic_ship": {
+                    "description": "What traffic ship gets spawned",
+                    "$ref": "#/$defs/unit_definition_ptr"
+                },
+                "traffic_ship_construction_time": {
+                    "description": "How long to construct a traffic ship",
+                    "type": "number"
+                },
+                "traffic_ship_per_hundred_pop": {
+                    "description": "If this is active, max_traffic_ship_count will be overridden by this formula: (planet_population * 0.01) * ship_per_hundred_pop, rounded down.",
+                    "type": "number"
+                }
+            },
+            "required": [
+                "create_traffic_ship_offset",
+                "force_stay_in_gravity_well",
+                "max_traffic_ship_count",
+                "special_operation_unit_kind",
+                "traffic_ship",
+                "traffic_ship_construction_time"
             ],
             "unevaluatedProperties": false
         },
@@ -2736,112 +2886,6 @@
             ],
             "unevaluatedProperties": false
         },
-        "unit_player_ai_definition": {
-            "type": "object",
-            "properties": {
-                "attack_ship_weight_scalar": {
-                    "type": "number"
-                },
-                "max_count_at_planet": {
-                    "type": "object",
-                    "properties": {
-                        "type": {
-                            "type": "string",
-                            "enum": [
-                                "constant",
-                                "per_planet_count",
-                                "per_max_supply",
-                                "per_built_supply",
-                                "per_used_military_slots_at_planet"
-                            ]
-                        }
-                    },
-                    "allOf": [
-                        {
-                            "if": {
-                                "properties": {
-                                    "type": {
-                                        "const": "constant"
-                                    }
-                                }
-                            },
-                            "then": {
-                                "properties": {
-                                    "value": {
-                                        "type": "integer"
-                                    }
-                                }
-                            }
-                        },
-                        {
-                            "if": {
-                                "properties": {
-                                    "type": {
-                                        "const": "per_used_military_slots_at_planet"
-                                    }
-                                }
-                            },
-                            "then": {
-                                "properties": {
-                                    "max_value": {
-                                        "type": "number"
-                                    },
-                                    "per_count": {
-                                        "type": "integer"
-                                    }
-                                },
-                                "required": [
-                                    "per_count"
-                                ]
-                            }
-                        }
-                    ],
-                    "unevaluatedProperties": false
-                },
-                "max_count_to_fleet_supply_ratio": {
-                    "type": "integer"
-                },
-                "max_empire_owned_count_percentage": {
-                    "type": "number"
-                }
-            },
-            "unevaluatedProperties": false
-        },
-        "unit_hyperspace_definition": {
-            "type": "object",
-            "properties": {
-                "can_hyperspace_enabled_by_default": {
-                    "type": "boolean"
-                },
-                "charge_time": {
-                    "type": "number"
-                },
-                "charge_time_variance": {
-                    "type": "number"
-                },
-                "max_charge_angle": {
-                    "type": "number"
-                },
-                "min_charge_angle": {
-                    "type": "number"
-                },
-                "speed": {
-                    "type": "number"
-                },
-                "speed_between_stars": {
-                    "type": "number"
-                }
-            },
-            "required": [
-                "charge_time",
-                "charge_time_variance",
-                "max_charge_angle",
-                "min_charge_angle",
-                "speed",
-                "speed_between_stars"
-            ],
-            "unevaluatedProperties": false
-        },
         "unit_items_level_definition": {
             "type": "object",
             "properties": {
@@ -3033,6 +3077,70 @@
             },
             "required": [
                 "stages"
+            ],
+            "unevaluatedProperties": false
+        },
+        "unit_spatial_definition": {
+            "type": "object",
+            "properties": {
+                "box": {
+                    "type": "object",
+                    "properties": {
+                        "center": {
+                            "type": "array",
+                            "items": {
+                                "type": "number"
+                            }
+                        },
+                        "extents": {
+                            "type": "array",
+                            "items": {
+                                "type": "number"
+                            }
+                        }
+                    },
+                    "required": [
+                        "center",
+                        "extents"
+                    ],
+                    "unevaluatedProperties": false
+                },
+                "can_be_displaced_on_collision": {
+                    "type": "boolean"
+                },
+                "can_collide": {
+                    "type": "boolean"
+                },
+                "can_displace_target_on_collision": {
+                    "type": "boolean"
+                },
+                "collision_rank": {
+                    "type": "integer"
+                },
+                "line_of_sight_radius": {
+                    "type": "number"
+                },
+                "radius": {
+                    "type": "number"
+                },
+                "surface_radius": {
+                    "type": "number"
+                }
+            },
+            "unevaluatedProperties": false
+        },
+        "unit_ruler_ship_definition": {
+            "type": "object",
+            "properties": {
+                "prerequisites": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/$defs/prerequisites"
+                    }
+                }
+            },
+            "required": [
+                "prerequisites"
             ],
             "unevaluatedProperties": false
         },

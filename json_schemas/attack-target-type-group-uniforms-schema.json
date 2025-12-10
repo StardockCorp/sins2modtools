@@ -30,20 +30,7 @@
                             "types": {
                                 "type": "array",
                                 "items": {
-                                    "type": "string",
-                                    "enum": [
-                                        "torpedo",
-                                        "strikecraft",
-                                        "corvette",
-                                        "light",
-                                        "flak",
-                                        "heavy",
-                                        "lrm",
-                                        "capital",
-                                        "titan",
-                                        "starbase",
-                                        "defense"
-                                    ]
+                                    "type": "string"
                                 }
                             }
                         },
