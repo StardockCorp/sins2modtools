@@ -48,6 +48,51 @@
         "can_player_automation_auto_level_up_abilities": {
             "type": "boolean"
         },
+        "capturable_unit": {
+            "type": "object",
+            "properties": {
+                "allow_surrender": {
+                    "description": "If true, unit must surrender before it can be captured. Ignored if type is destroy_on_capture",
+                    "type": "boolean"
+                },
+                "capture_points_total": {
+                    "description": "Total capture points required to capture the unit",
+                    "type": "integer"
+                },
+                "collection_range": {
+                    "description": "Range at which units can capture this unit",
+                    "type": "number"
+                },
+                "has_surrender_cooldown": {
+                    "description": "If true, unit cannot surrender again for a period after being captured",
+                    "type": "boolean"
+                },
+                "is_recapturable": {
+                    "description": "If true, unit can be captured by other players after initial capture without requiring surrender",
+                    "type": "boolean"
+                },
+                "surrender_cooldown_duration": {
+                    "description": "Duration in seconds before the unit can surrender again after being captured",
+                    "type": "number"
+                },
+                "type": {
+                    "description": "What happens when the unit is captured",
+                    "type": "string",
+                    "enum": [
+                        "destroy_on_capture",
+                        "change_owner_on_capture"
+                    ]
+                }
+            },
+            "required": [
+                "capture_points_total",
+                "type"
+            ],
+            "unevaluatedProperties": false
+        },
+        "capture_points": {
+            "type": "integer"
+        },
         "carrier": {
             "$ref": "#/$defs/carrier_definition"
         },
@@ -388,6 +433,7 @@
                             "auto_follow_unit_attacking_any_or_is_damaged",
                             "auto_follow_unit_attacking_any",
                             "auto_follow_unit_attacking_threat",
+                            "auto_resolve_capturable_unit",
                             "auto_capture_loot",
                             "auto_resolve_objective_based_structure"
                         ]
@@ -1334,6 +1380,9 @@
                                             "max_squadron_capacity": {
                                                 "type": "number"
                                             },
+                                            "max_squadron_capacity_per_kind": {
+                                                "type": "number"
+                                            },
                                             "metal_income_rate": {
                                                 "type": "number"
                                             },
@@ -1383,6 +1432,9 @@
                                                 "type": "number"
                                             },
                                             "trade_import_points": {
+                                                "type": "number"
+                                            },
+                                            "unit_capture_points": {
                                                 "type": "number"
                                             },
                                             "unity_points": {
@@ -1481,6 +1533,9 @@
             "properties": {
                 "base_max_squadron_capacity": {
                     "type": "integer"
+                },
+                "block_launch_when_child_meshes_transitioning": {
+                    "type": "boolean"
                 },
                 "hangar_data": {
                     "type": "array",
@@ -1583,6 +1638,21 @@
                             "position",
                             "rotation"
                         ],
+                        "unevaluatedProperties": false
+                    }
+                },
+                "strikecraft_kind_capacities": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "kind": {
+                                "type": "string"
+                            },
+                            "max_squadron_capacity": {
+                                "type": "integer"
+                            }
+                        },
                         "unevaluatedProperties": false
                     }
                 },
@@ -2750,6 +2820,15 @@
         "unit_child_mesh_definition": {
             "type": "object",
             "properties": {
+                "ability_name": {
+                    "type": "string"
+                },
+                "construction_progress_threshold": {
+                    "type": "number"
+                },
+                "default_state_index": {
+                    "type": "integer"
+                },
                 "hidden_by_unit_item": {
                     "$ref": "#/$defs/unit_item_definition_ptr"
                 },
@@ -2762,11 +2841,73 @@
                 "mesh_point": {
                     "type": "string"
                 },
+                "position_states": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "position_offset": {
+                                "$ref": "#/$defs/float3"
+                            },
+                            "rotation_offset": {
+                                "$ref": "#/$defs/float3x3"
+                            },
+                            "state_name": {
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "position_offset",
+                            "rotation_offset",
+                            "state_name"
+                        ],
+                        "unevaluatedProperties": false
+                    }
+                },
+                "recoil_completion_rotates_mesh": {
+                    "type": "string"
+                },
+                "recoil_completion_rotation_angle": {
+                    "type": "number"
+                },
                 "required_unit_item": {
                     "$ref": "#/$defs/unit_item_definition_ptr"
                 },
                 "required_unit_item_level": {
                     "type": "integer"
+                },
+                "rotation_axis": {
+                    "$ref": "#/$defs/float3"
+                },
+                "rotation_condition": {
+                    "type": "string",
+                    "enum": [
+                        "always",
+                        "not_in_combat",
+                        "only_when_charging_phase_jump",
+                        "ability_firing"
+                    ]
+                },
+                "rotation_origin_mesh_point": {
+                    "type": "string"
+                },
+                "rotation_speed": {
+                    "type": "number"
+                },
+                "rotation_speed_modifier": {
+                    "type": "number"
+                },
+                "state_constraint": {
+                    "type": "string"
+                },
+                "transition_delay": {
+                    "type": "number"
+                },
+                "transition_time": {
+                    "type": "number"
+                },
+                "will_transition_positions": {
+                    "type": "boolean"
                 }
             },
             "required": [
@@ -2951,6 +3092,7 @@
                         "experience_gained_from_loot_collection",
                         "experience_given_on_death",
                         "max_squadron_capacity",
+                        "max_squadron_capacity_per_kind",
                         "strikecraft_build_time",
                         "credit_income_rate",
                         "metal_income_rate",
@@ -2971,7 +3113,8 @@
                         "trade_export_metal_points",
                         "trade_export_crystal_points",
                         "loot_collection_duration",
-                        "phase_resonance_bonus_duration"
+                        "phase_resonance_bonus_duration",
+                        "unit_capture_points"
                     ]
                 },
                 "prerequisites": {

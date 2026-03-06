@@ -167,6 +167,9 @@
         "default_starting_exotics": {
             "$ref": "#/$defs/exotic_type_count_vector"
         },
+        "diplomatic_tag": {
+            "type": "string"
+        },
         "faction_buildable_units": {
             "type": "array",
             "items": {
@@ -1184,6 +1187,60 @@
                         "$ref": "#/$defs/npc_auction_definition"
                     }
                 },
+                "bounty_market": {
+                    "type": "object",
+                    "properties": {
+                        "bounty_cut": {
+                            "description": "how much will this npc take off the top as a percentage",
+                            "type": "number"
+                        },
+                        "crystal_credit_value": {
+                            "description": "credit value per unit of crystal",
+                            "type": "number"
+                        },
+                        "exotic_credit_values": {
+                            "description": "credit values for each exotic type",
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "credit_value": {
+                                        "description": "Credit value per exotic",
+                                        "type": "number"
+                                    },
+                                    "exotic_name": {
+                                        "description": "Exotic type name",
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "credit_value",
+                                    "exotic_name"
+                                ],
+                                "unevaluatedProperties": false
+                            }
+                        },
+                        "market_weight": {
+                            "description": "higher values will cause galaxy generator use this npc over other npcs for this market",
+                            "type": "number"
+                        },
+                        "metal_credit_value": {
+                            "description": "credit value per unit of metal",
+                            "type": "number"
+                        }
+                    },
+                    "required": [
+                        "bounty_cut",
+                        "crystal_credit_value",
+                        "market_weight",
+                        "metal_credit_value"
+                    ],
+                    "unevaluatedProperties": false
+                },
+                "can_survey_planets": {
+                    "description": "Allows or disallows an npc from surveying planets",
+                    "type": "boolean"
+                },
                 "crystal_market": {
                     "$ref": "#/$defs/npc_asset_market_definition"
                 },
@@ -1202,6 +1259,11 @@
                 "ignore_enemy_explore_ships": {
                     "description": "default=true",
                     "type": "boolean"
+                },
+                "max_concurrent_raids": {
+                    "description": "Maximum number of raids that can be active at once. Default=1",
+                    "type": "integer",
+                    "minimum": 1
                 },
                 "max_fleet_supply": {
                     "type": "object",
@@ -1229,6 +1291,14 @@
                             },
                             "minItems": 4,
                             "maxItems": 4
+                        },
+                        "script_controlled": {
+                            "type": "array",
+                            "items": {
+                                "type": "integer"
+                            },
+                            "minItems": 4,
+                            "maxItems": 4
                         }
                     },
                     "unevaluatedProperties": false
@@ -1243,6 +1313,231 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/$defs/npc_tags"
+                    }
+                },
+                "raid_arrival_messages": {
+                    "description": "Taunt messages sent when NPC raid arrives at a player's gravity well. {} is replaced with planet name",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/$defs/localized_text_ptr"
+                    }
+                },
+                "raid_arrival_taunt_chance": {
+                    "description": "Chance (0-1) that an NPC raid sends a taunt message on arrival",
+                    "type": "number"
+                },
+                "raid_types": {
+                    "description": "Raid definitions for this minor faction",
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "arrival_delay_duration": {
+                                "description": "Delay before raid units activate after spawning",
+                                "type": "number"
+                            },
+                            "awakening_cooldown": {
+                                "description": "Cooldown range when transitioning from dormant",
+                                "type": "array",
+                                "items": {
+                                    "type": "number"
+                                },
+                                "minItems": 2,
+                                "maxItems": 2
+                            },
+                            "composition_brackets": {
+                                "description": "Fleet composition brackets based on target value",
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "supply_cap": {
+                                            "description": "Optional supply cap for the raid fleet",
+                                            "type": "integer"
+                                        },
+                                        "threat_level": {
+                                            "description": "Threat level displayed in the UI for this bracket (low, moderate, medium, high, extreme). Default=low",
+                                            "type": "string"
+                                        },
+                                        "units": {
+                                            "description": "Units to spawn for this bracket",
+                                            "type": "object",
+                                            "properties": {
+                                                "formation_type": {
+                                                    "$ref": "#/$defs/formation_type"
+                                                },
+                                                "random_units": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "options": {
+                                                                "type": "object",
+                                                                "properties": {
+                                                                    "forced_leveled_up_abilities": {
+                                                                        "type": "array",
+                                                                        "items": {
+                                                                            "$ref": "#/$defs/ability_definition_ptr"
+                                                                        }
+                                                                    },
+                                                                    "forced_strikecraft_index": {
+                                                                        "type": "integer"
+                                                                    },
+                                                                    "is_temporary_ruler_ship": {
+                                                                        "type": "boolean"
+                                                                    },
+                                                                    "items": {
+                                                                        "type": "array",
+                                                                        "items": {
+                                                                            "$ref": "#/$defs/unit_item_definition_ptr"
+                                                                        }
+                                                                    },
+                                                                    "level": {
+                                                                        "type": "integer"
+                                                                    }
+                                                                },
+                                                                "unevaluatedProperties": false
+                                                            },
+                                                            "unit": {
+                                                                "$ref": "#/$defs/unit_definition_ptr"
+                                                            },
+                                                            "weight": {
+                                                                "type": "number"
+                                                            }
+                                                        },
+                                                        "required": [
+                                                            "unit",
+                                                            "weight"
+                                                        ],
+                                                        "unevaluatedProperties": false
+                                                    }
+                                                },
+                                                "required_units": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "count": {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "type": "integer"
+                                                                },
+                                                                "minItems": 2,
+                                                                "maxItems": 2
+                                                            },
+                                                            "options": {
+                                                                "type": "object",
+                                                                "properties": {
+                                                                    "forced_leveled_up_abilities": {
+                                                                        "type": "array",
+                                                                        "items": {
+                                                                            "$ref": "#/$defs/ability_definition_ptr"
+                                                                        }
+                                                                    },
+                                                                    "forced_strikecraft_index": {
+                                                                        "type": "integer"
+                                                                    },
+                                                                    "is_temporary_ruler_ship": {
+                                                                        "type": "boolean"
+                                                                    },
+                                                                    "items": {
+                                                                        "type": "array",
+                                                                        "items": {
+                                                                            "$ref": "#/$defs/unit_item_definition_ptr"
+                                                                        }
+                                                                    },
+                                                                    "level": {
+                                                                        "type": "integer"
+                                                                    }
+                                                                },
+                                                                "unevaluatedProperties": false
+                                                            },
+                                                            "unit": {
+                                                                "$ref": "#/$defs/unit_definition_ptr"
+                                                            }
+                                                        },
+                                                        "required": [
+                                                            "unit"
+                                                        ],
+                                                        "unevaluatedProperties": false
+                                                    }
+                                                }
+                                            },
+                                            "unevaluatedProperties": false
+                                        },
+                                        "value_threshold": {
+                                            "description": "Min/max value range for this bracket",
+                                            "type": "array",
+                                            "items": {
+                                                "type": "number"
+                                            },
+                                            "minItems": 2,
+                                            "maxItems": 2
+                                        }
+                                    },
+                                    "required": [
+                                        "units",
+                                        "value_threshold"
+                                    ],
+                                    "unevaluatedProperties": false
+                                }
+                            },
+                            "dormant_target_search_interval": {
+                                "description": "Interval in seconds between target searches while dormant. Default=5",
+                                "type": "number"
+                            },
+                            "initial_delay_from_game_start": {
+                                "description": "Delay range in seconds from game start before raids can begin",
+                                "type": "array",
+                                "items": {
+                                    "type": "number"
+                                },
+                                "minItems": 2,
+                                "maxItems": 2
+                            },
+                            "max_jump_distance": {
+                                "description": "Maximum jump distance from origin to target",
+                                "type": "integer"
+                            },
+                            "raid_buff": {
+                                "description": "Buff to apply to raid fleet units",
+                                "type": "string"
+                            },
+                            "raid_type": {
+                                "description": "Type of raid objective",
+                                "type": "string"
+                            },
+                            "standard_cooldown": {
+                                "description": "Standard cooldown between raids",
+                                "type": "array",
+                                "items": {
+                                    "type": "number"
+                                },
+                                "minItems": 2,
+                                "maxItems": 2
+                            },
+                            "target_population_threshold": {
+                                "description": "Population threshold for kill_population raids",
+                                "type": "number"
+                            },
+                            "target_reevaluation_interval": {
+                                "description": "Interval in seconds between target re-evaluation during awakening. Default=5",
+                                "type": "number"
+                            },
+                            "target_structure_threshold": {
+                                "description": "Structure count threshold for destroy_infrastructure raids",
+                                "type": "integer"
+                            }
+                        },
+                        "required": [
+                            "awakening_cooldown",
+                            "composition_brackets",
+                            "initial_delay_from_game_start",
+                            "max_jump_distance",
+                            "raid_type",
+                            "standard_cooldown"
+                        ],
+                        "unevaluatedProperties": false
                     }
                 },
                 "reputation": {
@@ -2615,6 +2910,9 @@
                         "buy_metal_credits_cost": {
                             "$ref": "#/$defs/npc_reputation_modifier"
                         },
+                        "npc_bounty_fee": {
+                            "$ref": "#/$defs/npc_reputation_modifier"
+                        },
                         "reputation_ability_cooldown_duration": {
                             "$ref": "#/$defs/npc_reputation_modifier"
                         },
@@ -2823,8 +3121,11 @@
                                     "options": {
                                         "type": "object",
                                         "properties": {
-                                            "forced_leveled_up_ability": {
-                                                "$ref": "#/$defs/ability_definition_ptr"
+                                            "forced_leveled_up_abilities": {
+                                                "type": "array",
+                                                "items": {
+                                                    "$ref": "#/$defs/ability_definition_ptr"
+                                                }
                                             },
                                             "forced_strikecraft_index": {
                                                 "type": "integer"
@@ -2874,8 +3175,11 @@
                                     "options": {
                                         "type": "object",
                                         "properties": {
-                                            "forced_leveled_up_ability": {
-                                                "$ref": "#/$defs/ability_definition_ptr"
+                                            "forced_leveled_up_abilities": {
+                                                "type": "array",
+                                                "items": {
+                                                    "$ref": "#/$defs/ability_definition_ptr"
+                                                }
                                             },
                                             "forced_strikecraft_index": {
                                                 "type": "integer"
@@ -4624,7 +4928,8 @@
                                     "diplomatic_bonus",
                                     "player_intelligence_purchase_influence_point_cost",
                                     "player_intelligence_purchase_spool_up_time",
-                                    "player_intelligence_purchase_cooldown_duration"
+                                    "player_intelligence_purchase_cooldown_duration",
+                                    "npc_bounty_collection_share"
                                 ]
                             },
                             "value": {
@@ -4698,7 +5003,8 @@
                                     "sell_exotic_credits_received",
                                     "send_raid_supply",
                                     "auction_bid_bonus_influence_points",
-                                    "reputation_ability_cooldown_duration"
+                                    "reputation_ability_cooldown_duration",
+                                    "npc_bounty_fee"
                                 ]
                             },
                             "tags": {
@@ -4948,6 +5254,7 @@
                                     "experience_gained_from_loot_collection",
                                     "experience_given_on_death",
                                     "max_squadron_capacity",
+                                    "max_squadron_capacity_per_kind",
                                     "strikecraft_build_time",
                                     "credit_income_rate",
                                     "metal_income_rate",
@@ -4968,7 +5275,8 @@
                                     "trade_export_metal_points",
                                     "trade_export_crystal_points",
                                     "loot_collection_duration",
-                                    "phase_resonance_bonus_duration"
+                                    "phase_resonance_bonus_duration",
+                                    "unit_capture_points"
                                 ]
                             },
                             "tags": {
@@ -4986,6 +5294,14 @@
                                     "additive",
                                     "scalar"
                                 ]
+                            },
+                            "value_filter_key": {
+                                "description": "Filter key for matching specific modifier targets (e.g., strikecraft kind name)",
+                                "type": "string"
+                            },
+                            "value_name": {
+                                "description": "Localized text ID for display name",
+                                "type": "string"
                             }
                         },
                         "required": [
@@ -5130,7 +5446,8 @@
                         "diplomatic_bonus",
                         "player_intelligence_purchase_influence_point_cost",
                         "player_intelligence_purchase_spool_up_time",
-                        "player_intelligence_purchase_cooldown_duration"
+                        "player_intelligence_purchase_cooldown_duration",
+                        "npc_bounty_collection_share"
                     ]
                 },
                 "value_behavior": {
@@ -5752,6 +6069,7 @@
                         "experience_gained_from_loot_collection",
                         "experience_given_on_death",
                         "max_squadron_capacity",
+                        "max_squadron_capacity_per_kind",
                         "strikecraft_build_time",
                         "credit_income_rate",
                         "metal_income_rate",
@@ -5772,7 +6090,8 @@
                         "trade_export_metal_points",
                         "trade_export_crystal_points",
                         "loot_collection_duration",
-                        "phase_resonance_bonus_duration"
+                        "phase_resonance_bonus_duration",
+                        "unit_capture_points"
                     ]
                 },
                 "value_behavior": {
@@ -5832,6 +6151,7 @@
                         "experience_gained_from_loot_collection",
                         "experience_given_on_death",
                         "max_squadron_capacity",
+                        "max_squadron_capacity_per_kind",
                         "strikecraft_build_time",
                         "credit_income_rate",
                         "metal_income_rate",
@@ -5852,7 +6172,8 @@
                         "trade_export_metal_points",
                         "trade_export_crystal_points",
                         "loot_collection_duration",
-                        "phase_resonance_bonus_duration"
+                        "phase_resonance_bonus_duration",
+                        "unit_capture_points"
                     ]
                 },
                 "tag": {
@@ -9464,6 +9785,7 @@
                         "experience_gained_from_loot_collection",
                         "experience_given_on_death",
                         "max_squadron_capacity",
+                        "max_squadron_capacity_per_kind",
                         "strikecraft_build_time",
                         "credit_income_rate",
                         "metal_income_rate",
@@ -9484,7 +9806,8 @@
                         "trade_export_metal_points",
                         "trade_export_crystal_points",
                         "loot_collection_duration",
-                        "phase_resonance_bonus_duration"
+                        "phase_resonance_bonus_duration",
+                        "unit_capture_points"
                     ]
                 },
                 "tags": {
@@ -9502,6 +9825,14 @@
                         "additive",
                         "scalar"
                     ]
+                },
+                "value_filter_key": {
+                    "description": "Filter key for matching specific modifier targets (e.g., strikecraft kind name)",
+                    "type": "string"
+                },
+                "value_name": {
+                    "description": "Localized text ID for display name",
+                    "type": "string"
                 }
             },
             "required": [
@@ -9677,8 +10008,11 @@
                             "options": {
                                 "type": "object",
                                 "properties": {
-                                    "forced_leveled_up_ability": {
-                                        "$ref": "#/$defs/ability_definition_ptr"
+                                    "forced_leveled_up_abilities": {
+                                        "type": "array",
+                                        "items": {
+                                            "$ref": "#/$defs/ability_definition_ptr"
+                                        }
                                     },
                                     "forced_strikecraft_index": {
                                         "type": "integer"
@@ -9728,8 +10062,11 @@
                             "options": {
                                 "type": "object",
                                 "properties": {
-                                    "forced_leveled_up_ability": {
-                                        "$ref": "#/$defs/ability_definition_ptr"
+                                    "forced_leveled_up_abilities": {
+                                        "type": "array",
+                                        "items": {
+                                            "$ref": "#/$defs/ability_definition_ptr"
+                                        }
                                     },
                                     "forced_strikecraft_index": {
                                         "type": "integer"

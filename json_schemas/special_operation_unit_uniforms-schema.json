@@ -12,6 +12,9 @@
                     "definition": {
                         "type": "object",
                         "properties": {
+                            "can_join_fleets": {
+                                "type": "boolean"
+                            },
                             "cannot_move_out_of_gravity_well": {
                                 "type": "boolean"
                             },

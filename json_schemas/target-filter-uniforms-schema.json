@@ -3190,7 +3190,11 @@
                 "can_have_any_strikecraft_launched",
                 "can_update_unit_production",
                 "can_create_retargeting_torpedoes",
-                "can_update_unit_item_build_progress"
+                "can_update_unit_item_build_progress",
+                "can_scuttle",
+                "can_have_antimatter_restored",
+                "can_passively_regenerate_antimatter",
+                "is_loot_collector"
             ]
         },
         "weapon_type": {

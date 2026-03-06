@@ -157,8 +157,11 @@
                                                     "options": {
                                                         "type": "object",
                                                         "properties": {
-                                                            "forced_leveled_up_ability": {
-                                                                "$ref": "#/$defs/ability_definition_ptr"
+                                                            "forced_leveled_up_abilities": {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "$ref": "#/$defs/ability_definition_ptr"
+                                                                }
                                                             },
                                                             "forced_strikecraft_index": {
                                                                 "type": "integer"
@@ -208,8 +211,11 @@
                                                     "options": {
                                                         "type": "object",
                                                         "properties": {
-                                                            "forced_leveled_up_ability": {
-                                                                "$ref": "#/$defs/ability_definition_ptr"
+                                                            "forced_leveled_up_abilities": {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "$ref": "#/$defs/ability_definition_ptr"
+                                                                }
                                                             },
                                                             "forced_strikecraft_index": {
                                                                 "type": "integer"

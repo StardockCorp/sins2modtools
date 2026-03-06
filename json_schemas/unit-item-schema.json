@@ -116,7 +116,8 @@
                                     "diplomatic_bonus",
                                     "player_intelligence_purchase_influence_point_cost",
                                     "player_intelligence_purchase_spool_up_time",
-                                    "player_intelligence_purchase_cooldown_duration"
+                                    "player_intelligence_purchase_cooldown_duration",
+                                    "npc_bounty_collection_share"
                                 ]
                             },
                             "value": {
@@ -190,7 +191,8 @@
                                     "sell_exotic_credits_received",
                                     "send_raid_supply",
                                     "auction_bid_bonus_influence_points",
-                                    "reputation_ability_cooldown_duration"
+                                    "reputation_ability_cooldown_duration",
+                                    "npc_bounty_fee"
                                 ]
                             },
                             "tags": {
@@ -440,6 +442,7 @@
                                     "experience_gained_from_loot_collection",
                                     "experience_given_on_death",
                                     "max_squadron_capacity",
+                                    "max_squadron_capacity_per_kind",
                                     "strikecraft_build_time",
                                     "credit_income_rate",
                                     "metal_income_rate",
@@ -460,7 +463,8 @@
                                     "trade_export_metal_points",
                                     "trade_export_crystal_points",
                                     "loot_collection_duration",
-                                    "phase_resonance_bonus_duration"
+                                    "phase_resonance_bonus_duration",
+                                    "unit_capture_points"
                                 ]
                             },
                             "tags": {
@@ -478,6 +482,14 @@
                                     "additive",
                                     "scalar"
                                 ]
+                            },
+                            "value_filter_key": {
+                                "description": "Filter key for matching specific modifier targets (e.g., strikecraft kind name)",
+                                "type": "string"
+                            },
+                            "value_name": {
+                                "description": "Localized text ID for display name",
+                                "type": "string"
                             }
                         },
                         "required": [
@@ -2111,6 +2123,9 @@
                                     "buff_empire_modifier",
                                     "buff_unit_factory_modifier",
                                     "buff_trade_capacity",
+                                    "buff_trade_export_credits",
+                                    "buff_trade_export_metal",
+                                    "buff_trade_export_crystal",
                                     "exotic_income"
                                 ]
                             },
@@ -4006,7 +4021,9 @@
                                                 "add_unit_item",
                                                 "apply_population_damage",
                                                 "convert_population",
-                                                "cull_allegiance_population"
+                                                "cull_allegiance_population",
+                                                "add_population",
+                                                "flee_to_hyperspace"
                                             ]
                                         }
                                     },
@@ -4743,8 +4760,11 @@
                                                                         "options": {
                                                                             "type": "object",
                                                                             "properties": {
-                                                                                "forced_leveled_up_ability": {
-                                                                                    "$ref": "#/$defs/ability_definition_ptr"
+                                                                                "forced_leveled_up_abilities": {
+                                                                                    "type": "array",
+                                                                                    "items": {
+                                                                                        "$ref": "#/$defs/ability_definition_ptr"
+                                                                                    }
                                                                                 },
                                                                                 "forced_strikecraft_index": {
                                                                                     "type": "integer"
@@ -4794,8 +4814,11 @@
                                                                         "options": {
                                                                             "type": "object",
                                                                             "properties": {
-                                                                                "forced_leveled_up_ability": {
-                                                                                    "$ref": "#/$defs/ability_definition_ptr"
+                                                                                "forced_leveled_up_abilities": {
+                                                                                    "type": "array",
+                                                                                    "items": {
+                                                                                        "$ref": "#/$defs/ability_definition_ptr"
+                                                                                    }
                                                                                 },
                                                                                 "forced_strikecraft_index": {
                                                                                     "type": "integer"
@@ -5135,6 +5158,42 @@
                                                     ]
                                                 }
                                             }
+                                        },
+                                        {
+                                            "if": {
+                                                "properties": {
+                                                    "operator_type": {
+                                                        "const": "add_population"
+                                                    }
+                                                }
+                                            },
+                                            "then": {
+                                                "properties": {
+                                                    "cap_at_max_population": {
+                                                        "description": "default=true",
+                                                        "type": "boolean"
+                                                    },
+                                                    "population_add_modifier_type": {
+                                                        "$ref": "#/$defs/modifier_value_behavior"
+                                                    },
+                                                    "population_add_value": {
+                                                        "$ref": "#/$defs/action_value_id"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "population_add_value"
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "if": {
+                                                "properties": {
+                                                    "operator_type": {
+                                                        "const": "flee_to_hyperspace"
+                                                    }
+                                                }
+                                            },
+                                            "then": {}
                                         }
                                     ],
                                     "unevaluatedProperties": false
@@ -5663,6 +5722,7 @@
                         "experience_gained_from_loot_collection",
                         "experience_given_on_death",
                         "max_squadron_capacity",
+                        "max_squadron_capacity_per_kind",
                         "strikecraft_build_time",
                         "credit_income_rate",
                         "metal_income_rate",
@@ -5683,7 +5743,8 @@
                         "trade_export_metal_points",
                         "trade_export_crystal_points",
                         "loot_collection_duration",
-                        "phase_resonance_bonus_duration"
+                        "phase_resonance_bonus_duration",
+                        "unit_capture_points"
                     ]
                 },
                 "tags": {
@@ -7877,7 +7938,9 @@
                         "add_unit_item",
                         "apply_population_damage",
                         "convert_population",
-                        "cull_allegiance_population"
+                        "cull_allegiance_population",
+                        "add_population",
+                        "flee_to_hyperspace"
                     ]
                 }
             },
@@ -8617,8 +8680,11 @@
                                                 "options": {
                                                     "type": "object",
                                                     "properties": {
-                                                        "forced_leveled_up_ability": {
-                                                            "$ref": "#/$defs/ability_definition_ptr"
+                                                        "forced_leveled_up_abilities": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "$ref": "#/$defs/ability_definition_ptr"
+                                                            }
                                                         },
                                                         "forced_strikecraft_index": {
                                                             "type": "integer"
@@ -8668,8 +8734,11 @@
                                                 "options": {
                                                     "type": "object",
                                                     "properties": {
-                                                        "forced_leveled_up_ability": {
-                                                            "$ref": "#/$defs/ability_definition_ptr"
+                                                        "forced_leveled_up_abilities": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "$ref": "#/$defs/ability_definition_ptr"
+                                                            }
                                                         },
                                                         "forced_strikecraft_index": {
                                                             "type": "integer"
@@ -9009,6 +9078,42 @@
                             ]
                         }
                     }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "operator_type": {
+                                "const": "add_population"
+                            }
+                        }
+                    },
+                    "then": {
+                        "properties": {
+                            "cap_at_max_population": {
+                                "description": "default=true",
+                                "type": "boolean"
+                            },
+                            "population_add_modifier_type": {
+                                "$ref": "#/$defs/modifier_value_behavior"
+                            },
+                            "population_add_value": {
+                                "$ref": "#/$defs/action_value_id"
+                            }
+                        },
+                        "required": [
+                            "population_add_value"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "operator_type": {
+                                "const": "flee_to_hyperspace"
+                            }
+                        }
+                    },
+                    "then": {}
                 }
             ],
             "unevaluatedProperties": false
@@ -9103,6 +9208,9 @@
                         "buff_empire_modifier",
                         "buff_unit_factory_modifier",
                         "buff_trade_capacity",
+                        "buff_trade_export_credits",
+                        "buff_trade_export_metal",
+                        "buff_trade_export_crystal",
                         "exotic_income"
                     ]
                 },
@@ -9422,7 +9530,8 @@
                 "diplomatic_bonus",
                 "player_intelligence_purchase_influence_point_cost",
                 "player_intelligence_purchase_spool_up_time",
-                "player_intelligence_purchase_cooldown_duration"
+                "player_intelligence_purchase_cooldown_duration",
+                "npc_bounty_collection_share"
             ]
         },
         "unit_constraint": {
@@ -10438,7 +10547,11 @@
                 "can_have_any_strikecraft_launched",
                 "can_update_unit_production",
                 "can_create_retargeting_torpedoes",
-                "can_update_unit_item_build_progress"
+                "can_update_unit_item_build_progress",
+                "can_scuttle",
+                "can_have_antimatter_restored",
+                "can_passively_regenerate_antimatter",
+                "is_loot_collector"
             ]
         },
         "unit_modifier_type": {
@@ -10479,6 +10592,7 @@
                 "experience_gained_from_loot_collection",
                 "experience_given_on_death",
                 "max_squadron_capacity",
+                "max_squadron_capacity_per_kind",
                 "strikecraft_build_time",
                 "credit_income_rate",
                 "metal_income_rate",
@@ -10499,7 +10613,8 @@
                 "trade_export_metal_points",
                 "trade_export_crystal_points",
                 "loot_collection_duration",
-                "phase_resonance_bonus_duration"
+                "phase_resonance_bonus_duration",
+                "unit_capture_points"
             ]
         },
         "modifier_value_behavior": {
@@ -10625,7 +10740,10 @@
                 "trade_ship_killed",
                 "synergy_ally_dead",
                 "surveying_reward",
-                "mission_reward"
+                "mission_reward",
+                "npc_bounty_placed",
+                "npc_bounty_collected",
+                "npc_bounty_fee"
             ]
         },
         "give_exotic_context": {
@@ -10633,6 +10751,7 @@
             "enum": [
                 "starting",
                 "npc_reward",
+                "npc_bounty_placed",
                 "surveying",
                 "factory",
                 "alliance_offer",
@@ -10661,8 +10780,11 @@
                             "options": {
                                 "type": "object",
                                 "properties": {
-                                    "forced_leveled_up_ability": {
-                                        "$ref": "#/$defs/ability_definition_ptr"
+                                    "forced_leveled_up_abilities": {
+                                        "type": "array",
+                                        "items": {
+                                            "$ref": "#/$defs/ability_definition_ptr"
+                                        }
                                     },
                                     "forced_strikecraft_index": {
                                         "type": "integer"
@@ -10712,8 +10834,11 @@
                             "options": {
                                 "type": "object",
                                 "properties": {
-                                    "forced_leveled_up_ability": {
-                                        "$ref": "#/$defs/ability_definition_ptr"
+                                    "forced_leveled_up_abilities": {
+                                        "type": "array",
+                                        "items": {
+                                            "$ref": "#/$defs/ability_definition_ptr"
+                                        }
                                     },
                                     "forced_strikecraft_index": {
                                         "type": "integer"

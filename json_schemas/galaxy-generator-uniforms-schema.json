@@ -64,12 +64,8 @@
     },
     "unevaluatedProperties": false,
     "$defs": {
-        "float_range": {
-            "type": "array",
-            "items": {
-                "type": "number"
-            },
-            "maxItems": 2
+        "ability_definition_ptr": {
+            "type": "string"
         },
         "gravity_well_filling_socket": {
             "type": "object",
@@ -101,6 +97,19 @@
             },
             "unevaluatedProperties": false
         },
+        "unit_definition_ptr": {
+            "type": "string"
+        },
+        "unit_item_definition_ptr": {
+            "type": "string"
+        },
+        "float_range": {
+            "type": "array",
+            "items": {
+                "type": "number"
+            },
+            "maxItems": 2
+        },
         "gravity_well_orbit_duration_min_max": {
             "type": "object",
             "properties": {
@@ -130,7 +139,19 @@
                             "filling": {
                                 "type": "object",
                                 "properties": {
+                                    "crystal_asteroid_extractor": {
+                                        "description": "extractor unit spawned on crystal asteroids when gravity well has no planet fixtures",
+                                        "type": "string"
+                                    },
                                     "entity_definition": {
+                                        "type": "string"
+                                    },
+                                    "max_capturable_units": {
+                                        "description": "max capturable units (e.g. extractors) spawned per gravity well with this fixture type. 0 = no limit",
+                                        "type": "integer"
+                                    },
+                                    "metal_asteroid_extractor": {
+                                        "description": "extractor unit spawned on metal asteroids when gravity well has no planet fixtures",
                                         "type": "string"
                                     },
                                     "militia_supply": {
@@ -141,11 +162,187 @@
                                         "minItems": 2,
                                         "maxItems": 2
                                     },
+                                    "neutral_unit_spawn_chance": {
+                                        "description": "probability (0 to 1) of spawning neutral units in a gravity well with this fixture type",
+                                        "type": "number"
+                                    },
+                                    "random_crystal_asteroids": {
+                                        "description": "crystal asteroids spawned when gravity well has no planet fixtures",
+                                        "type": "object",
+                                        "properties": {
+                                            "tiers": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "count": {
+                                                            "description": "how many asteroids?",
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "integer"
+                                                            },
+                                                            "minItems": 2,
+                                                            "maxItems": 2
+                                                        },
+                                                        "tier": {
+                                                            "description": "binding to specific asteroid type in planet.uniforms",
+                                                            "type": "integer"
+                                                        }
+                                                    },
+                                                    "unevaluatedProperties": false
+                                                }
+                                            }
+                                        },
+                                        "unevaluatedProperties": false
+                                    },
+                                    "random_metal_asteroids": {
+                                        "description": "metal asteroids spawned when gravity well has no planet fixtures",
+                                        "type": "object",
+                                        "properties": {
+                                            "tiers": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "count": {
+                                                            "description": "how many asteroids?",
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "integer"
+                                                            },
+                                                            "minItems": 2,
+                                                            "maxItems": 2
+                                                        },
+                                                        "tier": {
+                                                            "description": "binding to specific asteroid type in planet.uniforms",
+                                                            "type": "integer"
+                                                        }
+                                                    },
+                                                    "unevaluatedProperties": false
+                                                }
+                                            }
+                                        },
+                                        "unevaluatedProperties": false
+                                    },
                                     "required_planet_bonuses": {
                                         "type": "array",
                                         "items": {
                                             "type": "string"
                                         }
+                                    },
+                                    "spawn_unit_buff": {
+                                        "description": "buff applied to units spawned via spawn_unit_definitions",
+                                        "type": "string"
+                                    },
+                                    "spawn_unit_buff_data_source": {
+                                        "description": "action data source for spawn_unit_buff",
+                                        "type": "string"
+                                    },
+                                    "spawn_unit_definitions": {
+                                        "description": "unowned units spawned in gravity wells with this fixture type when neutral_unit_spawn_chance succeeds",
+                                        "type": "object",
+                                        "properties": {
+                                            "formation_type": {
+                                                "$ref": "#/$defs/formation_type"
+                                            },
+                                            "random_units": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "options": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "forced_leveled_up_abilities": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "$ref": "#/$defs/ability_definition_ptr"
+                                                                    }
+                                                                },
+                                                                "forced_strikecraft_index": {
+                                                                    "type": "integer"
+                                                                },
+                                                                "is_temporary_ruler_ship": {
+                                                                    "type": "boolean"
+                                                                },
+                                                                "items": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "$ref": "#/$defs/unit_item_definition_ptr"
+                                                                    }
+                                                                },
+                                                                "level": {
+                                                                    "type": "integer"
+                                                                }
+                                                            },
+                                                            "unevaluatedProperties": false
+                                                        },
+                                                        "unit": {
+                                                            "$ref": "#/$defs/unit_definition_ptr"
+                                                        },
+                                                        "weight": {
+                                                            "type": "number"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "unit",
+                                                        "weight"
+                                                    ],
+                                                    "unevaluatedProperties": false
+                                                }
+                                            },
+                                            "required_units": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "count": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "integer"
+                                                            },
+                                                            "minItems": 2,
+                                                            "maxItems": 2
+                                                        },
+                                                        "options": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "forced_leveled_up_abilities": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "$ref": "#/$defs/ability_definition_ptr"
+                                                                    }
+                                                                },
+                                                                "forced_strikecraft_index": {
+                                                                    "type": "integer"
+                                                                },
+                                                                "is_temporary_ruler_ship": {
+                                                                    "type": "boolean"
+                                                                },
+                                                                "items": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "$ref": "#/$defs/unit_item_definition_ptr"
+                                                                    }
+                                                                },
+                                                                "level": {
+                                                                    "type": "integer"
+                                                                }
+                                                            },
+                                                            "unevaluatedProperties": false
+                                                        },
+                                                        "unit": {
+                                                            "$ref": "#/$defs/unit_definition_ptr"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "unit"
+                                                    ],
+                                                    "unevaluatedProperties": false
+                                                }
+                                            }
+                                        },
+                                        "unevaluatedProperties": false
                                     }
                                 },
                                 "unevaluatedProperties": false
@@ -510,6 +707,13 @@
                 }
             },
             "unevaluatedProperties": false
+        },
+        "formation_type": {
+            "type": "string",
+            "enum": [
+                "ships_and_structures",
+                "strikecraft_only"
+            ]
         }
     }
 }

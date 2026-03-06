@@ -630,6 +630,9 @@
                         "military_research_rate_per_population": {
                             "type": "string"
                         },
+                        "npc_bounty_collection_share": {
+                            "type": "string"
+                        },
                         "percentage_of_other_players_total_credit_income": {
                             "type": "string"
                         },
@@ -688,6 +691,9 @@
                             "type": "string"
                         },
                         "buy_metal_credits_cost": {
+                            "type": "string"
+                        },
+                        "npc_bounty_fee": {
                             "type": "string"
                         },
                         "reputation_ability_cooldown_duration": {
@@ -1044,6 +1050,9 @@
                         "max_squadron_capacity": {
                             "type": "string"
                         },
+                        "max_squadron_capacity_per_kind": {
+                            "type": "string"
+                        },
                         "metal_income_rate": {
                             "type": "string"
                         },
@@ -1093,6 +1102,9 @@
                             "type": "string"
                         },
                         "trade_import_points": {
+                            "type": "string"
+                        },
+                        "unit_capture_points": {
                             "type": "string"
                         },
                         "unity_points": {
@@ -1309,6 +1321,15 @@
                         "blocked_by_unique_scenario": {
                             "type": "string"
                         },
+                        "bounty_target_is_not_discovered": {
+                            "type": "string"
+                        },
+                        "bounty_target_is_not_planet": {
+                            "type": "string"
+                        },
+                        "bounty_target_is_unowned": {
+                            "type": "string"
+                        },
                         "buff_stack_limit_met": {
                             "type": "string"
                         },
@@ -1693,6 +1714,9 @@
                         "research_subject_already_researching": {
                             "type": "string"
                         },
+                        "research_subject_at_max_repeatable_level": {
+                            "type": "string"
+                        },
                         "research_subject_mutually_exclusive_research_completed": {
                             "type": "string"
                         },
@@ -1721,6 +1745,9 @@
                             "type": "string"
                         },
                         "research_subject_required_phase_resonance_track_level_not_met": {
+                            "type": "string"
+                        },
+                        "research_subject_required_repeatable_research_level_not_met": {
                             "type": "string"
                         },
                         "research_tier_already_acquired": {
@@ -1892,6 +1919,9 @@
                             "type": "string"
                         },
                         "unit_is_not_owned_by_player": {
+                            "type": "string"
+                        },
+                        "unit_is_surrendered": {
                             "type": "string"
                         },
                         "unity_ability_cooldown_is_not_completed": {
@@ -2014,6 +2044,15 @@
                         "blocked_by_unique_scenario": {
                             "type": "string"
                         },
+                        "bounty_target_is_not_discovered": {
+                            "type": "string"
+                        },
+                        "bounty_target_is_not_planet": {
+                            "type": "string"
+                        },
+                        "bounty_target_is_unowned": {
+                            "type": "string"
+                        },
                         "buff_stack_limit_met": {
                             "type": "string"
                         },
@@ -2398,6 +2437,9 @@
                         "research_subject_already_researching": {
                             "type": "string"
                         },
+                        "research_subject_at_max_repeatable_level": {
+                            "type": "string"
+                        },
                         "research_subject_mutually_exclusive_research_completed": {
                             "type": "string"
                         },
@@ -2426,6 +2468,9 @@
                             "type": "string"
                         },
                         "research_subject_required_phase_resonance_track_level_not_met": {
+                            "type": "string"
+                        },
+                        "research_subject_required_repeatable_research_level_not_met": {
                             "type": "string"
                         },
                         "research_tier_already_acquired": {
@@ -2597,6 +2642,9 @@
                             "type": "string"
                         },
                         "unit_is_not_owned_by_player": {
+                            "type": "string"
+                        },
+                        "unit_is_surrendered": {
                             "type": "string"
                         },
                         "unity_ability_cooldown_is_not_completed": {
@@ -2987,6 +3035,26 @@
                             "unevaluatedProperties": false
                         },
                         "shield_points": {
+                            "type": "object",
+                            "properties": {
+                                "high": {
+                                    "type": "string"
+                                },
+                                "low": {
+                                    "type": "string"
+                                },
+                                "medium": {
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "high",
+                                "low",
+                                "medium"
+                            ],
+                            "unevaluatedProperties": false
+                        },
+                        "surrendered_hull_points": {
                             "type": "object",
                             "properties": {
                                 "high": {

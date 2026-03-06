@@ -273,6 +273,10 @@
                         "$ref": "#/$defs/float_range"
                     }
                 },
+                "bounty_market_max_snapshot_count": {
+                    "description": "maximum number of bounty chart snapshots to retain",
+                    "type": "integer"
+                },
                 "break_alliance_duration": {
                     "type": "number"
                 },

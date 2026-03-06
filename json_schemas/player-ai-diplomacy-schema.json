@@ -795,6 +795,13 @@
                 "type": "number"
             }
         },
+        "minutes_allowed_for_trade_offer_cooldown": {
+            "description": "How long in minutes before AI can make another trade offer after one is rejected",
+            "type": "array",
+            "items": {
+                "type": "number"
+            }
+        },
         "minutes_before_allowed_to_seek_protection": {
             "description": "How long before an AI is allowed to seek protection from the strongest player",
             "type": "array",
@@ -808,6 +815,10 @@
             "items": {
                 "type": "integer"
             }
+        },
+        "passive_hate_per_factional_victory_obtained": {
+            "description": "Passive hate gained per factional victory obtained by another player",
+            "type": "number"
         },
         "race_definitions": {
             "description": "Per race diplomacy modifiers.",
@@ -887,8 +898,10 @@
         "hatred_diminished_value_per_stage",
         "hatred_modifier_stages",
         "minutes_allowed_for_reattempt_alliance_building",
+        "minutes_allowed_for_trade_offer_cooldown",
         "minutes_before_allowed_to_seek_protection",
         "number_of_allies_modifier_table",
+        "passive_hate_per_factional_victory_obtained",
         "race_definitions",
         "seconds_per_hate_growth_passive",
         "seconds_per_trust_growth_passive",

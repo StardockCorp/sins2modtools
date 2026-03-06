@@ -1,0 +1,41 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Capturable Units Uniforms",
+    "description": "",
+    "type": "object",
+    "properties": {
+        "collection_duration": {
+            "type": "number"
+        },
+        "collection_range": {
+            "type": "number"
+        },
+        "decay_duration": {
+            "type": "number"
+        },
+        "name": {
+            "type": "string"
+        },
+        "possible_capturable_units": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "spawn_position_radius_percentage_from_center": {
+            "type": "number"
+        },
+        "surrender_duration_after_capture": {
+            "type": "number"
+        },
+        "version": {
+            "type": "integer"
+        }
+    },
+    "unevaluatedProperties": false,
+    "$defs": {
+        "unit_definition_ptr": {
+            "type": "string"
+        }
+    }
+}

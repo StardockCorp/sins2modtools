@@ -25,6 +25,18 @@
                 "aggressive": {
                     "type": "object",
                     "properties": {
+                        "bounty_aggression_multiplier": {
+                            "type": "number"
+                        },
+                        "bounty_attack_priority_per_1000_credits": {
+                            "type": "number"
+                        },
+                        "bounty_placement_probability": {
+                            "type": "number"
+                        },
+                        "bounty_taunt_chance": {
+                            "type": "number"
+                        },
                         "chance_to_ally_with_other_players": {
                             "$ref": "#/$defs/float_range"
                         },
@@ -129,6 +141,18 @@
                 "defensive": {
                     "type": "object",
                     "properties": {
+                        "bounty_aggression_multiplier": {
+                            "type": "number"
+                        },
+                        "bounty_attack_priority_per_1000_credits": {
+                            "type": "number"
+                        },
+                        "bounty_placement_probability": {
+                            "type": "number"
+                        },
+                        "bounty_taunt_chance": {
+                            "type": "number"
+                        },
                         "chance_to_ally_with_other_players": {
                             "$ref": "#/$defs/float_range"
                         },
@@ -278,7 +302,8 @@
                                                     "diplomatic_bonus",
                                                     "player_intelligence_purchase_influence_point_cost",
                                                     "player_intelligence_purchase_spool_up_time",
-                                                    "player_intelligence_purchase_cooldown_duration"
+                                                    "player_intelligence_purchase_cooldown_duration",
+                                                    "npc_bounty_collection_share"
                                                 ]
                                             },
                                             "value": {
@@ -352,7 +377,8 @@
                                                     "sell_exotic_credits_received",
                                                     "send_raid_supply",
                                                     "auction_bid_bonus_influence_points",
-                                                    "reputation_ability_cooldown_duration"
+                                                    "reputation_ability_cooldown_duration",
+                                                    "npc_bounty_fee"
                                                 ]
                                             },
                                             "tags": {
@@ -602,6 +628,7 @@
                                                     "experience_gained_from_loot_collection",
                                                     "experience_given_on_death",
                                                     "max_squadron_capacity",
+                                                    "max_squadron_capacity_per_kind",
                                                     "strikecraft_build_time",
                                                     "credit_income_rate",
                                                     "metal_income_rate",
@@ -622,7 +649,8 @@
                                                     "trade_export_metal_points",
                                                     "trade_export_crystal_points",
                                                     "loot_collection_duration",
-                                                    "phase_resonance_bonus_duration"
+                                                    "phase_resonance_bonus_duration",
+                                                    "unit_capture_points"
                                                 ]
                                             },
                                             "tags": {
@@ -640,6 +668,14 @@
                                                     "additive",
                                                     "scalar"
                                                 ]
+                                            },
+                                            "value_filter_key": {
+                                                "description": "Filter key for matching specific modifier targets (e.g., strikecraft kind name)",
+                                                "type": "string"
+                                            },
+                                            "value_name": {
+                                                "description": "Localized text ID for display name",
+                                                "type": "string"
                                             }
                                         },
                                         "required": [
@@ -697,6 +733,22 @@
                             },
                             "unevaluatedProperties": false
                         },
+                        "bounty_check_interval_seconds": {
+                            "type": "number"
+                        },
+                        "bounty_dominance_threshold_percentage": {
+                            "description": "If a planet already has the top bounty by this percentage above second place, AI will pick a different target",
+                            "type": "number"
+                        },
+                        "bounty_max_budget_percentage": {
+                            "type": "number"
+                        },
+                        "bounty_min_bank_threshold": {
+                            "type": "number"
+                        },
+                        "bounty_size_percentage_range": {
+                            "$ref": "#/$defs/float_range"
+                        },
                         "chance_for_full_bid_on_auctions": {
                             "type": "number"
                         },
@@ -735,6 +787,14 @@
                         },
                         "name": {
                             "type": "string"
+                        },
+                        "ownership_time_in_minutes_before_static_defenses": {
+                            "description": "Time after an AI gets ownership of a world before they build static defenses in minutes",
+                            "type": "number"
+                        },
+                        "time_after_game_start_allowing_static_defenses_in_minutes": {
+                            "description": "Time after game start when a an AI gains ownership of a world before they build static defenses in minutes",
+                            "type": "number"
                         },
                         "unit_pathfinding_danger_weight_scalar": {
                             "type": "number"
@@ -805,7 +865,8 @@
                                                     "diplomatic_bonus",
                                                     "player_intelligence_purchase_influence_point_cost",
                                                     "player_intelligence_purchase_spool_up_time",
-                                                    "player_intelligence_purchase_cooldown_duration"
+                                                    "player_intelligence_purchase_cooldown_duration",
+                                                    "npc_bounty_collection_share"
                                                 ]
                                             },
                                             "value": {
@@ -879,7 +940,8 @@
                                                     "sell_exotic_credits_received",
                                                     "send_raid_supply",
                                                     "auction_bid_bonus_influence_points",
-                                                    "reputation_ability_cooldown_duration"
+                                                    "reputation_ability_cooldown_duration",
+                                                    "npc_bounty_fee"
                                                 ]
                                             },
                                             "tags": {
@@ -1129,6 +1191,7 @@
                                                     "experience_gained_from_loot_collection",
                                                     "experience_given_on_death",
                                                     "max_squadron_capacity",
+                                                    "max_squadron_capacity_per_kind",
                                                     "strikecraft_build_time",
                                                     "credit_income_rate",
                                                     "metal_income_rate",
@@ -1149,7 +1212,8 @@
                                                     "trade_export_metal_points",
                                                     "trade_export_crystal_points",
                                                     "loot_collection_duration",
-                                                    "phase_resonance_bonus_duration"
+                                                    "phase_resonance_bonus_duration",
+                                                    "unit_capture_points"
                                                 ]
                                             },
                                             "tags": {
@@ -1167,6 +1231,14 @@
                                                     "additive",
                                                     "scalar"
                                                 ]
+                                            },
+                                            "value_filter_key": {
+                                                "description": "Filter key for matching specific modifier targets (e.g., strikecraft kind name)",
+                                                "type": "string"
+                                            },
+                                            "value_name": {
+                                                "description": "Localized text ID for display name",
+                                                "type": "string"
                                             }
                                         },
                                         "required": [
@@ -1224,6 +1296,22 @@
                             },
                             "unevaluatedProperties": false
                         },
+                        "bounty_check_interval_seconds": {
+                            "type": "number"
+                        },
+                        "bounty_dominance_threshold_percentage": {
+                            "description": "If a planet already has the top bounty by this percentage above second place, AI will pick a different target",
+                            "type": "number"
+                        },
+                        "bounty_max_budget_percentage": {
+                            "type": "number"
+                        },
+                        "bounty_min_bank_threshold": {
+                            "type": "number"
+                        },
+                        "bounty_size_percentage_range": {
+                            "$ref": "#/$defs/float_range"
+                        },
                         "chance_for_full_bid_on_auctions": {
                             "type": "number"
                         },
@@ -1262,6 +1350,14 @@
                         },
                         "name": {
                             "type": "string"
+                        },
+                        "ownership_time_in_minutes_before_static_defenses": {
+                            "description": "Time after an AI gets ownership of a world before they build static defenses in minutes",
+                            "type": "number"
+                        },
+                        "time_after_game_start_allowing_static_defenses_in_minutes": {
+                            "description": "Time after game start when a an AI gains ownership of a world before they build static defenses in minutes",
+                            "type": "number"
                         },
                         "unit_pathfinding_danger_weight_scalar": {
                             "type": "number"
@@ -1332,7 +1428,8 @@
                                                     "diplomatic_bonus",
                                                     "player_intelligence_purchase_influence_point_cost",
                                                     "player_intelligence_purchase_spool_up_time",
-                                                    "player_intelligence_purchase_cooldown_duration"
+                                                    "player_intelligence_purchase_cooldown_duration",
+                                                    "npc_bounty_collection_share"
                                                 ]
                                             },
                                             "value": {
@@ -1406,7 +1503,8 @@
                                                     "sell_exotic_credits_received",
                                                     "send_raid_supply",
                                                     "auction_bid_bonus_influence_points",
-                                                    "reputation_ability_cooldown_duration"
+                                                    "reputation_ability_cooldown_duration",
+                                                    "npc_bounty_fee"
                                                 ]
                                             },
                                             "tags": {
@@ -1656,6 +1754,7 @@
                                                     "experience_gained_from_loot_collection",
                                                     "experience_given_on_death",
                                                     "max_squadron_capacity",
+                                                    "max_squadron_capacity_per_kind",
                                                     "strikecraft_build_time",
                                                     "credit_income_rate",
                                                     "metal_income_rate",
@@ -1676,7 +1775,8 @@
                                                     "trade_export_metal_points",
                                                     "trade_export_crystal_points",
                                                     "loot_collection_duration",
-                                                    "phase_resonance_bonus_duration"
+                                                    "phase_resonance_bonus_duration",
+                                                    "unit_capture_points"
                                                 ]
                                             },
                                             "tags": {
@@ -1694,6 +1794,14 @@
                                                     "additive",
                                                     "scalar"
                                                 ]
+                                            },
+                                            "value_filter_key": {
+                                                "description": "Filter key for matching specific modifier targets (e.g., strikecraft kind name)",
+                                                "type": "string"
+                                            },
+                                            "value_name": {
+                                                "description": "Localized text ID for display name",
+                                                "type": "string"
                                             }
                                         },
                                         "required": [
@@ -1751,6 +1859,22 @@
                             },
                             "unevaluatedProperties": false
                         },
+                        "bounty_check_interval_seconds": {
+                            "type": "number"
+                        },
+                        "bounty_dominance_threshold_percentage": {
+                            "description": "If a planet already has the top bounty by this percentage above second place, AI will pick a different target",
+                            "type": "number"
+                        },
+                        "bounty_max_budget_percentage": {
+                            "type": "number"
+                        },
+                        "bounty_min_bank_threshold": {
+                            "type": "number"
+                        },
+                        "bounty_size_percentage_range": {
+                            "$ref": "#/$defs/float_range"
+                        },
                         "chance_for_full_bid_on_auctions": {
                             "type": "number"
                         },
@@ -1789,6 +1913,14 @@
                         },
                         "name": {
                             "type": "string"
+                        },
+                        "ownership_time_in_minutes_before_static_defenses": {
+                            "description": "Time after an AI gets ownership of a world before they build static defenses in minutes",
+                            "type": "number"
+                        },
+                        "time_after_game_start_allowing_static_defenses_in_minutes": {
+                            "description": "Time after game start when a an AI gains ownership of a world before they build static defenses in minutes",
+                            "type": "number"
                         },
                         "unit_pathfinding_danger_weight_scalar": {
                             "type": "number"
@@ -1859,7 +1991,8 @@
                                                     "diplomatic_bonus",
                                                     "player_intelligence_purchase_influence_point_cost",
                                                     "player_intelligence_purchase_spool_up_time",
-                                                    "player_intelligence_purchase_cooldown_duration"
+                                                    "player_intelligence_purchase_cooldown_duration",
+                                                    "npc_bounty_collection_share"
                                                 ]
                                             },
                                             "value": {
@@ -1933,7 +2066,8 @@
                                                     "sell_exotic_credits_received",
                                                     "send_raid_supply",
                                                     "auction_bid_bonus_influence_points",
-                                                    "reputation_ability_cooldown_duration"
+                                                    "reputation_ability_cooldown_duration",
+                                                    "npc_bounty_fee"
                                                 ]
                                             },
                                             "tags": {
@@ -2183,6 +2317,7 @@
                                                     "experience_gained_from_loot_collection",
                                                     "experience_given_on_death",
                                                     "max_squadron_capacity",
+                                                    "max_squadron_capacity_per_kind",
                                                     "strikecraft_build_time",
                                                     "credit_income_rate",
                                                     "metal_income_rate",
@@ -2203,7 +2338,8 @@
                                                     "trade_export_metal_points",
                                                     "trade_export_crystal_points",
                                                     "loot_collection_duration",
-                                                    "phase_resonance_bonus_duration"
+                                                    "phase_resonance_bonus_duration",
+                                                    "unit_capture_points"
                                                 ]
                                             },
                                             "tags": {
@@ -2221,6 +2357,14 @@
                                                     "additive",
                                                     "scalar"
                                                 ]
+                                            },
+                                            "value_filter_key": {
+                                                "description": "Filter key for matching specific modifier targets (e.g., strikecraft kind name)",
+                                                "type": "string"
+                                            },
+                                            "value_name": {
+                                                "description": "Localized text ID for display name",
+                                                "type": "string"
                                             }
                                         },
                                         "required": [
@@ -2278,6 +2422,22 @@
                             },
                             "unevaluatedProperties": false
                         },
+                        "bounty_check_interval_seconds": {
+                            "type": "number"
+                        },
+                        "bounty_dominance_threshold_percentage": {
+                            "description": "If a planet already has the top bounty by this percentage above second place, AI will pick a different target",
+                            "type": "number"
+                        },
+                        "bounty_max_budget_percentage": {
+                            "type": "number"
+                        },
+                        "bounty_min_bank_threshold": {
+                            "type": "number"
+                        },
+                        "bounty_size_percentage_range": {
+                            "$ref": "#/$defs/float_range"
+                        },
                         "chance_for_full_bid_on_auctions": {
                             "type": "number"
                         },
@@ -2316,6 +2476,14 @@
                         },
                         "name": {
                             "type": "string"
+                        },
+                        "ownership_time_in_minutes_before_static_defenses": {
+                            "description": "Time after an AI gets ownership of a world before they build static defenses in minutes",
+                            "type": "number"
+                        },
+                        "time_after_game_start_allowing_static_defenses_in_minutes": {
+                            "description": "Time after game start when a an AI gains ownership of a world before they build static defenses in minutes",
+                            "type": "number"
                         },
                         "unit_pathfinding_danger_weight_scalar": {
                             "type": "number"
@@ -2386,7 +2554,8 @@
                                                     "diplomatic_bonus",
                                                     "player_intelligence_purchase_influence_point_cost",
                                                     "player_intelligence_purchase_spool_up_time",
-                                                    "player_intelligence_purchase_cooldown_duration"
+                                                    "player_intelligence_purchase_cooldown_duration",
+                                                    "npc_bounty_collection_share"
                                                 ]
                                             },
                                             "value": {
@@ -2460,7 +2629,8 @@
                                                     "sell_exotic_credits_received",
                                                     "send_raid_supply",
                                                     "auction_bid_bonus_influence_points",
-                                                    "reputation_ability_cooldown_duration"
+                                                    "reputation_ability_cooldown_duration",
+                                                    "npc_bounty_fee"
                                                 ]
                                             },
                                             "tags": {
@@ -2710,6 +2880,7 @@
                                                     "experience_gained_from_loot_collection",
                                                     "experience_given_on_death",
                                                     "max_squadron_capacity",
+                                                    "max_squadron_capacity_per_kind",
                                                     "strikecraft_build_time",
                                                     "credit_income_rate",
                                                     "metal_income_rate",
@@ -2730,7 +2901,8 @@
                                                     "trade_export_metal_points",
                                                     "trade_export_crystal_points",
                                                     "loot_collection_duration",
-                                                    "phase_resonance_bonus_duration"
+                                                    "phase_resonance_bonus_duration",
+                                                    "unit_capture_points"
                                                 ]
                                             },
                                             "tags": {
@@ -2748,6 +2920,14 @@
                                                     "additive",
                                                     "scalar"
                                                 ]
+                                            },
+                                            "value_filter_key": {
+                                                "description": "Filter key for matching specific modifier targets (e.g., strikecraft kind name)",
+                                                "type": "string"
+                                            },
+                                            "value_name": {
+                                                "description": "Localized text ID for display name",
+                                                "type": "string"
                                             }
                                         },
                                         "required": [
@@ -2805,6 +2985,22 @@
                             },
                             "unevaluatedProperties": false
                         },
+                        "bounty_check_interval_seconds": {
+                            "type": "number"
+                        },
+                        "bounty_dominance_threshold_percentage": {
+                            "description": "If a planet already has the top bounty by this percentage above second place, AI will pick a different target",
+                            "type": "number"
+                        },
+                        "bounty_max_budget_percentage": {
+                            "type": "number"
+                        },
+                        "bounty_min_bank_threshold": {
+                            "type": "number"
+                        },
+                        "bounty_size_percentage_range": {
+                            "$ref": "#/$defs/float_range"
+                        },
                         "chance_for_full_bid_on_auctions": {
                             "type": "number"
                         },
@@ -2843,6 +3039,14 @@
                         },
                         "name": {
                             "type": "string"
+                        },
+                        "ownership_time_in_minutes_before_static_defenses": {
+                            "description": "Time after an AI gets ownership of a world before they build static defenses in minutes",
+                            "type": "number"
+                        },
+                        "time_after_game_start_allowing_static_defenses_in_minutes": {
+                            "description": "Time after game start when a an AI gains ownership of a world before they build static defenses in minutes",
+                            "type": "number"
                         },
                         "unit_pathfinding_danger_weight_scalar": {
                             "type": "number"
@@ -2913,7 +3117,8 @@
                                                     "diplomatic_bonus",
                                                     "player_intelligence_purchase_influence_point_cost",
                                                     "player_intelligence_purchase_spool_up_time",
-                                                    "player_intelligence_purchase_cooldown_duration"
+                                                    "player_intelligence_purchase_cooldown_duration",
+                                                    "npc_bounty_collection_share"
                                                 ]
                                             },
                                             "value": {
@@ -2987,7 +3192,8 @@
                                                     "sell_exotic_credits_received",
                                                     "send_raid_supply",
                                                     "auction_bid_bonus_influence_points",
-                                                    "reputation_ability_cooldown_duration"
+                                                    "reputation_ability_cooldown_duration",
+                                                    "npc_bounty_fee"
                                                 ]
                                             },
                                             "tags": {
@@ -3237,6 +3443,7 @@
                                                     "experience_gained_from_loot_collection",
                                                     "experience_given_on_death",
                                                     "max_squadron_capacity",
+                                                    "max_squadron_capacity_per_kind",
                                                     "strikecraft_build_time",
                                                     "credit_income_rate",
                                                     "metal_income_rate",
@@ -3257,7 +3464,8 @@
                                                     "trade_export_metal_points",
                                                     "trade_export_crystal_points",
                                                     "loot_collection_duration",
-                                                    "phase_resonance_bonus_duration"
+                                                    "phase_resonance_bonus_duration",
+                                                    "unit_capture_points"
                                                 ]
                                             },
                                             "tags": {
@@ -3275,6 +3483,14 @@
                                                     "additive",
                                                     "scalar"
                                                 ]
+                                            },
+                                            "value_filter_key": {
+                                                "description": "Filter key for matching specific modifier targets (e.g., strikecraft kind name)",
+                                                "type": "string"
+                                            },
+                                            "value_name": {
+                                                "description": "Localized text ID for display name",
+                                                "type": "string"
                                             }
                                         },
                                         "required": [
@@ -3332,6 +3548,22 @@
                             },
                             "unevaluatedProperties": false
                         },
+                        "bounty_check_interval_seconds": {
+                            "type": "number"
+                        },
+                        "bounty_dominance_threshold_percentage": {
+                            "description": "If a planet already has the top bounty by this percentage above second place, AI will pick a different target",
+                            "type": "number"
+                        },
+                        "bounty_max_budget_percentage": {
+                            "type": "number"
+                        },
+                        "bounty_min_bank_threshold": {
+                            "type": "number"
+                        },
+                        "bounty_size_percentage_range": {
+                            "$ref": "#/$defs/float_range"
+                        },
                         "chance_for_full_bid_on_auctions": {
                             "type": "number"
                         },
@@ -3370,6 +3602,14 @@
                         },
                         "name": {
                             "type": "string"
+                        },
+                        "ownership_time_in_minutes_before_static_defenses": {
+                            "description": "Time after an AI gets ownership of a world before they build static defenses in minutes",
+                            "type": "number"
+                        },
+                        "time_after_game_start_allowing_static_defenses_in_minutes": {
+                            "description": "Time after game start when a an AI gains ownership of a world before they build static defenses in minutes",
+                            "type": "number"
                         },
                         "unit_pathfinding_danger_weight_scalar": {
                             "type": "number"
