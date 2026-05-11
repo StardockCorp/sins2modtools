@@ -84,6 +84,10 @@ ps_output main(mesh_ps_input input)
 	static const int base_steps = 32;
 	static const int max_steps = 64;
 
+	// optimization: distance-based LOD thresholds for parallax occlusion
+	static const float parallax_lod_distance_close = 50.f;
+	static const float parallax_lod_distance_medium = 150.f;
+
 	static const float view_z_glancing_threshold = 0.03f;
 
 	static const float gray_center = 0.5f;
@@ -180,12 +184,27 @@ bool flow_active = false;
 		float3 view_dir = normalize(input.view_dir_tangent);
 		float view_z = abs(view_dir.z) + 1e-5f;
 
+		// optimization: distance-based LOD for parallax occlusion (flow map path)
+		const float distance_to_camera = length(input.position_w - camera_position.xyz);
+		int lod_base_steps = base_steps;
+		int lod_max_steps = max_steps;
+		if (distance_to_camera > parallax_lod_distance_medium)
+		{
+			lod_base_steps = base_steps / 2;
+			lod_max_steps = max_steps / 2;
+		}
+		else if (distance_to_camera > parallax_lod_distance_close)
+		{
+			lod_base_steps = (base_steps * 3) / 4;
+			lod_max_steps = (max_steps * 3) / 4;
+		}
+
 		uv0_disp = ApplyParallax(uv0, view_dir, view_z, occlusion_roughness_metallic_texture, mask_texture,
 									mesh_anisotropic_wrap_sampler, parallax_factor, gray_center, gray_soft_range,
-									gray_flat_threshold, base_steps, max_steps);
+									gray_flat_threshold, lod_base_steps, lod_max_steps);
 		uv1_disp = ApplyParallax(uv1, view_dir, view_z, occlusion_roughness_metallic_texture, mask_texture,
 									mesh_anisotropic_wrap_sampler, parallax_factor, gray_center, gray_soft_range,
-									gray_flat_threshold, base_steps, max_steps);
+									gray_flat_threshold, lod_base_steps, lod_max_steps);
 #endif
 
         texcoord_parallax = (uv0_disp * w0 + uv1_disp * w1) / total;
@@ -232,12 +251,30 @@ else
 	float3 view_dir = normalize(input.view_dir_tangent);
 	float view_z = abs(view_dir.z) + 1e-5f;
 
+	// optimization: distance-based LOD for parallax occlusion to reduce raymarching cost on distant meshes
+	const float distance_to_camera = length(input.position_w - camera_position.xyz);
+	int lod_base_steps = base_steps;
+	int lod_max_steps = max_steps;
+	if (distance_to_camera > parallax_lod_distance_medium)
+	{
+		// far: minimal parallax (16/32 steps)
+		lod_base_steps = base_steps / 2;
+		lod_max_steps = max_steps / 2;
+	}
+	else if (distance_to_camera > parallax_lod_distance_close)
+	{
+		// medium: reduced parallax (24/48 steps)
+		lod_base_steps = (base_steps * 3) / 4;
+		lod_max_steps = (max_steps * 3) / 4;
+	}
+	// else: close distance uses full quality (32/64 steps)
+
 	texcoord_parallax = ApplyParallax(
 		base_uv, view_dir, view_z,
 		occlusion_roughness_metallic_texture, mask_texture,
 		mesh_anisotropic_wrap_sampler, parallax_factor,
 		gray_center, gray_soft_range, gray_flat_threshold,
-		base_steps, max_steps);
+		lod_base_steps, lod_max_steps);
 #else
 	texcoord_parallax = base_uv;
 #endif
@@ -381,13 +418,14 @@ float3 emissive = emissive_color * emissive_strength * emissive_hue_strength;
 	const uint light_index_offset = light_clusters[froxel_index].offset;
 	const uint light_index_count = light_clusters[froxel_index].count;
 
-	#ifdef ENABLE_SHADOWS
-	// sample raw shadow
-	// would have preferred this were in the loop for organizational purposes but can't unroll loop properly if it is.
-	const float shadow_sample = get_shadow_scalar(input.shadow_map_uvz, input.position_w.xyz, camera_position.xyz);
+	// optimization: shader LOD can limit max lights processed for distant meshes
+	#ifdef LOD_MAX_LIGHTS_PER_PIXEL
+	const uint effective_light_count = min(light_index_count, LOD_MAX_LIGHTS_PER_PIXEL);
+	#else
+	const uint effective_light_count = light_index_count;
 	#endif
 
-	for (uint i_light_index = 0; i_light_index < light_index_count; i_light_index++)
+	for (uint i_light_index = 0; i_light_index < effective_light_count; i_light_index++)
 	{
 		// #light_encoding
 		// ignore primary light. key, fill, and rim will take its place.
@@ -447,7 +485,14 @@ float3 emissive = emissive_color * emissive_strength * emissive_hue_strength;
 
 				light_attenuation = get_light_attenuation(d_to_line - lights[light_index].surface_radius, lights[light_index].attenuation_radius);
 			}
-			
+
+			// optimization: skip lights with negligible contribution to avoid expensive PBR calculations
+			const float contribution_threshold = 0.001f;
+			if (light_attenuation < contribution_threshold)
+			{
+				continue;
+			}
+
 			float4 light_color = lights[light_index].color;
 			
 			// remove this and data drive
@@ -469,19 +514,19 @@ float3 emissive = emissive_color * emissive_strength * emissive_hue_strength;
 				light_color.rgb = hsb_to_rgb(hsb);
 			}
 #endif
-			// future optimization: pass this down in linear form
-			light_color = srgb_to_linear(light_color);
+			// optimization: light colors are now pre-converted to linear on CPU side
 
 			const float3 Li = light_color.rgb * light_color.a * lights[light_index].intensity * light_attenuation;
 			
-#ifdef ENABLE_KEY_FILL_RIM_LIGHT_ANGLES			
+#ifdef ENABLE_KEY_FILL_RIM_LIGHT_ANGLES
 			if (i_light_index == key_light_index)
-#else 
+#else
 			if (i_light_index == primary_light_index)
-#endif			
+#endif
 			{
-#ifdef ENABLE_SHADOWS			
-				shadow_factor = shadow_sample;
+#ifdef ENABLE_SHADOWS
+				// optimization: only sample shadow for the primary light that casts shadows
+				shadow_factor = get_shadow_scalar(input.shadow_map_uvz, input.position_w.xyz, camera_position.xyz);
 #endif
 
 #if defined(ENABLE_EMISSIVE) && defined(RESTRICT_EMISSIVE_TO_DARK_SIDE)
@@ -651,7 +696,12 @@ float3 emissive = emissive_color * emissive_strength * emissive_hue_strength;
 			// LD = sampled from environment where roughness maps to mip_level.
 
 			// Expects a 256x256 cubemap wth mipmaps. Peon should have created the mipmaps in the build process.
+			// optimization: far LOD can reduce IBL quality by sampling lower mip levels
+			#ifdef LOD_REDUCE_IBL_QUALITY
+			const float max_mip_map_level_for_specular = 2.f; // far LOD: 64x64 max (reduced quality)
+			#else
 			const float max_mip_map_level_for_specular = 3.f; // [BJJ] maps to 32x32 of a 256x256 map. Changed from 8x8.
+			#endif
 			const float3 specular_reflection_dir = normalize(reflect(-V, N)); // dir of reflection off surface to the viewer
 			const float mip_map_level_for_specular_irradiance = perceptual_roughness * max_mip_map_level_for_specular;
 			const float3 specular_irradiance = srgb_to_linear(radiance_texture.SampleLevel(mesh_anisotropic_wrap_sampler, specular_reflection_dir, mip_map_level_for_specular_irradiance).rgb);

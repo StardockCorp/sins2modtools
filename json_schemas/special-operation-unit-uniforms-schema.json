@@ -78,6 +78,17 @@
                             "should_be_in_planet_defenses_pip_group": {
                                 "type": "boolean"
                             },
+                            "target_engagement_mode": {
+                                "type": "string",
+                                "enum": [
+                                    "only_engage_if_in_range",
+                                    "only_engage_within_range",
+                                    "engage_from_anywhere"
+                                ]
+                            },
+                            "target_engagement_mode_range": {
+                                "type": "number"
+                            },
                             "tooltip_icon": {
                                 "type": "string"
                             },

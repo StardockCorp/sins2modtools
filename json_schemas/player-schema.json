@@ -6207,6 +6207,12 @@
                 "faction_name": {
                     "$ref": "#/$defs/localized_text_ptr"
                 },
+                "faction_portrait": {
+                    "$ref": "#/$defs/player_portrait_ptr"
+                },
+                "faction_short_name": {
+                    "$ref": "#/$defs/localized_text_ptr"
+                },
                 "hud_skin_name": {
                     "type": "string"
                 },
@@ -6225,8 +6231,11 @@
                 "no_credit_income_description": {
                     "$ref": "#/$defs/localized_text_ptr"
                 },
-                "player_slot_plate": {
-                    "$ref": "#/$defs/brush_ptr"
+                "player_slot_plates": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/$defs/brush_ptr"
+                    }
                 },
                 "race_description": {
                     "$ref": "#/$defs/localized_text_ptr"
@@ -6239,6 +6248,7 @@
                 "faction_description",
                 "faction_icon",
                 "faction_name",
+                "faction_short_name",
                 "race_description",
                 "race_name"
             ],

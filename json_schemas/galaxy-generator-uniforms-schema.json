@@ -476,6 +476,9 @@
                             "filling": {
                                 "type": "object",
                                 "properties": {
+                                    "display_name": {
+                                        "type": "string"
+                                    },
                                     "editor_color": {
                                         "type": "string"
                                     },

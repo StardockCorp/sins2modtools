@@ -439,8 +439,22 @@
                         ]
                     }
                 },
+                "ignore_target_engagement_mode": {
+                    "type": "boolean"
+                },
                 "pursuit": {
                     "$ref": "#/$defs/unit_ai_pursuit_definition"
+                },
+                "target_engagement_mode": {
+                    "type": "string",
+                    "enum": [
+                        "only_engage_if_in_range",
+                        "only_engage_within_range",
+                        "engage_from_anywhere"
+                    ]
+                },
+                "target_engagement_mode_range": {
+                    "type": "number"
                 }
             },
             "unevaluatedProperties": false
@@ -3262,6 +3276,25 @@
                 },
                 "line_of_sight_radius": {
                     "type": "number"
+                },
+                "missile_aim_zones": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "center": {
+                                "$ref": "#/$defs/float3"
+                            },
+                            "radius": {
+                                "type": "number"
+                            }
+                        },
+                        "required": [
+                            "center",
+                            "radius"
+                        ],
+                        "unevaluatedProperties": false
+                    }
                 },
                 "radius": {
                     "type": "number"

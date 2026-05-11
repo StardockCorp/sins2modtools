@@ -1,0 +1,304 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Faction Picker Pages Manifest",
+    "description": "aggregated faction-picker contributions from a single provider (base or mod). all vectors append during load, so order within a provider is preserved and no field ever clears another provider's data.",
+    "type": "object",
+    "properties": {
+        "custom_sections": {
+            "description": "new sections that claim modder slots in the dialog's pre-allocated section pool",
+            "type": "array",
+            "items": {
+                "$ref": "#/$defs/faction_picker_manifest_custom_section"
+            }
+        },
+        "faction_portraits": {
+            "description": "per-faction portrait brushes; extends the dialog's base set",
+            "type": "array",
+            "items": {
+                "$ref": "#/$defs/faction_portrait_entry"
+            }
+        },
+        "homeworld_brushes": {
+            "description": "per-race homeworld brushes; extends the dialog's base set",
+            "type": "array",
+            "items": {
+                "$ref": "#/$defs/homeworld_brush_entry"
+            }
+        },
+        "pages": {
+            "description": "additional pages appended after the dialog's base-game pages",
+            "type": "array",
+            "items": {
+                "$ref": "#/$defs/faction_picker_page_definition"
+            }
+        },
+        "unit_sections": {
+            "description": "patches to race_unit_ids on sections the dialog's .gui already declares",
+            "type": "array",
+            "items": {
+                "$ref": "#/$defs/faction_picker_manifest_unit_patch"
+            }
+        }
+    },
+    "unevaluatedProperties": false,
+    "$defs": {
+        "faction_picker_manifest_race_units": {
+            "type": "object",
+            "properties": {
+                "race": {
+                    "description": "race whose page receives these units; must match a player_definition's race name exactly (case-sensitive). resolves to every page listing a faction of this race.",
+                    "$ref": "#/$defs/player_race_name"
+                },
+                "unit_ids": {
+                    "description": "units to display for this race",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "required": [
+                "race",
+                "unit_ids"
+            ],
+            "unevaluatedProperties": false
+        },
+        "player_race_name": {
+            "type": "string"
+        },
+        "label_style_ptr": {
+            "type": "string"
+        },
+        "brush_ptr": {
+            "type": "string"
+        },
+        "sound_ptr": {
+            "type": "string"
+        },
+        "player_definition_ptr": {
+            "type": "string"
+        },
+        "localized_text_ptr": {
+            "type": "string"
+        },
+        "faction_picker_page_definition": {
+            "type": "object",
+            "properties": {
+                "factions": {
+                    "description": "faction ids on this page; size() > 1 selects dual-faction layout",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/$defs/player_definition_ptr"
+                    }
+                },
+                "layout_gui": {
+                    "description": "optional .gui id supplying per-mount-point layout overrides; empty = use the dialog's hardcoded layout",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "displayed page name",
+                    "$ref": "#/$defs/localized_text_ptr"
+                }
+            },
+            "required": [
+                "factions",
+                "name"
+            ],
+            "unevaluatedProperties": false
+        },
+        "faction_portrait_entry": {
+            "type": "object",
+            "properties": {
+                "faction": {
+                    "description": "faction id this portrait is shown for",
+                    "$ref": "#/$defs/player_definition_ptr"
+                },
+                "portrait": {
+                    "description": "brush drawn on the faction's portrait panel",
+                    "$ref": "#/$defs/brush_ptr"
+                }
+            },
+            "required": [
+                "faction",
+                "portrait"
+            ],
+            "unevaluatedProperties": false
+        },
+        "homeworld_brush_entry": {
+            "type": "object",
+            "properties": {
+                "brush": {
+                    "description": "brush drawn on the race's homeworld panel",
+                    "$ref": "#/$defs/brush_ptr"
+                },
+                "race": {
+                    "description": "race this brush is shown for on the homeworld panel",
+                    "$ref": "#/$defs/player_race_name"
+                }
+            },
+            "required": [
+                "brush",
+                "race"
+            ],
+            "unevaluatedProperties": false
+        },
+        "faction_picker_manifest_unit_patch": {
+            "type": "object",
+            "properties": {
+                "race": {
+                    "description": "race whose page receives the patch; must match a player_definition's race name exactly (case-sensitive). resolves to every page listing a faction of this race.",
+                    "$ref": "#/$defs/player_race_name"
+                },
+                "section_id": {
+                    "description": "bare section id as declared in the dialog's race_unit_section_ids (e.g. "capital_ships")",
+                    "type": "string"
+                },
+                "unit_ids": {
+                    "description": "unit ids to display in the referenced section for pages matching this race",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "required": [
+                "race",
+                "section_id",
+                "unit_ids"
+            ],
+            "unevaluatedProperties": false
+        },
+        "faction_picker_manifest_custom_section": {
+            "type": "object",
+            "properties": {
+                "column_spacing": {
+                    "description": "pixels between columns (default 0)",
+                    "type": "integer"
+                },
+                "header_text": {
+                    "description": "header label shown above the section",
+                    "$ref": "#/$defs/localized_text_ptr"
+                },
+                "id": {
+                    "description": "window id; must not collide with any existing section id",
+                    "type": "string"
+                },
+                "items_per_row": {
+                    "description": "number of items per row before wrapping (default 1)",
+                    "type": "integer"
+                },
+                "layout": {
+                    "description": "section window layout on the dialog's content panel",
+                    "type": "object",
+                    "properties": {
+                        "dpi_source": {
+                            "type": "string",
+                            "enum": [
+                                "user_interface",
+                                "current_display_size"
+                            ]
+                        },
+                        "height": {
+                            "type": "number"
+                        },
+                        "horizontal_alignment": {
+                            "type": "string",
+                            "enum": [
+                                "center",
+                                "left",
+                                "right",
+                                "stretch"
+                            ]
+                        },
+                        "margins": {
+                            "type": "object",
+                            "properties": {
+                                "bottom": {
+                                    "type": "number"
+                                },
+                                "left": {
+                                    "type": "number"
+                                },
+                                "right": {
+                                    "type": "number"
+                                },
+                                "top": {
+                                    "type": "number"
+                                }
+                            },
+                            "unevaluatedProperties": false
+                        },
+                        "vertical_alignment": {
+                            "type": "string",
+                            "enum": [
+                                "center",
+                                "top",
+                                "bottom",
+                                "stretch"
+                            ]
+                        },
+                        "width": {
+                            "type": "number"
+                        }
+                    },
+                    "unevaluatedProperties": false
+                },
+                "row_spacing": {
+                    "description": "pixels between rows (default 0)",
+                    "type": "integer"
+                },
+                "shared_definition": {
+                    "description": "visual style shared by every item in this section (brushes, sounds, label style, sizing)",
+                    "type": "object",
+                    "properties": {
+                        "icon_panel_height": {
+                            "description": "height in pixels of each item's icon panel",
+                            "type": "integer"
+                        },
+                        "icon_panel_width": {
+                            "description": "width in pixels of each item's icon panel",
+                            "type": "integer"
+                        },
+                        "item_label_style": {
+                            "description": "label style applied to item text",
+                            "$ref": "#/$defs/label_style_ptr"
+                        },
+                        "item_spacing": {
+                            "description": "pixels between adjacent items in the section",
+                            "type": "integer"
+                        },
+                        "overlay_brush": {
+                            "description": "brush drawn on top of each item (e.g. border frame)",
+                            "$ref": "#/$defs/brush_ptr"
+                        },
+                        "pressed_sound": {
+                            "description": "sound played when an item is clicked",
+                            "$ref": "#/$defs/sound_ptr"
+                        },
+                        "underlay_brush": {
+                            "description": "brush drawn behind each item",
+                            "$ref": "#/$defs/brush_ptr"
+                        },
+                        "underlay_highlighted_brush": {
+                            "description": "underlay variant drawn when the item is highlighted",
+                            "$ref": "#/$defs/brush_ptr"
+                        }
+                    },
+                    "unevaluatedProperties": false
+                },
+                "units": {
+                    "description": "per-race unit lists; each race resolves to every page listing a faction of that race",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/$defs/faction_picker_manifest_race_units"
+                    }
+                }
+            },
+            "required": [
+                "header_text",
+                "id"
+            ],
+            "unevaluatedProperties": false
+        }
+    }
+}

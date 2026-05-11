@@ -1,0 +1,1028 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Random Map Generator Uniforms",
+    "description": "Min, max, default, and warning/extreme thresholds for the random map generator front end screen.",
+    "type": "object",
+    "properties": {
+        "artifacts": {
+            "type": "object",
+            "properties": {
+                "default": {
+                    "type": "integer"
+                },
+                "extreme_max": {
+                    "type": "integer"
+                },
+                "extreme_min": {
+                    "type": "integer"
+                },
+                "max": {
+                    "type": "integer"
+                },
+                "min": {
+                    "type": "integer"
+                },
+                "warning_max": {
+                    "type": "integer"
+                },
+                "warning_min": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "default",
+                "extreme_max",
+                "extreme_min",
+                "max",
+                "min",
+                "warning_max",
+                "warning_min"
+            ],
+            "unevaluatedProperties": false
+        },
+        "bonus_chance_percent": {
+            "type": "object",
+            "properties": {
+                "default": {
+                    "type": "integer"
+                },
+                "extreme_max": {
+                    "type": "integer"
+                },
+                "extreme_min": {
+                    "type": "integer"
+                },
+                "max": {
+                    "type": "integer"
+                },
+                "min": {
+                    "type": "integer"
+                },
+                "warning_max": {
+                    "type": "integer"
+                },
+                "warning_min": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "default",
+                "extreme_max",
+                "extreme_min",
+                "max",
+                "min",
+                "warning_max",
+                "warning_min"
+            ],
+            "unevaluatedProperties": false
+        },
+        "enemy_factions": {
+            "type": "object",
+            "properties": {
+                "default": {
+                    "type": "integer"
+                },
+                "extreme_max": {
+                    "type": "integer"
+                },
+                "extreme_min": {
+                    "type": "integer"
+                },
+                "max": {
+                    "type": "integer"
+                },
+                "min": {
+                    "type": "integer"
+                },
+                "warning_max": {
+                    "type": "integer"
+                },
+                "warning_min": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "default",
+                "extreme_max",
+                "extreme_min",
+                "max",
+                "min",
+                "warning_max",
+                "warning_min"
+            ],
+            "unevaluatedProperties": false
+        },
+        "extreme_value_color": {
+            "description": "Named color id for values within the extreme band.",
+            "type": "string"
+        },
+        "guardian_npcs": {
+            "type": "object",
+            "properties": {
+                "default": {
+                    "type": "integer"
+                },
+                "extreme_max": {
+                    "type": "integer"
+                },
+                "extreme_min": {
+                    "type": "integer"
+                },
+                "max": {
+                    "type": "integer"
+                },
+                "min": {
+                    "type": "integer"
+                },
+                "warning_max": {
+                    "type": "integer"
+                },
+                "warning_min": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "default",
+                "extreme_max",
+                "extreme_min",
+                "max",
+                "min",
+                "warning_max",
+                "warning_min"
+            ],
+            "unevaluatedProperties": false
+        },
+        "home_planet_spread_percent": {
+            "type": "object",
+            "properties": {
+                "default": {
+                    "type": "integer"
+                },
+                "extreme_max": {
+                    "type": "integer"
+                },
+                "extreme_min": {
+                    "type": "integer"
+                },
+                "max": {
+                    "type": "integer"
+                },
+                "min": {
+                    "type": "integer"
+                },
+                "warning_max": {
+                    "type": "integer"
+                },
+                "warning_min": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "default",
+                "extreme_max",
+                "extreme_min",
+                "max",
+                "min",
+                "warning_max",
+                "warning_min"
+            ],
+            "unevaluatedProperties": false
+        },
+        "lane_reach_percent": {
+            "type": "object",
+            "properties": {
+                "default": {
+                    "type": "integer"
+                },
+                "extreme_max": {
+                    "type": "integer"
+                },
+                "extreme_min": {
+                    "type": "integer"
+                },
+                "max": {
+                    "type": "integer"
+                },
+                "min": {
+                    "type": "integer"
+                },
+                "warning_max": {
+                    "type": "integer"
+                },
+                "warning_min": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "default",
+                "extreme_max",
+                "extreme_min",
+                "max",
+                "min",
+                "warning_max",
+                "warning_min"
+            ],
+            "unevaluatedProperties": false
+        },
+        "loot_chance_percent": {
+            "type": "object",
+            "properties": {
+                "default": {
+                    "type": "integer"
+                },
+                "extreme_max": {
+                    "type": "integer"
+                },
+                "extreme_min": {
+                    "type": "integer"
+                },
+                "max": {
+                    "type": "integer"
+                },
+                "min": {
+                    "type": "integer"
+                },
+                "warning_max": {
+                    "type": "integer"
+                },
+                "warning_min": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "default",
+                "extreme_max",
+                "extreme_min",
+                "max",
+                "min",
+                "warning_max",
+                "warning_min"
+            ],
+            "unevaluatedProperties": false
+        },
+        "min_home_distance": {
+            "type": "object",
+            "properties": {
+                "default": {
+                    "type": "integer"
+                },
+                "extreme_max": {
+                    "type": "integer"
+                },
+                "extreme_min": {
+                    "type": "integer"
+                },
+                "max": {
+                    "type": "integer"
+                },
+                "min": {
+                    "type": "integer"
+                },
+                "warning_max": {
+                    "type": "integer"
+                },
+                "warning_min": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "default",
+                "extreme_max",
+                "extreme_min",
+                "max",
+                "min",
+                "warning_max",
+                "warning_min"
+            ],
+            "unevaluatedProperties": false
+        },
+        "moons": {
+            "type": "object",
+            "properties": {
+                "default": {
+                    "type": "integer"
+                },
+                "extreme_max": {
+                    "type": "integer"
+                },
+                "extreme_min": {
+                    "type": "integer"
+                },
+                "max": {
+                    "type": "integer"
+                },
+                "min": {
+                    "type": "integer"
+                },
+                "warning_max": {
+                    "type": "integer"
+                },
+                "warning_min": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "default",
+                "extreme_max",
+                "extreme_min",
+                "max",
+                "min",
+                "warning_max",
+                "warning_min"
+            ],
+            "unevaluatedProperties": false
+        },
+        "normal_value_color": {
+            "description": "Named color id for values within the normal band.",
+            "type": "string"
+        },
+        "npc_planets": {
+            "type": "object",
+            "properties": {
+                "default": {
+                    "type": "integer"
+                },
+                "extreme_max": {
+                    "type": "integer"
+                },
+                "extreme_min": {
+                    "type": "integer"
+                },
+                "max": {
+                    "type": "integer"
+                },
+                "min": {
+                    "type": "integer"
+                },
+                "warning_max": {
+                    "type": "integer"
+                },
+                "warning_min": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "default",
+                "extreme_max",
+                "extreme_min",
+                "max",
+                "min",
+                "warning_max",
+                "warning_min"
+            ],
+            "unevaluatedProperties": false
+        },
+        "orbit_overlap": {
+            "type": "object",
+            "properties": {
+                "default": {
+                    "type": "integer"
+                },
+                "extreme_max": {
+                    "type": "integer"
+                },
+                "extreme_min": {
+                    "type": "integer"
+                },
+                "max": {
+                    "type": "integer"
+                },
+                "min": {
+                    "type": "integer"
+                },
+                "warning_max": {
+                    "type": "integer"
+                },
+                "warning_min": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "default",
+                "extreme_max",
+                "extreme_min",
+                "max",
+                "min",
+                "warning_max",
+                "warning_min"
+            ],
+            "unevaluatedProperties": false
+        },
+        "orbit_speed_percent": {
+            "type": "object",
+            "properties": {
+                "default": {
+                    "type": "integer"
+                },
+                "extreme_max": {
+                    "type": "integer"
+                },
+                "extreme_min": {
+                    "type": "integer"
+                },
+                "max": {
+                    "type": "integer"
+                },
+                "min": {
+                    "type": "integer"
+                },
+                "warning_max": {
+                    "type": "integer"
+                },
+                "warning_min": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "default",
+                "extreme_max",
+                "extreme_min",
+                "max",
+                "min",
+                "warning_max",
+                "warning_min"
+            ],
+            "unevaluatedProperties": false
+        },
+        "phase_lane_density_percent": {
+            "type": "object",
+            "properties": {
+                "default": {
+                    "type": "integer"
+                },
+                "extreme_max": {
+                    "type": "integer"
+                },
+                "extreme_min": {
+                    "type": "integer"
+                },
+                "max": {
+                    "type": "integer"
+                },
+                "min": {
+                    "type": "integer"
+                },
+                "warning_max": {
+                    "type": "integer"
+                },
+                "warning_min": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "default",
+                "extreme_max",
+                "extreme_min",
+                "max",
+                "min",
+                "warning_max",
+                "warning_min"
+            ],
+            "unevaluatedProperties": false
+        },
+        "phase_lane_type": {
+            "type": "object",
+            "properties": {
+                "default": {
+                    "type": "integer"
+                },
+                "extreme_max": {
+                    "type": "integer"
+                },
+                "extreme_min": {
+                    "type": "integer"
+                },
+                "max": {
+                    "type": "integer"
+                },
+                "min": {
+                    "type": "integer"
+                },
+                "warning_max": {
+                    "type": "integer"
+                },
+                "warning_min": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "default",
+                "extreme_max",
+                "extreme_min",
+                "max",
+                "min",
+                "warning_max",
+                "warning_min"
+            ],
+            "unevaluatedProperties": false
+        },
+        "pirate_npcs": {
+            "type": "object",
+            "properties": {
+                "default": {
+                    "type": "integer"
+                },
+                "extreme_max": {
+                    "type": "integer"
+                },
+                "extreme_min": {
+                    "type": "integer"
+                },
+                "max": {
+                    "type": "integer"
+                },
+                "min": {
+                    "type": "integer"
+                },
+                "warning_max": {
+                    "type": "integer"
+                },
+                "warning_min": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "default",
+                "extreme_max",
+                "extreme_min",
+                "max",
+                "min",
+                "warning_max",
+                "warning_min"
+            ],
+            "unevaluatedProperties": false
+        },
+        "planet_count": {
+            "type": "object",
+            "properties": {
+                "default": {
+                    "type": "integer"
+                },
+                "extreme_max": {
+                    "type": "integer"
+                },
+                "extreme_min": {
+                    "type": "integer"
+                },
+                "max": {
+                    "type": "integer"
+                },
+                "min": {
+                    "type": "integer"
+                },
+                "warning_max": {
+                    "type": "integer"
+                },
+                "warning_min": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "default",
+                "extreme_max",
+                "extreme_min",
+                "max",
+                "min",
+                "warning_max",
+                "warning_min"
+            ],
+            "unevaluatedProperties": false
+        },
+        "planet_radius_percent": {
+            "type": "object",
+            "properties": {
+                "default": {
+                    "type": "integer"
+                },
+                "extreme_max": {
+                    "type": "integer"
+                },
+                "extreme_min": {
+                    "type": "integer"
+                },
+                "max": {
+                    "type": "integer"
+                },
+                "min": {
+                    "type": "integer"
+                },
+                "warning_max": {
+                    "type": "integer"
+                },
+                "warning_min": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "default",
+                "extreme_max",
+                "extreme_min",
+                "max",
+                "min",
+                "warning_max",
+                "warning_min"
+            ],
+            "unevaluatedProperties": false
+        },
+        "player_count": {
+            "type": "object",
+            "properties": {
+                "default": {
+                    "type": "integer"
+                },
+                "extreme_max": {
+                    "type": "integer"
+                },
+                "extreme_min": {
+                    "type": "integer"
+                },
+                "max": {
+                    "type": "integer"
+                },
+                "min": {
+                    "type": "integer"
+                },
+                "warning_max": {
+                    "type": "integer"
+                },
+                "warning_min": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "default",
+                "extreme_max",
+                "extreme_min",
+                "max",
+                "min",
+                "warning_max",
+                "warning_min"
+            ],
+            "unevaluatedProperties": false
+        },
+        "poor_planet_percent": {
+            "type": "object",
+            "properties": {
+                "default": {
+                    "type": "integer"
+                },
+                "extreme_max": {
+                    "type": "integer"
+                },
+                "extreme_min": {
+                    "type": "integer"
+                },
+                "max": {
+                    "type": "integer"
+                },
+                "min": {
+                    "type": "integer"
+                },
+                "warning_max": {
+                    "type": "integer"
+                },
+                "warning_min": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "default",
+                "extreme_max",
+                "extreme_min",
+                "max",
+                "min",
+                "warning_max",
+                "warning_min"
+            ],
+            "unevaluatedProperties": false
+        },
+        "random_stars": {
+            "type": "object",
+            "properties": {
+                "default": {
+                    "type": "integer"
+                },
+                "extreme_max": {
+                    "type": "integer"
+                },
+                "extreme_min": {
+                    "type": "integer"
+                },
+                "max": {
+                    "type": "integer"
+                },
+                "min": {
+                    "type": "integer"
+                },
+                "warning_max": {
+                    "type": "integer"
+                },
+                "warning_min": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "default",
+                "extreme_max",
+                "extreme_min",
+                "max",
+                "min",
+                "warning_max",
+                "warning_min"
+            ],
+            "unevaluatedProperties": false
+        },
+        "retrograde_percent": {
+            "type": "object",
+            "properties": {
+                "default": {
+                    "type": "integer"
+                },
+                "extreme_max": {
+                    "type": "integer"
+                },
+                "extreme_min": {
+                    "type": "integer"
+                },
+                "max": {
+                    "type": "integer"
+                },
+                "min": {
+                    "type": "integer"
+                },
+                "warning_max": {
+                    "type": "integer"
+                },
+                "warning_min": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "default",
+                "extreme_max",
+                "extreme_min",
+                "max",
+                "min",
+                "warning_max",
+                "warning_min"
+            ],
+            "unevaluatedProperties": false
+        },
+        "rich_planet_percent": {
+            "type": "object",
+            "properties": {
+                "default": {
+                    "type": "integer"
+                },
+                "extreme_max": {
+                    "type": "integer"
+                },
+                "extreme_min": {
+                    "type": "integer"
+                },
+                "max": {
+                    "type": "integer"
+                },
+                "min": {
+                    "type": "integer"
+                },
+                "warning_max": {
+                    "type": "integer"
+                },
+                "warning_min": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "default",
+                "extreme_max",
+                "extreme_min",
+                "max",
+                "min",
+                "warning_max",
+                "warning_min"
+            ],
+            "unevaluatedProperties": false
+        },
+        "solar_system_count": {
+            "type": "object",
+            "properties": {
+                "default": {
+                    "type": "integer"
+                },
+                "extreme_max": {
+                    "type": "integer"
+                },
+                "extreme_min": {
+                    "type": "integer"
+                },
+                "max": {
+                    "type": "integer"
+                },
+                "min": {
+                    "type": "integer"
+                },
+                "warning_max": {
+                    "type": "integer"
+                },
+                "warning_min": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "default",
+                "extreme_max",
+                "extreme_min",
+                "max",
+                "min",
+                "warning_max",
+                "warning_min"
+            ],
+            "unevaluatedProperties": false
+        },
+        "system_radius": {
+            "type": "object",
+            "properties": {
+                "default": {
+                    "type": "integer"
+                },
+                "extreme_max": {
+                    "type": "integer"
+                },
+                "extreme_min": {
+                    "type": "integer"
+                },
+                "max": {
+                    "type": "integer"
+                },
+                "min": {
+                    "type": "integer"
+                },
+                "warning_max": {
+                    "type": "integer"
+                },
+                "warning_min": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "default",
+                "extreme_max",
+                "extreme_min",
+                "max",
+                "min",
+                "warning_max",
+                "warning_min"
+            ],
+            "unevaluatedProperties": false
+        },
+        "system_spacing_percent": {
+            "type": "object",
+            "properties": {
+                "default": {
+                    "type": "integer"
+                },
+                "extreme_max": {
+                    "type": "integer"
+                },
+                "extreme_min": {
+                    "type": "integer"
+                },
+                "max": {
+                    "type": "integer"
+                },
+                "min": {
+                    "type": "integer"
+                },
+                "warning_max": {
+                    "type": "integer"
+                },
+                "warning_min": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "default",
+                "extreme_max",
+                "extreme_min",
+                "max",
+                "min",
+                "warning_max",
+                "warning_min"
+            ],
+            "unevaluatedProperties": false
+        },
+        "team_count": {
+            "type": "object",
+            "properties": {
+                "default": {
+                    "type": "integer"
+                },
+                "extreme_max": {
+                    "type": "integer"
+                },
+                "extreme_min": {
+                    "type": "integer"
+                },
+                "max": {
+                    "type": "integer"
+                },
+                "min": {
+                    "type": "integer"
+                },
+                "warning_max": {
+                    "type": "integer"
+                },
+                "warning_min": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "default",
+                "extreme_max",
+                "extreme_min",
+                "max",
+                "min",
+                "warning_max",
+                "warning_min"
+            ],
+            "unevaluatedProperties": false
+        },
+        "version": {
+            "type": "integer"
+        },
+        "warning_value_color": {
+            "description": "Named color id for values within the warning band.",
+            "type": "string"
+        },
+        "wormholes": {
+            "type": "object",
+            "properties": {
+                "default": {
+                    "type": "integer"
+                },
+                "extreme_max": {
+                    "type": "integer"
+                },
+                "extreme_min": {
+                    "type": "integer"
+                },
+                "max": {
+                    "type": "integer"
+                },
+                "min": {
+                    "type": "integer"
+                },
+                "warning_max": {
+                    "type": "integer"
+                },
+                "warning_min": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "default",
+                "extreme_max",
+                "extreme_min",
+                "max",
+                "min",
+                "warning_max",
+                "warning_min"
+            ],
+            "unevaluatedProperties": false
+        }
+    },
+    "required": [
+        "artifacts",
+        "bonus_chance_percent",
+        "enemy_factions",
+        "extreme_value_color",
+        "guardian_npcs",
+        "home_planet_spread_percent",
+        "lane_reach_percent",
+        "loot_chance_percent",
+        "min_home_distance",
+        "moons",
+        "normal_value_color",
+        "npc_planets",
+        "orbit_overlap",
+        "orbit_speed_percent",
+        "phase_lane_density_percent",
+        "phase_lane_type",
+        "pirate_npcs",
+        "planet_count",
+        "planet_radius_percent",
+        "player_count",
+        "poor_planet_percent",
+        "random_stars",
+        "retrograde_percent",
+        "rich_planet_percent",
+        "solar_system_count",
+        "system_radius",
+        "system_spacing_percent",
+        "team_count",
+        "warning_value_color",
+        "wormholes"
+    ],
+    "unevaluatedProperties": false
+}

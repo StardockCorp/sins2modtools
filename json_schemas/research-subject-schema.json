@@ -2498,6 +2498,7 @@
                                     "has_missing_shields",
                                     "has_missing_antimatter",
                                     "has_missing_strikecraft",
+                                    "has_missing_planet_health",
                                     "has_mutation",
                                     "has_orders",
                                     "has_permission",
@@ -2513,6 +2514,7 @@
                                     "has_unit_level",
                                     "weapon_has_target",
                                     "is_always_a_threat",
+                                    "is_channeling_ability",
                                     "is_bombing_planet",
                                     "is_carrier",
                                     "is_asteroid",
@@ -2742,6 +2744,25 @@
                                         },
                                         "strikecraft_kind": {
                                             "type": "string"
+                                        }
+                                    }
+                                }
+                            },
+                            {
+                                "if": {
+                                    "properties": {
+                                        "constraint_type": {
+                                            "const": "has_missing_planet_health"
+                                        }
+                                    }
+                                },
+                                "then": {
+                                    "properties": {
+                                        "amount_missing_threshold": {
+                                            "type": "number"
+                                        },
+                                        "percentage_missing_threshold": {
+                                            "type": "number"
                                         }
                                     }
                                 }
@@ -3005,6 +3026,22 @@
                                     }
                                 },
                                 "then": {}
+                            },
+                            {
+                                "if": {
+                                    "properties": {
+                                        "constraint_type": {
+                                            "const": "is_channeling_ability"
+                                        }
+                                    }
+                                },
+                                "then": {
+                                    "properties": {
+                                        "ability": {
+                                            "$ref": "#/$defs/ability_definition_ptr"
+                                        }
+                                    }
+                                }
                             },
                             {
                                 "if": {
@@ -10950,6 +10987,7 @@
                         "has_missing_shields",
                         "has_missing_antimatter",
                         "has_missing_strikecraft",
+                        "has_missing_planet_health",
                         "has_mutation",
                         "has_orders",
                         "has_permission",
@@ -10965,6 +11003,7 @@
                         "has_unit_level",
                         "weapon_has_target",
                         "is_always_a_threat",
+                        "is_channeling_ability",
                         "is_bombing_planet",
                         "is_carrier",
                         "is_asteroid",
@@ -11194,6 +11233,25 @@
                             },
                             "strikecraft_kind": {
                                 "type": "string"
+                            }
+                        }
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "constraint_type": {
+                                "const": "has_missing_planet_health"
+                            }
+                        }
+                    },
+                    "then": {
+                        "properties": {
+                            "amount_missing_threshold": {
+                                "type": "number"
+                            },
+                            "percentage_missing_threshold": {
+                                "type": "number"
                             }
                         }
                     }
@@ -11457,6 +11515,22 @@
                         }
                     },
                     "then": {}
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "constraint_type": {
+                                "const": "is_channeling_ability"
+                            }
+                        }
+                    },
+                    "then": {
+                        "properties": {
+                            "ability": {
+                                "$ref": "#/$defs/ability_definition_ptr"
+                            }
+                        }
+                    }
                 },
                 {
                     "if": {

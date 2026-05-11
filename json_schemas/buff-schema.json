@@ -241,13 +241,13 @@
             "type": "boolean"
         },
         "stacking_limit": {
+            "description": "DEPRECATED: use stacking_limits array instead",
             "type": "object",
             "properties": {
                 "stacking_limit": {
                     "$ref": "#/$defs/action_value_id"
                 },
                 "stacking_limit_met_behavior": {
-                    "description": "Controls what happens when stack limit is met",
                     "type": "string",
                     "enum": [
                         "replace_existing_buff",
@@ -257,13 +257,46 @@
                 }
             },
             "required": [
-                "stacking_limit",
-                "stacking_limit_met_behavior"
+                "stacking_limit"
             ],
             "unevaluatedProperties": false
         },
+        "stacking_limit_met_behavior": {
+            "description": "Controls what happens when any stack limit is met. default=restart_existing_buff",
+            "type": "string",
+            "enum": [
+                "replace_existing_buff",
+                "restart_existing_buff",
+                "preserve_existing_buff"
+            ]
+        },
+        "stacking_limits": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "stacking_limit": {
+                        "$ref": "#/$defs/action_value_id"
+                    },
+                    "stacking_ownership_type": {
+                        "description": "Controls how duplicate instances are grouped together for stacking.",
+                        "type": "string",
+                        "enum": [
+                            "per_player",
+                            "for_all_players",
+                            "per_source_ability"
+                        ]
+                    }
+                },
+                "required": [
+                    "stacking_limit",
+                    "stacking_ownership_type"
+                ],
+                "unevaluatedProperties": false
+            }
+        },
         "stacking_ownership_type": {
-            "description": "Controls how duplicate instances are grouped together for stacking. per_player=each player has their own stack. for_all_players=all players share the same stack. default=for_all_players",
+            "description": "DEPRECATED: use stacking_limits array instead",
             "type": "string",
             "enum": [
                 "per_player",
@@ -1843,6 +1876,7 @@
                         "has_missing_shields",
                         "has_missing_antimatter",
                         "has_missing_strikecraft",
+                        "has_missing_planet_health",
                         "has_mutation",
                         "has_orders",
                         "has_permission",
@@ -1858,6 +1892,7 @@
                         "has_unit_level",
                         "weapon_has_target",
                         "is_always_a_threat",
+                        "is_channeling_ability",
                         "is_bombing_planet",
                         "is_carrier",
                         "is_asteroid",
@@ -2087,6 +2122,25 @@
                             },
                             "strikecraft_kind": {
                                 "type": "string"
+                            }
+                        }
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "constraint_type": {
+                                "const": "has_missing_planet_health"
+                            }
+                        }
+                    },
+                    "then": {
+                        "properties": {
+                            "amount_missing_threshold": {
+                                "type": "number"
+                            },
+                            "percentage_missing_threshold": {
+                                "type": "number"
                             }
                         }
                     }
@@ -2350,6 +2404,22 @@
                         }
                     },
                     "then": {}
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "constraint_type": {
+                                "const": "is_channeling_ability"
+                            }
+                        }
+                    },
+                    "then": {
+                        "properties": {
+                            "ability": {
+                                "$ref": "#/$defs/ability_definition_ptr"
+                            }
+                        }
+                    }
                 },
                 {
                     "if": {

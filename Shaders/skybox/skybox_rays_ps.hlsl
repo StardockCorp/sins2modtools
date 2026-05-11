@@ -15,33 +15,28 @@ struct skybox_ps_output
     float4 scene_color : SV_TARGET0;
 };
 
-SamplerState linear_border_sampler : register(s0);
+SamplerState linear_clamp_sampler : register(s0);
 
 float4 create_starbox_rays(float4 source_color, float2 uv)
 {
     const float2 center = float2(.5f, .4f);
-    const int sample_count = 128;
-    const float sample_frequency = 1.2f;   
+    const int sample_count = 160;
+    const float sample_frequency = 1.2f;
     const float fall_off = 1.06f;
-    const float min_luminance = 0.f;
-    
+
     const float2 sample_step_size = (uv - center) / (sample_count * sample_frequency);
-        
+
     float3 sample_sum = 0.f;
-    
+
     for (float i = 1; i < sample_count; i++)
     {
-        const float3 sampled_pixel = texture_0.Sample(linear_border_sampler, uv - sample_step_size * i).rgb;
-        const float luminance = RGBToLuminance(sampled_pixel);
-        if(luminance > min_luminance)
-        {            
-            sample_sum += sampled_pixel / (fall_off * i);
-        }
+        const float3 sampled_pixel = texture_0.Sample(linear_clamp_sampler, uv - sample_step_size * i).rgb;
+        sample_sum += sampled_pixel / (fall_off * i);
     }
-    
+
     const float scalar = .3f;
     sample_sum *= scalar;
-        
+
     return float4(source_color.rgb + sample_sum, 1.f);
 }
 
@@ -51,7 +46,7 @@ skybox_ps_output main(skybox_rays_ps_input input)
 
     float use_simple = step(1.0, float(g_retro_enabled + g_liq_crys_enabled));
 
-    float4 sampled_color = texture_0.Sample(linear_border_sampler, input.texcoord);
+    float4 sampled_color = texture_0.Sample(linear_clamp_sampler, input.texcoord);
     float3 simple_rgb = sampled_color.rgb * exposure[0].exposure_rcp;
     float4 simple_color = float4(simple_rgb, 1.0);
 
@@ -62,4 +57,3 @@ skybox_ps_output main(skybox_rays_ps_input input)
     output.scene_color = lerp(computed_color, simple_color, use_simple);
     return output;
 }
-
