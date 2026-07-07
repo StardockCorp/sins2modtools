@@ -77,6 +77,10 @@
                             "description": "todo_json_string",
                             "type": "string"
                         },
+                        "minimum_move_distance": {
+                            "description": "todo_json_string",
+                            "type": "string"
+                        },
                         "planet_preference": {
                             "description": "todo_json_string",
                             "type": "string"
@@ -94,7 +98,8 @@
                                 "pick_planet_within_jump_count",
                                 "pick_planet_within_gravity_well_distance",
                                 "pick_planet_anywhere",
-                                "pick_unit_anywhere"
+                                "pick_unit_anywhere",
+                                "pick_position_along_move_order"
                             ]
                         }
                     },
@@ -136,6 +141,10 @@
                             "description": "todo_json_string",
                             "type": "string"
                         },
+                        "minimum_move_distance": {
+                            "description": "todo_json_string",
+                            "type": "string"
+                        },
                         "planet_preference": {
                             "description": "todo_json_string",
                             "type": "string"
@@ -153,7 +162,8 @@
                                 "pick_planet_within_jump_count",
                                 "pick_planet_within_gravity_well_distance",
                                 "pick_planet_anywhere",
-                                "pick_unit_anywhere"
+                                "pick_unit_anywhere",
+                                "pick_position_along_move_order"
                             ]
                         }
                     },

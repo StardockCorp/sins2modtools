@@ -776,6 +776,10 @@
                         "icon": {
                             "type": "string"
                         },
+                        "max_concurrent_surveying_upgrade_requests": {
+                            "description": "Maximum number of concurrent surveying upgrade purchase requests",
+                            "type": "integer"
+                        },
                         "max_fleet_capital_ship_count": {
                             "type": "integer"
                         },
@@ -791,6 +795,10 @@
                         "ownership_time_in_minutes_before_static_defenses": {
                             "description": "Time after an AI gets ownership of a world before they build static defenses in minutes",
                             "type": "number"
+                        },
+                        "surveying_upgrade_check_interval_in_minutes": {
+                            "description": "How often the AI checks for surveying track upgrades",
+                            "$ref": "#/$defs/float_range"
                         },
                         "time_after_game_start_allowing_static_defenses_in_minutes": {
                             "description": "Time after game start when a an AI gains ownership of a world before they build static defenses in minutes",
@@ -1339,6 +1347,10 @@
                         "icon": {
                             "type": "string"
                         },
+                        "max_concurrent_surveying_upgrade_requests": {
+                            "description": "Maximum number of concurrent surveying upgrade purchase requests",
+                            "type": "integer"
+                        },
                         "max_fleet_capital_ship_count": {
                             "type": "integer"
                         },
@@ -1354,6 +1366,10 @@
                         "ownership_time_in_minutes_before_static_defenses": {
                             "description": "Time after an AI gets ownership of a world before they build static defenses in minutes",
                             "type": "number"
+                        },
+                        "surveying_upgrade_check_interval_in_minutes": {
+                            "description": "How often the AI checks for surveying track upgrades",
+                            "$ref": "#/$defs/float_range"
                         },
                         "time_after_game_start_allowing_static_defenses_in_minutes": {
                             "description": "Time after game start when a an AI gains ownership of a world before they build static defenses in minutes",
@@ -1902,6 +1918,10 @@
                         "icon": {
                             "type": "string"
                         },
+                        "max_concurrent_surveying_upgrade_requests": {
+                            "description": "Maximum number of concurrent surveying upgrade purchase requests",
+                            "type": "integer"
+                        },
                         "max_fleet_capital_ship_count": {
                             "type": "integer"
                         },
@@ -1917,6 +1937,10 @@
                         "ownership_time_in_minutes_before_static_defenses": {
                             "description": "Time after an AI gets ownership of a world before they build static defenses in minutes",
                             "type": "number"
+                        },
+                        "surveying_upgrade_check_interval_in_minutes": {
+                            "description": "How often the AI checks for surveying track upgrades",
+                            "$ref": "#/$defs/float_range"
                         },
                         "time_after_game_start_allowing_static_defenses_in_minutes": {
                             "description": "Time after game start when a an AI gains ownership of a world before they build static defenses in minutes",
@@ -2465,6 +2489,10 @@
                         "icon": {
                             "type": "string"
                         },
+                        "max_concurrent_surveying_upgrade_requests": {
+                            "description": "Maximum number of concurrent surveying upgrade purchase requests",
+                            "type": "integer"
+                        },
                         "max_fleet_capital_ship_count": {
                             "type": "integer"
                         },
@@ -2480,6 +2508,10 @@
                         "ownership_time_in_minutes_before_static_defenses": {
                             "description": "Time after an AI gets ownership of a world before they build static defenses in minutes",
                             "type": "number"
+                        },
+                        "surveying_upgrade_check_interval_in_minutes": {
+                            "description": "How often the AI checks for surveying track upgrades",
+                            "$ref": "#/$defs/float_range"
                         },
                         "time_after_game_start_allowing_static_defenses_in_minutes": {
                             "description": "Time after game start when a an AI gains ownership of a world before they build static defenses in minutes",
@@ -3028,6 +3060,10 @@
                         "icon": {
                             "type": "string"
                         },
+                        "max_concurrent_surveying_upgrade_requests": {
+                            "description": "Maximum number of concurrent surveying upgrade purchase requests",
+                            "type": "integer"
+                        },
                         "max_fleet_capital_ship_count": {
                             "type": "integer"
                         },
@@ -3043,6 +3079,10 @@
                         "ownership_time_in_minutes_before_static_defenses": {
                             "description": "Time after an AI gets ownership of a world before they build static defenses in minutes",
                             "type": "number"
+                        },
+                        "surveying_upgrade_check_interval_in_minutes": {
+                            "description": "How often the AI checks for surveying track upgrades",
+                            "$ref": "#/$defs/float_range"
                         },
                         "time_after_game_start_allowing_static_defenses_in_minutes": {
                             "description": "Time after game start when a an AI gains ownership of a world before they build static defenses in minutes",
@@ -3591,6 +3631,10 @@
                         "icon": {
                             "type": "string"
                         },
+                        "max_concurrent_surveying_upgrade_requests": {
+                            "description": "Maximum number of concurrent surveying upgrade purchase requests",
+                            "type": "integer"
+                        },
                         "max_fleet_capital_ship_count": {
                             "type": "integer"
                         },
@@ -3606,6 +3650,10 @@
                         "ownership_time_in_minutes_before_static_defenses": {
                             "description": "Time after an AI gets ownership of a world before they build static defenses in minutes",
                             "type": "number"
+                        },
+                        "surveying_upgrade_check_interval_in_minutes": {
+                            "description": "How often the AI checks for surveying track upgrades",
+                            "$ref": "#/$defs/float_range"
                         },
                         "time_after_game_start_allowing_static_defenses_in_minutes": {
                             "description": "Time after game start when a an AI gains ownership of a world before they build static defenses in minutes",
@@ -3640,6 +3688,32 @@
                         "update_interval"
                     ],
                     "unevaluatedProperties": false
+                }
+            },
+            "unevaluatedProperties": false
+        },
+        "loadout": {
+            "type": "object",
+            "properties": {
+                "max_pending_exotic_stalled_loadout_requests": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "max_pending_loadout_requests_per_ship": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "max_pending_total_loadout_requests": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "refresh_interval_in_minutes_range": {
+                    "type": "array",
+                    "items": {
+                        "type": "number"
+                    },
+                    "minItems": 2,
+                    "maxItems": 2
                 }
             },
             "unevaluatedProperties": false
