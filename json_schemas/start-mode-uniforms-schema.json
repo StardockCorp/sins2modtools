@@ -10,7 +10,7 @@
         "start_modes": {
             "type": "array",
             "items": {
-                "$ref": "#/$defs/start_mode_uniform_data"
+                "$ref": "#/definitions/start_mode_uniform_data"
             }
         },
         "version": {
@@ -18,12 +18,12 @@
         }
     },
     "unevaluatedProperties": false,
-    "$defs": {
+    "definitions": {
         "start_mode_uniform_data": {
             "type": "object",
             "properties": {
                 "entity": {
-                    "$ref": "#/$defs/start_mode_definition_ptr"
+                    "$ref": "#/definitions/start_mode_definition_ptr"
                 },
                 "name": {
                     "type": "string"

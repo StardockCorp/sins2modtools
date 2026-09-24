@@ -8,7 +8,7 @@
             "type": "string"
         },
         "base_fillings": {
-            "$ref": "#/$defs/galaxy_chart_fillings"
+            "$ref": "#/definitions/galaxy_chart_fillings"
         },
         "capturable_units": {
             "type": "array",
@@ -17,18 +17,18 @@
             }
         },
         "combined_fillings": {
-            "$ref": "#/$defs/galaxy_chart_fillings"
+            "$ref": "#/definitions/galaxy_chart_fillings"
         },
         "gravity_well_orbit_durations_by_hierarchy_depth": {
             "type": "array",
             "items": {
-                "$ref": "#/$defs/gravity_well_orbit_duration_min_max"
+                "$ref": "#/definitions/gravity_well_orbit_duration_min_max"
             }
         },
         "gravity_well_y_offsets_by_hierarchy_depth": {
             "type": "array",
             "items": {
-                "$ref": "#/$defs/float_range"
+                "$ref": "#/definitions/float_range"
             }
         },
         "max_ancient_starbases": {
@@ -56,14 +56,14 @@
             }
         },
         "secondary_fixture_y_offset": {
-            "$ref": "#/$defs/float_range"
+            "$ref": "#/definitions/float_range"
         },
         "version": {
             "type": "integer"
         }
     },
     "unevaluatedProperties": false,
-    "$defs": {
+    "definitions": {
         "ability_definition_ptr": {
             "type": "string"
         },
@@ -71,15 +71,15 @@
             "type": "object",
             "properties": {
                 "angle": {
-                    "$ref": "#/$defs/float_range"
+                    "$ref": "#/definitions/float_range"
                 },
                 "distance_as_percent_of_parent_inner_move_radius": {
-                    "$ref": "#/$defs/float_range"
+                    "$ref": "#/definitions/float_range"
                 },
                 "socket_children": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/$defs/gravity_well_filling_socket"
+                        "$ref": "#/definitions/gravity_well_filling_socket"
                     }
                 }
             },
@@ -114,10 +114,10 @@
             "type": "object",
             "properties": {
                 "max": {
-                    "$ref": "#/$defs/gravity_well_orbit_duration"
+                    "$ref": "#/definitions/gravity_well_orbit_duration"
                 },
                 "min": {
-                    "$ref": "#/$defs/gravity_well_orbit_duration"
+                    "$ref": "#/definitions/gravity_well_orbit_duration"
                 }
             },
             "unevaluatedProperties": false
@@ -243,7 +243,7 @@
                                         "type": "object",
                                         "properties": {
                                             "formation_type": {
-                                                "$ref": "#/$defs/formation_type"
+                                                "$ref": "#/definitions/formation_type"
                                             },
                                             "random_units": {
                                                 "type": "array",
@@ -256,7 +256,7 @@
                                                                 "forced_leveled_up_abilities": {
                                                                     "type": "array",
                                                                     "items": {
-                                                                        "$ref": "#/$defs/ability_definition_ptr"
+                                                                        "$ref": "#/definitions/ability_definition_ptr"
                                                                     }
                                                                 },
                                                                 "forced_strikecraft_index": {
@@ -268,7 +268,7 @@
                                                                 "items": {
                                                                     "type": "array",
                                                                     "items": {
-                                                                        "$ref": "#/$defs/unit_item_definition_ptr"
+                                                                        "$ref": "#/definitions/unit_item_definition_ptr"
                                                                     }
                                                                 },
                                                                 "level": {
@@ -278,7 +278,7 @@
                                                             "unevaluatedProperties": false
                                                         },
                                                         "unit": {
-                                                            "$ref": "#/$defs/unit_definition_ptr"
+                                                            "$ref": "#/definitions/unit_definition_ptr"
                                                         },
                                                         "weight": {
                                                             "type": "number"
@@ -310,7 +310,7 @@
                                                                 "forced_leveled_up_abilities": {
                                                                     "type": "array",
                                                                     "items": {
-                                                                        "$ref": "#/$defs/ability_definition_ptr"
+                                                                        "$ref": "#/definitions/ability_definition_ptr"
                                                                     }
                                                                 },
                                                                 "forced_strikecraft_index": {
@@ -322,7 +322,7 @@
                                                                 "items": {
                                                                     "type": "array",
                                                                     "items": {
-                                                                        "$ref": "#/$defs/unit_item_definition_ptr"
+                                                                        "$ref": "#/definitions/unit_item_definition_ptr"
                                                                     }
                                                                 },
                                                                 "level": {
@@ -332,7 +332,7 @@
                                                             "unevaluatedProperties": false
                                                         },
                                                         "unit": {
-                                                            "$ref": "#/$defs/unit_definition_ptr"
+                                                            "$ref": "#/definitions/unit_definition_ptr"
                                                         }
                                                     },
                                                     "required": [
@@ -366,15 +366,15 @@
                                         "type": "object",
                                         "properties": {
                                             "angle": {
-                                                "$ref": "#/$defs/float_range"
+                                                "$ref": "#/definitions/float_range"
                                             },
                                             "distance_as_percent_of_parent_inner_move_radius": {
-                                                "$ref": "#/$defs/float_range"
+                                                "$ref": "#/definitions/float_range"
                                             },
                                             "socket_children": {
                                                 "type": "array",
                                                 "items": {
-                                                    "$ref": "#/$defs/gravity_well_filling_socket"
+                                                    "$ref": "#/definitions/gravity_well_filling_socket"
                                                 }
                                             }
                                         },
@@ -446,7 +446,7 @@
                                                     "type": "number"
                                                 },
                                                 "planet_offset": {
-                                                    "$ref": "#/$defs/float_range"
+                                                    "$ref": "#/definitions/float_range"
                                                 },
                                                 "sync_orbit_to_parent": {
                                                     "type": "boolean"

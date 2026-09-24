@@ -35,6 +35,62 @@
                     ],
                     "unevaluatedProperties": false
                 },
+                "corruption": {
+                    "type": "object",
+                    "properties": {
+                        "current_level_label": {
+                            "type": "string"
+                        },
+                        "desc": {
+                            "type": "string"
+                        },
+                        "hud_icon": {
+                            "type": "string"
+                        },
+                        "max_level_label": {
+                            "type": "string"
+                        },
+                        "name": {
+                            "type": "string"
+                        },
+                        "tooltip_icon": {
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "hud_icon",
+                        "tooltip_icon"
+                    ],
+                    "unevaluatedProperties": false
+                },
+                "culture": {
+                    "type": "object",
+                    "properties": {
+                        "current_level_label": {
+                            "type": "string"
+                        },
+                        "desc": {
+                            "type": "string"
+                        },
+                        "hud_icon": {
+                            "type": "string"
+                        },
+                        "max_level_label": {
+                            "type": "string"
+                        },
+                        "name": {
+                            "type": "string"
+                        },
+                        "tooltip_icon": {
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "hud_icon",
+                        "tooltip_icon"
+                    ],
+                    "unevaluatedProperties": false
+                },
                 "defense": {
                     "type": "object",
                     "properties": {
@@ -91,6 +147,62 @@
                     ],
                     "unevaluatedProperties": false
                 },
+                "industry": {
+                    "type": "object",
+                    "properties": {
+                        "current_level_label": {
+                            "type": "string"
+                        },
+                        "desc": {
+                            "type": "string"
+                        },
+                        "hud_icon": {
+                            "type": "string"
+                        },
+                        "max_level_label": {
+                            "type": "string"
+                        },
+                        "name": {
+                            "type": "string"
+                        },
+                        "tooltip_icon": {
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "hud_icon",
+                        "tooltip_icon"
+                    ],
+                    "unevaluatedProperties": false
+                },
+                "influence": {
+                    "type": "object",
+                    "properties": {
+                        "current_level_label": {
+                            "type": "string"
+                        },
+                        "desc": {
+                            "type": "string"
+                        },
+                        "hud_icon": {
+                            "type": "string"
+                        },
+                        "max_level_label": {
+                            "type": "string"
+                        },
+                        "name": {
+                            "type": "string"
+                        },
+                        "tooltip_icon": {
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "hud_icon",
+                        "tooltip_icon"
+                    ],
+                    "unevaluatedProperties": false
+                },
                 "logistics": {
                     "type": "object",
                     "properties": {
@@ -120,6 +232,34 @@
                     "unevaluatedProperties": false
                 },
                 "mining": {
+                    "type": "object",
+                    "properties": {
+                        "current_level_label": {
+                            "type": "string"
+                        },
+                        "desc": {
+                            "type": "string"
+                        },
+                        "hud_icon": {
+                            "type": "string"
+                        },
+                        "max_level_label": {
+                            "type": "string"
+                        },
+                        "name": {
+                            "type": "string"
+                        },
+                        "tooltip_icon": {
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "hud_icon",
+                        "tooltip_icon"
+                    ],
+                    "unevaluatedProperties": false
+                },
+                "population": {
                     "type": "object",
                     "properties": {
                         "current_level_label": {

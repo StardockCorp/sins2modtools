@@ -585,6 +585,9 @@
                 "empire_modifier_names": {
                     "type": "object",
                     "properties": {
+                        "alliance_offer_asset_transfer_tax_rate": {
+                            "type": "string"
+                        },
                         "civilian_research_rate": {
                             "type": "string"
                         },
@@ -658,6 +661,15 @@
                             "type": "string"
                         },
                         "unity_mana_restore_rate": {
+                            "type": "string"
+                        },
+                        "unity_mana_to_credits_conversion_rate": {
+                            "type": "string"
+                        },
+                        "unity_mana_to_crystal_conversion_rate": {
+                            "type": "string"
+                        },
+                        "unity_mana_to_metal_conversion_rate": {
                             "type": "string"
                         },
                         "unity_max_mana_points": {
@@ -759,10 +771,25 @@
                         "commerce_track_credit_income_rate_per_population": {
                             "type": "string"
                         },
+                        "corruption_mode_level": {
+                            "type": "string"
+                        },
+                        "corruption_track_build_price": {
+                            "type": "string"
+                        },
+                        "corruption_track_build_time": {
+                            "type": "string"
+                        },
                         "culture_rate": {
                             "type": "string"
                         },
                         "culture_resistance_rate": {
+                            "type": "string"
+                        },
+                        "culture_track_build_price": {
+                            "type": "string"
+                        },
+                        "culture_track_build_time": {
                             "type": "string"
                         },
                         "defense_track_build_price": {
@@ -795,6 +822,24 @@
                         "health_points_restore_rate": {
                             "type": "string"
                         },
+                        "ignore_shroud_limit": {
+                            "type": "string"
+                        },
+                        "industry_track_build_price": {
+                            "type": "string"
+                        },
+                        "industry_track_build_time": {
+                            "type": "string"
+                        },
+                        "influence_points_recharge_rate": {
+                            "type": "string"
+                        },
+                        "influence_track_build_price": {
+                            "type": "string"
+                        },
+                        "influence_track_build_time": {
+                            "type": "string"
+                        },
                         "logistics_track_build_price": {
                             "type": "string"
                         },
@@ -811,6 +856,9 @@
                             "type": "string"
                         },
                         "max_civilian_structure_slots": {
+                            "type": "string"
+                        },
+                        "max_corruption": {
                             "type": "string"
                         },
                         "max_garrison_supply": {
@@ -867,6 +915,15 @@
                         "neutral_population_assimilation_rate": {
                             "type": "string"
                         },
+                        "non_trade_credits_income_rate_scalar": {
+                            "type": "string"
+                        },
+                        "non_trade_crystal_income_rate_scalar": {
+                            "type": "string"
+                        },
+                        "non_trade_metal_income_rate_scalar": {
+                            "type": "string"
+                        },
                         "orbital_extraction_crystal_income_rate": {
                             "type": "string"
                         },
@@ -876,6 +933,15 @@
                         "planet_component_price": {
                             "type": "string"
                         },
+                        "planet_corruption_debuff_strength": {
+                            "type": "string"
+                        },
+                        "planet_corruption_speed": {
+                            "type": "string"
+                        },
+                        "planet_corruption_strength": {
+                            "type": "string"
+                        },
                         "planet_shield_burst_cooldown": {
                             "type": "string"
                         },
@@ -883,6 +949,12 @@
                             "type": "string"
                         },
                         "population_growth_rate": {
+                            "type": "string"
+                        },
+                        "population_track_build_price": {
+                            "type": "string"
+                        },
+                        "population_track_build_time": {
                             "type": "string"
                         },
                         "research_track_build_price": {
@@ -972,6 +1044,18 @@
                         "civilian_research_points": {
                             "type": "string"
                         },
+                        "cloak_quality": {
+                            "type": "string"
+                        },
+                        "corruption_decay_delay_duration_after_gain": {
+                            "type": "string"
+                        },
+                        "corruption_decay_rate": {
+                            "type": "string"
+                        },
+                        "corruption_overflow_threshold": {
+                            "type": "string"
+                        },
                         "credit_income_rate": {
                             "type": "string"
                         },
@@ -991,6 +1075,12 @@
                             "type": "string"
                         },
                         "damage_taken": {
+                            "type": "string"
+                        },
+                        "detection_quality": {
+                            "type": "string"
+                        },
+                        "detection_range": {
                             "type": "string"
                         },
                         "experience_gained_from_loot_collection": {
@@ -1026,6 +1116,9 @@
                         "loot_collection_duration": {
                             "type": "string"
                         },
+                        "lower_cloak_speed": {
+                            "type": "string"
+                        },
                         "max_angular_speed": {
                             "type": "string"
                         },
@@ -1033,6 +1126,9 @@
                             "type": "string"
                         },
                         "max_armor_points": {
+                            "type": "string"
+                        },
+                        "max_corruption": {
                             "type": "string"
                         },
                         "max_hull_points": {
@@ -1062,7 +1158,25 @@
                         "military_research_points": {
                             "type": "string"
                         },
+                        "min_detection_level": {
+                            "type": "string"
+                        },
+                        "overflow_armor_points_per_corruption": {
+                            "type": "string"
+                        },
+                        "overflow_hull_points_per_corruption": {
+                            "type": "string"
+                        },
+                        "overflow_shield_points_per_corruption": {
+                            "type": "string"
+                        },
                         "phase_resonance_bonus_duration": {
+                            "type": "string"
+                        },
+                        "planet_corruption_strength": {
+                            "type": "string"
+                        },
+                        "raise_cloak_speed": {
                             "type": "string"
                         },
                         "self_build_time": {
@@ -1119,6 +1233,9 @@
                         "normal": {
                             "type": "object",
                             "properties": {
+                                "berserk": {
+                                    "type": "string"
+                                },
                                 "bypass_shields_chance": {
                                     "type": "string"
                                 },
@@ -1143,6 +1260,9 @@
                         "planet_bombing": {
                             "type": "object",
                             "properties": {
+                                "berserk": {
+                                    "type": "string"
+                                },
                                 "bypass_shields_chance": {
                                     "type": "string"
                                 },
@@ -1216,6 +1336,216 @@
         "query_status": {
             "type": "object",
             "properties": {
+                "constraint_requirement_names": {
+                    "type": "object",
+                    "properties": {
+                        "can_ever_hyperspace": {
+                            "type": "string"
+                        },
+                        "can_ever_move": {
+                            "type": "string"
+                        },
+                        "can_purge_corruption": {
+                            "type": "string"
+                        },
+                        "cloak_detection_level_at_or_above": {
+                            "type": "string"
+                        },
+                        "composite_and": {
+                            "type": "string"
+                        },
+                        "composite_not": {
+                            "type": "string"
+                        },
+                        "composite_or": {
+                            "type": "string"
+                        },
+                        "gravity_well_contains_unit_type": {
+                            "type": "string"
+                        },
+                        "has_ability": {
+                            "type": "string"
+                        },
+                        "has_adjacent_planet_with_ownership": {
+                            "type": "string"
+                        },
+                        "has_allied_population_amount": {
+                            "type": "string"
+                        },
+                        "has_antimatter": {
+                            "type": "string"
+                        },
+                        "has_buff": {
+                            "type": "string"
+                        },
+                        "has_build_price": {
+                            "type": "string"
+                        },
+                        "has_corruption_at_or_above_threshold": {
+                            "type": "string"
+                        },
+                        "has_definition": {
+                            "type": "string"
+                        },
+                        "has_experience": {
+                            "type": "string"
+                        },
+                        "has_health": {
+                            "type": "string"
+                        },
+                        "has_hull_above_floor": {
+                            "type": "string"
+                        },
+                        "has_minimum_population_amount": {
+                            "type": "string"
+                        },
+                        "has_missing_antimatter": {
+                            "type": "string"
+                        },
+                        "has_missing_armor": {
+                            "type": "string"
+                        },
+                        "has_missing_hull": {
+                            "type": "string"
+                        },
+                        "has_missing_planet_health": {
+                            "type": "string"
+                        },
+                        "has_missing_population_amount": {
+                            "type": "string"
+                        },
+                        "has_missing_shields": {
+                            "type": "string"
+                        },
+                        "has_missing_strikecraft": {
+                            "type": "string"
+                        },
+                        "has_mutation": {
+                            "type": "string"
+                        },
+                        "has_orders": {
+                            "type": "string"
+                        },
+                        "has_permission": {
+                            "type": "string"
+                        },
+                        "has_planet_type": {
+                            "type": "string"
+                        },
+                        "has_recently_been_damaged": {
+                            "type": "string"
+                        },
+                        "has_recently_fired_weapon": {
+                            "type": "string"
+                        },
+                        "has_shields": {
+                            "type": "string"
+                        },
+                        "has_ship_role": {
+                            "type": "string"
+                        },
+                        "has_unit_level": {
+                            "type": "string"
+                        },
+                        "has_weapon": {
+                            "type": "string"
+                        },
+                        "is_always_a_threat": {
+                            "type": "string"
+                        },
+                        "is_asteroid": {
+                            "type": "string"
+                        },
+                        "is_berserk_vulnerable": {
+                            "type": "string"
+                        },
+                        "is_bombing_planet": {
+                            "type": "string"
+                        },
+                        "is_building_structures": {
+                            "type": "string"
+                        },
+                        "is_carrier": {
+                            "type": "string"
+                        },
+                        "is_channeling_ability": {
+                            "type": "string"
+                        },
+                        "is_cloaked": {
+                            "type": "string"
+                        },
+                        "is_colonizable_planet": {
+                            "type": "string"
+                        },
+                        "is_culture_provider": {
+                            "type": "string"
+                        },
+                        "is_dead_soon": {
+                            "type": "string"
+                        },
+                        "is_detected": {
+                            "type": "string"
+                        },
+                        "is_explored_planet": {
+                            "type": "string"
+                        },
+                        "is_friendly": {
+                            "type": "string"
+                        },
+                        "is_fully_built": {
+                            "type": "string"
+                        },
+                        "is_home_planet": {
+                            "type": "string"
+                        },
+                        "is_in_current_gravity_well": {
+                            "type": "string"
+                        },
+                        "is_in_dominant_culture": {
+                            "type": "string"
+                        },
+                        "is_in_fleet": {
+                            "type": "string"
+                        },
+                        "is_in_gravity_well_or_adjacent_phase_lane": {
+                            "type": "string"
+                        },
+                        "is_inner_planet": {
+                            "type": "string"
+                        },
+                        "is_structure_builder": {
+                            "type": "string"
+                        },
+                        "is_structure_plate_spin_changing": {
+                            "type": "string"
+                        },
+                        "is_structure_with_slot_type": {
+                            "type": "string"
+                        },
+                        "is_unit_factory": {
+                            "type": "string"
+                        },
+                        "is_unit_factory_building_units": {
+                            "type": "string"
+                        },
+                        "is_using_ability": {
+                            "type": "string"
+                        },
+                        "not_self": {
+                            "type": "string"
+                        },
+                        "target_gravity_well_has_available_unit_limit": {
+                            "type": "string"
+                        },
+                        "weapon_has_target": {
+                            "type": "string"
+                        }
+                    },
+                    "unevaluatedProperties": false
+                },
+                "constraint_requirement_or_separator": {
+                    "type": "string"
+                },
                 "default_not_ok_icon": {
                     "type": "string"
                 },
@@ -1232,6 +1562,12 @@
                             "type": "string"
                         },
                         "ability_cooldown_is_not_completed": {
+                            "type": "string"
+                        },
+                        "ability_corruption_is_above_required_maximum": {
+                            "type": "string"
+                        },
+                        "ability_corruption_is_below_required_minimum": {
                             "type": "string"
                         },
                         "ability_does_not_have_required_charge": {
@@ -1313,6 +1649,9 @@
                             "type": "string"
                         },
                         "alliance_offer_player_lost": {
+                            "type": "string"
+                        },
+                        "alliance_offer_transfer_not_unlocked": {
                             "type": "string"
                         },
                         "alliance_offer_version_mismatch": {
@@ -1412,6 +1751,9 @@
                             "type": "string"
                         },
                         "insufficient_civilian_structure_slots_at_max": {
+                            "type": "string"
+                        },
+                        "insufficient_corruption": {
                             "type": "string"
                         },
                         "insufficient_credits": {
@@ -1558,16 +1900,43 @@
                         "other_item_requirements_needed_item_missing": {
                             "type": "string"
                         },
+                        "planet_corruption_is_not_max": {
+                            "type": "string"
+                        },
+                        "planet_corruption_mode_cooldown_is_not_completed": {
+                            "type": "string"
+                        },
+                        "planet_corruption_mode_is_not_configured": {
+                            "type": "string"
+                        },
+                        "planet_corruption_mode_requires_corruption_race": {
+                            "type": "string"
+                        },
+                        "planet_corruption_mode_requires_shrouded_planet": {
+                            "type": "string"
+                        },
                         "planet_is_already_a_home_planet": {
                             "type": "string"
                         },
+                        "planet_is_already_shrouded": {
+                            "type": "string"
+                        },
+                        "planet_is_already_shrouding": {
+                            "type": "string"
+                        },
                         "planet_is_not_building_structure": {
+                            "type": "string"
+                        },
+                        "planet_shrouding_requires_corruption_race": {
                             "type": "string"
                         },
                         "planet_track_is_not_upgrading": {
                             "type": "string"
                         },
                         "planet_track_level_is_already_max": {
+                            "type": "string"
+                        },
+                        "planet_track_level_is_already_max_needs_shroud": {
                             "type": "string"
                         },
                         "planet_unit_limit_exceeded": {
@@ -1681,6 +2050,9 @@
                         "purchase_item_unit_missing_culture_provider": {
                             "type": "string"
                         },
+                        "purchase_item_unit_missing_required_item_access_tag": {
+                            "type": "string"
+                        },
                         "purchase_item_unit_missing_required_tag": {
                             "type": "string"
                         },
@@ -1771,7 +2143,16 @@
                         "star_unit_limit_exceeded": {
                             "type": "string"
                         },
+                        "strikecraft_kind_is_locked": {
+                            "type": "string"
+                        },
+                        "strikecraft_kind_required_unit_item_missing": {
+                            "type": "string"
+                        },
                         "structure_is_not_valid": {
+                            "type": "string"
+                        },
+                        "structure_requires_corruption_structure_capacity": {
                             "type": "string"
                         },
                         "structure_requires_higher_planet_track_level": {
@@ -1895,6 +2276,9 @@
                             "type": "string"
                         },
                         "unit_factory_is_structure": {
+                            "type": "string"
+                        },
+                        "unit_factory_requires_free_unit": {
                             "type": "string"
                         },
                         "unit_has_no_gravity_well_to_retreat_from": {
@@ -1942,6 +2326,10 @@
                 "insufficient_research_tier_message_format": {
                     "type": "string"
                 },
+                "max_target_requirement_list_count": {
+                    "description": "Valid target lists longer than this fall back to the plain message instead of listing every accepted type.",
+                    "type": "integer"
+                },
                 "messages": {
                     "type": "object",
                     "properties": {
@@ -1955,6 +2343,12 @@
                             "type": "string"
                         },
                         "ability_cooldown_is_not_completed": {
+                            "type": "string"
+                        },
+                        "ability_corruption_is_above_required_maximum": {
+                            "type": "string"
+                        },
+                        "ability_corruption_is_below_required_minimum": {
                             "type": "string"
                         },
                         "ability_does_not_have_required_charge": {
@@ -2036,6 +2430,9 @@
                             "type": "string"
                         },
                         "alliance_offer_player_lost": {
+                            "type": "string"
+                        },
+                        "alliance_offer_transfer_not_unlocked": {
                             "type": "string"
                         },
                         "alliance_offer_version_mismatch": {
@@ -2135,6 +2532,9 @@
                             "type": "string"
                         },
                         "insufficient_civilian_structure_slots_at_max": {
+                            "type": "string"
+                        },
+                        "insufficient_corruption": {
                             "type": "string"
                         },
                         "insufficient_credits": {
@@ -2281,16 +2681,43 @@
                         "other_item_requirements_needed_item_missing": {
                             "type": "string"
                         },
+                        "planet_corruption_is_not_max": {
+                            "type": "string"
+                        },
+                        "planet_corruption_mode_cooldown_is_not_completed": {
+                            "type": "string"
+                        },
+                        "planet_corruption_mode_is_not_configured": {
+                            "type": "string"
+                        },
+                        "planet_corruption_mode_requires_corruption_race": {
+                            "type": "string"
+                        },
+                        "planet_corruption_mode_requires_shrouded_planet": {
+                            "type": "string"
+                        },
                         "planet_is_already_a_home_planet": {
                             "type": "string"
                         },
+                        "planet_is_already_shrouded": {
+                            "type": "string"
+                        },
+                        "planet_is_already_shrouding": {
+                            "type": "string"
+                        },
                         "planet_is_not_building_structure": {
+                            "type": "string"
+                        },
+                        "planet_shrouding_requires_corruption_race": {
                             "type": "string"
                         },
                         "planet_track_is_not_upgrading": {
                             "type": "string"
                         },
                         "planet_track_level_is_already_max": {
+                            "type": "string"
+                        },
+                        "planet_track_level_is_already_max_needs_shroud": {
                             "type": "string"
                         },
                         "planet_unit_limit_exceeded": {
@@ -2404,6 +2831,9 @@
                         "purchase_item_unit_missing_culture_provider": {
                             "type": "string"
                         },
+                        "purchase_item_unit_missing_required_item_access_tag": {
+                            "type": "string"
+                        },
                         "purchase_item_unit_missing_required_tag": {
                             "type": "string"
                         },
@@ -2494,7 +2924,16 @@
                         "star_unit_limit_exceeded": {
                             "type": "string"
                         },
+                        "strikecraft_kind_is_locked": {
+                            "type": "string"
+                        },
+                        "strikecraft_kind_required_unit_item_missing": {
+                            "type": "string"
+                        },
                         "structure_is_not_valid": {
+                            "type": "string"
+                        },
+                        "structure_requires_corruption_structure_capacity": {
                             "type": "string"
                         },
                         "structure_requires_higher_planet_track_level": {
@@ -2620,6 +3059,9 @@
                         "unit_factory_is_structure": {
                             "type": "string"
                         },
+                        "unit_factory_requires_free_unit": {
+                            "type": "string"
+                        },
                         "unit_has_no_gravity_well_to_retreat_from": {
                             "type": "string"
                         },
@@ -2662,6 +3104,321 @@
                 "missing_weapon_constraint_message_suffix": {
                     "type": "string"
                 },
+                "target_filter_unit_type_names": {
+                    "type": "object",
+                    "properties": {
+                        "asteroid": {
+                            "type": "string"
+                        },
+                        "cannon_shell": {
+                            "type": "string"
+                        },
+                        "capital_ship": {
+                            "type": "string"
+                        },
+                        "corvette": {
+                            "type": "string"
+                        },
+                        "cruiser": {
+                            "type": "string"
+                        },
+                        "debris": {
+                            "type": "string"
+                        },
+                        "frigate": {
+                            "type": "string"
+                        },
+                        "gravity_well": {
+                            "type": "string"
+                        },
+                        "loot": {
+                            "type": "string"
+                        },
+                        "phase_lane": {
+                            "type": "string"
+                        },
+                        "planet": {
+                            "type": "string"
+                        },
+                        "star": {
+                            "type": "string"
+                        },
+                        "starbase": {
+                            "type": "string"
+                        },
+                        "strikecraft": {
+                            "type": "string"
+                        },
+                        "structure": {
+                            "type": "string"
+                        },
+                        "super_capital_ship": {
+                            "type": "string"
+                        },
+                        "titan": {
+                            "type": "string"
+                        },
+                        "torpedo": {
+                            "type": "string"
+                        },
+                        "uncolonizable": {
+                            "type": "string"
+                        },
+                        "untargetable": {
+                            "type": "string"
+                        }
+                    },
+                    "unevaluatedProperties": false
+                },
+                "target_must_be_constraint_message_format": {
+                    "type": "string"
+                },
+                "target_must_be_unit_definition_message_format": {
+                    "type": "string"
+                },
+                "target_must_be_unit_type_message_format": {
+                    "type": "string"
+                },
+                "target_must_have_ownership_message_format": {
+                    "type": "string"
+                },
+                "target_must_not_be_constraint_message_format": {
+                    "type": "string"
+                },
+                "target_ownership_names": {
+                    "type": "object",
+                    "properties": {
+                        "ally": {
+                            "type": "string"
+                        },
+                        "enemy": {
+                            "type": "string"
+                        },
+                        "friendly": {
+                            "type": "string"
+                        },
+                        "none": {
+                            "type": "string"
+                        },
+                        "self": {
+                            "type": "string"
+                        }
+                    },
+                    "unevaluatedProperties": false
+                },
+                "target_requirement_list_separator": {
+                    "type": "string"
+                },
+                "unmet_constraint_messages": {
+                    "type": "object",
+                    "properties": {
+                        "can_ever_hyperspace": {
+                            "type": "string"
+                        },
+                        "can_ever_move": {
+                            "type": "string"
+                        },
+                        "can_purge_corruption": {
+                            "type": "string"
+                        },
+                        "cloak_detection_level_at_or_above": {
+                            "type": "string"
+                        },
+                        "composite_and": {
+                            "type": "string"
+                        },
+                        "composite_not": {
+                            "type": "string"
+                        },
+                        "composite_or": {
+                            "type": "string"
+                        },
+                        "gravity_well_contains_unit_type": {
+                            "type": "string"
+                        },
+                        "has_ability": {
+                            "type": "string"
+                        },
+                        "has_adjacent_planet_with_ownership": {
+                            "type": "string"
+                        },
+                        "has_allied_population_amount": {
+                            "type": "string"
+                        },
+                        "has_antimatter": {
+                            "type": "string"
+                        },
+                        "has_buff": {
+                            "type": "string"
+                        },
+                        "has_build_price": {
+                            "type": "string"
+                        },
+                        "has_corruption_at_or_above_threshold": {
+                            "type": "string"
+                        },
+                        "has_definition": {
+                            "type": "string"
+                        },
+                        "has_experience": {
+                            "type": "string"
+                        },
+                        "has_health": {
+                            "type": "string"
+                        },
+                        "has_hull_above_floor": {
+                            "type": "string"
+                        },
+                        "has_minimum_population_amount": {
+                            "type": "string"
+                        },
+                        "has_missing_antimatter": {
+                            "type": "string"
+                        },
+                        "has_missing_armor": {
+                            "type": "string"
+                        },
+                        "has_missing_hull": {
+                            "type": "string"
+                        },
+                        "has_missing_planet_health": {
+                            "type": "string"
+                        },
+                        "has_missing_population_amount": {
+                            "type": "string"
+                        },
+                        "has_missing_shields": {
+                            "type": "string"
+                        },
+                        "has_missing_strikecraft": {
+                            "type": "string"
+                        },
+                        "has_mutation": {
+                            "type": "string"
+                        },
+                        "has_orders": {
+                            "type": "string"
+                        },
+                        "has_permission": {
+                            "type": "string"
+                        },
+                        "has_planet_type": {
+                            "type": "string"
+                        },
+                        "has_recently_been_damaged": {
+                            "type": "string"
+                        },
+                        "has_recently_fired_weapon": {
+                            "type": "string"
+                        },
+                        "has_shields": {
+                            "type": "string"
+                        },
+                        "has_ship_role": {
+                            "type": "string"
+                        },
+                        "has_unit_level": {
+                            "type": "string"
+                        },
+                        "has_weapon": {
+                            "type": "string"
+                        },
+                        "is_always_a_threat": {
+                            "type": "string"
+                        },
+                        "is_asteroid": {
+                            "type": "string"
+                        },
+                        "is_berserk_vulnerable": {
+                            "type": "string"
+                        },
+                        "is_bombing_planet": {
+                            "type": "string"
+                        },
+                        "is_building_structures": {
+                            "type": "string"
+                        },
+                        "is_carrier": {
+                            "type": "string"
+                        },
+                        "is_channeling_ability": {
+                            "type": "string"
+                        },
+                        "is_cloaked": {
+                            "type": "string"
+                        },
+                        "is_colonizable_planet": {
+                            "type": "string"
+                        },
+                        "is_culture_provider": {
+                            "type": "string"
+                        },
+                        "is_dead_soon": {
+                            "type": "string"
+                        },
+                        "is_detected": {
+                            "type": "string"
+                        },
+                        "is_explored_planet": {
+                            "type": "string"
+                        },
+                        "is_friendly": {
+                            "type": "string"
+                        },
+                        "is_fully_built": {
+                            "type": "string"
+                        },
+                        "is_home_planet": {
+                            "type": "string"
+                        },
+                        "is_in_current_gravity_well": {
+                            "type": "string"
+                        },
+                        "is_in_dominant_culture": {
+                            "type": "string"
+                        },
+                        "is_in_fleet": {
+                            "type": "string"
+                        },
+                        "is_in_gravity_well_or_adjacent_phase_lane": {
+                            "type": "string"
+                        },
+                        "is_inner_planet": {
+                            "type": "string"
+                        },
+                        "is_structure_builder": {
+                            "type": "string"
+                        },
+                        "is_structure_plate_spin_changing": {
+                            "type": "string"
+                        },
+                        "is_structure_with_slot_type": {
+                            "type": "string"
+                        },
+                        "is_unit_factory": {
+                            "type": "string"
+                        },
+                        "is_unit_factory_building_units": {
+                            "type": "string"
+                        },
+                        "is_using_ability": {
+                            "type": "string"
+                        },
+                        "not_self": {
+                            "type": "string"
+                        },
+                        "target_gravity_well_has_available_unit_limit": {
+                            "type": "string"
+                        },
+                        "weapon_has_target": {
+                            "type": "string"
+                        }
+                    },
+                    "unevaluatedProperties": false
+                },
+                "unmet_has_definition_constraint_message_format": {
+                    "type": "string"
+                },
                 "unmet_is_carrier_constraint_message": {
                     "type": "string"
                 },
@@ -2687,6 +3444,12 @@
                     "type": "string"
                 },
                 "unmet_is_not_own_home_planet_constraint_message": {
+                    "type": "string"
+                },
+                "unmet_target_gravity_well_has_available_unit_limit_constraint_message": {
+                    "type": "string"
+                },
+                "unmet_target_gravity_well_must_have_unit_type_constraint": {
                     "type": "string"
                 }
             },
@@ -2895,6 +3658,26 @@
                             "unevaluatedProperties": false
                         },
                         "build_progress": {
+                            "type": "object",
+                            "properties": {
+                                "high": {
+                                    "type": "string"
+                                },
+                                "low": {
+                                    "type": "string"
+                                },
+                                "medium": {
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "high",
+                                "low",
+                                "medium"
+                            ],
+                            "unevaluatedProperties": false
+                        },
+                        "corruption": {
                             "type": "object",
                             "properties": {
                                 "high": {

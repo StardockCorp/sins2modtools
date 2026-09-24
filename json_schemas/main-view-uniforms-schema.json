@@ -88,15 +88,209 @@
             },
             "unevaluatedProperties": false
         },
+        "cloaked_located_ping": {
+            "type": "object",
+            "properties": {
+                "alpha": {
+                    "type": "number"
+                },
+                "brush": {
+                    "type": "string"
+                },
+                "icon_size": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    },
+                    "maxItems": 2
+                }
+            },
+            "unevaluatedProperties": false
+        },
+        "corruption_overlay": {
+            "type": "object",
+            "properties": {
+                "border_offset": {
+                    "type": "number"
+                },
+                "completed_ring_color": {
+                    "type": "string"
+                },
+                "fiber_alpha": {
+                    "type": "number"
+                },
+                "fiber_branch_fraction_a": {
+                    "type": "number"
+                },
+                "fiber_branch_fraction_b": {
+                    "type": "number"
+                },
+                "fiber_branch_splay": {
+                    "type": "number"
+                },
+                "fiber_count": {
+                    "type": "integer"
+                },
+                "fiber_progress_lead": {
+                    "type": "number"
+                },
+                "fiber_spread": {
+                    "type": "number"
+                },
+                "fiber_thin_alpha_scale": {
+                    "type": "number"
+                },
+                "fiber_thin_amplitude_scale": {
+                    "type": "number"
+                },
+                "fiber_thin_thickness_scale": {
+                    "type": "number"
+                },
+                "hover_max_distance_pixels": {
+                    "type": "number"
+                },
+                "hover_movement_leeway_fraction": {
+                    "type": "number"
+                },
+                "hover_retention_scale": {
+                    "type": "number"
+                },
+                "line_alpha": {
+                    "type": "number"
+                },
+                "line_color": {
+                    "type": "string"
+                },
+                "line_thickness": {
+                    "type": "number"
+                },
+                "link_hover_base_distance_pixels": {
+                    "type": "number"
+                },
+                "noise_amplitude": {
+                    "type": "number"
+                },
+                "noise_drift_speed": {
+                    "type": "number"
+                },
+                "noise_frequency": {
+                    "type": "number"
+                },
+                "noise_horizontal_amplitude": {
+                    "type": "number"
+                },
+                "noise_link_separation": {
+                    "type": "number"
+                },
+                "noise_reverse": {
+                    "type": "boolean"
+                },
+                "ring_alpha": {
+                    "type": "number"
+                },
+                "ring_color": {
+                    "type": "string"
+                },
+                "ring_hover_base_distance_pixels": {
+                    "type": "number"
+                },
+                "ring_max_segment_length": {
+                    "type": "number"
+                },
+                "ring_min_segment_count": {
+                    "type": "integer"
+                },
+                "ring_noise_amplitude": {
+                    "type": "number"
+                },
+                "ring_noise_drift_speed": {
+                    "type": "number"
+                },
+                "ring_noise_frequency": {
+                    "type": "number"
+                },
+                "ring_noise_vertical_amplitude": {
+                    "type": "number"
+                },
+                "ring_thickness": {
+                    "type": "number"
+                },
+                "source_anchor_depth_scale": {
+                    "type": "number"
+                },
+                "spline_control_point_count": {
+                    "type": "integer"
+                },
+                "spline_segments_per_span": {
+                    "type": "integer"
+                },
+                "spline_tension": {
+                    "type": "number"
+                },
+                "spread_arc_full_angle": {
+                    "type": "number"
+                },
+                "spread_arc_segment_count": {
+                    "type": "integer"
+                },
+                "taper_amount": {
+                    "type": "number"
+                },
+                "taper_mode": {
+                    "type": "string",
+                    "enum": [
+                        "off",
+                        "center",
+                        "ends",
+                        "ramp"
+                    ]
+                },
+                "target_anchor_depth_scale": {
+                    "type": "number"
+                },
+                "zoomed_in_alpha_scale": {
+                    "type": "number"
+                },
+                "zoomed_in_fade_begin_distance_scale": {
+                    "type": "number"
+                },
+                "zoomed_in_fade_end_distance_scale": {
+                    "type": "number"
+                },
+                "zoomed_in_unfocused_alpha_scale": {
+                    "type": "number"
+                }
+            },
+            "unevaluatedProperties": false
+        },
         "debug_text_block_font": {
             "type": "string"
         },
         "default_bandbox": {
             "type": "string"
         },
+        "detection_range": {
+            "type": "object",
+            "properties": {
+                "line_circle_segment_count": {
+                    "type": "integer"
+                },
+                "line_circle_thickness": {
+                    "type": "number"
+                },
+                "line_color": {
+                    "type": "string"
+                }
+            },
+            "unevaluatedProperties": false
+        },
         "effects": {
             "type": "object",
             "properties": {
+                "build_sweep_edge_margin_scalar": {
+                    "description": "how far past each end of the hull the dlc3 build plane travels, as a fraction of the hull's extent. must match the glow band width in the build shaders. default=0.15",
+                    "type": "number"
+                },
                 "hyperspace_travel_effect_early_start_time": {
                     "type": "number"
                 }
@@ -920,7 +1114,7 @@
                         "pip_offsets": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/$defs/point"
+                                "$ref": "#/definitions/point"
                             },
                             "maxItems": 10
                         },
@@ -1128,21 +1322,40 @@
         "unit_icons": {
             "type": "object",
             "properties": {
+                "cloaked_icon_alert_fill_color": {
+                    "type": "string"
+                },
+                "cloaked_icon_blink_duration": {
+                    "type": "number"
+                },
+                "cloaked_icon_min_alpha": {
+                    "type": "number"
+                },
+                "corrupted_icon_alert_fill_colors": {
+                    "description": "one ring color per corruption threshold band, lowest band first",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
                 "fleet_icon": {
                     "type": "object",
                     "properties": {
+                        "cloaked_icon_overlay": {
+                            "$ref": "#/definitions/brush_ptr"
+                        },
                         "extra_rotation": {
                             "description": "extra rotation applied to icon (due to icon being reused in selection window)",
                             "type": "number"
                         },
                         "group": {
-                            "$ref": "#/$defs/unit_main_view_icon_group"
+                            "$ref": "#/definitions/unit_main_view_icon_group"
                         },
                         "has_rotation": {
                             "type": "boolean"
                         },
                         "icon": {
-                            "$ref": "#/$defs/brush_ptr"
+                            "$ref": "#/definitions/brush_ptr"
                         },
                         "is_additive": {
                             "type": "boolean"
@@ -1151,10 +1364,10 @@
                             "type": "string"
                         },
                         "selected_icon": {
-                            "$ref": "#/$defs/brush_ptr"
+                            "$ref": "#/definitions/brush_ptr"
                         },
                         "sub_selected_icon": {
-                            "$ref": "#/$defs/brush_ptr"
+                            "$ref": "#/definitions/brush_ptr"
                         },
                         "use_owner_player_color": {
                             "type": "boolean"
@@ -2095,6 +2308,9 @@
         "weapon_range": {
             "type": "object",
             "properties": {
+                "built_defensive_structure_line_alpha_multiplier": {
+                    "type": "number"
+                },
                 "line_circle_segment_count": {
                     "type": "integer"
                 },
@@ -2113,6 +2329,7 @@
     },
     "required": [
         "attack_bandbox",
+        "cloaked_located_ping",
         "debug_text_block_font",
         "default_bandbox",
         "extra_alert_fill_alpha_for_hud",
@@ -2134,7 +2351,7 @@
         "unowned_planet_player_icon"
     ],
     "unevaluatedProperties": false,
-    "$defs": {
+    "definitions": {
         "brush_ptr": {
             "type": "string"
         },

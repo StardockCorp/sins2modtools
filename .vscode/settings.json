@@ -41,7 +41,9 @@
         "*.death_sequence": "json",
         "*.death_sequence_group": "json",
         "*.texture_animation": "json",
-        "*.sound": "json"
+        "*.sound": "json",
+        "*.unique_scenario": "json",
+        "*.localized_text_csv": "csv"
     },
     "json.schemas": [
     {

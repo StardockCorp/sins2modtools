@@ -8,46 +8,46 @@
             "description": "new sections that claim modder slots in the dialog's pre-allocated section pool",
             "type": "array",
             "items": {
-                "$ref": "#/$defs/faction_picker_manifest_custom_section"
+                "$ref": "#/definitions/faction_picker_manifest_custom_section"
             }
         },
         "faction_portraits": {
             "description": "per-faction portrait brushes; extends the dialog's base set",
             "type": "array",
             "items": {
-                "$ref": "#/$defs/faction_portrait_entry"
+                "$ref": "#/definitions/faction_portrait_entry"
             }
         },
         "homeworld_brushes": {
             "description": "per-race homeworld brushes; extends the dialog's base set",
             "type": "array",
             "items": {
-                "$ref": "#/$defs/homeworld_brush_entry"
+                "$ref": "#/definitions/homeworld_brush_entry"
             }
         },
         "pages": {
             "description": "additional pages appended after the dialog's base-game pages",
             "type": "array",
             "items": {
-                "$ref": "#/$defs/faction_picker_page_definition"
+                "$ref": "#/definitions/faction_picker_page_definition"
             }
         },
         "unit_sections": {
             "description": "patches to race_unit_ids on sections the dialog's .gui already declares",
             "type": "array",
             "items": {
-                "$ref": "#/$defs/faction_picker_manifest_unit_patch"
+                "$ref": "#/definitions/faction_picker_manifest_unit_patch"
             }
         }
     },
     "unevaluatedProperties": false,
-    "$defs": {
+    "definitions": {
         "faction_picker_manifest_race_units": {
             "type": "object",
             "properties": {
                 "race": {
                     "description": "race whose page receives these units; must match a player_definition's race name exactly (case-sensitive). resolves to every page listing a faction of this race.",
-                    "$ref": "#/$defs/player_race_name"
+                    "$ref": "#/definitions/player_race_name"
                 },
                 "unit_ids": {
                     "description": "units to display for this race",
@@ -88,7 +88,7 @@
                     "description": "faction ids on this page; size() > 1 selects dual-faction layout",
                     "type": "array",
                     "items": {
-                        "$ref": "#/$defs/player_definition_ptr"
+                        "$ref": "#/definitions/player_definition_ptr"
                     }
                 },
                 "layout_gui": {
@@ -97,7 +97,7 @@
                 },
                 "name": {
                     "description": "displayed page name",
-                    "$ref": "#/$defs/localized_text_ptr"
+                    "$ref": "#/definitions/localized_text_ptr"
                 }
             },
             "required": [
@@ -111,11 +111,11 @@
             "properties": {
                 "faction": {
                     "description": "faction id this portrait is shown for",
-                    "$ref": "#/$defs/player_definition_ptr"
+                    "$ref": "#/definitions/player_definition_ptr"
                 },
                 "portrait": {
                     "description": "brush drawn on the faction's portrait panel",
-                    "$ref": "#/$defs/brush_ptr"
+                    "$ref": "#/definitions/brush_ptr"
                 }
             },
             "required": [
@@ -129,11 +129,11 @@
             "properties": {
                 "brush": {
                     "description": "brush drawn on the race's homeworld panel",
-                    "$ref": "#/$defs/brush_ptr"
+                    "$ref": "#/definitions/brush_ptr"
                 },
                 "race": {
                     "description": "race this brush is shown for on the homeworld panel",
-                    "$ref": "#/$defs/player_race_name"
+                    "$ref": "#/definitions/player_race_name"
                 }
             },
             "required": [
@@ -147,10 +147,10 @@
             "properties": {
                 "race": {
                     "description": "race whose page receives the patch; must match a player_definition's race name exactly (case-sensitive). resolves to every page listing a faction of this race.",
-                    "$ref": "#/$defs/player_race_name"
+                    "$ref": "#/definitions/player_race_name"
                 },
                 "section_id": {
-                    "description": "bare section id as declared in the dialog's race_unit_section_ids (e.g. "capital_ships")",
+                    "description": "bare section id as declared in the dialog's race_unit_section_ids (e.g. 'capital_ships')",
                     "type": "string"
                 },
                 "unit_ids": {
@@ -177,7 +177,7 @@
                 },
                 "header_text": {
                     "description": "header label shown above the section",
-                    "$ref": "#/$defs/localized_text_ptr"
+                    "$ref": "#/definitions/localized_text_ptr"
                 },
                 "id": {
                     "description": "window id; must not collide with any existing section id",
@@ -261,7 +261,7 @@
                         },
                         "item_label_style": {
                             "description": "label style applied to item text",
-                            "$ref": "#/$defs/label_style_ptr"
+                            "$ref": "#/definitions/label_style_ptr"
                         },
                         "item_spacing": {
                             "description": "pixels between adjacent items in the section",
@@ -269,19 +269,19 @@
                         },
                         "overlay_brush": {
                             "description": "brush drawn on top of each item (e.g. border frame)",
-                            "$ref": "#/$defs/brush_ptr"
+                            "$ref": "#/definitions/brush_ptr"
                         },
                         "pressed_sound": {
                             "description": "sound played when an item is clicked",
-                            "$ref": "#/$defs/sound_ptr"
+                            "$ref": "#/definitions/sound_ptr"
                         },
                         "underlay_brush": {
                             "description": "brush drawn behind each item",
-                            "$ref": "#/$defs/brush_ptr"
+                            "$ref": "#/definitions/brush_ptr"
                         },
                         "underlay_highlighted_brush": {
                             "description": "underlay variant drawn when the item is highlighted",
-                            "$ref": "#/$defs/brush_ptr"
+                            "$ref": "#/definitions/brush_ptr"
                         }
                     },
                     "unevaluatedProperties": false
@@ -290,7 +290,7 @@
                     "description": "per-race unit lists; each race resolves to every page listing a faction of that race",
                     "type": "array",
                     "items": {
-                        "$ref": "#/$defs/faction_picker_manifest_race_units"
+                        "$ref": "#/definitions/faction_picker_manifest_race_units"
                     }
                 }
             },

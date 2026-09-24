@@ -31,7 +31,7 @@
             "type": "number"
         },
         "custom_target_filter": {
-            "$ref": "#/$defs/target_filter"
+            "$ref": "#/definitions/target_filter"
         },
         "damage_affect_type": {
             "type": "string",
@@ -49,7 +49,7 @@
             "type": "object",
             "properties": {
                 "beam_effect": {
-                    "$ref": "#/$defs/effect_alias_name"
+                    "$ref": "#/definitions/effect_alias_name"
                 },
                 "burst_pattern": {
                     "type": "array",
@@ -58,13 +58,13 @@
                     }
                 },
                 "charge_effect": {
-                    "$ref": "#/$defs/effect_alias_name"
+                    "$ref": "#/definitions/effect_alias_name"
                 },
                 "hit_hull_effect": {
-                    "$ref": "#/$defs/effect_alias_name"
+                    "$ref": "#/definitions/effect_alias_name"
                 },
                 "hit_shield_effect": {
-                    "$ref": "#/$defs/effect_alias_name"
+                    "$ref": "#/definitions/effect_alias_name"
                 },
                 "hit_shield_impact_radius_t": {
                     "description": "default=0.5",
@@ -75,7 +75,7 @@
                     "type": "number"
                 },
                 "muzzle_effect": {
-                    "$ref": "#/$defs/effect_alias_name"
+                    "$ref": "#/definitions/effect_alias_name"
                 },
                 "muzzle_picking_behavior": {
                     "description": "default=all",
@@ -112,7 +112,7 @@
                     ]
                 },
                 "projectile_travel_effect": {
-                    "$ref": "#/$defs/effect_alias_name"
+                    "$ref": "#/definitions/effect_alias_name"
                 }
             },
             "unevaluatedProperties": false
@@ -124,6 +124,12 @@
                 "beam_duration": {
                     "type": "number",
                     "minimum": 0.0
+                },
+                "bypass_shields_chance": {
+                    "description": "default=0",
+                    "type": "number",
+                    "minimum": 0.0,
+                    "maximum": 1.0
                 },
                 "charge_duration": {
                     "type": "number",
@@ -144,7 +150,8 @@
                         "bypass_shields_chance": {
                             "description": "default=0",
                             "type": "number",
-                            "minimum": 0.0
+                            "minimum": 0.0,
+                            "maximum": 1.0
                         },
                         "duration": {
                             "type": "number"
@@ -186,13 +193,14 @@
                             "cooldown_duration",
                             "range",
                             "tracking_speed",
-                            "bypass_shields_chance"
+                            "bypass_shields_chance",
+                            "berserk"
                         ]
                     },
                     "prerequisites": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/$defs/research_prerequisites_set"
+                            "$ref": "#/definitions/research_prerequisites_set"
                         }
                     },
                     "value": {
@@ -235,7 +243,7 @@
         "tags": {
             "type": "array",
             "items": {
-                "$ref": "#/$defs/weapon_tag"
+                "$ref": "#/definitions/weapon_tag"
             },
             "maxItems": 32
         },
@@ -274,7 +282,7 @@
                             "muzzle_positions": {
                                 "type": "array",
                                 "items": {
-                                    "$ref": "#/$defs/float3"
+                                    "$ref": "#/definitions/float3"
                                 }
                             }
                         },
@@ -311,7 +319,7 @@
                             "muzzle_positions": {
                                 "type": "array",
                                 "items": {
-                                    "$ref": "#/$defs/float3"
+                                    "$ref": "#/definitions/float3"
                                 }
                             }
                         },
@@ -325,7 +333,7 @@
             "unevaluatedProperties": false
         },
         "uniforms_target_filter_id": {
-            "$ref": "#/$defs/target_filter_id"
+            "$ref": "#/definitions/target_filter_id"
         },
         "version": {
             "type": "integer"
@@ -419,11 +427,11 @@
         }
     ],
     "unevaluatedProperties": false,
-    "$defs": {
+    "definitions": {
         "has_types_vector": {
             "type": "array",
             "items": {
-                "$ref": "#/$defs/target_filter_unit_type"
+                "$ref": "#/definitions/target_filter_unit_type"
             },
             "maxItems": 20
         },
@@ -482,6 +490,7 @@
                                     "weapon_has_target",
                                     "is_always_a_threat",
                                     "is_channeling_ability",
+                                    "is_using_ability",
                                     "is_bombing_planet",
                                     "is_carrier",
                                     "is_asteroid",
@@ -511,9 +520,16 @@
                                     "gravity_well_contains_unit_type",
                                     "is_in_gravity_well_or_adjacent_phase_lane",
                                     "not_self",
+                                    "is_cloaked",
+                                    "cloak_detection_level_at_or_above",
                                     "composite_not",
                                     "composite_and",
-                                    "composite_or"
+                                    "composite_or",
+                                    "has_corruption_at_or_above_threshold",
+                                    "has_hull_above_floor",
+                                    "can_purge_corruption",
+                                    "is_berserk_vulnerable",
+                                    "target_gravity_well_has_available_unit_limit"
                                 ]
                             }
                         },
@@ -532,7 +548,7 @@
                                 "then": {
                                     "properties": {
                                         "unit_definition": {
-                                            "$ref": "#/$defs/unit_definition_ptr"
+                                            "$ref": "#/definitions/unit_definition_ptr"
                                         }
                                     },
                                     "required": [
@@ -774,7 +790,7 @@
                                 "then": {
                                     "properties": {
                                         "permission_type": {
-                                            "$ref": "#/$defs/unit_permission_type"
+                                            "$ref": "#/definitions/unit_permission_type"
                                         }
                                     },
                                     "required": [
@@ -804,7 +820,7 @@
                                     "properties": {
                                         "weapon_type": {
                                             "description": "default=normal",
-                                            "$ref": "#/$defs/weapon_type"
+                                            "$ref": "#/definitions/weapon_type"
                                         }
                                     }
                                 }
@@ -850,10 +866,10 @@
                                 "then": {
                                     "properties": {
                                         "tag": {
-                                            "$ref": "#/$defs/weapon_tag"
+                                            "$ref": "#/definitions/weapon_tag"
                                         },
                                         "weapon_type": {
-                                            "$ref": "#/$defs/weapon_type"
+                                            "$ref": "#/definitions/weapon_type"
                                         }
                                     }
                                 }
@@ -881,7 +897,7 @@
                                         "planet_types": {
                                             "type": "array",
                                             "items": {
-                                                "$ref": "#/$defs/planet_type"
+                                                "$ref": "#/definitions/planet_type"
                                             }
                                         }
                                     },
@@ -903,7 +919,7 @@
                                         "ship_roles": {
                                             "type": "array",
                                             "items": {
-                                                "$ref": "#/$defs/ship_role"
+                                                "$ref": "#/definitions/ship_role"
                                             }
                                         }
                                     },
@@ -1005,7 +1021,23 @@
                                 "then": {
                                     "properties": {
                                         "ability": {
-                                            "$ref": "#/$defs/ability_definition_ptr"
+                                            "$ref": "#/definitions/ability_definition_ptr"
+                                        }
+                                    }
+                                }
+                            },
+                            {
+                                "if": {
+                                    "properties": {
+                                        "constraint_type": {
+                                            "const": "is_using_ability"
+                                        }
+                                    }
+                                },
+                                "then": {
+                                    "properties": {
+                                        "ability": {
+                                            "$ref": "#/definitions/ability_definition_ptr"
                                         }
                                     }
                                 }
@@ -1041,7 +1073,7 @@
                                 "then": {
                                     "properties": {
                                         "asset_type": {
-                                            "$ref": "#/$defs/asset_type"
+                                            "$ref": "#/definitions/asset_type"
                                         }
                                     },
                                     "required": [
@@ -1162,7 +1194,7 @@
                                 "then": {
                                     "properties": {
                                         "slot_type": {
-                                            "$ref": "#/$defs/structure_slot_type"
+                                            "$ref": "#/definitions/structure_slot_type"
                                         }
                                     },
                                     "required": [
@@ -1403,6 +1435,42 @@
                                 "if": {
                                     "properties": {
                                         "constraint_type": {
+                                            "const": "is_cloaked"
+                                        }
+                                    }
+                                },
+                                "then": {}
+                            },
+                            {
+                                "if": {
+                                    "properties": {
+                                        "constraint_type": {
+                                            "const": "cloak_detection_level_at_or_above"
+                                        }
+                                    }
+                                },
+                                "then": {
+                                    "properties": {
+                                        "minimum_level": {
+                                            "type": "string",
+                                            "enum": [
+                                                "hidden",
+                                                "discovered",
+                                                "detected",
+                                                "located",
+                                                "revealed"
+                                            ]
+                                        }
+                                    },
+                                    "required": [
+                                        "minimum_level"
+                                    ]
+                                }
+                            },
+                            {
+                                "if": {
+                                    "properties": {
+                                        "constraint_type": {
                                             "const": "composite_not"
                                         }
                                     }
@@ -1410,7 +1478,7 @@
                                 "then": {
                                     "properties": {
                                         "constraint": {
-                                            "$ref": "#/$defs/unit_constraint"
+                                            "$ref": "#/definitions/unit_constraint"
                                         }
                                     },
                                     "required": [
@@ -1431,7 +1499,7 @@
                                         "constraints": {
                                             "type": "array",
                                             "items": {
-                                                "$ref": "#/$defs/unit_constraint"
+                                                "$ref": "#/definitions/unit_constraint"
                                             },
                                             "minItems": 2,
                                             "maxItems": 5
@@ -1455,7 +1523,7 @@
                                         "constraints": {
                                             "type": "array",
                                             "items": {
-                                                "$ref": "#/$defs/unit_constraint"
+                                                "$ref": "#/definitions/unit_constraint"
                                             },
                                             "minItems": 2,
                                             "maxItems": 5
@@ -1465,6 +1533,95 @@
                                         "constraints"
                                     ]
                                 }
+                            },
+                            {
+                                "if": {
+                                    "properties": {
+                                        "constraint_type": {
+                                            "const": "has_corruption_at_or_above_threshold"
+                                        }
+                                    }
+                                },
+                                "then": {
+                                    "properties": {
+                                        "threshold": {
+                                            "description": "raw corruption fraction (0-1); used when threshold_index is not set",
+                                            "type": "number"
+                                        },
+                                        "threshold_index": {
+                                            "description": "gate on the unit's Nth corruption tier instead of a raw fraction",
+                                            "type": "integer"
+                                        }
+                                    }
+                                }
+                            },
+                            {
+                                "if": {
+                                    "properties": {
+                                        "constraint_type": {
+                                            "const": "has_hull_above_floor"
+                                        }
+                                    }
+                                },
+                                "then": {
+                                    "properties": {
+                                        "floor_percentage": {
+                                            "type": "number"
+                                        },
+                                        "include_crippled_hull_points": {
+                                            "description": "default=false",
+                                            "type": "boolean"
+                                        }
+                                    },
+                                    "required": [
+                                        "floor_percentage"
+                                    ]
+                                }
+                            },
+                            {
+                                "if": {
+                                    "properties": {
+                                        "constraint_type": {
+                                            "const": "can_purge_corruption"
+                                        }
+                                    }
+                                },
+                                "then": {
+                                    "properties": {
+                                        "minimum_purge_amount": {
+                                            "description": "default=0",
+                                            "type": "number"
+                                        },
+                                        "value_source": {
+                                            "description": "default=internal. constraint_params reads minimum_purge_amount_for_can_purge_corruption_constraint_value from the ability's unit_constraint_params.",
+                                            "type": "string",
+                                            "enum": [
+                                                "constraint_params",
+                                                "internal"
+                                            ]
+                                        }
+                                    }
+                                }
+                            },
+                            {
+                                "if": {
+                                    "properties": {
+                                        "constraint_type": {
+                                            "const": "is_berserk_vulnerable"
+                                        }
+                                    }
+                                },
+                                "then": {}
+                            },
+                            {
+                                "if": {
+                                    "properties": {
+                                        "constraint_type": {
+                                            "const": "target_gravity_well_has_available_unit_limit"
+                                        }
+                                    }
+                                },
+                                "then": {}
                             }
                         ],
                         "unevaluatedProperties": false
@@ -1502,13 +1659,13 @@
                 "unit_definitions": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/$defs/unit_definition_ptr"
+                        "$ref": "#/definitions/unit_definition_ptr"
                     }
                 },
                 "unit_types": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/$defs/target_filter_unit_type"
+                        "$ref": "#/definitions/target_filter_unit_type"
                     },
                     "maxItems": 20
                 }
@@ -1521,7 +1678,7 @@
         "research_prerequisites_set": {
             "type": "array",
             "items": {
-                "$ref": "#/$defs/research_subject_definition_ptr"
+                "$ref": "#/definitions/research_subject_definition_ptr"
             }
         },
         "effect_alias_name": {
@@ -1617,6 +1774,7 @@
                         "weapon_has_target",
                         "is_always_a_threat",
                         "is_channeling_ability",
+                        "is_using_ability",
                         "is_bombing_planet",
                         "is_carrier",
                         "is_asteroid",
@@ -1646,9 +1804,16 @@
                         "gravity_well_contains_unit_type",
                         "is_in_gravity_well_or_adjacent_phase_lane",
                         "not_self",
+                        "is_cloaked",
+                        "cloak_detection_level_at_or_above",
                         "composite_not",
                         "composite_and",
-                        "composite_or"
+                        "composite_or",
+                        "has_corruption_at_or_above_threshold",
+                        "has_hull_above_floor",
+                        "can_purge_corruption",
+                        "is_berserk_vulnerable",
+                        "target_gravity_well_has_available_unit_limit"
                     ]
                 }
             },
@@ -1667,7 +1832,7 @@
                     "then": {
                         "properties": {
                             "unit_definition": {
-                                "$ref": "#/$defs/unit_definition_ptr"
+                                "$ref": "#/definitions/unit_definition_ptr"
                             }
                         },
                         "required": [
@@ -1909,7 +2074,7 @@
                     "then": {
                         "properties": {
                             "permission_type": {
-                                "$ref": "#/$defs/unit_permission_type"
+                                "$ref": "#/definitions/unit_permission_type"
                             }
                         },
                         "required": [
@@ -1939,7 +2104,7 @@
                         "properties": {
                             "weapon_type": {
                                 "description": "default=normal",
-                                "$ref": "#/$defs/weapon_type"
+                                "$ref": "#/definitions/weapon_type"
                             }
                         }
                     }
@@ -1985,10 +2150,10 @@
                     "then": {
                         "properties": {
                             "tag": {
-                                "$ref": "#/$defs/weapon_tag"
+                                "$ref": "#/definitions/weapon_tag"
                             },
                             "weapon_type": {
-                                "$ref": "#/$defs/weapon_type"
+                                "$ref": "#/definitions/weapon_type"
                             }
                         }
                     }
@@ -2016,7 +2181,7 @@
                             "planet_types": {
                                 "type": "array",
                                 "items": {
-                                    "$ref": "#/$defs/planet_type"
+                                    "$ref": "#/definitions/planet_type"
                                 }
                             }
                         },
@@ -2038,7 +2203,7 @@
                             "ship_roles": {
                                 "type": "array",
                                 "items": {
-                                    "$ref": "#/$defs/ship_role"
+                                    "$ref": "#/definitions/ship_role"
                                 }
                             }
                         },
@@ -2140,7 +2305,23 @@
                     "then": {
                         "properties": {
                             "ability": {
-                                "$ref": "#/$defs/ability_definition_ptr"
+                                "$ref": "#/definitions/ability_definition_ptr"
+                            }
+                        }
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "constraint_type": {
+                                "const": "is_using_ability"
+                            }
+                        }
+                    },
+                    "then": {
+                        "properties": {
+                            "ability": {
+                                "$ref": "#/definitions/ability_definition_ptr"
                             }
                         }
                     }
@@ -2176,7 +2357,7 @@
                     "then": {
                         "properties": {
                             "asset_type": {
-                                "$ref": "#/$defs/asset_type"
+                                "$ref": "#/definitions/asset_type"
                             }
                         },
                         "required": [
@@ -2297,7 +2478,7 @@
                     "then": {
                         "properties": {
                             "slot_type": {
-                                "$ref": "#/$defs/structure_slot_type"
+                                "$ref": "#/definitions/structure_slot_type"
                             }
                         },
                         "required": [
@@ -2538,6 +2719,42 @@
                     "if": {
                         "properties": {
                             "constraint_type": {
+                                "const": "is_cloaked"
+                            }
+                        }
+                    },
+                    "then": {}
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "constraint_type": {
+                                "const": "cloak_detection_level_at_or_above"
+                            }
+                        }
+                    },
+                    "then": {
+                        "properties": {
+                            "minimum_level": {
+                                "type": "string",
+                                "enum": [
+                                    "hidden",
+                                    "discovered",
+                                    "detected",
+                                    "located",
+                                    "revealed"
+                                ]
+                            }
+                        },
+                        "required": [
+                            "minimum_level"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "constraint_type": {
                                 "const": "composite_not"
                             }
                         }
@@ -2545,7 +2762,7 @@
                     "then": {
                         "properties": {
                             "constraint": {
-                                "$ref": "#/$defs/unit_constraint"
+                                "$ref": "#/definitions/unit_constraint"
                             }
                         },
                         "required": [
@@ -2566,7 +2783,7 @@
                             "constraints": {
                                 "type": "array",
                                 "items": {
-                                    "$ref": "#/$defs/unit_constraint"
+                                    "$ref": "#/definitions/unit_constraint"
                                 },
                                 "minItems": 2,
                                 "maxItems": 5
@@ -2590,7 +2807,7 @@
                             "constraints": {
                                 "type": "array",
                                 "items": {
-                                    "$ref": "#/$defs/unit_constraint"
+                                    "$ref": "#/definitions/unit_constraint"
                                 },
                                 "minItems": 2,
                                 "maxItems": 5
@@ -2600,6 +2817,95 @@
                             "constraints"
                         ]
                     }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "constraint_type": {
+                                "const": "has_corruption_at_or_above_threshold"
+                            }
+                        }
+                    },
+                    "then": {
+                        "properties": {
+                            "threshold": {
+                                "description": "raw corruption fraction (0-1); used when threshold_index is not set",
+                                "type": "number"
+                            },
+                            "threshold_index": {
+                                "description": "gate on the unit's Nth corruption tier instead of a raw fraction",
+                                "type": "integer"
+                            }
+                        }
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "constraint_type": {
+                                "const": "has_hull_above_floor"
+                            }
+                        }
+                    },
+                    "then": {
+                        "properties": {
+                            "floor_percentage": {
+                                "type": "number"
+                            },
+                            "include_crippled_hull_points": {
+                                "description": "default=false",
+                                "type": "boolean"
+                            }
+                        },
+                        "required": [
+                            "floor_percentage"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "constraint_type": {
+                                "const": "can_purge_corruption"
+                            }
+                        }
+                    },
+                    "then": {
+                        "properties": {
+                            "minimum_purge_amount": {
+                                "description": "default=0",
+                                "type": "number"
+                            },
+                            "value_source": {
+                                "description": "default=internal. constraint_params reads minimum_purge_amount_for_can_purge_corruption_constraint_value from the ability's unit_constraint_params.",
+                                "type": "string",
+                                "enum": [
+                                    "constraint_params",
+                                    "internal"
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "constraint_type": {
+                                "const": "is_berserk_vulnerable"
+                            }
+                        }
+                    },
+                    "then": {}
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "constraint_type": {
+                                "const": "target_gravity_well_has_available_unit_limit"
+                            }
+                        }
+                    },
+                    "then": {}
                 }
             ],
             "unevaluatedProperties": false
@@ -2641,7 +2947,11 @@
                 "can_scuttle",
                 "can_have_antimatter_restored",
                 "can_passively_regenerate_antimatter",
-                "is_loot_collector"
+                "is_loot_collector",
+                "can_have_corruption_purged",
+                "can_passively_decay_corruption",
+                "can_shields_absorb_damage",
+                "can_auto_acquire_weapon_targets"
             ]
         },
         "weapon_tag": {

@@ -10,7 +10,7 @@
                 "items": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/$defs/formation_pattern_item"
+                        "$ref": "#/definitions/formation_pattern_item"
                     }
                 }
             },
@@ -61,7 +61,7 @@
         "rank_groups"
     ],
     "unevaluatedProperties": false,
-    "$defs": {
+    "definitions": {
         "formation_pattern_item": {
             "type": "object",
             "properties": {

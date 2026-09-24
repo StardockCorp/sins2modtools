@@ -7,7 +7,7 @@
         "phase_lanes": {
             "type": "array",
             "items": {
-                "$ref": "#/$defs/galaxy_chart_phase_lane"
+                "$ref": "#/definitions/galaxy_chart_phase_lane"
             }
         },
         "recommended_team_count": {
@@ -16,7 +16,7 @@
         "root_nodes": {
             "type": "array",
             "items": {
-                "$ref": "#/$defs/galaxy_chart_node"
+                "$ref": "#/definitions/galaxy_chart_node"
             }
         },
         "skybox": {
@@ -32,7 +32,7 @@
         "skybox"
     ],
     "unevaluatedProperties": false,
-    "$defs": {
+    "definitions": {
         "galaxy_chart_node": {
             "type": "object",
             "properties": {
@@ -54,7 +54,7 @@
                 "child_nodes": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/$defs/galaxy_chart_node"
+                        "$ref": "#/definitions/galaxy_chart_node"
                     }
                 },
                 "design_name": {
@@ -85,10 +85,10 @@
                     "type": "integer"
                 },
                 "ownership": {
-                    "$ref": "#/$defs/galaxy_chart_node_ownership"
+                    "$ref": "#/definitions/galaxy_chart_node_ownership"
                 },
                 "position": {
-                    "$ref": "#/$defs/point"
+                    "$ref": "#/definitions/point"
                 },
                 "primary_fixture_override_name": {
                     "type": "string"

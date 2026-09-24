@@ -5,7 +5,7 @@
     "type": "object",
     "properties": {
         "attack_target_type_groups": {
-            "$ref": "#/$defs/unit_attack_target_type_group_map"
+            "$ref": "#/definitions/unit_attack_target_type_group_map"
         },
         "overwrite_attack_target_type_groups": {
             "type": "boolean"
@@ -18,7 +18,7 @@
         "attack_target_type_groups"
     ],
     "unevaluatedProperties": false,
-    "$defs": {
+    "definitions": {
         "unit_attack_target_type_group_map": {
             "type": "array",
             "items": {

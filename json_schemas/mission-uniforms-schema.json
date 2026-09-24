@@ -92,6 +92,11 @@
                                                     "mining",
                                                     "research",
                                                     "focus",
+                                                    "corruption",
+                                                    "industry",
+                                                    "influence",
+                                                    "culture",
+                                                    "population",
                                                     "surveying"
                                                 ]
                                             },
@@ -239,6 +244,11 @@
                                                                 "mining",
                                                                 "research",
                                                                 "focus",
+                                                                "corruption",
+                                                                "industry",
+                                                                "influence",
+                                                                "culture",
+                                                                "population",
                                                                 "surveying"
                                                             ]
                                                         },
@@ -396,7 +406,7 @@
                                                             "type": "object",
                                                             "properties": {
                                                                 "formation_type": {
-                                                                    "$ref": "#/$defs/formation_type"
+                                                                    "$ref": "#/definitions/formation_type"
                                                                 },
                                                                 "random_units": {
                                                                     "type": "array",
@@ -409,7 +419,7 @@
                                                                                     "forced_leveled_up_abilities": {
                                                                                         "type": "array",
                                                                                         "items": {
-                                                                                            "$ref": "#/$defs/ability_definition_ptr"
+                                                                                            "$ref": "#/definitions/ability_definition_ptr"
                                                                                         }
                                                                                     },
                                                                                     "forced_strikecraft_index": {
@@ -421,7 +431,7 @@
                                                                                     "items": {
                                                                                         "type": "array",
                                                                                         "items": {
-                                                                                            "$ref": "#/$defs/unit_item_definition_ptr"
+                                                                                            "$ref": "#/definitions/unit_item_definition_ptr"
                                                                                         }
                                                                                     },
                                                                                     "level": {
@@ -431,7 +441,7 @@
                                                                                 "unevaluatedProperties": false
                                                                             },
                                                                             "unit": {
-                                                                                "$ref": "#/$defs/unit_definition_ptr"
+                                                                                "$ref": "#/definitions/unit_definition_ptr"
                                                                             },
                                                                             "weight": {
                                                                                 "type": "number"
@@ -463,7 +473,7 @@
                                                                                     "forced_leveled_up_abilities": {
                                                                                         "type": "array",
                                                                                         "items": {
-                                                                                            "$ref": "#/$defs/ability_definition_ptr"
+                                                                                            "$ref": "#/definitions/ability_definition_ptr"
                                                                                         }
                                                                                     },
                                                                                     "forced_strikecraft_index": {
@@ -475,7 +485,7 @@
                                                                                     "items": {
                                                                                         "type": "array",
                                                                                         "items": {
-                                                                                            "$ref": "#/$defs/unit_item_definition_ptr"
+                                                                                            "$ref": "#/definitions/unit_item_definition_ptr"
                                                                                         }
                                                                                     },
                                                                                     "level": {
@@ -485,7 +495,7 @@
                                                                                 "unevaluatedProperties": false
                                                                             },
                                                                             "unit": {
-                                                                                "$ref": "#/$defs/unit_definition_ptr"
+                                                                                "$ref": "#/definitions/unit_definition_ptr"
                                                                             }
                                                                         },
                                                                         "required": [
@@ -560,6 +570,11 @@
                                                                 "mining",
                                                                 "research",
                                                                 "focus",
+                                                                "corruption",
+                                                                "industry",
+                                                                "influence",
+                                                                "culture",
+                                                                "population",
                                                                 "surveying"
                                                             ]
                                                         },
@@ -717,6 +732,11 @@
                                                             "mining",
                                                             "research",
                                                             "focus",
+                                                            "corruption",
+                                                            "industry",
+                                                            "influence",
+                                                            "culture",
+                                                            "population",
                                                             "surveying"
                                                         ]
                                                     },
@@ -874,7 +894,7 @@
                                                         "type": "object",
                                                         "properties": {
                                                             "formation_type": {
-                                                                "$ref": "#/$defs/formation_type"
+                                                                "$ref": "#/definitions/formation_type"
                                                             },
                                                             "random_units": {
                                                                 "type": "array",
@@ -887,7 +907,7 @@
                                                                                 "forced_leveled_up_abilities": {
                                                                                     "type": "array",
                                                                                     "items": {
-                                                                                        "$ref": "#/$defs/ability_definition_ptr"
+                                                                                        "$ref": "#/definitions/ability_definition_ptr"
                                                                                     }
                                                                                 },
                                                                                 "forced_strikecraft_index": {
@@ -899,7 +919,7 @@
                                                                                 "items": {
                                                                                     "type": "array",
                                                                                     "items": {
-                                                                                        "$ref": "#/$defs/unit_item_definition_ptr"
+                                                                                        "$ref": "#/definitions/unit_item_definition_ptr"
                                                                                     }
                                                                                 },
                                                                                 "level": {
@@ -909,7 +929,7 @@
                                                                             "unevaluatedProperties": false
                                                                         },
                                                                         "unit": {
-                                                                            "$ref": "#/$defs/unit_definition_ptr"
+                                                                            "$ref": "#/definitions/unit_definition_ptr"
                                                                         },
                                                                         "weight": {
                                                                             "type": "number"
@@ -941,7 +961,7 @@
                                                                                 "forced_leveled_up_abilities": {
                                                                                     "type": "array",
                                                                                     "items": {
-                                                                                        "$ref": "#/$defs/ability_definition_ptr"
+                                                                                        "$ref": "#/definitions/ability_definition_ptr"
                                                                                     }
                                                                                 },
                                                                                 "forced_strikecraft_index": {
@@ -953,7 +973,7 @@
                                                                                 "items": {
                                                                                     "type": "array",
                                                                                     "items": {
-                                                                                        "$ref": "#/$defs/unit_item_definition_ptr"
+                                                                                        "$ref": "#/definitions/unit_item_definition_ptr"
                                                                                     }
                                                                                 },
                                                                                 "level": {
@@ -963,7 +983,7 @@
                                                                             "unevaluatedProperties": false
                                                                         },
                                                                         "unit": {
-                                                                            "$ref": "#/$defs/unit_definition_ptr"
+                                                                            "$ref": "#/definitions/unit_definition_ptr"
                                                                         }
                                                                     },
                                                                     "required": [
@@ -1038,6 +1058,11 @@
                                                             "mining",
                                                             "research",
                                                             "focus",
+                                                            "corruption",
+                                                            "industry",
+                                                            "influence",
+                                                            "culture",
+                                                            "population",
                                                             "surveying"
                                                         ]
                                                     },
@@ -1659,7 +1684,7 @@
         "tooltip_definition"
     ],
     "unevaluatedProperties": false,
-    "$defs": {
+    "definitions": {
         "ability_definition_ptr": {
             "type": "string"
         },

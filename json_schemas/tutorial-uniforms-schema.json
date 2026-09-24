@@ -4,6 +4,27 @@
     "description": "",
     "type": "object",
     "properties": {
+        "dlc_tutorials": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "product_id": {
+                        "type": "string"
+                    },
+                    "tutorials": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "unevaluatedProperties": false
+            }
+        },
+        "overwrite_dlc_tutorials": {
+            "type": "boolean"
+        },
         "overwrite_tutorials": {
             "type": "boolean"
         },

@@ -30,7 +30,7 @@
                                         "type": "object",
                                         "properties": {
                                             "item": {
-                                                "$ref": "#/$defs/unit_item_definition_ptr"
+                                                "$ref": "#/definitions/unit_item_definition_ptr"
                                             },
                                             "priority": {
                                                 "type": "integer",
@@ -77,6 +77,9 @@
                         "minimum": 1,
                         "maximum": 10
                     },
+                    "requires_enemy_cloak_observed": {
+                        "type": "boolean"
+                    },
                     "target_count_in_empire": {
                         "type": "integer",
                         "minimum": 1
@@ -119,7 +122,7 @@
         "weighted_random_loadouts"
     ],
     "unevaluatedProperties": false,
-    "$defs": {
+    "definitions": {
         "unit_item_definition_ptr": {
             "type": "string"
         }

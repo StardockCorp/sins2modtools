@@ -4,6 +4,15 @@
     "description": "",
     "type": "object",
     "properties": {
+        "item_access_tags": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "overwrite_item_access_tags": {
+            "type": "boolean"
+        },
         "overwrite_unit_tags": {
             "type": "boolean"
         },

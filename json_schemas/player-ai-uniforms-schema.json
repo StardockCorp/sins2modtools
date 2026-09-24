@@ -38,7 +38,7 @@
                             "type": "number"
                         },
                         "chance_to_ally_with_other_players": {
-                            "$ref": "#/$defs/float_range"
+                            "$ref": "#/definitions/float_range"
                         },
                         "defense_to_offsense_spend_ratio": {
                             "type": "number"
@@ -154,7 +154,7 @@
                             "type": "number"
                         },
                         "chance_to_ally_with_other_players": {
-                            "$ref": "#/$defs/float_range"
+                            "$ref": "#/definitions/float_range"
                         },
                         "defense_to_offsense_spend_ratio": {
                             "type": "number"
@@ -303,7 +303,11 @@
                                                     "player_intelligence_purchase_influence_point_cost",
                                                     "player_intelligence_purchase_spool_up_time",
                                                     "player_intelligence_purchase_cooldown_duration",
-                                                    "npc_bounty_collection_share"
+                                                    "npc_bounty_collection_share",
+                                                    "unity_mana_to_credits_conversion_rate",
+                                                    "unity_mana_to_metal_conversion_rate",
+                                                    "unity_mana_to_crystal_conversion_rate",
+                                                    "alliance_offer_asset_transfer_tax_rate"
                                                 ]
                                             },
                                             "value": {
@@ -333,7 +337,7 @@
                                             "exotic_types": {
                                                 "type": "array",
                                                 "items": {
-                                                    "$ref": "#/$defs/exotic_type"
+                                                    "$ref": "#/definitions/exotic_type"
                                                 }
                                             },
                                             "modifier_type": {
@@ -384,7 +388,7 @@
                                             "tags": {
                                                 "type": "array",
                                                 "items": {
-                                                    "$ref": "#/$defs/npc_tags"
+                                                    "$ref": "#/definitions/npc_tags"
                                                 }
                                             },
                                             "value": {
@@ -470,6 +474,16 @@
                                                     "research_track_build_time",
                                                     "focus_track_build_price",
                                                     "focus_track_build_time",
+                                                    "corruption_track_build_price",
+                                                    "corruption_track_build_time",
+                                                    "industry_track_build_price",
+                                                    "industry_track_build_time",
+                                                    "influence_track_build_price",
+                                                    "influence_track_build_time",
+                                                    "culture_track_build_price",
+                                                    "culture_track_build_time",
+                                                    "population_track_build_price",
+                                                    "population_track_build_time",
                                                     "surveying_track_build_price",
                                                     "surveying_track_build_time",
                                                     "structure_build_price",
@@ -485,13 +499,23 @@
                                                     "mana_restore_rate",
                                                     "bonus_max_mana",
                                                     "mana_restore_rate_per_population",
-                                                    "bonus_max_mana_per_population"
+                                                    "bonus_max_mana_per_population",
+                                                    "planet_corruption_strength",
+                                                    "planet_corruption_speed",
+                                                    "ignore_shroud_limit",
+                                                    "max_corruption",
+                                                    "corruption_mode_level",
+                                                    "influence_points_recharge_rate",
+                                                    "non_trade_credits_income_rate_scalar",
+                                                    "non_trade_metal_income_rate_scalar",
+                                                    "non_trade_crystal_income_rate_scalar",
+                                                    "planet_corruption_debuff_strength"
                                                 ]
                                             },
                                             "planet_types": {
                                                 "type": "array",
                                                 "items": {
-                                                    "$ref": "#/$defs/planet_type"
+                                                    "$ref": "#/definitions/planet_type"
                                                 }
                                             },
                                             "value": {
@@ -527,7 +551,7 @@
                                             "strikecraft_kinds": {
                                                 "type": "array",
                                                 "items": {
-                                                    "$ref": "#/$defs/strikecraft_types"
+                                                    "$ref": "#/definitions/strikecraft_types"
                                                 }
                                             },
                                             "value": {
@@ -557,7 +581,7 @@
                                             "build_kinds": {
                                                 "type": "array",
                                                 "items": {
-                                                    "$ref": "#/$defs/unit_build_kind_name"
+                                                    "$ref": "#/definitions/unit_build_kind_name"
                                                 }
                                             },
                                             "modifier_type": {
@@ -650,13 +674,27 @@
                                                     "trade_export_crystal_points",
                                                     "loot_collection_duration",
                                                     "phase_resonance_bonus_duration",
-                                                    "unit_capture_points"
+                                                    "unit_capture_points",
+                                                    "max_corruption",
+                                                    "corruption_decay_rate",
+                                                    "corruption_decay_delay_duration_after_gain",
+                                                    "planet_corruption_strength",
+                                                    "raise_cloak_speed",
+                                                    "lower_cloak_speed",
+                                                    "cloak_quality",
+                                                    "detection_range",
+                                                    "detection_quality",
+                                                    "min_detection_level",
+                                                    "overflow_shield_points_per_corruption",
+                                                    "overflow_armor_points_per_corruption",
+                                                    "overflow_hull_points_per_corruption",
+                                                    "corruption_overflow_threshold"
                                                 ]
                                             },
                                             "tags": {
                                                 "type": "array",
                                                 "items": {
-                                                    "$ref": "#/$defs/unit_tag"
+                                                    "$ref": "#/definitions/unit_tag"
                                                 }
                                             },
                                             "value": {
@@ -699,11 +737,12 @@
                                                     "cooldown_duration",
                                                     "range",
                                                     "tracking_speed",
-                                                    "bypass_shields_chance"
+                                                    "bypass_shields_chance",
+                                                    "berserk"
                                                 ]
                                             },
                                             "tags": {
-                                                "$ref": "#/$defs/weapon_tag_set"
+                                                "$ref": "#/definitions/weapon_tag_set"
                                             },
                                             "value": {
                                                 "type": "number"
@@ -747,21 +786,51 @@
                             "type": "number"
                         },
                         "bounty_size_percentage_range": {
-                            "$ref": "#/$defs/float_range"
+                            "$ref": "#/definitions/float_range"
                         },
                         "chance_for_full_bid_on_auctions": {
                             "type": "number"
                         },
                         "chaos_factor_range": {
-                            "$ref": "#/$defs/float_range"
+                            "$ref": "#/definitions/float_range"
                         },
                         "chaos_factor_update_interval": {
                             "type": "number"
+                        },
+                        "corruption_mode_check_interval_in_minutes": {
+                            "description": "How often the AI reevaluates owned shrouded planets for strategic corruption mode changes",
+                            "$ref": "#/definitions/float_range"
+                        },
+                        "corruption_mode_min_runway_in_minutes": {
+                            "description": "Authored minimum upkeep runway; the effective runway is at least the Spread cooldown plus one AI update, in addition to the emergency Spread reserve",
+                            "type": "number",
+                            "minimum": 0.0
+                        },
+                        "corruption_shroud_min_balance_multiplier": {
+                            "description": "Minimum multiple of the shrouding price held before the AI pays it",
+                            "type": "number",
+                            "minimum": 0.0
+                        },
+                        "corruption_shrouding_check_interval_in_minutes": {
+                            "description": "How often the AI checks for owned planets that can begin shrouding",
+                            "$ref": "#/definitions/float_range"
+                        },
+                        "corruption_structure_first_check_interval_in_minutes": {
+                            "description": "First reservoir check interval",
+                            "$ref": "#/definitions/float_range"
+                        },
+                        "corruption_structure_next_check_interval_in_minutes": {
+                            "description": "Subsequent reservoir check interval",
+                            "$ref": "#/definitions/float_range"
                         },
                         "description": {
                             "type": "string"
                         },
                         "fleet_attack_timeout_duration_in_minutes": {
+                            "type": "number"
+                        },
+                        "fleet_colonize_mission_backstop_in_minutes": {
+                            "description": "Difficulty override for the global colonization mission backstop",
                             "type": "number"
                         },
                         "fleet_colonize_timeout_duration_in_minutes": {
@@ -770,8 +839,16 @@
                         "fleet_regroup_await_units_time_in_minutes": {
                             "type": "number"
                         },
+                        "fleet_retreat_recovery_backstop_in_minutes": {
+                            "description": "Difficulty override for the global retreat recovery backstop",
+                            "type": "number"
+                        },
                         "fleet_will_probably_defeat_ratio_range": {
-                            "$ref": "#/$defs/float_range"
+                            "$ref": "#/definitions/float_range"
+                        },
+                        "home_defense_max_mobile_fleet_supply_fraction": {
+                            "description": "Difficulty override for the maximum mobile fleet fraction reserved for home defense",
+                            "type": "number"
                         },
                         "icon": {
                             "type": "string"
@@ -780,25 +857,65 @@
                             "description": "Maximum number of concurrent surveying upgrade purchase requests",
                             "type": "integer"
                         },
+                        "max_corruption_mode_changes_per_update": {
+                            "description": "Maximum successful strategic corruption mode changes per reevaluation; safety recovery and initial assignment are exempt",
+                            "type": "integer"
+                        },
                         "max_fleet_capital_ship_count": {
                             "type": "integer"
                         },
                         "max_fleet_super_capital_ship_count": {
                             "type": "integer"
                         },
+                        "max_pending_corruption_structure_requests": {
+                            "description": "Maximum pending corruption-structure request count (must be at least the minimum)",
+                            "type": "integer",
+                            "minimum": 0
+                        },
                         "max_supply_percentage_relative_to_human_players": {
                             "type": "number"
                         },
+                        "min_corruption_spread_planet_count": {
+                            "description": "Minimum number of Spread planets when an eligible source can reach a known planet that still needs corruption",
+                            "type": "integer",
+                            "minimum": 0
+                        },
+                        "min_pending_corruption_structure_requests": {
+                            "description": "Minimum pending corruption-structure request count",
+                            "type": "integer",
+                            "minimum": 0
+                        },
                         "name": {
                             "type": "string"
+                        },
+                        "owned_planets_per_pending_corruption_structure_request": {
+                            "description": "Owned planets per allowed pending corruption-structure request",
+                            "type": "integer",
+                            "minimum": 1
                         },
                         "ownership_time_in_minutes_before_static_defenses": {
                             "description": "Time after an AI gets ownership of a world before they build static defenses in minutes",
                             "type": "number"
                         },
+                        "projected_garrison_actionable_reference_supply_fraction": {
+                            "description": "Difficulty override for the global projected-garrison supply scaling fraction",
+                            "type": "number"
+                        },
+                        "projected_garrison_actionable_supply_floor": {
+                            "description": "Difficulty override for the global projected-garrison actionable supply floor",
+                            "type": "integer"
+                        },
+                        "random_research_check_interval_in_minutes": {
+                            "description": "How often the AI selects a general research subject; absent uses 1.5-3 minutes on Easy and 2-5 minutes otherwise",
+                            "$ref": "#/definitions/float_range"
+                        },
+                        "research_tier_increase_check_interval_in_minutes": {
+                            "description": "How often the AI expands the tiers considered for general research; absent uses 12-20 minutes on Easy and 15-30 minutes otherwise",
+                            "$ref": "#/definitions/float_range"
+                        },
                         "surveying_upgrade_check_interval_in_minutes": {
                             "description": "How often the AI checks for surveying track upgrades",
-                            "$ref": "#/$defs/float_range"
+                            "$ref": "#/definitions/float_range"
                         },
                         "time_after_game_start_allowing_static_defenses_in_minutes": {
                             "description": "Time after game start when a an AI gains ownership of a world before they build static defenses in minutes",
@@ -811,7 +928,7 @@
                             "type": "number"
                         },
                         "when_build_titan_in_minutes": {
-                            "$ref": "#/$defs/float_range"
+                            "$ref": "#/definitions/float_range"
                         },
                         "will_attack_other_ai_before_human_players": {
                             "type": "boolean"
@@ -874,7 +991,11 @@
                                                     "player_intelligence_purchase_influence_point_cost",
                                                     "player_intelligence_purchase_spool_up_time",
                                                     "player_intelligence_purchase_cooldown_duration",
-                                                    "npc_bounty_collection_share"
+                                                    "npc_bounty_collection_share",
+                                                    "unity_mana_to_credits_conversion_rate",
+                                                    "unity_mana_to_metal_conversion_rate",
+                                                    "unity_mana_to_crystal_conversion_rate",
+                                                    "alliance_offer_asset_transfer_tax_rate"
                                                 ]
                                             },
                                             "value": {
@@ -904,7 +1025,7 @@
                                             "exotic_types": {
                                                 "type": "array",
                                                 "items": {
-                                                    "$ref": "#/$defs/exotic_type"
+                                                    "$ref": "#/definitions/exotic_type"
                                                 }
                                             },
                                             "modifier_type": {
@@ -955,7 +1076,7 @@
                                             "tags": {
                                                 "type": "array",
                                                 "items": {
-                                                    "$ref": "#/$defs/npc_tags"
+                                                    "$ref": "#/definitions/npc_tags"
                                                 }
                                             },
                                             "value": {
@@ -1041,6 +1162,16 @@
                                                     "research_track_build_time",
                                                     "focus_track_build_price",
                                                     "focus_track_build_time",
+                                                    "corruption_track_build_price",
+                                                    "corruption_track_build_time",
+                                                    "industry_track_build_price",
+                                                    "industry_track_build_time",
+                                                    "influence_track_build_price",
+                                                    "influence_track_build_time",
+                                                    "culture_track_build_price",
+                                                    "culture_track_build_time",
+                                                    "population_track_build_price",
+                                                    "population_track_build_time",
                                                     "surveying_track_build_price",
                                                     "surveying_track_build_time",
                                                     "structure_build_price",
@@ -1056,13 +1187,23 @@
                                                     "mana_restore_rate",
                                                     "bonus_max_mana",
                                                     "mana_restore_rate_per_population",
-                                                    "bonus_max_mana_per_population"
+                                                    "bonus_max_mana_per_population",
+                                                    "planet_corruption_strength",
+                                                    "planet_corruption_speed",
+                                                    "ignore_shroud_limit",
+                                                    "max_corruption",
+                                                    "corruption_mode_level",
+                                                    "influence_points_recharge_rate",
+                                                    "non_trade_credits_income_rate_scalar",
+                                                    "non_trade_metal_income_rate_scalar",
+                                                    "non_trade_crystal_income_rate_scalar",
+                                                    "planet_corruption_debuff_strength"
                                                 ]
                                             },
                                             "planet_types": {
                                                 "type": "array",
                                                 "items": {
-                                                    "$ref": "#/$defs/planet_type"
+                                                    "$ref": "#/definitions/planet_type"
                                                 }
                                             },
                                             "value": {
@@ -1098,7 +1239,7 @@
                                             "strikecraft_kinds": {
                                                 "type": "array",
                                                 "items": {
-                                                    "$ref": "#/$defs/strikecraft_types"
+                                                    "$ref": "#/definitions/strikecraft_types"
                                                 }
                                             },
                                             "value": {
@@ -1128,7 +1269,7 @@
                                             "build_kinds": {
                                                 "type": "array",
                                                 "items": {
-                                                    "$ref": "#/$defs/unit_build_kind_name"
+                                                    "$ref": "#/definitions/unit_build_kind_name"
                                                 }
                                             },
                                             "modifier_type": {
@@ -1221,13 +1362,27 @@
                                                     "trade_export_crystal_points",
                                                     "loot_collection_duration",
                                                     "phase_resonance_bonus_duration",
-                                                    "unit_capture_points"
+                                                    "unit_capture_points",
+                                                    "max_corruption",
+                                                    "corruption_decay_rate",
+                                                    "corruption_decay_delay_duration_after_gain",
+                                                    "planet_corruption_strength",
+                                                    "raise_cloak_speed",
+                                                    "lower_cloak_speed",
+                                                    "cloak_quality",
+                                                    "detection_range",
+                                                    "detection_quality",
+                                                    "min_detection_level",
+                                                    "overflow_shield_points_per_corruption",
+                                                    "overflow_armor_points_per_corruption",
+                                                    "overflow_hull_points_per_corruption",
+                                                    "corruption_overflow_threshold"
                                                 ]
                                             },
                                             "tags": {
                                                 "type": "array",
                                                 "items": {
-                                                    "$ref": "#/$defs/unit_tag"
+                                                    "$ref": "#/definitions/unit_tag"
                                                 }
                                             },
                                             "value": {
@@ -1270,11 +1425,12 @@
                                                     "cooldown_duration",
                                                     "range",
                                                     "tracking_speed",
-                                                    "bypass_shields_chance"
+                                                    "bypass_shields_chance",
+                                                    "berserk"
                                                 ]
                                             },
                                             "tags": {
-                                                "$ref": "#/$defs/weapon_tag_set"
+                                                "$ref": "#/definitions/weapon_tag_set"
                                             },
                                             "value": {
                                                 "type": "number"
@@ -1318,21 +1474,51 @@
                             "type": "number"
                         },
                         "bounty_size_percentage_range": {
-                            "$ref": "#/$defs/float_range"
+                            "$ref": "#/definitions/float_range"
                         },
                         "chance_for_full_bid_on_auctions": {
                             "type": "number"
                         },
                         "chaos_factor_range": {
-                            "$ref": "#/$defs/float_range"
+                            "$ref": "#/definitions/float_range"
                         },
                         "chaos_factor_update_interval": {
                             "type": "number"
+                        },
+                        "corruption_mode_check_interval_in_minutes": {
+                            "description": "How often the AI reevaluates owned shrouded planets for strategic corruption mode changes",
+                            "$ref": "#/definitions/float_range"
+                        },
+                        "corruption_mode_min_runway_in_minutes": {
+                            "description": "Authored minimum upkeep runway; the effective runway is at least the Spread cooldown plus one AI update, in addition to the emergency Spread reserve",
+                            "type": "number",
+                            "minimum": 0.0
+                        },
+                        "corruption_shroud_min_balance_multiplier": {
+                            "description": "Minimum multiple of the shrouding price held before the AI pays it",
+                            "type": "number",
+                            "minimum": 0.0
+                        },
+                        "corruption_shrouding_check_interval_in_minutes": {
+                            "description": "How often the AI checks for owned planets that can begin shrouding",
+                            "$ref": "#/definitions/float_range"
+                        },
+                        "corruption_structure_first_check_interval_in_minutes": {
+                            "description": "First reservoir check interval",
+                            "$ref": "#/definitions/float_range"
+                        },
+                        "corruption_structure_next_check_interval_in_minutes": {
+                            "description": "Subsequent reservoir check interval",
+                            "$ref": "#/definitions/float_range"
                         },
                         "description": {
                             "type": "string"
                         },
                         "fleet_attack_timeout_duration_in_minutes": {
+                            "type": "number"
+                        },
+                        "fleet_colonize_mission_backstop_in_minutes": {
+                            "description": "Difficulty override for the global colonization mission backstop",
                             "type": "number"
                         },
                         "fleet_colonize_timeout_duration_in_minutes": {
@@ -1341,8 +1527,16 @@
                         "fleet_regroup_await_units_time_in_minutes": {
                             "type": "number"
                         },
+                        "fleet_retreat_recovery_backstop_in_minutes": {
+                            "description": "Difficulty override for the global retreat recovery backstop",
+                            "type": "number"
+                        },
                         "fleet_will_probably_defeat_ratio_range": {
-                            "$ref": "#/$defs/float_range"
+                            "$ref": "#/definitions/float_range"
+                        },
+                        "home_defense_max_mobile_fleet_supply_fraction": {
+                            "description": "Difficulty override for the maximum mobile fleet fraction reserved for home defense",
+                            "type": "number"
                         },
                         "icon": {
                             "type": "string"
@@ -1351,25 +1545,65 @@
                             "description": "Maximum number of concurrent surveying upgrade purchase requests",
                             "type": "integer"
                         },
+                        "max_corruption_mode_changes_per_update": {
+                            "description": "Maximum successful strategic corruption mode changes per reevaluation; safety recovery and initial assignment are exempt",
+                            "type": "integer"
+                        },
                         "max_fleet_capital_ship_count": {
                             "type": "integer"
                         },
                         "max_fleet_super_capital_ship_count": {
                             "type": "integer"
                         },
+                        "max_pending_corruption_structure_requests": {
+                            "description": "Maximum pending corruption-structure request count (must be at least the minimum)",
+                            "type": "integer",
+                            "minimum": 0
+                        },
                         "max_supply_percentage_relative_to_human_players": {
                             "type": "number"
                         },
+                        "min_corruption_spread_planet_count": {
+                            "description": "Minimum number of Spread planets when an eligible source can reach a known planet that still needs corruption",
+                            "type": "integer",
+                            "minimum": 0
+                        },
+                        "min_pending_corruption_structure_requests": {
+                            "description": "Minimum pending corruption-structure request count",
+                            "type": "integer",
+                            "minimum": 0
+                        },
                         "name": {
                             "type": "string"
+                        },
+                        "owned_planets_per_pending_corruption_structure_request": {
+                            "description": "Owned planets per allowed pending corruption-structure request",
+                            "type": "integer",
+                            "minimum": 1
                         },
                         "ownership_time_in_minutes_before_static_defenses": {
                             "description": "Time after an AI gets ownership of a world before they build static defenses in minutes",
                             "type": "number"
                         },
+                        "projected_garrison_actionable_reference_supply_fraction": {
+                            "description": "Difficulty override for the global projected-garrison supply scaling fraction",
+                            "type": "number"
+                        },
+                        "projected_garrison_actionable_supply_floor": {
+                            "description": "Difficulty override for the global projected-garrison actionable supply floor",
+                            "type": "integer"
+                        },
+                        "random_research_check_interval_in_minutes": {
+                            "description": "How often the AI selects a general research subject; absent uses 1.5-3 minutes on Easy and 2-5 minutes otherwise",
+                            "$ref": "#/definitions/float_range"
+                        },
+                        "research_tier_increase_check_interval_in_minutes": {
+                            "description": "How often the AI expands the tiers considered for general research; absent uses 12-20 minutes on Easy and 15-30 minutes otherwise",
+                            "$ref": "#/definitions/float_range"
+                        },
                         "surveying_upgrade_check_interval_in_minutes": {
                             "description": "How often the AI checks for surveying track upgrades",
-                            "$ref": "#/$defs/float_range"
+                            "$ref": "#/definitions/float_range"
                         },
                         "time_after_game_start_allowing_static_defenses_in_minutes": {
                             "description": "Time after game start when a an AI gains ownership of a world before they build static defenses in minutes",
@@ -1382,7 +1616,7 @@
                             "type": "number"
                         },
                         "when_build_titan_in_minutes": {
-                            "$ref": "#/$defs/float_range"
+                            "$ref": "#/definitions/float_range"
                         },
                         "will_attack_other_ai_before_human_players": {
                             "type": "boolean"
@@ -1445,7 +1679,11 @@
                                                     "player_intelligence_purchase_influence_point_cost",
                                                     "player_intelligence_purchase_spool_up_time",
                                                     "player_intelligence_purchase_cooldown_duration",
-                                                    "npc_bounty_collection_share"
+                                                    "npc_bounty_collection_share",
+                                                    "unity_mana_to_credits_conversion_rate",
+                                                    "unity_mana_to_metal_conversion_rate",
+                                                    "unity_mana_to_crystal_conversion_rate",
+                                                    "alliance_offer_asset_transfer_tax_rate"
                                                 ]
                                             },
                                             "value": {
@@ -1475,7 +1713,7 @@
                                             "exotic_types": {
                                                 "type": "array",
                                                 "items": {
-                                                    "$ref": "#/$defs/exotic_type"
+                                                    "$ref": "#/definitions/exotic_type"
                                                 }
                                             },
                                             "modifier_type": {
@@ -1526,7 +1764,7 @@
                                             "tags": {
                                                 "type": "array",
                                                 "items": {
-                                                    "$ref": "#/$defs/npc_tags"
+                                                    "$ref": "#/definitions/npc_tags"
                                                 }
                                             },
                                             "value": {
@@ -1612,6 +1850,16 @@
                                                     "research_track_build_time",
                                                     "focus_track_build_price",
                                                     "focus_track_build_time",
+                                                    "corruption_track_build_price",
+                                                    "corruption_track_build_time",
+                                                    "industry_track_build_price",
+                                                    "industry_track_build_time",
+                                                    "influence_track_build_price",
+                                                    "influence_track_build_time",
+                                                    "culture_track_build_price",
+                                                    "culture_track_build_time",
+                                                    "population_track_build_price",
+                                                    "population_track_build_time",
                                                     "surveying_track_build_price",
                                                     "surveying_track_build_time",
                                                     "structure_build_price",
@@ -1627,13 +1875,23 @@
                                                     "mana_restore_rate",
                                                     "bonus_max_mana",
                                                     "mana_restore_rate_per_population",
-                                                    "bonus_max_mana_per_population"
+                                                    "bonus_max_mana_per_population",
+                                                    "planet_corruption_strength",
+                                                    "planet_corruption_speed",
+                                                    "ignore_shroud_limit",
+                                                    "max_corruption",
+                                                    "corruption_mode_level",
+                                                    "influence_points_recharge_rate",
+                                                    "non_trade_credits_income_rate_scalar",
+                                                    "non_trade_metal_income_rate_scalar",
+                                                    "non_trade_crystal_income_rate_scalar",
+                                                    "planet_corruption_debuff_strength"
                                                 ]
                                             },
                                             "planet_types": {
                                                 "type": "array",
                                                 "items": {
-                                                    "$ref": "#/$defs/planet_type"
+                                                    "$ref": "#/definitions/planet_type"
                                                 }
                                             },
                                             "value": {
@@ -1669,7 +1927,7 @@
                                             "strikecraft_kinds": {
                                                 "type": "array",
                                                 "items": {
-                                                    "$ref": "#/$defs/strikecraft_types"
+                                                    "$ref": "#/definitions/strikecraft_types"
                                                 }
                                             },
                                             "value": {
@@ -1699,7 +1957,7 @@
                                             "build_kinds": {
                                                 "type": "array",
                                                 "items": {
-                                                    "$ref": "#/$defs/unit_build_kind_name"
+                                                    "$ref": "#/definitions/unit_build_kind_name"
                                                 }
                                             },
                                             "modifier_type": {
@@ -1792,13 +2050,27 @@
                                                     "trade_export_crystal_points",
                                                     "loot_collection_duration",
                                                     "phase_resonance_bonus_duration",
-                                                    "unit_capture_points"
+                                                    "unit_capture_points",
+                                                    "max_corruption",
+                                                    "corruption_decay_rate",
+                                                    "corruption_decay_delay_duration_after_gain",
+                                                    "planet_corruption_strength",
+                                                    "raise_cloak_speed",
+                                                    "lower_cloak_speed",
+                                                    "cloak_quality",
+                                                    "detection_range",
+                                                    "detection_quality",
+                                                    "min_detection_level",
+                                                    "overflow_shield_points_per_corruption",
+                                                    "overflow_armor_points_per_corruption",
+                                                    "overflow_hull_points_per_corruption",
+                                                    "corruption_overflow_threshold"
                                                 ]
                                             },
                                             "tags": {
                                                 "type": "array",
                                                 "items": {
-                                                    "$ref": "#/$defs/unit_tag"
+                                                    "$ref": "#/definitions/unit_tag"
                                                 }
                                             },
                                             "value": {
@@ -1841,11 +2113,12 @@
                                                     "cooldown_duration",
                                                     "range",
                                                     "tracking_speed",
-                                                    "bypass_shields_chance"
+                                                    "bypass_shields_chance",
+                                                    "berserk"
                                                 ]
                                             },
                                             "tags": {
-                                                "$ref": "#/$defs/weapon_tag_set"
+                                                "$ref": "#/definitions/weapon_tag_set"
                                             },
                                             "value": {
                                                 "type": "number"
@@ -1889,21 +2162,51 @@
                             "type": "number"
                         },
                         "bounty_size_percentage_range": {
-                            "$ref": "#/$defs/float_range"
+                            "$ref": "#/definitions/float_range"
                         },
                         "chance_for_full_bid_on_auctions": {
                             "type": "number"
                         },
                         "chaos_factor_range": {
-                            "$ref": "#/$defs/float_range"
+                            "$ref": "#/definitions/float_range"
                         },
                         "chaos_factor_update_interval": {
                             "type": "number"
+                        },
+                        "corruption_mode_check_interval_in_minutes": {
+                            "description": "How often the AI reevaluates owned shrouded planets for strategic corruption mode changes",
+                            "$ref": "#/definitions/float_range"
+                        },
+                        "corruption_mode_min_runway_in_minutes": {
+                            "description": "Authored minimum upkeep runway; the effective runway is at least the Spread cooldown plus one AI update, in addition to the emergency Spread reserve",
+                            "type": "number",
+                            "minimum": 0.0
+                        },
+                        "corruption_shroud_min_balance_multiplier": {
+                            "description": "Minimum multiple of the shrouding price held before the AI pays it",
+                            "type": "number",
+                            "minimum": 0.0
+                        },
+                        "corruption_shrouding_check_interval_in_minutes": {
+                            "description": "How often the AI checks for owned planets that can begin shrouding",
+                            "$ref": "#/definitions/float_range"
+                        },
+                        "corruption_structure_first_check_interval_in_minutes": {
+                            "description": "First reservoir check interval",
+                            "$ref": "#/definitions/float_range"
+                        },
+                        "corruption_structure_next_check_interval_in_minutes": {
+                            "description": "Subsequent reservoir check interval",
+                            "$ref": "#/definitions/float_range"
                         },
                         "description": {
                             "type": "string"
                         },
                         "fleet_attack_timeout_duration_in_minutes": {
+                            "type": "number"
+                        },
+                        "fleet_colonize_mission_backstop_in_minutes": {
+                            "description": "Difficulty override for the global colonization mission backstop",
                             "type": "number"
                         },
                         "fleet_colonize_timeout_duration_in_minutes": {
@@ -1912,8 +2215,16 @@
                         "fleet_regroup_await_units_time_in_minutes": {
                             "type": "number"
                         },
+                        "fleet_retreat_recovery_backstop_in_minutes": {
+                            "description": "Difficulty override for the global retreat recovery backstop",
+                            "type": "number"
+                        },
                         "fleet_will_probably_defeat_ratio_range": {
-                            "$ref": "#/$defs/float_range"
+                            "$ref": "#/definitions/float_range"
+                        },
+                        "home_defense_max_mobile_fleet_supply_fraction": {
+                            "description": "Difficulty override for the maximum mobile fleet fraction reserved for home defense",
+                            "type": "number"
                         },
                         "icon": {
                             "type": "string"
@@ -1922,25 +2233,65 @@
                             "description": "Maximum number of concurrent surveying upgrade purchase requests",
                             "type": "integer"
                         },
+                        "max_corruption_mode_changes_per_update": {
+                            "description": "Maximum successful strategic corruption mode changes per reevaluation; safety recovery and initial assignment are exempt",
+                            "type": "integer"
+                        },
                         "max_fleet_capital_ship_count": {
                             "type": "integer"
                         },
                         "max_fleet_super_capital_ship_count": {
                             "type": "integer"
                         },
+                        "max_pending_corruption_structure_requests": {
+                            "description": "Maximum pending corruption-structure request count (must be at least the minimum)",
+                            "type": "integer",
+                            "minimum": 0
+                        },
                         "max_supply_percentage_relative_to_human_players": {
                             "type": "number"
                         },
+                        "min_corruption_spread_planet_count": {
+                            "description": "Minimum number of Spread planets when an eligible source can reach a known planet that still needs corruption",
+                            "type": "integer",
+                            "minimum": 0
+                        },
+                        "min_pending_corruption_structure_requests": {
+                            "description": "Minimum pending corruption-structure request count",
+                            "type": "integer",
+                            "minimum": 0
+                        },
                         "name": {
                             "type": "string"
+                        },
+                        "owned_planets_per_pending_corruption_structure_request": {
+                            "description": "Owned planets per allowed pending corruption-structure request",
+                            "type": "integer",
+                            "minimum": 1
                         },
                         "ownership_time_in_minutes_before_static_defenses": {
                             "description": "Time after an AI gets ownership of a world before they build static defenses in minutes",
                             "type": "number"
                         },
+                        "projected_garrison_actionable_reference_supply_fraction": {
+                            "description": "Difficulty override for the global projected-garrison supply scaling fraction",
+                            "type": "number"
+                        },
+                        "projected_garrison_actionable_supply_floor": {
+                            "description": "Difficulty override for the global projected-garrison actionable supply floor",
+                            "type": "integer"
+                        },
+                        "random_research_check_interval_in_minutes": {
+                            "description": "How often the AI selects a general research subject; absent uses 1.5-3 minutes on Easy and 2-5 minutes otherwise",
+                            "$ref": "#/definitions/float_range"
+                        },
+                        "research_tier_increase_check_interval_in_minutes": {
+                            "description": "How often the AI expands the tiers considered for general research; absent uses 12-20 minutes on Easy and 15-30 minutes otherwise",
+                            "$ref": "#/definitions/float_range"
+                        },
                         "surveying_upgrade_check_interval_in_minutes": {
                             "description": "How often the AI checks for surveying track upgrades",
-                            "$ref": "#/$defs/float_range"
+                            "$ref": "#/definitions/float_range"
                         },
                         "time_after_game_start_allowing_static_defenses_in_minutes": {
                             "description": "Time after game start when a an AI gains ownership of a world before they build static defenses in minutes",
@@ -1953,7 +2304,7 @@
                             "type": "number"
                         },
                         "when_build_titan_in_minutes": {
-                            "$ref": "#/$defs/float_range"
+                            "$ref": "#/definitions/float_range"
                         },
                         "will_attack_other_ai_before_human_players": {
                             "type": "boolean"
@@ -2016,7 +2367,11 @@
                                                     "player_intelligence_purchase_influence_point_cost",
                                                     "player_intelligence_purchase_spool_up_time",
                                                     "player_intelligence_purchase_cooldown_duration",
-                                                    "npc_bounty_collection_share"
+                                                    "npc_bounty_collection_share",
+                                                    "unity_mana_to_credits_conversion_rate",
+                                                    "unity_mana_to_metal_conversion_rate",
+                                                    "unity_mana_to_crystal_conversion_rate",
+                                                    "alliance_offer_asset_transfer_tax_rate"
                                                 ]
                                             },
                                             "value": {
@@ -2046,7 +2401,7 @@
                                             "exotic_types": {
                                                 "type": "array",
                                                 "items": {
-                                                    "$ref": "#/$defs/exotic_type"
+                                                    "$ref": "#/definitions/exotic_type"
                                                 }
                                             },
                                             "modifier_type": {
@@ -2097,7 +2452,7 @@
                                             "tags": {
                                                 "type": "array",
                                                 "items": {
-                                                    "$ref": "#/$defs/npc_tags"
+                                                    "$ref": "#/definitions/npc_tags"
                                                 }
                                             },
                                             "value": {
@@ -2183,6 +2538,16 @@
                                                     "research_track_build_time",
                                                     "focus_track_build_price",
                                                     "focus_track_build_time",
+                                                    "corruption_track_build_price",
+                                                    "corruption_track_build_time",
+                                                    "industry_track_build_price",
+                                                    "industry_track_build_time",
+                                                    "influence_track_build_price",
+                                                    "influence_track_build_time",
+                                                    "culture_track_build_price",
+                                                    "culture_track_build_time",
+                                                    "population_track_build_price",
+                                                    "population_track_build_time",
                                                     "surveying_track_build_price",
                                                     "surveying_track_build_time",
                                                     "structure_build_price",
@@ -2198,13 +2563,23 @@
                                                     "mana_restore_rate",
                                                     "bonus_max_mana",
                                                     "mana_restore_rate_per_population",
-                                                    "bonus_max_mana_per_population"
+                                                    "bonus_max_mana_per_population",
+                                                    "planet_corruption_strength",
+                                                    "planet_corruption_speed",
+                                                    "ignore_shroud_limit",
+                                                    "max_corruption",
+                                                    "corruption_mode_level",
+                                                    "influence_points_recharge_rate",
+                                                    "non_trade_credits_income_rate_scalar",
+                                                    "non_trade_metal_income_rate_scalar",
+                                                    "non_trade_crystal_income_rate_scalar",
+                                                    "planet_corruption_debuff_strength"
                                                 ]
                                             },
                                             "planet_types": {
                                                 "type": "array",
                                                 "items": {
-                                                    "$ref": "#/$defs/planet_type"
+                                                    "$ref": "#/definitions/planet_type"
                                                 }
                                             },
                                             "value": {
@@ -2240,7 +2615,7 @@
                                             "strikecraft_kinds": {
                                                 "type": "array",
                                                 "items": {
-                                                    "$ref": "#/$defs/strikecraft_types"
+                                                    "$ref": "#/definitions/strikecraft_types"
                                                 }
                                             },
                                             "value": {
@@ -2270,7 +2645,7 @@
                                             "build_kinds": {
                                                 "type": "array",
                                                 "items": {
-                                                    "$ref": "#/$defs/unit_build_kind_name"
+                                                    "$ref": "#/definitions/unit_build_kind_name"
                                                 }
                                             },
                                             "modifier_type": {
@@ -2363,13 +2738,27 @@
                                                     "trade_export_crystal_points",
                                                     "loot_collection_duration",
                                                     "phase_resonance_bonus_duration",
-                                                    "unit_capture_points"
+                                                    "unit_capture_points",
+                                                    "max_corruption",
+                                                    "corruption_decay_rate",
+                                                    "corruption_decay_delay_duration_after_gain",
+                                                    "planet_corruption_strength",
+                                                    "raise_cloak_speed",
+                                                    "lower_cloak_speed",
+                                                    "cloak_quality",
+                                                    "detection_range",
+                                                    "detection_quality",
+                                                    "min_detection_level",
+                                                    "overflow_shield_points_per_corruption",
+                                                    "overflow_armor_points_per_corruption",
+                                                    "overflow_hull_points_per_corruption",
+                                                    "corruption_overflow_threshold"
                                                 ]
                                             },
                                             "tags": {
                                                 "type": "array",
                                                 "items": {
-                                                    "$ref": "#/$defs/unit_tag"
+                                                    "$ref": "#/definitions/unit_tag"
                                                 }
                                             },
                                             "value": {
@@ -2412,11 +2801,12 @@
                                                     "cooldown_duration",
                                                     "range",
                                                     "tracking_speed",
-                                                    "bypass_shields_chance"
+                                                    "bypass_shields_chance",
+                                                    "berserk"
                                                 ]
                                             },
                                             "tags": {
-                                                "$ref": "#/$defs/weapon_tag_set"
+                                                "$ref": "#/definitions/weapon_tag_set"
                                             },
                                             "value": {
                                                 "type": "number"
@@ -2460,21 +2850,51 @@
                             "type": "number"
                         },
                         "bounty_size_percentage_range": {
-                            "$ref": "#/$defs/float_range"
+                            "$ref": "#/definitions/float_range"
                         },
                         "chance_for_full_bid_on_auctions": {
                             "type": "number"
                         },
                         "chaos_factor_range": {
-                            "$ref": "#/$defs/float_range"
+                            "$ref": "#/definitions/float_range"
                         },
                         "chaos_factor_update_interval": {
                             "type": "number"
+                        },
+                        "corruption_mode_check_interval_in_minutes": {
+                            "description": "How often the AI reevaluates owned shrouded planets for strategic corruption mode changes",
+                            "$ref": "#/definitions/float_range"
+                        },
+                        "corruption_mode_min_runway_in_minutes": {
+                            "description": "Authored minimum upkeep runway; the effective runway is at least the Spread cooldown plus one AI update, in addition to the emergency Spread reserve",
+                            "type": "number",
+                            "minimum": 0.0
+                        },
+                        "corruption_shroud_min_balance_multiplier": {
+                            "description": "Minimum multiple of the shrouding price held before the AI pays it",
+                            "type": "number",
+                            "minimum": 0.0
+                        },
+                        "corruption_shrouding_check_interval_in_minutes": {
+                            "description": "How often the AI checks for owned planets that can begin shrouding",
+                            "$ref": "#/definitions/float_range"
+                        },
+                        "corruption_structure_first_check_interval_in_minutes": {
+                            "description": "First reservoir check interval",
+                            "$ref": "#/definitions/float_range"
+                        },
+                        "corruption_structure_next_check_interval_in_minutes": {
+                            "description": "Subsequent reservoir check interval",
+                            "$ref": "#/definitions/float_range"
                         },
                         "description": {
                             "type": "string"
                         },
                         "fleet_attack_timeout_duration_in_minutes": {
+                            "type": "number"
+                        },
+                        "fleet_colonize_mission_backstop_in_minutes": {
+                            "description": "Difficulty override for the global colonization mission backstop",
                             "type": "number"
                         },
                         "fleet_colonize_timeout_duration_in_minutes": {
@@ -2483,8 +2903,16 @@
                         "fleet_regroup_await_units_time_in_minutes": {
                             "type": "number"
                         },
+                        "fleet_retreat_recovery_backstop_in_minutes": {
+                            "description": "Difficulty override for the global retreat recovery backstop",
+                            "type": "number"
+                        },
                         "fleet_will_probably_defeat_ratio_range": {
-                            "$ref": "#/$defs/float_range"
+                            "$ref": "#/definitions/float_range"
+                        },
+                        "home_defense_max_mobile_fleet_supply_fraction": {
+                            "description": "Difficulty override for the maximum mobile fleet fraction reserved for home defense",
+                            "type": "number"
                         },
                         "icon": {
                             "type": "string"
@@ -2493,25 +2921,65 @@
                             "description": "Maximum number of concurrent surveying upgrade purchase requests",
                             "type": "integer"
                         },
+                        "max_corruption_mode_changes_per_update": {
+                            "description": "Maximum successful strategic corruption mode changes per reevaluation; safety recovery and initial assignment are exempt",
+                            "type": "integer"
+                        },
                         "max_fleet_capital_ship_count": {
                             "type": "integer"
                         },
                         "max_fleet_super_capital_ship_count": {
                             "type": "integer"
                         },
+                        "max_pending_corruption_structure_requests": {
+                            "description": "Maximum pending corruption-structure request count (must be at least the minimum)",
+                            "type": "integer",
+                            "minimum": 0
+                        },
                         "max_supply_percentage_relative_to_human_players": {
                             "type": "number"
                         },
+                        "min_corruption_spread_planet_count": {
+                            "description": "Minimum number of Spread planets when an eligible source can reach a known planet that still needs corruption",
+                            "type": "integer",
+                            "minimum": 0
+                        },
+                        "min_pending_corruption_structure_requests": {
+                            "description": "Minimum pending corruption-structure request count",
+                            "type": "integer",
+                            "minimum": 0
+                        },
                         "name": {
                             "type": "string"
+                        },
+                        "owned_planets_per_pending_corruption_structure_request": {
+                            "description": "Owned planets per allowed pending corruption-structure request",
+                            "type": "integer",
+                            "minimum": 1
                         },
                         "ownership_time_in_minutes_before_static_defenses": {
                             "description": "Time after an AI gets ownership of a world before they build static defenses in minutes",
                             "type": "number"
                         },
+                        "projected_garrison_actionable_reference_supply_fraction": {
+                            "description": "Difficulty override for the global projected-garrison supply scaling fraction",
+                            "type": "number"
+                        },
+                        "projected_garrison_actionable_supply_floor": {
+                            "description": "Difficulty override for the global projected-garrison actionable supply floor",
+                            "type": "integer"
+                        },
+                        "random_research_check_interval_in_minutes": {
+                            "description": "How often the AI selects a general research subject; absent uses 1.5-3 minutes on Easy and 2-5 minutes otherwise",
+                            "$ref": "#/definitions/float_range"
+                        },
+                        "research_tier_increase_check_interval_in_minutes": {
+                            "description": "How often the AI expands the tiers considered for general research; absent uses 12-20 minutes on Easy and 15-30 minutes otherwise",
+                            "$ref": "#/definitions/float_range"
+                        },
                         "surveying_upgrade_check_interval_in_minutes": {
                             "description": "How often the AI checks for surveying track upgrades",
-                            "$ref": "#/$defs/float_range"
+                            "$ref": "#/definitions/float_range"
                         },
                         "time_after_game_start_allowing_static_defenses_in_minutes": {
                             "description": "Time after game start when a an AI gains ownership of a world before they build static defenses in minutes",
@@ -2524,7 +2992,7 @@
                             "type": "number"
                         },
                         "when_build_titan_in_minutes": {
-                            "$ref": "#/$defs/float_range"
+                            "$ref": "#/definitions/float_range"
                         },
                         "will_attack_other_ai_before_human_players": {
                             "type": "boolean"
@@ -2587,7 +3055,11 @@
                                                     "player_intelligence_purchase_influence_point_cost",
                                                     "player_intelligence_purchase_spool_up_time",
                                                     "player_intelligence_purchase_cooldown_duration",
-                                                    "npc_bounty_collection_share"
+                                                    "npc_bounty_collection_share",
+                                                    "unity_mana_to_credits_conversion_rate",
+                                                    "unity_mana_to_metal_conversion_rate",
+                                                    "unity_mana_to_crystal_conversion_rate",
+                                                    "alliance_offer_asset_transfer_tax_rate"
                                                 ]
                                             },
                                             "value": {
@@ -2617,7 +3089,7 @@
                                             "exotic_types": {
                                                 "type": "array",
                                                 "items": {
-                                                    "$ref": "#/$defs/exotic_type"
+                                                    "$ref": "#/definitions/exotic_type"
                                                 }
                                             },
                                             "modifier_type": {
@@ -2668,7 +3140,7 @@
                                             "tags": {
                                                 "type": "array",
                                                 "items": {
-                                                    "$ref": "#/$defs/npc_tags"
+                                                    "$ref": "#/definitions/npc_tags"
                                                 }
                                             },
                                             "value": {
@@ -2754,6 +3226,16 @@
                                                     "research_track_build_time",
                                                     "focus_track_build_price",
                                                     "focus_track_build_time",
+                                                    "corruption_track_build_price",
+                                                    "corruption_track_build_time",
+                                                    "industry_track_build_price",
+                                                    "industry_track_build_time",
+                                                    "influence_track_build_price",
+                                                    "influence_track_build_time",
+                                                    "culture_track_build_price",
+                                                    "culture_track_build_time",
+                                                    "population_track_build_price",
+                                                    "population_track_build_time",
                                                     "surveying_track_build_price",
                                                     "surveying_track_build_time",
                                                     "structure_build_price",
@@ -2769,13 +3251,23 @@
                                                     "mana_restore_rate",
                                                     "bonus_max_mana",
                                                     "mana_restore_rate_per_population",
-                                                    "bonus_max_mana_per_population"
+                                                    "bonus_max_mana_per_population",
+                                                    "planet_corruption_strength",
+                                                    "planet_corruption_speed",
+                                                    "ignore_shroud_limit",
+                                                    "max_corruption",
+                                                    "corruption_mode_level",
+                                                    "influence_points_recharge_rate",
+                                                    "non_trade_credits_income_rate_scalar",
+                                                    "non_trade_metal_income_rate_scalar",
+                                                    "non_trade_crystal_income_rate_scalar",
+                                                    "planet_corruption_debuff_strength"
                                                 ]
                                             },
                                             "planet_types": {
                                                 "type": "array",
                                                 "items": {
-                                                    "$ref": "#/$defs/planet_type"
+                                                    "$ref": "#/definitions/planet_type"
                                                 }
                                             },
                                             "value": {
@@ -2811,7 +3303,7 @@
                                             "strikecraft_kinds": {
                                                 "type": "array",
                                                 "items": {
-                                                    "$ref": "#/$defs/strikecraft_types"
+                                                    "$ref": "#/definitions/strikecraft_types"
                                                 }
                                             },
                                             "value": {
@@ -2841,7 +3333,7 @@
                                             "build_kinds": {
                                                 "type": "array",
                                                 "items": {
-                                                    "$ref": "#/$defs/unit_build_kind_name"
+                                                    "$ref": "#/definitions/unit_build_kind_name"
                                                 }
                                             },
                                             "modifier_type": {
@@ -2934,13 +3426,27 @@
                                                     "trade_export_crystal_points",
                                                     "loot_collection_duration",
                                                     "phase_resonance_bonus_duration",
-                                                    "unit_capture_points"
+                                                    "unit_capture_points",
+                                                    "max_corruption",
+                                                    "corruption_decay_rate",
+                                                    "corruption_decay_delay_duration_after_gain",
+                                                    "planet_corruption_strength",
+                                                    "raise_cloak_speed",
+                                                    "lower_cloak_speed",
+                                                    "cloak_quality",
+                                                    "detection_range",
+                                                    "detection_quality",
+                                                    "min_detection_level",
+                                                    "overflow_shield_points_per_corruption",
+                                                    "overflow_armor_points_per_corruption",
+                                                    "overflow_hull_points_per_corruption",
+                                                    "corruption_overflow_threshold"
                                                 ]
                                             },
                                             "tags": {
                                                 "type": "array",
                                                 "items": {
-                                                    "$ref": "#/$defs/unit_tag"
+                                                    "$ref": "#/definitions/unit_tag"
                                                 }
                                             },
                                             "value": {
@@ -2983,11 +3489,12 @@
                                                     "cooldown_duration",
                                                     "range",
                                                     "tracking_speed",
-                                                    "bypass_shields_chance"
+                                                    "bypass_shields_chance",
+                                                    "berserk"
                                                 ]
                                             },
                                             "tags": {
-                                                "$ref": "#/$defs/weapon_tag_set"
+                                                "$ref": "#/definitions/weapon_tag_set"
                                             },
                                             "value": {
                                                 "type": "number"
@@ -3031,21 +3538,51 @@
                             "type": "number"
                         },
                         "bounty_size_percentage_range": {
-                            "$ref": "#/$defs/float_range"
+                            "$ref": "#/definitions/float_range"
                         },
                         "chance_for_full_bid_on_auctions": {
                             "type": "number"
                         },
                         "chaos_factor_range": {
-                            "$ref": "#/$defs/float_range"
+                            "$ref": "#/definitions/float_range"
                         },
                         "chaos_factor_update_interval": {
                             "type": "number"
+                        },
+                        "corruption_mode_check_interval_in_minutes": {
+                            "description": "How often the AI reevaluates owned shrouded planets for strategic corruption mode changes",
+                            "$ref": "#/definitions/float_range"
+                        },
+                        "corruption_mode_min_runway_in_minutes": {
+                            "description": "Authored minimum upkeep runway; the effective runway is at least the Spread cooldown plus one AI update, in addition to the emergency Spread reserve",
+                            "type": "number",
+                            "minimum": 0.0
+                        },
+                        "corruption_shroud_min_balance_multiplier": {
+                            "description": "Minimum multiple of the shrouding price held before the AI pays it",
+                            "type": "number",
+                            "minimum": 0.0
+                        },
+                        "corruption_shrouding_check_interval_in_minutes": {
+                            "description": "How often the AI checks for owned planets that can begin shrouding",
+                            "$ref": "#/definitions/float_range"
+                        },
+                        "corruption_structure_first_check_interval_in_minutes": {
+                            "description": "First reservoir check interval",
+                            "$ref": "#/definitions/float_range"
+                        },
+                        "corruption_structure_next_check_interval_in_minutes": {
+                            "description": "Subsequent reservoir check interval",
+                            "$ref": "#/definitions/float_range"
                         },
                         "description": {
                             "type": "string"
                         },
                         "fleet_attack_timeout_duration_in_minutes": {
+                            "type": "number"
+                        },
+                        "fleet_colonize_mission_backstop_in_minutes": {
+                            "description": "Difficulty override for the global colonization mission backstop",
                             "type": "number"
                         },
                         "fleet_colonize_timeout_duration_in_minutes": {
@@ -3054,8 +3591,16 @@
                         "fleet_regroup_await_units_time_in_minutes": {
                             "type": "number"
                         },
+                        "fleet_retreat_recovery_backstop_in_minutes": {
+                            "description": "Difficulty override for the global retreat recovery backstop",
+                            "type": "number"
+                        },
                         "fleet_will_probably_defeat_ratio_range": {
-                            "$ref": "#/$defs/float_range"
+                            "$ref": "#/definitions/float_range"
+                        },
+                        "home_defense_max_mobile_fleet_supply_fraction": {
+                            "description": "Difficulty override for the maximum mobile fleet fraction reserved for home defense",
+                            "type": "number"
                         },
                         "icon": {
                             "type": "string"
@@ -3064,25 +3609,65 @@
                             "description": "Maximum number of concurrent surveying upgrade purchase requests",
                             "type": "integer"
                         },
+                        "max_corruption_mode_changes_per_update": {
+                            "description": "Maximum successful strategic corruption mode changes per reevaluation; safety recovery and initial assignment are exempt",
+                            "type": "integer"
+                        },
                         "max_fleet_capital_ship_count": {
                             "type": "integer"
                         },
                         "max_fleet_super_capital_ship_count": {
                             "type": "integer"
                         },
+                        "max_pending_corruption_structure_requests": {
+                            "description": "Maximum pending corruption-structure request count (must be at least the minimum)",
+                            "type": "integer",
+                            "minimum": 0
+                        },
                         "max_supply_percentage_relative_to_human_players": {
                             "type": "number"
                         },
+                        "min_corruption_spread_planet_count": {
+                            "description": "Minimum number of Spread planets when an eligible source can reach a known planet that still needs corruption",
+                            "type": "integer",
+                            "minimum": 0
+                        },
+                        "min_pending_corruption_structure_requests": {
+                            "description": "Minimum pending corruption-structure request count",
+                            "type": "integer",
+                            "minimum": 0
+                        },
                         "name": {
                             "type": "string"
+                        },
+                        "owned_planets_per_pending_corruption_structure_request": {
+                            "description": "Owned planets per allowed pending corruption-structure request",
+                            "type": "integer",
+                            "minimum": 1
                         },
                         "ownership_time_in_minutes_before_static_defenses": {
                             "description": "Time after an AI gets ownership of a world before they build static defenses in minutes",
                             "type": "number"
                         },
+                        "projected_garrison_actionable_reference_supply_fraction": {
+                            "description": "Difficulty override for the global projected-garrison supply scaling fraction",
+                            "type": "number"
+                        },
+                        "projected_garrison_actionable_supply_floor": {
+                            "description": "Difficulty override for the global projected-garrison actionable supply floor",
+                            "type": "integer"
+                        },
+                        "random_research_check_interval_in_minutes": {
+                            "description": "How often the AI selects a general research subject; absent uses 1.5-3 minutes on Easy and 2-5 minutes otherwise",
+                            "$ref": "#/definitions/float_range"
+                        },
+                        "research_tier_increase_check_interval_in_minutes": {
+                            "description": "How often the AI expands the tiers considered for general research; absent uses 12-20 minutes on Easy and 15-30 minutes otherwise",
+                            "$ref": "#/definitions/float_range"
+                        },
                         "surveying_upgrade_check_interval_in_minutes": {
                             "description": "How often the AI checks for surveying track upgrades",
-                            "$ref": "#/$defs/float_range"
+                            "$ref": "#/definitions/float_range"
                         },
                         "time_after_game_start_allowing_static_defenses_in_minutes": {
                             "description": "Time after game start when a an AI gains ownership of a world before they build static defenses in minutes",
@@ -3095,7 +3680,7 @@
                             "type": "number"
                         },
                         "when_build_titan_in_minutes": {
-                            "$ref": "#/$defs/float_range"
+                            "$ref": "#/definitions/float_range"
                         },
                         "will_attack_other_ai_before_human_players": {
                             "type": "boolean"
@@ -3158,7 +3743,11 @@
                                                     "player_intelligence_purchase_influence_point_cost",
                                                     "player_intelligence_purchase_spool_up_time",
                                                     "player_intelligence_purchase_cooldown_duration",
-                                                    "npc_bounty_collection_share"
+                                                    "npc_bounty_collection_share",
+                                                    "unity_mana_to_credits_conversion_rate",
+                                                    "unity_mana_to_metal_conversion_rate",
+                                                    "unity_mana_to_crystal_conversion_rate",
+                                                    "alliance_offer_asset_transfer_tax_rate"
                                                 ]
                                             },
                                             "value": {
@@ -3188,7 +3777,7 @@
                                             "exotic_types": {
                                                 "type": "array",
                                                 "items": {
-                                                    "$ref": "#/$defs/exotic_type"
+                                                    "$ref": "#/definitions/exotic_type"
                                                 }
                                             },
                                             "modifier_type": {
@@ -3239,7 +3828,7 @@
                                             "tags": {
                                                 "type": "array",
                                                 "items": {
-                                                    "$ref": "#/$defs/npc_tags"
+                                                    "$ref": "#/definitions/npc_tags"
                                                 }
                                             },
                                             "value": {
@@ -3325,6 +3914,16 @@
                                                     "research_track_build_time",
                                                     "focus_track_build_price",
                                                     "focus_track_build_time",
+                                                    "corruption_track_build_price",
+                                                    "corruption_track_build_time",
+                                                    "industry_track_build_price",
+                                                    "industry_track_build_time",
+                                                    "influence_track_build_price",
+                                                    "influence_track_build_time",
+                                                    "culture_track_build_price",
+                                                    "culture_track_build_time",
+                                                    "population_track_build_price",
+                                                    "population_track_build_time",
                                                     "surveying_track_build_price",
                                                     "surveying_track_build_time",
                                                     "structure_build_price",
@@ -3340,13 +3939,23 @@
                                                     "mana_restore_rate",
                                                     "bonus_max_mana",
                                                     "mana_restore_rate_per_population",
-                                                    "bonus_max_mana_per_population"
+                                                    "bonus_max_mana_per_population",
+                                                    "planet_corruption_strength",
+                                                    "planet_corruption_speed",
+                                                    "ignore_shroud_limit",
+                                                    "max_corruption",
+                                                    "corruption_mode_level",
+                                                    "influence_points_recharge_rate",
+                                                    "non_trade_credits_income_rate_scalar",
+                                                    "non_trade_metal_income_rate_scalar",
+                                                    "non_trade_crystal_income_rate_scalar",
+                                                    "planet_corruption_debuff_strength"
                                                 ]
                                             },
                                             "planet_types": {
                                                 "type": "array",
                                                 "items": {
-                                                    "$ref": "#/$defs/planet_type"
+                                                    "$ref": "#/definitions/planet_type"
                                                 }
                                             },
                                             "value": {
@@ -3382,7 +3991,7 @@
                                             "strikecraft_kinds": {
                                                 "type": "array",
                                                 "items": {
-                                                    "$ref": "#/$defs/strikecraft_types"
+                                                    "$ref": "#/definitions/strikecraft_types"
                                                 }
                                             },
                                             "value": {
@@ -3412,7 +4021,7 @@
                                             "build_kinds": {
                                                 "type": "array",
                                                 "items": {
-                                                    "$ref": "#/$defs/unit_build_kind_name"
+                                                    "$ref": "#/definitions/unit_build_kind_name"
                                                 }
                                             },
                                             "modifier_type": {
@@ -3505,13 +4114,27 @@
                                                     "trade_export_crystal_points",
                                                     "loot_collection_duration",
                                                     "phase_resonance_bonus_duration",
-                                                    "unit_capture_points"
+                                                    "unit_capture_points",
+                                                    "max_corruption",
+                                                    "corruption_decay_rate",
+                                                    "corruption_decay_delay_duration_after_gain",
+                                                    "planet_corruption_strength",
+                                                    "raise_cloak_speed",
+                                                    "lower_cloak_speed",
+                                                    "cloak_quality",
+                                                    "detection_range",
+                                                    "detection_quality",
+                                                    "min_detection_level",
+                                                    "overflow_shield_points_per_corruption",
+                                                    "overflow_armor_points_per_corruption",
+                                                    "overflow_hull_points_per_corruption",
+                                                    "corruption_overflow_threshold"
                                                 ]
                                             },
                                             "tags": {
                                                 "type": "array",
                                                 "items": {
-                                                    "$ref": "#/$defs/unit_tag"
+                                                    "$ref": "#/definitions/unit_tag"
                                                 }
                                             },
                                             "value": {
@@ -3554,11 +4177,12 @@
                                                     "cooldown_duration",
                                                     "range",
                                                     "tracking_speed",
-                                                    "bypass_shields_chance"
+                                                    "bypass_shields_chance",
+                                                    "berserk"
                                                 ]
                                             },
                                             "tags": {
-                                                "$ref": "#/$defs/weapon_tag_set"
+                                                "$ref": "#/definitions/weapon_tag_set"
                                             },
                                             "value": {
                                                 "type": "number"
@@ -3602,21 +4226,51 @@
                             "type": "number"
                         },
                         "bounty_size_percentage_range": {
-                            "$ref": "#/$defs/float_range"
+                            "$ref": "#/definitions/float_range"
                         },
                         "chance_for_full_bid_on_auctions": {
                             "type": "number"
                         },
                         "chaos_factor_range": {
-                            "$ref": "#/$defs/float_range"
+                            "$ref": "#/definitions/float_range"
                         },
                         "chaos_factor_update_interval": {
                             "type": "number"
+                        },
+                        "corruption_mode_check_interval_in_minutes": {
+                            "description": "How often the AI reevaluates owned shrouded planets for strategic corruption mode changes",
+                            "$ref": "#/definitions/float_range"
+                        },
+                        "corruption_mode_min_runway_in_minutes": {
+                            "description": "Authored minimum upkeep runway; the effective runway is at least the Spread cooldown plus one AI update, in addition to the emergency Spread reserve",
+                            "type": "number",
+                            "minimum": 0.0
+                        },
+                        "corruption_shroud_min_balance_multiplier": {
+                            "description": "Minimum multiple of the shrouding price held before the AI pays it",
+                            "type": "number",
+                            "minimum": 0.0
+                        },
+                        "corruption_shrouding_check_interval_in_minutes": {
+                            "description": "How often the AI checks for owned planets that can begin shrouding",
+                            "$ref": "#/definitions/float_range"
+                        },
+                        "corruption_structure_first_check_interval_in_minutes": {
+                            "description": "First reservoir check interval",
+                            "$ref": "#/definitions/float_range"
+                        },
+                        "corruption_structure_next_check_interval_in_minutes": {
+                            "description": "Subsequent reservoir check interval",
+                            "$ref": "#/definitions/float_range"
                         },
                         "description": {
                             "type": "string"
                         },
                         "fleet_attack_timeout_duration_in_minutes": {
+                            "type": "number"
+                        },
+                        "fleet_colonize_mission_backstop_in_minutes": {
+                            "description": "Difficulty override for the global colonization mission backstop",
                             "type": "number"
                         },
                         "fleet_colonize_timeout_duration_in_minutes": {
@@ -3625,8 +4279,16 @@
                         "fleet_regroup_await_units_time_in_minutes": {
                             "type": "number"
                         },
+                        "fleet_retreat_recovery_backstop_in_minutes": {
+                            "description": "Difficulty override for the global retreat recovery backstop",
+                            "type": "number"
+                        },
                         "fleet_will_probably_defeat_ratio_range": {
-                            "$ref": "#/$defs/float_range"
+                            "$ref": "#/definitions/float_range"
+                        },
+                        "home_defense_max_mobile_fleet_supply_fraction": {
+                            "description": "Difficulty override for the maximum mobile fleet fraction reserved for home defense",
+                            "type": "number"
                         },
                         "icon": {
                             "type": "string"
@@ -3635,25 +4297,65 @@
                             "description": "Maximum number of concurrent surveying upgrade purchase requests",
                             "type": "integer"
                         },
+                        "max_corruption_mode_changes_per_update": {
+                            "description": "Maximum successful strategic corruption mode changes per reevaluation; safety recovery and initial assignment are exempt",
+                            "type": "integer"
+                        },
                         "max_fleet_capital_ship_count": {
                             "type": "integer"
                         },
                         "max_fleet_super_capital_ship_count": {
                             "type": "integer"
                         },
+                        "max_pending_corruption_structure_requests": {
+                            "description": "Maximum pending corruption-structure request count (must be at least the minimum)",
+                            "type": "integer",
+                            "minimum": 0
+                        },
                         "max_supply_percentage_relative_to_human_players": {
                             "type": "number"
                         },
+                        "min_corruption_spread_planet_count": {
+                            "description": "Minimum number of Spread planets when an eligible source can reach a known planet that still needs corruption",
+                            "type": "integer",
+                            "minimum": 0
+                        },
+                        "min_pending_corruption_structure_requests": {
+                            "description": "Minimum pending corruption-structure request count",
+                            "type": "integer",
+                            "minimum": 0
+                        },
                         "name": {
                             "type": "string"
+                        },
+                        "owned_planets_per_pending_corruption_structure_request": {
+                            "description": "Owned planets per allowed pending corruption-structure request",
+                            "type": "integer",
+                            "minimum": 1
                         },
                         "ownership_time_in_minutes_before_static_defenses": {
                             "description": "Time after an AI gets ownership of a world before they build static defenses in minutes",
                             "type": "number"
                         },
+                        "projected_garrison_actionable_reference_supply_fraction": {
+                            "description": "Difficulty override for the global projected-garrison supply scaling fraction",
+                            "type": "number"
+                        },
+                        "projected_garrison_actionable_supply_floor": {
+                            "description": "Difficulty override for the global projected-garrison actionable supply floor",
+                            "type": "integer"
+                        },
+                        "random_research_check_interval_in_minutes": {
+                            "description": "How often the AI selects a general research subject; absent uses 1.5-3 minutes on Easy and 2-5 minutes otherwise",
+                            "$ref": "#/definitions/float_range"
+                        },
+                        "research_tier_increase_check_interval_in_minutes": {
+                            "description": "How often the AI expands the tiers considered for general research; absent uses 12-20 minutes on Easy and 15-30 minutes otherwise",
+                            "$ref": "#/definitions/float_range"
+                        },
                         "surveying_upgrade_check_interval_in_minutes": {
                             "description": "How often the AI checks for surveying track upgrades",
-                            "$ref": "#/$defs/float_range"
+                            "$ref": "#/definitions/float_range"
                         },
                         "time_after_game_start_allowing_static_defenses_in_minutes": {
                             "description": "Time after game start when a an AI gains ownership of a world before they build static defenses in minutes",
@@ -3666,7 +4368,7 @@
                             "type": "number"
                         },
                         "when_build_titan_in_minutes": {
-                            "$ref": "#/$defs/float_range"
+                            "$ref": "#/definitions/float_range"
                         },
                         "will_attack_other_ai_before_human_players": {
                             "type": "boolean"
@@ -3691,6 +4393,18 @@
                 }
             },
             "unevaluatedProperties": false
+        },
+        "fleet_colonize_mission_backstop_in_minutes": {
+            "description": "Maximum lifetime of a colonization mission when its difficulty does not define an override",
+            "type": "number"
+        },
+        "fleet_retreat_recovery_backstop_in_minutes": {
+            "description": "Maximum time a fleet remains in retreat recovery when returning to the abandoned gravity well still looks unsafe",
+            "type": "number"
+        },
+        "home_defense_max_mobile_fleet_supply_fraction": {
+            "description": "Maximum fraction of mobile fleet supply that may be reserved for home defense",
+            "type": "number"
         },
         "loadout": {
             "type": "object",
@@ -3718,6 +4432,26 @@
             },
             "unevaluatedProperties": false
         },
+        "long_range_research_remaining_colonization_threshold": {
+            "description": "Maximum colonization targets that may remain before the AI researches star-lane or wormhole travel",
+            "type": "integer"
+        },
+        "max_concurrent_planet_development_requests": {
+            "description": "Maximum combined pending economic track, extractor, and recovery development requests",
+            "type": "integer"
+        },
+        "proactive_supply_research_utilization": {
+            "description": "Current supply utilization at which the AI proactively researches its next supply level",
+            "type": "number"
+        },
+        "projected_garrison_actionable_reference_supply_fraction": {
+            "description": "Fraction of current used supply used to scale the projected-garrison actionable threshold",
+            "type": "number"
+        },
+        "projected_garrison_actionable_supply_floor": {
+            "description": "Minimum projected-garrison combat supply considered actionable by fleet and defense policy",
+            "type": "integer"
+        },
         "random_exotics": {
             "type": "array",
             "items": {
@@ -3736,6 +4470,10 @@
         "titan_build_kind": {
             "type": "string"
         },
+        "useful_economic_research_weight_multiplier": {
+            "description": "Weight multiplier for civilian research that directly improves income, population, culture, research capacity, or unlocks an economic structure",
+            "type": "number"
+        },
         "version": {
             "type": "integer"
         }
@@ -3751,7 +4489,7 @@
         "titan_build_kind"
     ],
     "unevaluatedProperties": false,
-    "$defs": {
+    "definitions": {
         "unit_tag": {
             "type": "string"
         },

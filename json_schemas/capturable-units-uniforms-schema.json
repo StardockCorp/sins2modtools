@@ -33,7 +33,7 @@
         }
     },
     "unevaluatedProperties": false,
-    "$defs": {
+    "definitions": {
         "unit_definition_ptr": {
             "type": "string"
         }

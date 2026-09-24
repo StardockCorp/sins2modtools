@@ -105,10 +105,44 @@
         "colonization_victory_planet_count_percentage": {
             "type": "number"
         },
+        "default_corruption_thresholds": {
+            "description": "default corruption threshold fractions used when unit and player data do not override them",
+            "type": "array",
+            "items": {
+                "type": "number",
+                "minimum": 0.0,
+                "maximum": 1.0
+            }
+        },
+        "default_negative_corruption_buffs": {
+            "description": "default negative corruption buffs used when unit and player data do not override them",
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/buff_definition_ptr"
+            }
+        },
         "dlc_only_pickable_players": {
             "type": "array",
             "items": {
                 "type": "string"
+            }
+        },
+        "dlc_pickable_players": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "players": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "product_id": {
+                        "type": "string"
+                    }
+                },
+                "unevaluatedProperties": false
             }
         },
         "dominant_culture_influence_points_gained_duration": {
@@ -256,6 +290,57 @@
                                 "unevaluatedProperties": false
                             }
                         },
+                        "fluctuation": {
+                            "description": "continuous market price drift tuning",
+                            "type": "object",
+                            "properties": {
+                                "max_scalar": {
+                                    "description": "highest the price is allowed to drift to, as a scalar of the base price",
+                                    "type": "number"
+                                },
+                                "max_snapshot_count": {
+                                    "description": "maximum number of price history snapshots to retain",
+                                    "type": "integer"
+                                },
+                                "mean_reversion_strength": {
+                                    "description": "fraction of the distance back to the price the market is settling toward recovered per update",
+                                    "type": "number"
+                                },
+                                "min_scalar": {
+                                    "description": "lowest the price is allowed to drift to, as a scalar of the base price",
+                                    "type": "number"
+                                },
+                                "regime_decay_strength": {
+                                    "description": "how quickly the market settles back to its base price after a shock",
+                                    "type": "number"
+                                },
+                                "shock_interval_seconds_range": {
+                                    "description": "how long between market crashes and spikes",
+                                    "$ref": "#/definitions/float_range"
+                                },
+                                "shock_magnitude_range": {
+                                    "description": "how far a shock moves the price, as a fraction of the base price",
+                                    "$ref": "#/definitions/float_range"
+                                },
+                                "shock_regime_retention": {
+                                    "description": "fraction of a shock that persists as the new price the market reverts to",
+                                    "type": "number"
+                                },
+                                "trade_impact_scalar_per_unit": {
+                                    "description": "immediate price impact per unit bought or sold by a player",
+                                    "type": "number"
+                                },
+                                "update_interval_seconds": {
+                                    "description": "how often the market price takes a random step",
+                                    "type": "number"
+                                },
+                                "volatility": {
+                                    "description": "maximum size of a single random price step",
+                                    "type": "number"
+                                }
+                            },
+                            "unevaluatedProperties": false
+                        },
                         "initial_demand_level": {
                             "type": "integer"
                         }
@@ -270,7 +355,7 @@
                 "auction_cooldown_durations": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/$defs/float_range"
+                        "$ref": "#/definitions/float_range"
                     }
                 },
                 "bounty_market_max_snapshot_count": {
@@ -363,7 +448,9 @@
     "required": [
         "auto_upgrade_planet_track_price_threshold_multiplier",
         "colonization_victory_planet_count_percentage",
-        "dlc_only_pickable_players",
+        "default_corruption_thresholds",
+        "default_negative_corruption_buffs",
+        "dlc_pickable_players",
         "dominant_culture_influence_points_gained_duration",
         "exotics_refund_percentage",
         "fallback_theme_picker_skybox",
@@ -382,7 +469,10 @@
         "research_overflow_tier_nth_root_modifier"
     ],
     "unevaluatedProperties": false,
-    "$defs": {
+    "definitions": {
+        "buff_definition_ptr": {
+            "type": "string"
+        },
         "float_range": {
             "type": "array",
             "items": {

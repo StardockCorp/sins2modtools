@@ -10,7 +10,7 @@
         "type_datas": {
             "type": "array",
             "items": {
-                "$ref": "#/$defs/exotic_type_uniform_data"
+                "$ref": "#/definitions/exotic_type_uniform_data"
             }
         },
         "version": {
@@ -18,7 +18,7 @@
         }
     },
     "unevaluatedProperties": false,
-    "$defs": {
+    "definitions": {
         "exotic_type_uniform_data": {
             "type": "object",
             "properties": {

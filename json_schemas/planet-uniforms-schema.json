@@ -30,11 +30,601 @@
         "chance_of_second_planet_bonus": {
             "type": "number"
         },
+        "city_lights_fade_in_duration": {
+            "type": "number",
+            "minimum": 0.0
+        },
+        "corruption_debuff_action_data_source": {
+            "description": "Data source used to create corruption_debuff_buff.",
+            "$ref": "#/definitions/action_data_source_definition_ptr"
+        },
+        "corruption_debuff_buff": {
+            "description": "Single indefinite negative buff representing all corruption debuffs. Its lifecycle is owned by planet_data; do not give it an active duration or external removal actions.",
+            "$ref": "#/definitions/buff_definition_ptr"
+        },
+        "corruption_debuffs": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "modifier_type": {
+                        "type": "string",
+                        "enum": [
+                            "max_civilian_structure_slots",
+                            "max_military_structure_slots",
+                            "commerce_track_credit_income_rate",
+                            "mining_track_metal_income_rate",
+                            "mining_track_crystal_income_rate",
+                            "commerce_track_credit_income_rate_per_population",
+                            "mining_track_metal_income_rate_per_population",
+                            "mining_track_crystal_income_rate_per_population",
+                            "orbital_extraction_metal_income_rate",
+                            "orbital_extraction_crystal_income_rate",
+                            "civilian_research_points",
+                            "military_research_points",
+                            "civilian_research_points_per_population",
+                            "military_research_points_per_population",
+                            "civilian_research_rate",
+                            "military_research_rate",
+                            "civilian_research_rate_per_population",
+                            "military_research_rate_per_population",
+                            "culture_rate",
+                            "culture_resistance_rate",
+                            "unity_points",
+                            "max_health_points",
+                            "health_points_restore_rate",
+                            "max_shield_points",
+                            "shield_points_restore_rate",
+                            "planet_shield_burst_restore",
+                            "planet_shield_burst_cooldown",
+                            "max_population_points",
+                            "population_growth_rate",
+                            "max_allied_population_factor",
+                            "neutral_population_assimilation_rate",
+                            "enemy_population_assimilation_rate",
+                            "factory_unit_build_price",
+                            "factory_unit_build_time",
+                            "factory_exotic_build_time",
+                            "any_development_track_build_price",
+                            "any_development_track_build_time",
+                            "defense_track_build_price",
+                            "defense_track_build_time",
+                            "logistics_track_build_price",
+                            "logistics_track_build_time",
+                            "commerce_track_build_price",
+                            "commerce_track_build_time",
+                            "mining_track_build_price",
+                            "mining_track_build_time",
+                            "research_track_build_price",
+                            "research_track_build_time",
+                            "focus_track_build_price",
+                            "focus_track_build_time",
+                            "corruption_track_build_price",
+                            "corruption_track_build_time",
+                            "industry_track_build_price",
+                            "industry_track_build_time",
+                            "influence_track_build_price",
+                            "influence_track_build_time",
+                            "culture_track_build_price",
+                            "culture_track_build_time",
+                            "population_track_build_price",
+                            "population_track_build_time",
+                            "surveying_track_build_price",
+                            "surveying_track_build_time",
+                            "structure_build_price",
+                            "structure_build_time",
+                            "gravity_well_radius",
+                            "structure_builder_count",
+                            "max_garrison_supply",
+                            "bombing_damage_taken",
+                            "bombing_population_damage_taken",
+                            "planet_component_price",
+                            "max_planet_component_slots",
+                            "max_influence_points",
+                            "mana_restore_rate",
+                            "bonus_max_mana",
+                            "mana_restore_rate_per_population",
+                            "bonus_max_mana_per_population",
+                            "planet_corruption_strength",
+                            "planet_corruption_speed",
+                            "ignore_shroud_limit",
+                            "max_corruption",
+                            "corruption_mode_level",
+                            "influence_points_recharge_rate",
+                            "non_trade_credits_income_rate_scalar",
+                            "non_trade_metal_income_rate_scalar",
+                            "non_trade_crystal_income_rate_scalar",
+                            "planet_corruption_debuff_strength"
+                        ]
+                    },
+                    "value": {
+                        "description": "Value applied at 100% corruption.",
+                        "type": "number"
+                    },
+                    "value_behavior": {
+                        "description": "default=scalar",
+                        "type": "string",
+                        "enum": [
+                            "additive",
+                            "scalar"
+                        ]
+                    }
+                },
+                "required": [
+                    "modifier_type",
+                    "value"
+                ],
+                "unevaluatedProperties": false
+            }
+        },
+        "corruption_decay_delay_duration_after_gain": {
+            "type": "number",
+            "exclusiveMinimum": 0.0
+        },
+        "corruption_decay_rate": {
+            "type": "number",
+            "exclusiveMinimum": 0.0
+        },
+        "corruption_modes": {
+            "type": "object",
+            "properties": {
+                "exploitation": {
+                    "type": "object",
+                    "properties": {
+                        "action_data_source": {
+                            "$ref": "#/definitions/action_data_source_definition_ptr"
+                        },
+                        "buff": {
+                            "$ref": "#/definitions/buff_definition_ptr"
+                        },
+                        "cooldown_duration": {
+                            "type": "number",
+                            "minimum": 0.0
+                        },
+                        "corruption_upkeep_per_second": {
+                            "description": "planetary corruption (0-1) drained per second while active; the mode becomes starved when it cannot be paid.",
+                            "type": "number",
+                            "minimum": 0.0
+                        },
+                        "starved_effect_scalar": {
+                            "description": "multiplier applied while starved to this mode's action values that set scales_with_corruption_mode_effectiveness.",
+                            "type": "number",
+                            "minimum": 0.0,
+                            "maximum": 1.0
+                        },
+                        "starved_recovery_upkeep_multiplier": {
+                            "description": "corruption needed to leave starvation, as a multiple of corruption_upkeep_per_second.",
+                            "type": "number",
+                            "minimum": 1.0
+                        },
+                        "switch_corruption_cost": {
+                            "description": "planetary corruption (0-1) spent to activate this mode, in addition to switch_price.",
+                            "type": "number",
+                            "minimum": 0.0
+                        },
+                        "switch_price": {
+                            "$ref": "#/definitions/asset_price"
+                        }
+                    },
+                    "required": [
+                        "cooldown_duration"
+                    ],
+                    "allOf": [
+                        {
+                            "if": {
+                                "properties": {
+                                    "buff": {
+                                        "$ref": "#/definitions/buff_definition_ptr"
+                                    }
+                                },
+                                "required": [
+                                    "buff"
+                                ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "action_data_source": {
+                                        "$ref": "#/definitions/action_data_source_definition_ptr"
+                                    }
+                                },
+                                "required": [
+                                    "action_data_source"
+                                ]
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": {
+                                    "action_data_source": {
+                                        "$ref": "#/definitions/action_data_source_definition_ptr"
+                                    }
+                                },
+                                "required": [
+                                    "action_data_source"
+                                ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "buff": {
+                                        "$ref": "#/definitions/buff_definition_ptr"
+                                    }
+                                },
+                                "required": [
+                                    "buff"
+                                ]
+                            }
+                        }
+                    ],
+                    "unevaluatedProperties": false
+                },
+                "none": {
+                    "type": "object",
+                    "properties": {
+                        "action_data_source": {
+                            "$ref": "#/definitions/action_data_source_definition_ptr"
+                        },
+                        "buff": {
+                            "$ref": "#/definitions/buff_definition_ptr"
+                        },
+                        "cooldown_duration": {
+                            "type": "number",
+                            "minimum": 0.0
+                        },
+                        "corruption_upkeep_per_second": {
+                            "description": "planetary corruption (0-1) drained per second while active; the mode becomes starved when it cannot be paid.",
+                            "type": "number",
+                            "minimum": 0.0
+                        },
+                        "starved_effect_scalar": {
+                            "description": "multiplier applied while starved to this mode's action values that set scales_with_corruption_mode_effectiveness.",
+                            "type": "number",
+                            "minimum": 0.0,
+                            "maximum": 1.0
+                        },
+                        "starved_recovery_upkeep_multiplier": {
+                            "description": "corruption needed to leave starvation, as a multiple of corruption_upkeep_per_second.",
+                            "type": "number",
+                            "minimum": 1.0
+                        },
+                        "switch_corruption_cost": {
+                            "description": "planetary corruption (0-1) spent to activate this mode, in addition to switch_price.",
+                            "type": "number",
+                            "minimum": 0.0
+                        },
+                        "switch_price": {
+                            "$ref": "#/definitions/asset_price"
+                        }
+                    },
+                    "required": [
+                        "cooldown_duration"
+                    ],
+                    "allOf": [
+                        {
+                            "if": {
+                                "properties": {
+                                    "buff": {
+                                        "$ref": "#/definitions/buff_definition_ptr"
+                                    }
+                                },
+                                "required": [
+                                    "buff"
+                                ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "action_data_source": {
+                                        "$ref": "#/definitions/action_data_source_definition_ptr"
+                                    }
+                                },
+                                "required": [
+                                    "action_data_source"
+                                ]
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": {
+                                    "action_data_source": {
+                                        "$ref": "#/definitions/action_data_source_definition_ptr"
+                                    }
+                                },
+                                "required": [
+                                    "action_data_source"
+                                ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "buff": {
+                                        "$ref": "#/definitions/buff_definition_ptr"
+                                    }
+                                },
+                                "required": [
+                                    "buff"
+                                ]
+                            }
+                        }
+                    ],
+                    "unevaluatedProperties": false
+                },
+                "phasic_veil": {
+                    "type": "object",
+                    "properties": {
+                        "action_data_source": {
+                            "$ref": "#/definitions/action_data_source_definition_ptr"
+                        },
+                        "buff": {
+                            "$ref": "#/definitions/buff_definition_ptr"
+                        },
+                        "cooldown_duration": {
+                            "type": "number",
+                            "minimum": 0.0
+                        },
+                        "corruption_upkeep_per_second": {
+                            "description": "planetary corruption (0-1) drained per second while active; the mode becomes starved when it cannot be paid.",
+                            "type": "number",
+                            "minimum": 0.0
+                        },
+                        "starved_effect_scalar": {
+                            "description": "multiplier applied while starved to this mode's action values that set scales_with_corruption_mode_effectiveness.",
+                            "type": "number",
+                            "minimum": 0.0,
+                            "maximum": 1.0
+                        },
+                        "starved_recovery_upkeep_multiplier": {
+                            "description": "corruption needed to leave starvation, as a multiple of corruption_upkeep_per_second.",
+                            "type": "number",
+                            "minimum": 1.0
+                        },
+                        "switch_corruption_cost": {
+                            "description": "planetary corruption (0-1) spent to activate this mode, in addition to switch_price.",
+                            "type": "number",
+                            "minimum": 0.0
+                        },
+                        "switch_price": {
+                            "$ref": "#/definitions/asset_price"
+                        }
+                    },
+                    "required": [
+                        "cooldown_duration"
+                    ],
+                    "allOf": [
+                        {
+                            "if": {
+                                "properties": {
+                                    "buff": {
+                                        "$ref": "#/definitions/buff_definition_ptr"
+                                    }
+                                },
+                                "required": [
+                                    "buff"
+                                ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "action_data_source": {
+                                        "$ref": "#/definitions/action_data_source_definition_ptr"
+                                    }
+                                },
+                                "required": [
+                                    "action_data_source"
+                                ]
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": {
+                                    "action_data_source": {
+                                        "$ref": "#/definitions/action_data_source_definition_ptr"
+                                    }
+                                },
+                                "required": [
+                                    "action_data_source"
+                                ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "buff": {
+                                        "$ref": "#/definitions/buff_definition_ptr"
+                                    }
+                                },
+                                "required": [
+                                    "buff"
+                                ]
+                            }
+                        }
+                    ],
+                    "unevaluatedProperties": false
+                },
+                "spread": {
+                    "type": "object",
+                    "properties": {
+                        "action_data_source": {
+                            "$ref": "#/definitions/action_data_source_definition_ptr"
+                        },
+                        "buff": {
+                            "$ref": "#/definitions/buff_definition_ptr"
+                        },
+                        "cooldown_duration": {
+                            "type": "number",
+                            "minimum": 0.0
+                        },
+                        "corruption_upkeep_per_second": {
+                            "description": "planetary corruption (0-1) drained per second while active; the mode becomes starved when it cannot be paid.",
+                            "type": "number",
+                            "minimum": 0.0
+                        },
+                        "starved_effect_scalar": {
+                            "description": "multiplier applied while starved to this mode's action values that set scales_with_corruption_mode_effectiveness.",
+                            "type": "number",
+                            "minimum": 0.0,
+                            "maximum": 1.0
+                        },
+                        "starved_recovery_upkeep_multiplier": {
+                            "description": "corruption needed to leave starvation, as a multiple of corruption_upkeep_per_second.",
+                            "type": "number",
+                            "minimum": 1.0
+                        },
+                        "switch_corruption_cost": {
+                            "description": "planetary corruption (0-1) spent to activate this mode, in addition to switch_price.",
+                            "type": "number",
+                            "minimum": 0.0
+                        },
+                        "switch_price": {
+                            "$ref": "#/definitions/asset_price"
+                        }
+                    },
+                    "required": [
+                        "cooldown_duration"
+                    ],
+                    "allOf": [
+                        {
+                            "if": {
+                                "properties": {
+                                    "buff": {
+                                        "$ref": "#/definitions/buff_definition_ptr"
+                                    }
+                                },
+                                "required": [
+                                    "buff"
+                                ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "action_data_source": {
+                                        "$ref": "#/definitions/action_data_source_definition_ptr"
+                                    }
+                                },
+                                "required": [
+                                    "action_data_source"
+                                ]
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": {
+                                    "action_data_source": {
+                                        "$ref": "#/definitions/action_data_source_definition_ptr"
+                                    }
+                                },
+                                "required": [
+                                    "action_data_source"
+                                ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "buff": {
+                                        "$ref": "#/definitions/buff_definition_ptr"
+                                    }
+                                },
+                                "required": [
+                                    "buff"
+                                ]
+                            }
+                        }
+                    ],
+                    "unevaluatedProperties": false
+                },
+                "summoning": {
+                    "type": "object",
+                    "properties": {
+                        "action_data_source": {
+                            "$ref": "#/definitions/action_data_source_definition_ptr"
+                        },
+                        "buff": {
+                            "$ref": "#/definitions/buff_definition_ptr"
+                        },
+                        "cooldown_duration": {
+                            "type": "number",
+                            "minimum": 0.0
+                        },
+                        "corruption_upkeep_per_second": {
+                            "description": "planetary corruption (0-1) drained per second while active; the mode becomes starved when it cannot be paid.",
+                            "type": "number",
+                            "minimum": 0.0
+                        },
+                        "starved_effect_scalar": {
+                            "description": "multiplier applied while starved to this mode's action values that set scales_with_corruption_mode_effectiveness.",
+                            "type": "number",
+                            "minimum": 0.0,
+                            "maximum": 1.0
+                        },
+                        "starved_recovery_upkeep_multiplier": {
+                            "description": "corruption needed to leave starvation, as a multiple of corruption_upkeep_per_second.",
+                            "type": "number",
+                            "minimum": 1.0
+                        },
+                        "switch_corruption_cost": {
+                            "description": "planetary corruption (0-1) spent to activate this mode, in addition to switch_price.",
+                            "type": "number",
+                            "minimum": 0.0
+                        },
+                        "switch_price": {
+                            "$ref": "#/definitions/asset_price"
+                        }
+                    },
+                    "required": [
+                        "cooldown_duration"
+                    ],
+                    "allOf": [
+                        {
+                            "if": {
+                                "properties": {
+                                    "buff": {
+                                        "$ref": "#/definitions/buff_definition_ptr"
+                                    }
+                                },
+                                "required": [
+                                    "buff"
+                                ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "action_data_source": {
+                                        "$ref": "#/definitions/action_data_source_definition_ptr"
+                                    }
+                                },
+                                "required": [
+                                    "action_data_source"
+                                ]
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": {
+                                    "action_data_source": {
+                                        "$ref": "#/definitions/action_data_source_definition_ptr"
+                                    }
+                                },
+                                "required": [
+                                    "action_data_source"
+                                ]
+                            },
+                            "then": {
+                                "properties": {
+                                    "buff": {
+                                        "$ref": "#/definitions/buff_definition_ptr"
+                                    }
+                                },
+                                "required": [
+                                    "buff"
+                                ]
+                            }
+                        }
+                    ],
+                    "unevaluatedProperties": false
+                }
+            },
+            "unevaluatedProperties": false
+        },
         "crystal_asteroids": {
             "type": "array",
             "items": {
                 "type": "string"
             }
+        },
+        "default_max_corruption": {
+            "type": "number",
+            "exclusiveMinimum": 0.0
         },
         "destroyed_planet_mutation": {
             "type": "string"
@@ -44,6 +634,10 @@
             "items": {
                 "type": "string"
             }
+        },
+        "homeworld_auto_shroud_duration_multiplier": {
+            "type": "number",
+            "exclusiveMinimum": 0.0
         },
         "max_elevator_connection_distance_surface_radius_scalar": {
             "type": "number"
@@ -56,6 +650,9 @@
         },
         "min_elevator_buffer_distance_surface_radius_scalar": {
             "type": "number"
+        },
+        "overwrite_corruption_debuffs": {
+            "type": "boolean"
         },
         "overwrite_crystal_asteroids": {
             "type": "boolean"
@@ -89,12 +686,22 @@
                     "localized_name": {
                         "type": "string"
                     },
+                    "max_corruption": {
+                        "type": "number",
+                        "exclusiveMinimum": 0.0
+                    },
                     "name": {
                         "type": "string"
                     },
                     "population": {
                         "type": "object",
                         "properties": {
+                            "bombing_damage_resist_exponent": {
+                                "type": "number"
+                            },
+                            "bombing_damage_resist_max": {
+                                "type": "number"
+                            },
                             "growth_rate": {
                                 "type": "number"
                             },
@@ -120,6 +727,10 @@
                             "starting_population"
                         ],
                         "unevaluatedProperties": false
+                    },
+                    "shrouding_duration": {
+                        "type": "number",
+                        "exclusiveMinimum": 0.0
                     },
                     "surveying_track_levels": {
                         "type": "array",
@@ -246,6 +857,9 @@
                 "unevaluatedProperties": false
             }
         },
+        "planetary_corruption_player_race": {
+            "$ref": "#/definitions/player_race_name"
+        },
         "planets": {
             "type": "array",
             "items": {
@@ -261,6 +875,16 @@
         "scuttle_duration": {
             "type": "number"
         },
+        "shrouded_planet_mutation": {
+            "type": "string"
+        },
+        "shrouding_duration": {
+            "type": "number",
+            "exclusiveMinimum": 0.0
+        },
+        "shrouding_price": {
+            "$ref": "#/definitions/asset_price"
+        },
         "structure_plate_spin_speed": {
             "type": "number"
         },
@@ -274,17 +898,49 @@
         "chance_of_easter_egg_planet_bonus",
         "chance_of_first_planet_bonus",
         "chance_of_second_planet_bonus",
+        "city_lights_fade_in_duration",
         "crystal_asteroids",
         "destroyed_planet_mutation",
         "easter_egg_planet_bonuses",
+        "homeworld_auto_shroud_duration_multiplier",
         "max_elevator_connection_distance_surface_radius_scalar",
         "metal_asteroids",
         "min_elevator_buffer_distance_surface_radius_scalar",
         "planet_types",
+        "planetary_corruption_player_race",
         "planets",
         "random_planet_bonuses",
         "scuttle_duration",
+        "shrouded_planet_mutation",
+        "shrouding_duration",
+        "shrouding_price",
         "structure_plate_spin_speed"
     ],
-    "unevaluatedProperties": false
+    "unevaluatedProperties": false,
+    "definitions": {
+        "asset_price": {
+            "type": "object",
+            "properties": {
+                "credits": {
+                    "type": "number"
+                },
+                "crystal": {
+                    "type": "number"
+                },
+                "metal": {
+                    "type": "number"
+                }
+            },
+            "unevaluatedProperties": false
+        },
+        "action_data_source_definition_ptr": {
+            "type": "string"
+        },
+        "buff_definition_ptr": {
+            "type": "string"
+        },
+        "player_race_name": {
+            "type": "string"
+        }
+    }
 }

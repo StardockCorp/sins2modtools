@@ -1,0 +1,979 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Start Mode Definition",
+    "description": "",
+    "type": "object",
+    "properties": {
+        "description": {
+            "$ref": "#/definitions/localized_text_ptr"
+        },
+        "display_name": {
+            "$ref": "#/definitions/localized_text_ptr"
+        },
+        "faction_configurations": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "additional_starting_planets": {
+                        "type": "object",
+                        "properties": {
+                            "allowed_planet_types": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "planet_type": {
+                                            "$ref": "#/definitions/planet_type_name"
+                                        },
+                                        "priority": {
+                                            "type": "integer"
+                                        }
+                                    },
+                                    "required": [
+                                        "planet_type",
+                                        "priority"
+                                    ],
+                                    "unevaluatedProperties": false
+                                }
+                            },
+                            "count": {
+                                "type": "integer"
+                            },
+                            "granted_planet_starting_items": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "granted_planets_starting_population_scalar": {
+                                "type": "number"
+                            },
+                            "granted_planets_units_in_formations": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "formation_type": {
+                                            "$ref": "#/definitions/formation_type"
+                                        },
+                                        "random_units": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "options": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "forced_leveled_up_abilities": {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "$ref": "#/definitions/ability_definition_ptr"
+                                                                }
+                                                            },
+                                                            "forced_strikecraft_index": {
+                                                                "type": "integer"
+                                                            },
+                                                            "is_temporary_ruler_ship": {
+                                                                "type": "boolean"
+                                                            },
+                                                            "items": {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "$ref": "#/definitions/unit_item_definition_ptr"
+                                                                }
+                                                            },
+                                                            "level": {
+                                                                "type": "integer"
+                                                            }
+                                                        },
+                                                        "unevaluatedProperties": false
+                                                    },
+                                                    "unit": {
+                                                        "$ref": "#/definitions/unit_definition_ptr"
+                                                    },
+                                                    "weight": {
+                                                        "type": "number"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "unit",
+                                                    "weight"
+                                                ],
+                                                "unevaluatedProperties": false
+                                            }
+                                        },
+                                        "required_units": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "count": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "integer"
+                                                        },
+                                                        "minItems": 2,
+                                                        "maxItems": 2
+                                                    },
+                                                    "options": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "forced_leveled_up_abilities": {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "$ref": "#/definitions/ability_definition_ptr"
+                                                                }
+                                                            },
+                                                            "forced_strikecraft_index": {
+                                                                "type": "integer"
+                                                            },
+                                                            "is_temporary_ruler_ship": {
+                                                                "type": "boolean"
+                                                            },
+                                                            "items": {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "$ref": "#/definitions/unit_item_definition_ptr"
+                                                                }
+                                                            },
+                                                            "level": {
+                                                                "type": "integer"
+                                                            }
+                                                        },
+                                                        "unevaluatedProperties": false
+                                                    },
+                                                    "unit": {
+                                                        "$ref": "#/definitions/unit_definition_ptr"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "unit"
+                                                ],
+                                                "unevaluatedProperties": false
+                                            }
+                                        }
+                                    },
+                                    "unevaluatedProperties": false
+                                }
+                            },
+                            "granted_planets_units_in_gravity_wells": {
+                                "type": "object",
+                                "properties": {
+                                    "formation_type": {
+                                        "$ref": "#/definitions/formation_type"
+                                    },
+                                    "random_units": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "options": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "forced_leveled_up_abilities": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "$ref": "#/definitions/ability_definition_ptr"
+                                                            }
+                                                        },
+                                                        "forced_strikecraft_index": {
+                                                            "type": "integer"
+                                                        },
+                                                        "is_temporary_ruler_ship": {
+                                                            "type": "boolean"
+                                                        },
+                                                        "items": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "$ref": "#/definitions/unit_item_definition_ptr"
+                                                            }
+                                                        },
+                                                        "level": {
+                                                            "type": "integer"
+                                                        }
+                                                    },
+                                                    "unevaluatedProperties": false
+                                                },
+                                                "unit": {
+                                                    "$ref": "#/definitions/unit_definition_ptr"
+                                                },
+                                                "weight": {
+                                                    "type": "number"
+                                                }
+                                            },
+                                            "required": [
+                                                "unit",
+                                                "weight"
+                                            ],
+                                            "unevaluatedProperties": false
+                                        }
+                                    },
+                                    "required_units": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "count": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "integer"
+                                                    },
+                                                    "minItems": 2,
+                                                    "maxItems": 2
+                                                },
+                                                "options": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "forced_leveled_up_abilities": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "$ref": "#/definitions/ability_definition_ptr"
+                                                            }
+                                                        },
+                                                        "forced_strikecraft_index": {
+                                                            "type": "integer"
+                                                        },
+                                                        "is_temporary_ruler_ship": {
+                                                            "type": "boolean"
+                                                        },
+                                                        "items": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "$ref": "#/definitions/unit_item_definition_ptr"
+                                                            }
+                                                        },
+                                                        "level": {
+                                                            "type": "integer"
+                                                        }
+                                                    },
+                                                    "unevaluatedProperties": false
+                                                },
+                                                "unit": {
+                                                    "$ref": "#/definitions/unit_definition_ptr"
+                                                }
+                                            },
+                                            "required": [
+                                                "unit"
+                                            ],
+                                            "unevaluatedProperties": false
+                                        }
+                                    }
+                                },
+                                "unevaluatedProperties": false
+                            },
+                            "include_star_phase_lanes": {
+                                "type": "boolean"
+                            },
+                            "include_wormhole_phase_lanes": {
+                                "type": "boolean"
+                            },
+                            "max_jumps": {
+                                "type": "integer"
+                            },
+                            "starting_planet_track_levels": {
+                                "type": "array",
+                                "items": {
+                                    "type": "integer"
+                                }
+                            }
+                        },
+                        "required": [
+                            "allowed_planet_types",
+                            "count",
+                            "max_jumps"
+                        ],
+                        "unevaluatedProperties": false
+                    },
+                    "free_starting_capital_ship": {
+                        "type": "boolean"
+                    },
+                    "home_planet": {
+                        "type": "object",
+                        "properties": {
+                            "home_planet_starting_items": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/definitions/unit_item_definition_ptr"
+                                }
+                            },
+                            "home_planet_starting_population": {
+                                "type": "array",
+                                "items": {
+                                    "type": "number"
+                                },
+                                "minItems": 2,
+                                "maxItems": 2
+                            },
+                            "home_planet_track_levels": {
+                                "type": "array",
+                                "items": {
+                                    "type": "integer"
+                                }
+                            },
+                            "portal_starts_scarred": {
+                                "type": "boolean"
+                            },
+                            "starting_militia_units_in_gravity_well": {
+                                "description": "Hostile militia garrison spawned in the home gravity well at galaxy generation. Only applied when the home planet starts unowned. A unit whose primary ship_role is bomb_planet will disable the owning player's colonize auto-cast.",
+                                "type": "object",
+                                "properties": {
+                                    "formation_type": {
+                                        "$ref": "#/definitions/formation_type"
+                                    },
+                                    "random_units": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "options": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "forced_leveled_up_abilities": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "$ref": "#/definitions/ability_definition_ptr"
+                                                            }
+                                                        },
+                                                        "forced_strikecraft_index": {
+                                                            "type": "integer"
+                                                        },
+                                                        "is_temporary_ruler_ship": {
+                                                            "type": "boolean"
+                                                        },
+                                                        "items": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "$ref": "#/definitions/unit_item_definition_ptr"
+                                                            }
+                                                        },
+                                                        "level": {
+                                                            "type": "integer"
+                                                        }
+                                                    },
+                                                    "unevaluatedProperties": false
+                                                },
+                                                "unit": {
+                                                    "$ref": "#/definitions/unit_definition_ptr"
+                                                },
+                                                "weight": {
+                                                    "type": "number"
+                                                }
+                                            },
+                                            "required": [
+                                                "unit",
+                                                "weight"
+                                            ],
+                                            "unevaluatedProperties": false
+                                        }
+                                    },
+                                    "required_units": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "count": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "integer"
+                                                    },
+                                                    "minItems": 2,
+                                                    "maxItems": 2
+                                                },
+                                                "options": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "forced_leveled_up_abilities": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "$ref": "#/definitions/ability_definition_ptr"
+                                                            }
+                                                        },
+                                                        "forced_strikecraft_index": {
+                                                            "type": "integer"
+                                                        },
+                                                        "is_temporary_ruler_ship": {
+                                                            "type": "boolean"
+                                                        },
+                                                        "items": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "$ref": "#/definitions/unit_item_definition_ptr"
+                                                            }
+                                                        },
+                                                        "level": {
+                                                            "type": "integer"
+                                                        }
+                                                    },
+                                                    "unevaluatedProperties": false
+                                                },
+                                                "unit": {
+                                                    "$ref": "#/definitions/unit_definition_ptr"
+                                                }
+                                            },
+                                            "required": [
+                                                "unit"
+                                            ],
+                                            "unevaluatedProperties": false
+                                        }
+                                    }
+                                },
+                                "unevaluatedProperties": false
+                            },
+                            "starting_militia_units_owner": {
+                                "description": "Npc player definition that owns starting_militia_units_in_gravity_well. Leave unset to use a random militia player.",
+                                "$ref": "#/definitions/player_definition_ptr"
+                            },
+                            "starting_militia_units_supply": {
+                                "description": "Supply budget for starting_militia_units_in_gravity_well random_units. required_units always spawn regardless.",
+                                "type": "integer"
+                            },
+                            "starting_units_in_formations": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "formation_type": {
+                                            "$ref": "#/definitions/formation_type"
+                                        },
+                                        "random_units": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "options": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "forced_leveled_up_abilities": {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "$ref": "#/definitions/ability_definition_ptr"
+                                                                }
+                                                            },
+                                                            "forced_strikecraft_index": {
+                                                                "type": "integer"
+                                                            },
+                                                            "is_temporary_ruler_ship": {
+                                                                "type": "boolean"
+                                                            },
+                                                            "items": {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "$ref": "#/definitions/unit_item_definition_ptr"
+                                                                }
+                                                            },
+                                                            "level": {
+                                                                "type": "integer"
+                                                            }
+                                                        },
+                                                        "unevaluatedProperties": false
+                                                    },
+                                                    "unit": {
+                                                        "$ref": "#/definitions/unit_definition_ptr"
+                                                    },
+                                                    "weight": {
+                                                        "type": "number"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "unit",
+                                                    "weight"
+                                                ],
+                                                "unevaluatedProperties": false
+                                            }
+                                        },
+                                        "required_units": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "count": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "integer"
+                                                        },
+                                                        "minItems": 2,
+                                                        "maxItems": 2
+                                                    },
+                                                    "options": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "forced_leveled_up_abilities": {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "$ref": "#/definitions/ability_definition_ptr"
+                                                                }
+                                                            },
+                                                            "forced_strikecraft_index": {
+                                                                "type": "integer"
+                                                            },
+                                                            "is_temporary_ruler_ship": {
+                                                                "type": "boolean"
+                                                            },
+                                                            "items": {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "$ref": "#/definitions/unit_item_definition_ptr"
+                                                                }
+                                                            },
+                                                            "level": {
+                                                                "type": "integer"
+                                                            }
+                                                        },
+                                                        "unevaluatedProperties": false
+                                                    },
+                                                    "unit": {
+                                                        "$ref": "#/definitions/unit_definition_ptr"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "unit"
+                                                ],
+                                                "unevaluatedProperties": false
+                                            }
+                                        }
+                                    },
+                                    "unevaluatedProperties": false
+                                }
+                            },
+                            "starting_units_in_gravity_well": {
+                                "type": "object",
+                                "properties": {
+                                    "formation_type": {
+                                        "$ref": "#/definitions/formation_type"
+                                    },
+                                    "random_units": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "options": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "forced_leveled_up_abilities": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "$ref": "#/definitions/ability_definition_ptr"
+                                                            }
+                                                        },
+                                                        "forced_strikecraft_index": {
+                                                            "type": "integer"
+                                                        },
+                                                        "is_temporary_ruler_ship": {
+                                                            "type": "boolean"
+                                                        },
+                                                        "items": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "$ref": "#/definitions/unit_item_definition_ptr"
+                                                            }
+                                                        },
+                                                        "level": {
+                                                            "type": "integer"
+                                                        }
+                                                    },
+                                                    "unevaluatedProperties": false
+                                                },
+                                                "unit": {
+                                                    "$ref": "#/definitions/unit_definition_ptr"
+                                                },
+                                                "weight": {
+                                                    "type": "number"
+                                                }
+                                            },
+                                            "required": [
+                                                "unit",
+                                                "weight"
+                                            ],
+                                            "unevaluatedProperties": false
+                                        }
+                                    },
+                                    "required_units": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "count": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "integer"
+                                                    },
+                                                    "minItems": 2,
+                                                    "maxItems": 2
+                                                },
+                                                "options": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "forced_leveled_up_abilities": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "$ref": "#/definitions/ability_definition_ptr"
+                                                            }
+                                                        },
+                                                        "forced_strikecraft_index": {
+                                                            "type": "integer"
+                                                        },
+                                                        "is_temporary_ruler_ship": {
+                                                            "type": "boolean"
+                                                        },
+                                                        "items": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "$ref": "#/definitions/unit_item_definition_ptr"
+                                                            }
+                                                        },
+                                                        "level": {
+                                                            "type": "integer"
+                                                        }
+                                                    },
+                                                    "unevaluatedProperties": false
+                                                },
+                                                "unit": {
+                                                    "$ref": "#/definitions/unit_definition_ptr"
+                                                }
+                                            },
+                                            "required": [
+                                                "unit"
+                                            ],
+                                            "unevaluatedProperties": false
+                                        }
+                                    }
+                                },
+                                "unevaluatedProperties": false
+                            },
+                            "starting_units_in_hyperspace": {
+                                "type": "object",
+                                "properties": {
+                                    "formation_type": {
+                                        "$ref": "#/definitions/formation_type"
+                                    },
+                                    "random_units": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "options": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "forced_leveled_up_abilities": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "$ref": "#/definitions/ability_definition_ptr"
+                                                            }
+                                                        },
+                                                        "forced_strikecraft_index": {
+                                                            "type": "integer"
+                                                        },
+                                                        "is_temporary_ruler_ship": {
+                                                            "type": "boolean"
+                                                        },
+                                                        "items": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "$ref": "#/definitions/unit_item_definition_ptr"
+                                                            }
+                                                        },
+                                                        "level": {
+                                                            "type": "integer"
+                                                        }
+                                                    },
+                                                    "unevaluatedProperties": false
+                                                },
+                                                "unit": {
+                                                    "$ref": "#/definitions/unit_definition_ptr"
+                                                },
+                                                "weight": {
+                                                    "type": "number"
+                                                }
+                                            },
+                                            "required": [
+                                                "unit",
+                                                "weight"
+                                            ],
+                                            "unevaluatedProperties": false
+                                        }
+                                    },
+                                    "required_units": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "count": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "integer"
+                                                    },
+                                                    "minItems": 2,
+                                                    "maxItems": 2
+                                                },
+                                                "options": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "forced_leveled_up_abilities": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "$ref": "#/definitions/ability_definition_ptr"
+                                                            }
+                                                        },
+                                                        "forced_strikecraft_index": {
+                                                            "type": "integer"
+                                                        },
+                                                        "is_temporary_ruler_ship": {
+                                                            "type": "boolean"
+                                                        },
+                                                        "items": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "$ref": "#/definitions/unit_item_definition_ptr"
+                                                            }
+                                                        },
+                                                        "level": {
+                                                            "type": "integer"
+                                                        }
+                                                    },
+                                                    "unevaluatedProperties": false
+                                                },
+                                                "unit": {
+                                                    "$ref": "#/definitions/unit_definition_ptr"
+                                                }
+                                            },
+                                            "required": [
+                                                "unit"
+                                            ],
+                                            "unevaluatedProperties": false
+                                        }
+                                    }
+                                },
+                                "unevaluatedProperties": false
+                            },
+                            "starting_units_in_hyperspace_duration": {
+                                "type": "number"
+                            },
+                            "starting_units_in_portal": {
+                                "type": "object",
+                                "properties": {
+                                    "formation_type": {
+                                        "$ref": "#/definitions/formation_type"
+                                    },
+                                    "random_units": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "options": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "forced_leveled_up_abilities": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "$ref": "#/definitions/ability_definition_ptr"
+                                                            }
+                                                        },
+                                                        "forced_strikecraft_index": {
+                                                            "type": "integer"
+                                                        },
+                                                        "is_temporary_ruler_ship": {
+                                                            "type": "boolean"
+                                                        },
+                                                        "items": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "$ref": "#/definitions/unit_item_definition_ptr"
+                                                            }
+                                                        },
+                                                        "level": {
+                                                            "type": "integer"
+                                                        }
+                                                    },
+                                                    "unevaluatedProperties": false
+                                                },
+                                                "unit": {
+                                                    "$ref": "#/definitions/unit_definition_ptr"
+                                                },
+                                                "weight": {
+                                                    "type": "number"
+                                                }
+                                            },
+                                            "required": [
+                                                "unit",
+                                                "weight"
+                                            ],
+                                            "unevaluatedProperties": false
+                                        }
+                                    },
+                                    "required_units": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "count": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "integer"
+                                                    },
+                                                    "minItems": 2,
+                                                    "maxItems": 2
+                                                },
+                                                "options": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "forced_leveled_up_abilities": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "$ref": "#/definitions/ability_definition_ptr"
+                                                            }
+                                                        },
+                                                        "forced_strikecraft_index": {
+                                                            "type": "integer"
+                                                        },
+                                                        "is_temporary_ruler_ship": {
+                                                            "type": "boolean"
+                                                        },
+                                                        "items": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "$ref": "#/definitions/unit_item_definition_ptr"
+                                                            }
+                                                        },
+                                                        "level": {
+                                                            "type": "integer"
+                                                        }
+                                                    },
+                                                    "unevaluatedProperties": false
+                                                },
+                                                "unit": {
+                                                    "$ref": "#/definitions/unit_definition_ptr"
+                                                }
+                                            },
+                                            "required": [
+                                                "unit"
+                                            ],
+                                            "unevaluatedProperties": false
+                                        }
+                                    }
+                                },
+                                "unevaluatedProperties": false
+                            },
+                            "starting_units_in_portal_duration": {
+                                "type": "number"
+                            },
+                            "vasari_start_with_home_planet_owned": {
+                                "type": "boolean"
+                            }
+                        },
+                        "unevaluatedProperties": false
+                    },
+                    "player_definition_id": {
+                        "type": "string"
+                    },
+                    "starting_assets": {
+                        "type": "object",
+                        "properties": {
+                            "credits": {
+                                "type": "number"
+                            },
+                            "crystal": {
+                                "type": "number"
+                            },
+                            "metal": {
+                                "type": "number"
+                            }
+                        },
+                        "unevaluatedProperties": false
+                    },
+                    "starting_exotics": {
+                        "type": "object",
+                        "properties": {
+                            "count": {
+                                "description": "Amount of Exotic.",
+                                "type": "integer"
+                            },
+                            "exotic_type": {
+                                "description": "Exotic type",
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "exotic_type"
+                        ],
+                        "unevaluatedProperties": false
+                    },
+                    "starting_player_inventory_items": {
+                        "description": "Items to add to player's inventory at game start",
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "starting_research": {
+                        "type": "object",
+                        "properties": {
+                            "starting_civilian_tier": {
+                                "type": "integer"
+                            },
+                            "starting_military_tier": {
+                                "type": "integer"
+                            },
+                            "starting_research_subjects": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/definitions/research_subject_definition_ptr"
+                                }
+                            }
+                        },
+                        "unevaluatedProperties": false
+                    }
+                },
+                "required": [
+                    "additional_starting_planets",
+                    "home_planet",
+                    "player_definition_id",
+                    "starting_research"
+                ],
+                "unevaluatedProperties": false
+            }
+        },
+        "name": {
+            "type": "string"
+        },
+        "version": {
+            "type": "integer"
+        }
+    },
+    "required": [
+        "description",
+        "display_name",
+        "name"
+    ],
+    "unevaluatedProperties": false,
+    "definitions": {
+        "ability_definition_ptr": {
+            "type": "string"
+        },
+        "player_definition_ptr": {
+            "type": "string"
+        },
+        "localized_text_ptr": {
+            "type": "string"
+        },
+        "formation_type": {
+            "type": "string",
+            "enum": [
+                "ships_and_structures",
+                "strikecraft_only"
+            ]
+        },
+        "planet_type_name": {
+            "type": "string"
+        },
+        "research_subject_definition_ptr": {
+            "type": "string"
+        },
+        "unit_item_definition_ptr": {
+            "type": "string"
+        },
+        "unit_definition_ptr": {
+            "type": "string"
+        }
+    }
+}

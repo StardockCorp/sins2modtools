@@ -52,6 +52,9 @@
         "can_build_items_in_combat": {
             "type": "boolean"
         },
+        "cloak_detection_level_quality_delta_offset": {
+            "type": "integer"
+        },
         "culture_provider_buff_agent_unit": {
             "type": "string"
         },
@@ -126,10 +129,10 @@
             "type": "number"
         },
         "spawn_in_fixture_build_radius_scalars": {
-            "$ref": "#/$defs/float_range"
+            "$ref": "#/definitions/float_range"
         },
         "spawn_in_fixture_move_area_radius_scalars": {
-            "$ref": "#/$defs/float_range"
+            "$ref": "#/definitions/float_range"
         },
         "starbase_tag": {
             "type": "string"
@@ -143,7 +146,7 @@
                         "type": "string"
                     },
                     "localized_text": {
-                        "$ref": "#/$defs/localized_text_group"
+                        "$ref": "#/definitions/localized_text_group"
                     }
                 },
                 "required": [
@@ -184,7 +187,7 @@
         "unit_names"
     ],
     "unevaluatedProperties": false,
-    "$defs": {
+    "definitions": {
         "float_range": {
             "type": "array",
             "items": {

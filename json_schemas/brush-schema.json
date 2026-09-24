@@ -6,7 +6,7 @@
     "properties": {
         "disabled_state": {
             "description": "The UI element is disabled.",
-            "$ref": "#/$defs/brush_state"
+            "$ref": "#/definitions/brush_state"
         },
         "dpi_source": {
             "type": "string",
@@ -17,11 +17,11 @@
         },
         "focused_state": {
             "description": "The UI element has focus. All keyboard input will be directed here before others.",
-            "$ref": "#/$defs/brush_state"
+            "$ref": "#/definitions/brush_state"
         },
         "hovered_state": {
             "description": "The UI element is hovered, typically the mouse cursor is over it.",
-            "$ref": "#/$defs/brush_state"
+            "$ref": "#/definitions/brush_state"
         },
         "is_transient": {
             "description": "If true this texture will be loaded and loaded on demand and NOT optimized onto a texture page. Only make true for large textures that should not stay resident.",
@@ -48,17 +48,17 @@
         },
         "normal_state": {
             "description": "Normal or default state of the brush",
-            "$ref": "#/$defs/brush_state"
+            "$ref": "#/definitions/brush_state"
         },
         "pressed_state": {
             "description": "The UI element has be pressed, typically indicating the mouse button is down.",
-            "$ref": "#/$defs/brush_state"
+            "$ref": "#/definitions/brush_state"
         },
         "supported_dpis": {
             "description": "What DPI this brush natively supports for higher resolution textures. By convention texture names must be post-fixed with the DPI value to be found. For example picture.png would also need picture150.png side-by-side if supported DPI of 150 was added. Typically should be [150, 200] if this feature is being used.",
             "type": "array",
             "items": {
-                "$ref": "#/$defs/dpi"
+                "$ref": "#/definitions/dpi"
             }
         },
         "tiles": {
@@ -69,10 +69,10 @@
                     "type": "integer"
                 },
                 "tile_size": {
-                    "$ref": "#/$defs/size"
+                    "$ref": "#/definitions/size"
                 },
                 "tile_stride": {
-                    "$ref": "#/$defs/size"
+                    "$ref": "#/definitions/size"
                 },
                 "total_count": {
                     "type": "integer"
@@ -82,7 +82,7 @@
         }
     },
     "unevaluatedProperties": false,
-    "$defs": {
+    "definitions": {
         "size": {
             "type": "array",
             "items": {

@@ -1,2 +1,9 @@
 # .out is used by readme for examples
 .out
+
+# build & IDE junk (also purged from history)
+*.pdb
+[Oo]bj/
+.vs/
+**/bin/Debug/
+**/bin/Release/
